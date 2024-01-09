@@ -53,15 +53,15 @@ The data for your copilot consists of a set of travel brochures in PDF format fr
 
 ## Create an index for your data
 
-Now that you've added a data source to your project, you can use it to create an index in your Azure Ai Search resource.
+Now that you've added a data source to your project, you can use it to create an index in your Azure AI Search resource.
 
 1. In Azure AI Studio, in your project, in the navigation pane on the left, under **Components**, select the **Indexes** page.
-1. Add  a new index with the following settings:
+1. Add a new index with the following settings:
     - **Source data**:
         - **Data source**: Use existing project data
             - *Select the **brochures** data source*
     - **Index storage**:
-        - *Connect to the Azure Ai Search resource in your subscription*
+        - *Connect to the Azure AI Search resource in your subscription*
     - **Search settings**:
         - **Search type**: Vector
         - **Azure OpenAI Resource**: Default_AzureOpenAI
@@ -84,7 +84,7 @@ Before using your index in a RAG-based prompt flow, let's deploy a model and ver
 1. In Azure AI Studio, in your project, in the navigation pane on the left, under **Components**, select the **Deployments** page.
 1. Create a new deployment of the **gpt-35-turbo** model with an appropriate name. Set the **Advanced** options to use the default content filter and to restrict the tokens-per-minute (TPM) to **5K**.
 1. In the navigation pane on the left, under **Tools**, select the **Playground** page.
-1. On the Playground page, in the **AConfiguration** pane, ensure that your gpt-35-turbo model deployment is selected. Then, in the **Chat session** pane, submit the prompt `Where can I stay in New York?`
+1. On the Playground page, in the **Configuration** pane, ensure that your gpt-35-turbo model deployment is selected. Then, in the **Chat session** pane, submit the prompt `Where can I stay in New York?`
 1. Review the response, which should be a generic answer from the model without any data from the index.
 1. In the **Assistant setup** pane, select **Add your data** and then add a data source with the following settings:
     - **Data source**:
@@ -119,7 +119,7 @@ When you created the index, a sample prompt flow that uses it was created automa
         - Ensure that the **Connection** is set to *Default_AzureOpenAI*, **deployment_name** is set to your gpt-35-turbo deployment, and set **max_tokens** to 1000.
         - Select **Validate and parse input**.
     - **embed_the_question** (creates a vector embedding for the question text):
-        - Ensure that the **Connection** is set to *Default_AzureOpenAI*, **deployment_name** is set to the embeddings deployment, and the **input** is set to *Ensure that the **Connection** is set to *Default_AzureOpenAI*, **deployment_name** is set to the text-embedding deployment used when creating the index, and set *max_tokens* to *${modify_query_with_history.output}**
+        - Ensure that the **Connection** is set to *Default_AzureOpenAI*, **deployment_name** is set to the text-embedding deployment used when creating the index, and set *max_tokens* to *${modify_query_with_history.output}*
         - Select **Validate and parse input**.
     - **search_question_from_indexed_docs** (searches the index based on the question):
         - Ensure **query** is set to *\${embed_the_question.output}*.
