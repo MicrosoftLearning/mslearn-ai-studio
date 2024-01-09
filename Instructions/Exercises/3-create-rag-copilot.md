@@ -18,7 +18,7 @@ This exercise takes approximately **45** minutes.
 Your copilot solution will integrate custom data into a prompt flow. To support this integration, you'll need an Azure AI Search resource with which to index your data.
 
 1. In a web browser, open the [Azure portal](https://portal.azure.com) at `https://portal.azure.com` and sign in using your Azure credentials.
-1. On the home page, select **+ Create a resource** and search for `Azure Ai Search`. Then create a new Azure AI Search resource with the following settings:
+1. On the home page, select **+ Create a resource** and search for `Azure AI Search`. Then create a new Azure AI Search resource with the following settings:
     - **Subscription**: *Select your Azure subscription*
     - **Resource group**: *Select or create a resource group*
     - **Service name**: *Enter a unique service name*
@@ -41,7 +41,7 @@ Now you're ready to create an Azure AI Studio project and the Azure AI resources
         - **Advanced options**:
             - **AI Services provider**: New multi-service provider
             - **Azure AI Search**: *Select your Azure AI Search resource*
-1. Wait for your project to be created.
+1. Select **Next**. Select **Create a project**. Wait for your project to be created.
 
 ## Add data to your project
 
