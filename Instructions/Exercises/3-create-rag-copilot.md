@@ -22,7 +22,7 @@ Your copilot solution will integrate custom data into a prompt flow. To support 
     - **Subscription**: *Select your Azure subscription*
     - **Resource group**: *Select or create a resource group*
     - **Service name**: *Enter a unique service name*
-    - **Location**: Select any available location*
+    - **Location**: *Select any available location*
     - **Pricing tier**: Standard
 1. Wait for your Azure AI Search resource deployment to be completed.
 
