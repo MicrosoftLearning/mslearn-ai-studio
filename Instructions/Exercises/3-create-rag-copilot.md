@@ -120,7 +120,7 @@ When you created the index, a sample prompt flow that uses it was created automa
         - Ensure that the **Connection** is set to *Default_AzureOpenAI*, **deployment_name** is set to your gpt-35-turbo deployment, and set **max_tokens** to 1000.
         - Select **Validate and parse input**.
     - **embed_the_question** (creates a vector embedding for the question text):
-        - Ensure that the **Connection** is set to *Default_AzureOpenAI*, **deployment_name** is set to the embeddings deployment, and the **input** is set to *Ensure that the **Connection** is set to *Default_AzureOpenAI*, **deployment_name** is set to the text-embedding deployment used when creating the index, and set *max_tokens* to *${modify_query_with_history.output}**
+        - Ensure that the **Connection** is set to *Default_AzureOpenAI*, **deployment_name** is set to the embeddings deployment, and the **input** is set to to *${modify_query_with_history.output}**
         - Select **Validate and parse input**.
     - **search_question_from_indexed_docs** (searches the index based on the question):
         - Ensure **query** is set to *\${embed_the_question.output}*.
