@@ -146,7 +146,7 @@ When you created the index, a sample prompt flow that uses it was created automa
 
 Now that you have a working flow that uses your indexed data, you can deploy it as a service to be consumed by a copilot application.
 
-1. On the toolbar, under **Components**, select **Deployments**.
+1. On the toolbar, select **Deploy**.
 1. Create a deployment with the following settings:
     - **Basic settings**:
         - **Endpoint**: New
