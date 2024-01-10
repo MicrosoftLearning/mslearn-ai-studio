@@ -93,6 +93,7 @@ Before using your index in a RAG-based prompt flow, let's deploy a model and ver
         - **Azure AI Search service**: *Your Azure AI Search resource*
         - **Azure AI Search index**: brochures-index
         - **Add vector search**: <u>un</u>selected
+        - *Select the acknowledgement statement*
     - **Data field mapping**:
         - **Content data**: content
         - **File name**: filepath
