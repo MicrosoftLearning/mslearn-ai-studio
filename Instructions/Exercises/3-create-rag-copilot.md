@@ -186,7 +186,7 @@ Now that you have a working flow that uses your indexed data, you can deploy it 
         - **Endpoint name**: brochure-endpoint
         - **Deployment name**: brochure-endpoint-1
         - **Virtual machine**: Standard_DS3_v2
-        - **Instance count**: 1
+        - **Instance count**: 3
         - **Inferencing data collection**: Selected
         - **Application insights diagnostics**: Selected
     - **Advanced settings**:
