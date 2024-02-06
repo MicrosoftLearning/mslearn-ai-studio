@@ -33,14 +33,13 @@ Now you're ready to create an Azure AI Studio project and the Azure AI resources
 1. In a web browser, open [Azure AI Studio](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials.
 1. on the **Build** page, select **+ New project**. Then, in the **Create a new project** wizard, create a project with the following settings:
     - **Project name**: *A unique name for your project*
-    - **Azure AI resource**: *Create a new resource with the following settings:*
-        - **Resource name**: *A unique name*
-        - **Subscription**: *Your Azure subscription*
+    - **AI Hub**: *Create a new resource with the following settings:*
+        - **AI Hub name**: *A unique name*
+        - **Azure Subscription**: *Your Azure subscription*
         - **Resource group**: *Select the resource group containing your Azure Ai Search resource*
         - **Location**: *The same location as your Azure AI Search resource (or a location geographically near it)*
-        - **Advanced options**:
-            - **AI Services provider**: New multi-service provider
-            - **Azure AI Search**: *Select your Azure AI Search resource*
+        - **Azure OpenAI**: (New) *hub_name*
+        - **Azure AI Search**: *Select your Azure AI Search resource*
 1. Wait for your project to be created.
 
 ## Deploy models
