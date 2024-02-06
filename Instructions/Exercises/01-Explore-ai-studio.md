@@ -8,7 +8,7 @@ lab:
 In this exercise, you'll use Azure AI Studio to create a project and explore a generative AI model.
 
 > **Note**: Azure AI Studio is in preview at the time of writing, and is under active development. Some elements of the service may not be exactly as-described, and some features may not work as expected.
->
+
 > To complete this exercise, your Azure subscription must be approved for access to the Azure OpenAI service.
 
 This exercise takes approximately **30** minutes.
