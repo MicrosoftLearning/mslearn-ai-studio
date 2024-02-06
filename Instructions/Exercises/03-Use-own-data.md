@@ -50,7 +50,7 @@ You'll need two models to implement your solution:
 - A model that can generate natural language responses to questions based on your data.
 
 1. In Azure AI Studio, in your project, in the navigation pane on the left, under **Components**, select the **Deployments** page.
-1. Create a new deployment of the **text-embedding-ada-002** model with the name `text-embedding-ada-002`. Set the **Advanced** options to use the default content filter and to restrict the tokens-per-minute (TPM) to **5K**.
+1. Create a new deployment (using a real-time endpoint) of the **text-embedding-ada-002** model with the name `text-embedding-ada-002`. Set the **Advanced** options to use the default content filter and to restrict the tokens-per-minute (TPM) to **5K**.
 1. Create a new deployment of the **gpt-35-turbo** model with the name `gpt-35-turbo`. Set the **Advanced** options to use the default content filter and to restrict the tokens-per-minute (TPM) to **5K**.
 
 > **Note**: Reducing the TPM helps avoid over-using the quota available in the subscription you are using. 5,000 TPM is sufficient for the data used in this exercise.
@@ -75,18 +75,16 @@ Now that you've added a data source to your project, you can use it to create an
     - **Index storage**:
         - *Select the **AzureAISearch** connection to your Azure AI Search resource*
     - **Search settings**:
-        - **Search type**: Vector
+        - **Vector settings**: Add vector search to this search resource
         - **Azure OpenAI Resource**: Default_AzureOpenAI
         - *Acknowledge that an embedding model will be deployed*
     - **Index settings**:
         - **Index name**: brochures-index
         - **Virtual machine**: Auto select
-1. Wait for your index to be created, which can take several minutes. The index creation operation consists of the following jobs:
-    - Validating deployment of the embedding model that will be used to create embedding vectors for your data
-    - Chunking the text data into smaller units for indexing
-    - Creating embeddings for the text tokens in your chunked data
-    - Creating the index
-    - Registering the index asset
+1. Wait for your index to be ready, which can take several minutes. The index creation operation consists of the following jobs:
+    - Crack, chunk, and embed the text tokens in your brochures data
+    - Update the index
+    - Register the index asset
 
 ## Test the index
 
@@ -147,7 +145,7 @@ Your vector index has been saved in your Azure AI Studio project, enabling you t
     - **deployment_name** *(string)*: text-embedding-ada-00
     - **input** *(string)*: ${modify_query_with_history.output}
 1. In the **search_question_from_indexed_docs** section, set the following parameter values:
-    - **path** *(string)*: *Paste the URI for your vector index*
+    - **path** *(string)*: *Delete the existing URI and paste the URI for your vector index*
     - **query** *(object)*: ${embed_the_question.output}
     - **top_k** *(int)*: 2
 1. In the **generate_prompt_context** section, review the Python script and ensure that the **inputs** for this tool include the following parameter:
