@@ -169,4 +169,3 @@ When you finish exploring the Azure AI Studio, you should delete the resources y
 - Select the resource group that you created for this exercise.
 - At the top of the **Overview** page for your resource group, select **Delete resource group**.
 - Enter the resource group name to confirm you want to delete it, and select **Delete**.
-
