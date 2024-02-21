@@ -9,7 +9,7 @@ Retrieval Augmented Generation (RAG) is a technique used to build applications t
 
 In this exercise, you'll use Azure AI Studio to integrate custom data into a generative AI prompt flow.
 
-> **Note**: Azure AI Studio is in preview at the time of writing, and is under active development. Some elements of the service may not be exactly as-described, and some features may not work as expected.
+> **Note**: Azure AI Studio is in preview at the time of writing, and is under active development. Some elements of the service may not be exactly as described, and some features may not work as expected.
 
 This exercise takes approximately **45** minutes.
 
@@ -31,29 +31,35 @@ Your copilot solution will integrate custom data into a prompt flow. To support 
 Now you're ready to create an Azure AI Studio project and the Azure AI resources to support it.
 
 1. In a web browser, open [Azure AI Studio](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials.
-1. on the **Build** page, select **+ New project**. Then, in the **Create a new project** wizard, create a project with the following settings:
+1. On the **Build** page, select **+ New AI project**. Then, in the **Getting started** wizard, create a project with the following settings:
     - **Project name**: *A unique name for your project*
     - **AI Hub**: *Create a new resource with the following settings:*
         - **AI Hub name**: *A unique name*
         - **Azure Subscription**: *Your Azure subscription*
-        - **Resource group**: *Select the resource group containing your Azure Ai Search resource*
+        - **Resource group**: *Select the resource group containing your Azure AI Search resource*
         - **Location**: *The same location as your Azure AI Search resource (or a location geographically near it)*
-        - **Azure OpenAI**: (New) *hub_name*
+        - **Azure OpenAI**: (New) *Autofills with your selected hub name*
         - **Azure AI Search**: *Select your Azure AI Search resource*
+
 1. Wait for your project to be created.
 
 ## Deploy models
 
-You'll need two models to implement your solution:
+You need two models to implement your solution:
 
 - An *embedding* model to vectorize text data for efficient indexing and processing.
 - A model that can generate natural language responses to questions based on your data.
 
-1. In Azure AI Studio, in your project, in the navigation pane on the left, under **Components**, select the **Deployments** page.
-1. Create a new deployment (using a real-time endpoint) of the **text-embedding-ada-002** model with the name `text-embedding-ada-002`. Set the **Advanced** options to use the default content filter and to restrict the tokens-per-minute (TPM) to **5K**.
-1. Create a new deployment of the **gpt-35-turbo** model with the name `gpt-35-turbo`. Set the **Advanced** options to use the default content filter and to restrict the tokens-per-minute (TPM) to **5K**.
+1. In the Azure AI Studio, in your project, in the navigation pane on the left, under **Components**, select the **Deployments** page.
+1. Create a new deployment (using a **real-time endpoint**) of the **text-embedding-ada-002** model with the following settings:
 
-> **Note**: Reducing the TPM helps avoid over-using the quota available in the subscription you are using. 5,000 TPM is sufficient for the data used in this exercise.
+    - **Deployment name**: `text-embedding-ada-002`
+    - **Model version**: *Default*
+    - **Advanced options**:
+        - **Content filter**: *Default*
+        - **Tokens per minute rate limit**: `5K`
+
+> **Note**: Reducing the Tokens Per Minute (TPM) helps avoid over-using the quota available in the subscription you are using. 5,000 TPM is sufficient for the data used in this exercise.
 
 ## Add data to your project
 
@@ -61,7 +67,10 @@ The data for your copilot consists of a set of travel brochures in PDF format fr
 
 1. Download the [zipped archive of brochures](https://github.com/MicrosoftLearning/mslearn-ai-studio/raw/main/data/brochures.zip) from `https://github.com/MicrosoftLearning/mslearn-ai-studio/raw/main/data/brochures.zip` and extract it to a folder named **brochures** on your local file system.
 1. In Azure AI Studio, in your project, in the navigation pane on the left, under **Components**, select the **Data** page.
-1. Select **+ New data** and add a new data source connection by uploading the **brochures** folder (choose the option to upload a *folder*, not a *file*). Name the new data source **brochures**.
+1. Select **+ New data**.
+1. In the **Add your data** wizard, expand the drop-down menu to select **Upload files/folders**.
+1. Select **Upload folder** and select the **brochures** folder.
+1. Set the data name to **brochures**.
 
 ## Create an index for your data
 
@@ -82,9 +91,10 @@ Now that you've added a data source to your project, you can use it to create an
         - **Index name**: brochures-index
         - **Virtual machine**: Auto select
 1. Wait for your index to be ready, which can take several minutes. The index creation operation consists of the following jobs:
-    - Crack, chunk, and embed the text tokens in your brochures data
-    - Update the index
-    - Register the index asset
+
+    - Crack, chunk, and embed the text tokens in your brochures data.
+    - Update the index.
+    - Register the index asset.
 
 ## Test the index
 
@@ -200,4 +210,3 @@ To avoid unnecessary Azure costs and resource utilization, you should remove the
 
 1. In Azure AI Studio, view the **Build** page. Then select the project you created in this exercise and use the **Delete project** button to remove it. It may take a few minutes to delete all of the components.
 1. If you've finished exploring Azure AI Studio, return to the [Azure portal](https://portal.azure.com) at `https://portal.azure.com` and sign in using your Azure credentials if necessary. Then delete the resource group you created for your Azure AI Search and Azure AI resources.
-
