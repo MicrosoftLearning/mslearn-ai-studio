@@ -19,14 +19,14 @@ You first need to create a project in the Azure AI Studio to create the necessar
 
 ## Create a project in the Azure AI Studio
 
-You start by creating an Azure AI Studio project and the Azure AI resources to support it.
+You start by creating an Azure AI Studio project and an Azure AI Hub to support it.
 
 1. In a web browser, open [https://ai.azure.com](https://ai.azure.com) and sign in using your Azure credentials.
 1. Select the **Build** page, then select **+ New project**.
 1. In the **Create a new project** wizard, create a project with the following settings:
     - **Project name**: *A unique name for your project*
-    - **Azure AI resource**: *Create a new resource with the following settings:*
-        - **Resource name**: *A unique name*
+    - **Azure Hub**: *Create a new resource with the following settings:*
+        - **AI Hub name**: *A unique name*
         - **Subscription**: *Your Azure subscription*
         - **Resource group**: *A new resource group*
         - **Location**: *Choose a location near you*
@@ -169,4 +169,3 @@ When you finish exploring the Azure AI Studio, you should delete the resources y
 - Select the resource group that you created for this exercise.
 - At the top of the **Overview** page for your resource group, select **Delete resource group**.
 - Enter the resource group name to confirm you want to delete it, and select **Delete**.
-
