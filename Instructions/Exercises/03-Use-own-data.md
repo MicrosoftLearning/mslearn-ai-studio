@@ -19,11 +19,13 @@ Your copilot solution will integrate custom data into a prompt flow. To support 
 
 1. In a web browser, open the [Azure portal](https://portal.azure.com) at `https://portal.azure.com` and sign in using your Azure credentials.
 1. On the home page, select **+ Create a resource** and search for `Azure AI Search`. Then create a new Azure AI Search resource with the following settings:
+
     - **Subscription**: *Select your Azure subscription*
     - **Resource group**: *Select or create a resource group*
     - **Service name**: *Enter a unique service name*
     - **Location**: *Select any available location*
     - **Pricing tier**: Standard
+
 1. Wait for your Azure AI Search resource deployment to be completed.
 
 ## Create an Azure AI project
@@ -32,8 +34,10 @@ Now you're ready to create an Azure AI Studio project and the Azure AI resources
 
 1. In a web browser, open [Azure AI Studio](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials.
 1. On the **Build** page, select **+ New AI project**. Then, in the **Getting started** wizard, create a project with the following settings:
+
     - **Project name**: *A unique name for your project*
     - **AI Hub**: *Create a new resource with the following settings:*
+
         - **AI Hub name**: *A unique name*
         - **Azure Subscription**: *Your Azure subscription*
         - **Resource group**: *Select the resource group containing your Azure AI Search resource*
@@ -104,19 +108,22 @@ Before using your index in a RAG-based prompt flow, let's verify that it can be 
 1. On the Playground page, in the **Configuration** pane, ensure that your **gpt-35-turbo** model deployment is selected. Then, in the **Chat session** pane, submit the prompt `Where can I stay in New York?`
 1. Review the response, which should be a generic answer from the model without any data from the index.
 1. In the **Assistant setup** pane, select **Add your data** and then add a data source with the following settings:
+
     - **Data source**:
         - **Select data source**: Azure AI Search
         - **Subscription**: *Your Azure subscription*
         - **Azure AI Search service**: *Your Azure AI Search resource*
         - **Azure AI Search index**: brochures-index
-        - **Add vector search**: <u>un</u>selected
+        - **Add vector search**: <u>Un</u>selected
+        - **Use custom field mapping**: Selected
+        - Check the box to acknowledge the incurred usage.
     - **Data field mapping**:
         - **Content data**: content
         - **File name**: filepath
         - **Title**: title
         - **URL**: url
     - **Data management**:
-        - **search type**: keyword
+        - **search type**: Keyword
 1. After the data source has been added and the chat session has restarted, resubmit the prompt `Where can I stay in New York?`
 1. Review the response, which should be based on data in the index.
 
