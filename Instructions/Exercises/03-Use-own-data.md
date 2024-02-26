@@ -124,6 +124,7 @@ Before using your index in a RAG-based prompt flow, let's verify that it can be 
         - **URL**: url
     - **Data management**:
         - **search type**: Keyword
+
 1. After the data source has been added and the chat session has restarted, resubmit the prompt `Where can I stay in New York?`
 1. Review the response, which should be based on data in the index.
 
@@ -132,46 +133,64 @@ Before using your index in a RAG-based prompt flow, let's verify that it can be 
 Your vector index has been saved in your Azure AI Studio project, enabling you to use it easily in a prompt flow.
 
 1. In Azure AI Studio, in your project, in the navigation pane on the left, under **Components**, select **Data**.
-1. Select the **brochures-index** folder which contains the data for the index you created previously.
-1. In the **Data links** section for your index, copy the **Storage URI** value to the clipboard (it should resemble `https://xxx.blob.core.windows.net/xxx/azureml/xxx/index/`). You will need this URI to connect to your index data in the prompt flow.
+1. Select the **brochures-index** folder which contains the index you created previously.
+1. In the **Data links** section for your index, copy the **Data connection URI** value to the clipboard (it should resemble `azureml://subscriptions/xxx/resourcegroups/xxx/workspaces/xxx/datastores/workspaceblobstore/paths/azureml/xxx/index/`). You will need this URI to connect to your index in the prompt flow.
 1. In your project, in the navigation pane on the left, under **Tools**, select the **Prompt flow** page.
 1. Create a new prompt flow by cloning the **Multi-Round Q&A on Your Data** sample in the gallery. Save your clone of this sample in a folder named `brochure-flow`.
 1. When the prompt flow designer page opens, review **brochure-flow**. Its graph should resemble the following image:
 
-    ![A screemshot a a prompt flow graph](./media/brochure-flow.png)
+    ![A screenshot a a prompt flow graph](./media/chat-flow.png)
 
     The sample prompt flow you are using implements the prompt logic for a chat application in which the user can iteratively submit text input to chat interface. The conversational history is retained and included in the context for each iteration. The prompt flow orchestrate a sequence of *tools* to:
 
-    1. Append the history to the chat input to define a prompt in the form of a contextualized form of a question.
-    1. Create an *embedding* for the question (use an embedding model to convert the text to vectors).
-    1. Search a vector index for relevant information based on the question.
-    1. Generate prompt context by using the retrieved data from the index to augment the question.
-    1. Create prompt variants by adding a system message and structuring the chat history.
-    1. Submit the prompt to a language model to generate a natural language response.
+    - Append the history to the chat input to define a prompt in the form of a contextualized form of a question.
+    - Retrieve the context using your index and a query type of your own choice based on the question.
+    - Generate prompt context by using the retrieved data from the index to augment the question.
+    - Create prompt variants by adding a system message and structuring the chat history.
+    - Submit the prompt to a language model to generate a natural language response.
 
-1. In the **Runtime** list, select **Start** to start the automatic runtime. Then wait for it to start. This provides a compute context for the prompt flow. While you're waiting, in the **Flow** tab, review the sections for the tools in the flow.
-1. In the **Inputs** section, ensure that the inputs include **chat_history** and **chat_input**. The default chat history in this sample includes some conversation about AI.
-1. In the **Outputs** section, ensure that the **chat_output** value is *${chat_with_context.output}*.
+1. In the **Runtime** list, select **Start** to start the automatic runtime.
+
+    Then wait for it to start. This provides a compute context for the prompt flow. While you're waiting, in the **Flow** tab, review the sections for the tools in the flow.
+
+1. In the **Inputs** section, ensure the inputs include:
+    - **chat_history**
+    - **chat_input**
+
+    The default chat history in this sample includes some conversation about AI.
+
+1. In the **Outputs** section, ensure that the output includes:
+
+    - **chat_output** with value `${chat_with_context.output}`
+
 1. In the **modify_query_with_history** section, select the following settings (leaving others as they are):
-    - **Connection**: Default_AzureOpenAI
-    - **Api**: Chat
-    - **deployment_name**: gpt-35-turbo
-    - **response_format**: {"type":"text"}
-1. In the **embed_the_question** section, set the following parameter values:
-    - **Connection** *(Azure OpenAI, OpenAI)*: Default_AzureOpenAI
-    - **deployment_name** *(string)*: text-embedding-ada-00
-    - **input** *(string)*: ${modify_query_with_history.output}
-1. In the **search_question_from_indexed_docs** section, set the following parameter values:
-    - **path** *(string)*: *Delete the existing URI and paste the URI for your vector index*
-    - **query** *(object)*: ${embed_the_question.output}
-    - **top_k** *(int)*: 2
+
+    - **Connection**: `Default_AzureOpenAI`
+    - **Api**: `chat`
+    - **deployment_name**: `gpt-35-turbo`
+    - **response_format**: `{"type":"text"}`
+
+1. In the **lookup** section, set the following parameter values:
+
+    - **mlindex_content**: *Select the empty field to open the Generate pane*
+        - **index_type**: `MLIndex file from path`
+        - **mlindex_path**: *Paste the URI for your vector index*
+    - **queries**: `${modify_query_with_history.output}`
+    - **query_type**: `Hybrid (vector + keyword)`
+    - **top_k**: 2
+
 1. In the **generate_prompt_context** section, review the Python script and ensure that the **inputs** for this tool include the following parameter:
+
     - **search_result** *(object)*: ${search_question_from_indexed_docs.output}
+
 1. In the **Prompt_variants** section, review the Python script and ensure that the **inputs** for this tool include the following parameters:
+
     - **contexts** *(string)*: ${generate_prompt_context.output}
     - **chat_history** *(string)*: ${inputs.chat_history}
     - **chat_input** *(string)*: ${inputs.chat_input}
+
 1. In the **chat_with_context** section, select the following settings (leaving others as they are):
+
     - **Connection**: Default_AzureOpenAI
     - **Api**: Chat
     - **deployment_name**: gpt-35-turbo
