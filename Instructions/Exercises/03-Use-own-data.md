@@ -62,8 +62,9 @@ You need two models to implement your solution:
     - **Advanced options**:
         - **Content filter**: *Default*
         - **Tokens per minute rate limit**: `5K`
+1. Repeat the previous steps to deploy a **gpt-35-turbo** model.
 
-> **Note**: Reducing the Tokens Per Minute (TPM) helps avoid over-using the quota available in the subscription you are using. 5,000 TPM is sufficient for the data used in this exercise.
+    > **Note**: Reducing the Tokens Per Minute (TPM) helps avoid over-using the quota available in the subscription you are using. 5,000 TPM is sufficient for the data used in this exercise.
 
 ## Add data to your project
 
