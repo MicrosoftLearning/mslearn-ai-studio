@@ -62,7 +62,7 @@ You need two models to implement your solution:
     - **Advanced options**:
         - **Content filter**: *Default*
         - **Tokens per minute rate limit**: `5K`
-1. Repeat the previous steps to deploy a **gpt-35-turbo** model.
+1. Repeat the previous steps to deploy a **gpt-35-turbo** model with the deployment name `gpt-35-turbo`.
 
     > **Note**: Reducing the Tokens Per Minute (TPM) helps avoid over-using the quota available in the subscription you are using. 5,000 TPM is sufficient for the data used in this exercise.
 
@@ -91,14 +91,14 @@ Now that you've added a data source to your project, you can use it to create an
     - **Search settings**:
         - **Vector settings**: Add vector search to this search resource
         - **Azure OpenAI Resource**: Default_AzureOpenAI
-        - *Acknowledge that an embedding model will be deployed*
+        - *Acknowledge that an embedding model will be deployed if not already there*
     - **Index settings**:
         - **Index name**: brochures-index
         - **Virtual machine**: Auto select
-1. Wait for your index to be ready, which can take several minutes. The index creation operation consists of the following jobs:
+1. Wait for the indexing process to be completed, which can take several minutes. The index creation operation consists of the following jobs:
 
     - Crack, chunk, and embed the text tokens in your brochures data.
-    - Update the index.
+    - Update Azure AI Search with the new index.
     - Register the index asset.
 
 ## Test the index
@@ -106,37 +106,17 @@ Now that you've added a data source to your project, you can use it to create an
 Before using your index in a RAG-based prompt flow, let's verify that it can be used to affect generative AI responses.
 
 1. In the navigation pane on the left, under **Tools**, select the **Playground** page.
-1. On the Playground page, in the **Configuration** pane, ensure that your **gpt-35-turbo** model deployment is selected. Then, in the **Chat session** pane, submit the prompt `Where can I stay in New York?`
+1. On the Playground page, in the Options panel, ensure that your **gpt-35-turbo** model deployment is selected. Then, in the main chat session panel, submit the prompt `Where can I stay in New York?`
 1. Review the response, which should be a generic answer from the model without any data from the index.
-1. In the **Assistant setup** pane, select **Add your data** and then add a data source with the following settings:
-
-    - **Data source**:
-        - **Select data source**: Azure AI Search
-        - **Subscription**: *Your Azure subscription*
-        - **Azure AI Search service**: *Your Azure AI Search resource*
-        - **Azure AI Search index**: brochures-index
-        - **Add vector search**: <u>Un</u>selected
-        - **Use custom field mapping**: Selected
-        - Check the box to acknowledge the incurred usage.
-    - **Data field mapping**:
-        - **Content data**: content
-        - **File name**: filepath
-        - **Title**: title
-        - **URL**: url
-    - **Data management**:
-        - **search type**: Keyword
-
-1. After the data source has been added and the chat session has restarted, resubmit the prompt `Where can I stay in New York?`
+1. On the Setup panel, select the **Add your data** tab, and then add the **brochures-index** project index and select the **hybrid (vector + keyword)** search type.
+1. After the index has been added and the chat session has restarted, resubmit the prompt `Where can I stay in New York?`
 1. Review the response, which should be based on data in the index.
 
 ## Use the index in a prompt flow
 
 Your vector index has been saved in your Azure AI Studio project, enabling you to use it easily in a prompt flow.
 
-1. In Azure AI Studio, in your project, in the navigation pane on the left, under **Components**, select **Data**.
-1. Select the **brochures-index** folder which contains the index you created previously.
-1. In the **Data links** section for your index, copy the **Data connection URI** value to the clipboard (it should resemble `azureml://subscriptions/xxx/resourcegroups/xxx/workspaces/xxx/datastores/workspaceblobstore/paths/azureml/xxx/index/`). You will need this URI to connect to your index in the prompt flow.
-1. In your project, in the navigation pane on the left, under **Tools**, select the **Prompt flow** page.
+1. In Azure AI Studio, in your project, in the navigation pane on the left, under **Tools**, select the **Prompt flow** page.
 1. Create a new prompt flow by cloning the **Multi-Round Q&A on Your Data** sample in the gallery. Save your clone of this sample in a folder named `brochure-flow`.
 1. When the prompt flow designer page opens, review **brochure-flow**. Its graph should resemble the following image:
 
@@ -152,7 +132,7 @@ Your vector index has been saved in your Azure AI Studio project, enabling you t
 
 1. In the **Runtime** list, select **Start** to start the automatic runtime.
 
-    Then wait for it to start. This provides a compute context for the prompt flow. While you're waiting, in the **Flow** tab, review the sections for the tools in the flow.
+    Wait for the runtime to start. This provides a compute context for the prompt flow. While you're waiting, in the **Flow** tab, review the sections for the tools in the flow.
 
 1. In the **Inputs** section, ensure the inputs include:
     - **chat_history**
@@ -174,15 +154,15 @@ Your vector index has been saved in your Azure AI Studio project, enabling you t
 1. In the **lookup** section, set the following parameter values:
 
     - **mlindex_content**: *Select the empty field to open the Generate pane*
-        - **index_type**: `MLIndex file from path`
-        - **mlindex_path**: *Paste the URI for your vector index*
+        - **index_type**: Registered Index
+        - **mlindex_asset_id**: brochures-index:1
     - **queries**: `${modify_query_with_history.output}`
     - **query_type**: `Hybrid (vector + keyword)`
     - **top_k**: 2
 
 1. In the **generate_prompt_context** section, review the Python script and ensure that the **inputs** for this tool include the following parameter:
 
-    - **search_result** *(object)*: ${search_question_from_indexed_docs.output}
+    - **search_result** *(object)*: ${lookup.output}
 
 1. In the **Prompt_variants** section, review the Python script and ensure that the **inputs** for this tool include the following parameters:
 
@@ -217,12 +197,11 @@ Now that you have a working flow that uses your indexed data, you can deploy it 
 1. Create a deployment with the following settings:
     - **Basic settings**:
         - **Endpoint**: New
-        - **Endpoint name**: brochure-endpoint
+        - **Endpoint name**: `brochure-endpoint`
         - **Deployment name**: brochure-endpoint-1
         - **Virtual machine**: Standard_DS3_v2
         - **Instance count**: 3
         - **Inferencing data collection**: Selected
-        - **Application insights diagnostics**: Selected
     - **Advanced settings**:
         - *Use the default settings*
 1. In Azure AI Studio, in your project, in the navigation pane on the left, under **Components**, select the **Deployments** page.
