@@ -205,7 +205,7 @@ Now that you have a working flow that uses your indexed data, you can deploy it 
     - **Advanced settings**:
         - *Use the default settings*
 1. In Azure AI Studio, in your project, in the navigation pane on the left, under **Components**, select the **Deployments** page.
-1. Keep refreshing the view until the **brochure-endpoint-1** deployment is shown as having *succeeded* under the **brochure-endpoint** endpoint (this may take some time).
+1. Keep refreshing the view until the **brochure-endpoint-1** deployment is shown as having *succeeded* under the **brochure-endpoint** endpoint (this may take a significant period of time).
 1. When the deployment has succeeded, select it. Then, on its **Test** page, enter the prompt `What is there to do in San Francisco?` and review the response.
 1. Enter the prompt `Where else could I go?` and review the response.
 1. View the **Consume** page for the endpoint, and note that it contains connection information and sample code that you can use to build a client application for your endpoint - enabling you to integrate the prompt flow solution into an application as a custom copilot.
