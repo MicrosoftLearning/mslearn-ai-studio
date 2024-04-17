@@ -23,8 +23,19 @@ Your copilot solution will integrate custom data into a prompt flow. To support 
     - **Subscription**: *Select your Azure subscription*
     - **Resource group**: *Select or create a resource group*
     - **Service name**: *Enter a unique service name*
-    - **Location**: *Select any available location*
+    - **Location**: *Make a **random** choice from any of the following regions*\*
+        - Australia East
+        - Canada East
+        - East US
+        - East US 2
+        - France Central
+        - Japan East
+        - North Central US
+        - Sweden Central
+        - Switzerland 
     - **Pricing tier**: Standard
+
+    > \* Later, you're going to create an Azure AI Hub (which includes an Azure OpenAI service) in the same region as your Azure AI Search resource. Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit in scenarios where you are sharing a tenant with other users. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another Azure AI hub in a different region.
 
 1. Wait for your Azure AI Search resource deployment to be completed.
 
@@ -41,7 +52,7 @@ Now you're ready to create an Azure AI Studio project and the Azure AI resources
         - **AI Hub name**: *A unique name*
         - **Azure Subscription**: *Your Azure subscription*
         - **Resource group**: *Select the resource group containing your Azure AI Search resource*
-        - **Location**: *The same location as your Azure AI Search resource (or a location geographically near it)*
+        - **Location**: *The same location as your Azure AI Search resource*
         - **Azure OpenAI**: (New) *Autofills with your selected hub name*
         - **Azure AI Search**: *Select your Azure AI Search resource*
 

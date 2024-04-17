@@ -31,9 +31,21 @@ You need an Azure AI Hub in your Azure subscription to host projects. You can ei
     - **Azure AI Hub name**: *A unique name*
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create a new resource group with a unique name, or select an existing one*
-    - **Location**: *Choose any Azure OpenAI service supported location*
+    - **Location**: *Make a **random** choice from any of the following regions*\*
+        - Australia East
+        - Canada East
+        - East US
+        - East US 2
+        - France Central
+        - Japan East
+        - North Central US
+        - Sweden Central
+        - Switzerland North
+        - UK South
     - **Azure OpenAI**: (New) ai-*hub_name*
     - **AI Search**: (None)
+
+    > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit in scenarios where you are sharing a tenant with other users. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region.
 
     After the Azure AI Hub has been created, it should look similar to the following image:
 

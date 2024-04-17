@@ -29,7 +29,20 @@ You start by creating an Azure AI Studio project and an Azure AI Hub to support 
         - **AI Hub name**: *A unique name*
         - **Subscription**: *Your Azure subscription*
         - **Resource group**: *A new resource group*
-        - **Location**: *Choose a location near you*
+        - **Location**: *Make a **random** choice from any of the following regions*\*
+        - Australia East
+        - Canada East
+        - East US
+        - East US 2
+        - France Central
+        - Japan East
+        - North Central US
+        - Sweden Central
+        - Switzerland North
+        - UK South
+
+    > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit in scenarios where you are sharing a tenant with other users. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region.
+
 1. Review your configuration and create your project.
 1. Wait 5-10 minutes for your project to be created.
 
