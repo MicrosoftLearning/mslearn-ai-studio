@@ -221,6 +221,18 @@ Now that you have a working flow that uses your indexed data, you can deploy it 
 1. Enter the prompt `Where else could I go?` and review the response.
 1. View the **Consume** page for the endpoint, and note that it contains connection information and sample code that you can use to build a client application for your endpoint - enabling you to integrate the prompt flow solution into an application as a custom copilot.
 
+## Challenge 
+
+Now you've experienced how to integrate your own data in a copilot built with the Azure AI Studio, let's explore further!
+
+Try adding a new data source through the Azure AI Studio, index it, and integrate the indexed data in a prompt flow. Some data sets you could try are:
+
+- A collection of (research) articles you have on your computer.
+- A set of presentations from past conferences.
+- Any of the datasets available in the [Azure Search sample data](https://github.com/Azure-Samples/azure-search-sample-data) repository.
+
+Be as resourceful as you can to create your data source and integrate it in your prompt flow. Try out the new prompt flow and submit prompts that could only be answered by the data set you chose!
+
 ## Clean up
 
 To avoid unnecessary Azure costs and resource utilization, you should remove the resources you deployed in this exercise.
