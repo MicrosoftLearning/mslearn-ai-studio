@@ -223,15 +223,15 @@ Now that you have a working flow that uses your indexed data, you can deploy it 
 
 ## Challenge 
 
-Now you've seen how to connect Copilot to your own data, let's explore further!
+Now you've experienced how to integrate your own data in a copilot built with the Azure AI Studio, let's explore further!
 
-Try adding a new data source in your Azure AI Search resource, and connect copilot to your data. Some data sets you could try are:
+Try adding a new data source through the Azure AI Studio, index it, and integrate the indexed data in a prompt flow. Some data sets you could try are:
 
-A collection of class documents you have on your computer.
-A set of presentations from past conferences.
-Any of the datasets available in the [Azure Search sample data](https://github.com/Azure-Samples/azure-search-sample-data) repository.
+- A collection of (research) articles you have on your computer.
+- A set of presentations from past conferences.
+- Any of the datasets available in the [Azure Search sample data](https://github.com/Azure-Samples/azure-search-sample-data) repository.
 
-Be as resourceful as you can to create your data source and connect it in your prompt flow. Try out the new deployed endpoint and submit prompts that could only be answered by the data set you chose!
+Be as resourceful as you can to create your data source and integrate it in your prompt flow. Try out the new prompt flow and submit prompts that could only be answered by the data set you chose!
 
 ## Clean up
 
