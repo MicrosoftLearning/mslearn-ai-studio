@@ -95,17 +95,17 @@ Now that you've added a data source to your project, you can use it to create an
 1. In Azure AI Studio, in your project, in the navigation pane on the left, under **Components**, select the **Indexes** page.
 1. Add  a new index with the following settings:
     - **Source data**:
-        - **Data source**: Use existing project data
+        - **Data source**: Data in Azure AI Studio
             - *Select the **brochures** data source*
-    - **Index storage**:
-        - *Select the **AzureAISearch** connection to your Azure AI Search resource*
+    - **Index settings**:
+        - **Select Azure AI Search service**: *Select the **AzureAISearch** connection to your Azure AI Search resource*
+        - **Index name**: brochures-index
+        - **Virtual machine**: Auto select
     - **Search settings**:
         - **Vector settings**: Add vector search to this search resource
         - **Azure OpenAI Resource**: Default_AzureOpenAI
-        - *Acknowledge that an embedding model will be deployed if not already there*
-    - **Index settings**:
-        - **Index name**: brochures-index
-        - **Virtual machine**: Auto select
+        - *If prompted, acknowledge that an embedding model will be deployed if not already there*
+        
 1. Wait for the indexing process to be completed, which can take several minutes. The index creation operation consists of the following jobs:
 
     - Crack, chunk, and embed the text tokens in your brochures data.
