@@ -44,12 +44,12 @@ Your copilot solution will integrate custom data into a prompt flow. To support 
 Now you're ready to create an Azure AI Studio project and the Azure AI resources to support it.
 
 1. In a web browser, open [Azure AI Studio](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials.
-1. On the **Build** page, select **+ New AI project**. Then, in the **Getting started** wizard, create a project with the following settings:
+1. On the Azure AI Studio **Home** page, select **+ New project**. Then, in the **Create a project** wizard, create a project with the following settings:
 
     - **Project name**: *A unique name for your project*
-    - **AI Hub**: *Create a new resource with the following settings:*
+    - **Hub**: *Create a new resource with the following settings:*
 
-        - **AI Hub name**: *A unique name*
+        - **Hub name**: *A unique name*
         - **Azure Subscription**: *Your Azure subscription*
         - **Resource group**: *Select the resource group containing your Azure AI Search resource*
         - **Location**: *The same location as your Azure AI Search resource*
@@ -116,8 +116,8 @@ Now that you've added a data source to your project, you can use it to create an
 
 Before using your index in a RAG-based prompt flow, let's verify that it can be used to affect generative AI responses.
 
-1. In the navigation pane on the left, under **Tools**, select the **Playground** page.
-1. On the Playground page, in the Options panel, ensure that your **gpt-35-turbo** model deployment is selected. Then, in the main chat session panel, submit the prompt `Where can I stay in New York?`
+1. In the navigation pane on the left, under **Project playground**, select the **Chat** page.
+1. On the Chat page, in the Options panel, ensure that your **gpt-35-turbo** model deployment is selected. Then, in the main chat session panel, submit the prompt `Where can I stay in New York?`
 1. Review the response, which should be a generic answer from the model without any data from the index.
 1. On the Setup panel, select the **Add your data** tab, and then add the **brochures-index** project index and select the **hybrid (vector + keyword)** search type.
 1. After the index has been added and the chat session has restarted, resubmit the prompt `Where can I stay in New York?`
