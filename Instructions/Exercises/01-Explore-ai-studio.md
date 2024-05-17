@@ -27,8 +27,8 @@ Let's start by viewing Azure AI Studio.
 
 You need an Azure AI Hub in your Azure subscription to host projects. You can either create this resource while creating a project, or provision it ahead of time (which is what we'll do in this exercise).
 
-1. On the **Manage** page, select **+ New Azure AI Hub**. Then, in the **Create a new Azure AI Hub** wizard, create a new resource with the following settings:
-    - **Azure AI Hub name**: *A unique name*
+1. On the **Management** section, select **All hubs**, then select **+ New hub**. Create a new hub with the following settings:
+    - **Hub name**: *A unique name*
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create a new resource group with a unique name, or select an existing one*
     - **Location**: *Make a **random** choice from any of the following regions*\*
@@ -42,8 +42,8 @@ You need an Azure AI Hub in your Azure subscription to host projects. You can ei
         - Sweden Central
         - Switzerland North
         - UK South
-    - **Azure OpenAI**: (New) ai-*hub_name*
-    - **AI Search**: (None)
+    - **Connect Azure AI Services or Azure OpenAI**: Select to create a new AI Services or use an existing one
+    - **Connect Azure AI Search**: Skip connecting
 
     > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit in scenarios where you are sharing a tenant with other users. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region.
 
@@ -65,7 +65,7 @@ An Azure AI Hub provides a collaborative workspace within which you can define o
 
 1. In Azure AI Studio, on the **Build** page, select **+ New project**. Then, in the **Create a new project** wizard, create a project with the following settings:
     - **Project name**: *A unique name for your project*
-    - **AI Hub**: *Your AI Hub*
+    - **Hub**: *Your AI Hub*
 1. Wait for your project to be created. When it's ready, it should look similar to the following image:
 
     ![Screenshot of a project details page in Azure AI Studio.](./media/azure-ai-project.png)
