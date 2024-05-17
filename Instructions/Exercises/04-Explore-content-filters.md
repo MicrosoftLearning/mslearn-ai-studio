@@ -21,7 +21,7 @@ You need an Azure AI Hub in your Azure subscription to host projects. You can ei
 
 1. In a web browser, open [https://ai.azure.com](https://ai.azure.com) and sign in using your Azure credentials.
 
-1. On the **Management** section, select **All hubs**, then select **+ New hub**. Create a new hub with the following settings:
+1. On the Management section, select All hubs, then select **+ New hub**. Create a new hub with the following settings:
     - **Hub name**: *A unique name*
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create a new resource group with a unique name, or select an existing one*
