@@ -73,7 +73,7 @@ You need two models to implement your solution:
     - **Advanced options**:
         - **Content filter**: *Default*
         - **Tokens per minute rate limit**: `5K`
-1. Repeat the previous steps to deploy a **gpt-35-turbo** model with the deployment name `gpt-35-turbo`.
+1. Repeat the previous steps to deploy a **gpt-35-turbo-16k** model with the deployment name `gpt-35-turbo-16k`.
 
     > **Note**: Reducing the Tokens Per Minute (TPM) helps avoid over-using the quota available in the subscription you are using. 5,000 TPM is sufficient for the data used in this exercise.
 
@@ -117,7 +117,7 @@ Now that you've added a data source to your project, you can use it to create an
 Before using your index in a RAG-based prompt flow, let's verify that it can be used to affect generative AI responses.
 
 1. In the navigation pane on the left, under **Project playground**, select the **Chat** page.
-1. On the Chat page, in the Options panel, ensure that your **gpt-35-turbo** model deployment is selected. Then, in the main chat session panel, submit the prompt `Where can I stay in New York?`
+1. On the Chat page, in the Options panel, ensure that your **gpt-35-turbo-16k** model deployment is selected. Then, in the main chat session panel, submit the prompt `Where can I stay in New York?`
 1. Review the response, which should be a generic answer from the model without any data from the index.
 1. On the Setup panel, select the **Add your data** tab, and then add the **brochures-index** project index and select the **hybrid (vector + keyword)** search type.
 1. After the index has been added and the chat session has restarted, resubmit the prompt `Where can I stay in New York?`
@@ -159,7 +159,7 @@ Your vector index has been saved in your Azure AI Studio project, enabling you t
 
     - **Connection**: `Default_AzureOpenAI`
     - **Api**: `chat`
-    - **deployment_name**: `gpt-35-turbo`
+    - **deployment_name**: `gpt-35-turbo-16k`
     - **response_format**: `{"type":"text"}`
 
 1. In the **lookup** section, set the following parameter values:
@@ -185,7 +185,7 @@ Your vector index has been saved in your Azure AI Studio project, enabling you t
 
     - **Connection**: Default_AzureOpenAI
     - **Api**: Chat
-    - **deployment_name**: gpt-35-turbo
+    - **deployment_name**: gpt-35-turbo-16k
     - **response_format**: {"type":"text"}
 
     Then ensure that the **inputs** for this tool include the following parameters:
