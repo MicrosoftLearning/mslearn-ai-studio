@@ -204,6 +204,8 @@ Your vector index has been saved in your Azure AI Studio project, enabling you t
 
 Now that you have a working flow that uses your indexed data, you can deploy it as a service to be consumed by a copilot application.
 
+> **Note**: Depending on the region and datacenter load, deployments can sometimes take a while. Feel free to move on to the challenge section below while it deploys or skip the testing of your deployment if you're short on time.
+
 1. On the toolbar, select **Deploy**.
 1. Create a deployment with the following settings:
     - **Basic settings**:
