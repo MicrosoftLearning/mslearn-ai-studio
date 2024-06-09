@@ -84,14 +84,15 @@ You can use a project to create complex AI solutions based on generative AI mode
     - **Deployment name**: *A unique name for your model deployment*
     - **Model version**: *Select the default version*
     - **Deployment type**: Standard
-    - **Connected Azure OpenAI resource**: Default_AzureOpenAI
+    - **Connected Azure OpenAI resource**: *Select the default connection that was created when you created your hub*
     - **Tokens per Minute Rate Limit (thousands)**: 5K
     - **Content filter**: Default
 
     > **Note**: Reducing the TPM helps avoid over-using the quota available in the subscription you are using. 5,000 TPM is sufficient for the data used in this exercise.
 
 1. After the model has been deployed, in the deployment overview page, select **Open in playground**.
-1. In the **Chat playground** page, ensure that your model deployment is selected in the **Deployment** section. Then, in the chat window, enter a query such as *What is AI?* and view the response:
+1. In the **Chat playground** page, ensure that your model deployment is selected in the **Deployment** section.
+1. In the chat window, enter a query such as *What is AI?* and view the response:
 
     ![Screenshot of the playground in Azure AI Studio.](./media/playground.png)
 
