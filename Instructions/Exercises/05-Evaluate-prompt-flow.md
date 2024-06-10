@@ -1,11 +1,11 @@
 ---
 lab:
-    title: 'Get started building custom copliots with prompt flow in the Azure AI Studio'
+    title: 'Evaluate language apps in the Azure AI Studio'
 ---
 
-# Get started building custom copliots with prompt flow in the Azure AI Studio
+# Evaluate language apps in the Azure AI Studio
 
-In this exercise, you'll use Azure AI Studio's prompt flow to create a custom copilot that uses a user prompt and chat history as inputs, and uses a GPT model from Azure OpenAI to generate an output.
+In this exercise, you'll explore built-in and custom evaluations to assess and compare the performance of your AI applications with the Azure AI Studio.
 
 > To complete this exercise, your Azure subscription must be approved for access to the Azure OpenAI service. Fill in the [registration form](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access) to request access to Azure OpenAI models.
 
@@ -13,8 +13,8 @@ To build a copilot with prompt flow, you need to:
 
 - Create an AI hub and project within the Azure AI Studio.
 - Deploy a GPT model.
-- Create a flow that uses the deployed GPT model to generate an answer based on user's input.
-- Test and deploy the flow.
+- Evaluate a test dataset with the built-in metrics.
+- Define a custom evaluation metric and run it against the test dataset.
 
 ## Create an AI hub and project in the Azure AI Studio
 
@@ -60,10 +60,6 @@ To use a language model in prompt flow, you need to deploy a model first. The Az
     - **Tokens per Minute Rate Limit (thousands)**: 5K
     - **Content filter**: Default
 1. Wait for the model to be deployed. When the deployment is ready, select **Open in playground**.
-1. In the chat window, enter the query `What can you do?`.
-
-    Note that the answer is generic because there are no specific instructions for the assistant. To make it focused on a task, you can change the system prompt.
-
 1. Change the **System message** to the following:
 
    ```
@@ -85,21 +81,18 @@ To use a language model in prompt flow, you need to deploy a model first. The Az
    ```
 
 1. Select **Apply changes**.
-1. In the chat window, enter the same query as before: `What can you do?` Note the change in response.
+1. In the chat window, enter the query: `What can you do?` to verify that the language model is behaving as expected.
 
-Now that you have played around with the system message for the deployed GPT model, you can further customize the application by working with prompt flow.
+Now that you have a deployed model with an updated system message, you can evaluate the model.
 
-## Create and run a chat flow in the Azure AI Studio
+## Evaluate a language model in the Azure AI Studio
 
-You can create a new flow from a template, or create a flow based on your configurations in the playground. Since you were already experimenting in the playground, you'll use this option to create a new flow.
+You can manually review model responses based on test data. Manually reviewing allows you to test different inputs one at a time to evaluate whether the model performs as expected.
 
-1. In the **Chat playground**, select **Prompt flow** from the top bar.
-1. Enter `Travel-Chat` as folder name.
-
-    A simple chat flow is created for you. Note there are two inputs (chat history and the user's question), an LLM node that will connect with your deployed language model, and an output to reflect the response in the chat.
-
-    To be able to test your flow, you need compute.
-
+1. In the **Chat playground**, select **Evaluate** from the top bar.
+1. A new window opens with your previous system message already populated and your deployed model selected.
+1. Select **Import test data**. Select **Import without saving** if prompted.
+1. Select **Upload file** and 
 1. Select **Start compute session** from the top bar.
 1. The compute session will take 1-3 minutes to start.
 1. Find the LLM node named **chat**. Note that the prompt already includes the system prompt you specified in the chat playground.
