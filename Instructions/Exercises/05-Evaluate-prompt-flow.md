@@ -91,78 +91,31 @@ You can manually review model responses based on test data. Manually reviewing a
 
 1. In the **Chat playground**, select **Evaluate** from the top bar.
 1. A new window opens with your previous system message already populated and your deployed model selected.
-1. Select **Import test data**. Select **Import without saving** if prompted.
-1. Select **Upload file** and 
-1. Select **Start compute session** from the top bar.
-1. The compute session will take 1-3 minutes to start.
-1. Find the LLM node named **chat**. Note that the prompt already includes the system prompt you specified in the chat playground.
+1. In the **Manual evaluation result** section, you'll add five inputs for which you will review the output. Enter the following five questions as five separate **Inputs**:
 
-    You still need to connect the LLM node to your deployed model.
+   `Can you provide a list of the top-rated budget hotels in Rome?`
 
-1. In the LLM node section, for **Connection**, select the connection that was created for you when you created the AI hub.
-1. For **Api**, select **chat**.
-1. For **deployment_name**, select the **gpt-35-turbo** model you deployed.
-1. For **response_format**, select **{"type":"text"}**.
-1. Review the prompt field and ensure it looks like the following:
+   `I'm looking for a vegan-friendly restaurant in New York City. Can you help?`
 
-   ```yml
-   {% raw %}
-   system:
-   **Objective**: Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
+   `Can you suggest a 7-day itinerary for a family vacation in Orlando, Florida?`
 
-   **Capabilities**:
-   - Provide up-to-date travel information, including destinations, accommodations, transportation, and local attractions.
-   - Offer personalized travel suggestions based on user preferences, budget, and travel dates.
-   - Share tips on packing, safety, and navigating travel disruptions.
-   - Help with itinerary planning, including optimal routes and must-see landmarks.
-   - Answer common travel questions and provide solutions to potential travel issues.
+   `Can you help me plan a surprise honeymoon trip to the Maldives?`
 
-   **Instructions**:
-   1. Engage with the user in a friendly and professional manner, as a travel agent would.
-   2. Use available resources to provide accurate and relevant travel information.
-   3. Tailor responses to the user's specific travel needs and interests.
-   4. Ensure recommendations are practical and consider the user's safety and comfort.
-   5. Encourage the user to ask follow-up questions for further assistance.
+   `Are there any guided tours available for the Great Wall of China?`
 
-   {% for item in chat_history %}
-   user:
-   {{item.inputs.question}}
-   assistant:
-   {{item.outputs.answer}}
-   {% endfor %}
+1. Select **Run** from the top bar to generate outputs for all questions you added as inputs.
+1. You can now manually review the outputs for each question by selecting the thumbs up or down icon at the bottom right of a response. Rate each response, ensuring you include at least one thumbs up and one thumbs down response in your ratings.
+1. Select **Save results** from the top bar. Enter `manual_evaluation_results` as the name for the results.
+1. Select **Metric evaluation**.
+1. Create a new evaluation with the following settings:
+    - **Evaluation name**: *Enter a unique name*
+    - **What kind of scenario are you evaluating?**: Question and answer without context
+    - **Select the data you want to evaluate**: Add your dataset
+        - Download the https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/main/data/travel-qa.jsonl JSONL file and upload it to the UI.
+    - **Select metrics**: Coherence, Fluency
+    - **Connection**: *Your AI Services connection*
+    - **Deployment name/Model**: *Your deployed GPT-3.5 model*
 
-   user:
-   {{question}}
-   {% endraw %}
-   ```
-
-### Test and deploy the flow
-
-Now that you've developed the flow, you can use the chat window to test the flow.
-
-1. Ensure the compute session is running.
-1. Select **Save**.
-1. Select **Chat** to test the flow.
-1. Enter the query: `I have one day in London, what should I do?` and review the output.
-
-    When you're satisfied with the behavior of the flow you created, you can deploy the flow.
-
-1. Select **Deploy** to deploy the flow with the following settings:
-    - **Basic settings**:
-        - **Endpoint**: New
-        - **Endpoint name**: *Enter a unique name*
-        - **Deployment name**: *Enter a unique name*
-        - **Virtual machine**: Standard_DS3_v2
-        - **Instance count**: 3
-        - **Inferencing data collection**: Enabled
-    - **Advanced settings**:
-        - *Use the default settings*
-1. In Azure AI Studio, in your project, in the navigation pane on the left, under **Components**, select the **Deployments** page.
-1. Note that by default the **Model deployments** are listed, including your deployed language model.
-1. Select the **App deployments** tab to find your deployed flow. It may take some time before the deployment is listed and successfully created.
-1. When the deployment has succeeded, select it. Then, on its **Test** page, enter the prompt `What is there to do in San Francisco?` and review the response.
-1. Enter the prompt `Where else could I go?` and review the response.
-1. View the **Consume** page for the endpoint, and note that it contains connection information and sample code that you can use to build a client application for your endpoint - enabling you to integrate the prompt flow solution into an application as a custom copilot.
 
 ## Delete Azure resources
 
