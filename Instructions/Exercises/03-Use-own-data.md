@@ -141,7 +141,7 @@ Your vector index has been saved in your Azure AI Studio project, enabling you t
     - Create prompt variants by adding a system message and structuring the chat history.
     - Submit the prompt to a language model to generate a natural language response.
 
-1. In the **Runtime** list, select **Start** to start the automatic runtime.
+1. Use the **Start compute session** button to start the runtime compute for the flow.
 
     Wait for the runtime to start. This provides a compute context for the prompt flow. While you're waiting, in the **Flow** tab, review the sections for the tools in the flow.
 
@@ -153,22 +153,22 @@ Your vector index has been saved in your Azure AI Studio project, enabling you t
 
 1. In the **Outputs** section, ensure that the output includes:
 
-    - **chat_output** with value `${chat_with_context.output}`
+    - **chat_output** with value ${chat_with_context.output}
 
 1. In the **modify_query_with_history** section, select the following settings (leaving others as they are):
 
-    - **Connection**: `Default_AzureOpenAI`
-    - **Api**: `chat`
-    - **deployment_name**: `gpt-35-turbo-16k`
-    - **response_format**: `{"type":"text"}`
+    - **Connection**: *The default Azure OpenAI resource for your AI hub*
+    - **Api**: chat
+    - **deployment_name**: gpt-35-turbo-16k
+    - **response_format**: {"type":"text"}
 
 1. In the **lookup** section, set the following parameter values:
 
     - **mlindex_content**: *Select the empty field to open the Generate pane*
         - **index_type**: Registered Index
         - **mlindex_asset_id**: brochures-index:1
-    - **queries**: `${modify_query_with_history.output}`
-    - **query_type**: `Hybrid (vector + keyword)`
+    - **queries**: ${modify_query_with_history.output}
+    - **query_type**: Hybrid (vector + keyword)
     - **top_k**: 2
 
 1. In the **generate_prompt_context** section, review the Python script and ensure that the **inputs** for this tool include the following parameter:
