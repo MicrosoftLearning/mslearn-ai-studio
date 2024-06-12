@@ -66,7 +66,7 @@ You need two models to implement your solution:
 - A model that can generate natural language responses to questions based on your data.
 
 1. In the Azure AI Studio, in your project, in the navigation pane on the left, under **Components**, select the **Deployments** page.
-1. Create a new deployment (using a **real-time endpoint**) of the **text-embedding-ada-002** model with the following settings:
+1. Create a new deployment of the **text-embedding-ada-002** model with the following settings:
 
     - **Deployment name**: `text-embedding-ada-002`
     - **Model version**: *Default*
