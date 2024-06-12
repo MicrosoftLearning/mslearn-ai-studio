@@ -87,6 +87,7 @@ The data for your copilot consists of a set of travel brochures in PDF format fr
 1. In the **Add your data** wizard, expand the drop-down menu to select **Upload files/folders**.
 1. Select **Upload folder** and select the **brochures** folder.
 1. Set the data name to `brochures`.
+1. Wait for the folder t be uploaded and note that it contains several .pdf files.
 
 ## Create an index for your data
 
@@ -104,12 +105,11 @@ Now that you've added a data source to your project, you can use it to create an
     - **Search settings**:
         - **Vector settings**: Add vector search to this search resource
         - **Select an embedding model**: *Select the default Azure OpenAI resource for your hub.*
-        - *If prompted, acknowledge that an embedding model will be deployed if not already there*
         
 1. Wait for the indexing process to be completed, which can take several minutes. The index creation operation consists of the following jobs:
 
     - Crack, chunk, and embed the text tokens in your brochures data.
-    - Update Azure AI Search with the new index.
+    - Create the Azure AI Search index.
     - Register the index asset.
 
 ## Test the index
@@ -210,8 +210,8 @@ Now that you have a working flow that uses your indexed data, you can deploy it 
 1. Create a deployment with the following settings:
     - **Basic settings**:
         - **Endpoint**: New
-        - **Endpoint name**: `brochure-endpoint`
-        - **Deployment name**: brochure-endpoint-1
+        - **Endpoint name**: *Use the default unique endpoint name*
+        - **Deployment name**: *Use the default deployment endpoint name*
         - **Virtual machine**: Standard_DS3_v2
         - **Instance count**: 3
         - **Inferencing data collection**: Selected
