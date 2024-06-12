@@ -239,5 +239,4 @@ Be as resourceful as you can to create your data source and integrate it in your
 
 To avoid unnecessary Azure costs and resource utilization, you should remove the resources you deployed in this exercise.
 
-1. In Azure AI Studio, view the **Build** page. Then select the project you created in this exercise and use the **Delete project** button to remove it. It may take a few minutes to delete all of the components.
-1. If you've finished exploring Azure AI Studio, return to the [Azure portal](https://portal.azure.com) at `https://portal.azure.com` and sign in using your Azure credentials if necessary. Then delete the resource group you created for your Azure AI Search and Azure AI resources.
+1. If you've finished exploring Azure AI Studio, return to the [Azure portal](https://portal.azure.com) at `https://portal.azure.com` and sign in using your Azure credentials if necessary. Then delete the resources in the resource group where you provisioned your Azure AI Search and Azure AI resources.
