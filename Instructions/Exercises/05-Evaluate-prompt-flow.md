@@ -40,7 +40,7 @@ You start by creating an Azure AI Studio project within an Azure AI hub:
     > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region. Learn more about [model availability per region](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability)
 
 1. Review your configuration and create your project.
-1. Wait 5-10 minutes for your project to be created.
+1. Wait for your project to be created.
 
 ## Deploy a GPT model
 
