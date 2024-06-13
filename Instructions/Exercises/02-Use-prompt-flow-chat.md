@@ -9,12 +9,7 @@ In this exercise, you'll use Azure AI Studio's prompt flow to create a custom co
 
 > To complete this exercise, your Azure subscription must be approved for access to the Azure OpenAI service. Fill in the [registration form](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access) to request access to Azure OpenAI models.
 
-To build a copilot with prompt flow, you need to:
-
-- Create an AI hub and project within the Azure AI Studio.
-- Deploy a GPT model.
-- Create a flow that uses the deployed GPT model to generate an answer based on user's input.
-- Test and deploy the flow.
+This exercise will take approximately **30** minutes.
 
 ## Create an AI hub and project in the Azure AI Studio
 

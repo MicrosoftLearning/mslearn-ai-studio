@@ -1,15 +1,15 @@
 ---
 lab:
-    title: 'Evaluate language apps in the Azure AI Studio'
+    title: 'Finetune a language model in the Azure AI Studio'
 ---
 
-# Evaluate language apps in the Azure AI Studio
+# Finetune a language model in the Azure AI Studio
 
-In this exercise, you'll explore built-in and custom evaluations to assess and compare the performance of your AI applications with the Azure AI Studio.
+In this exercise, you'll finetune a language model with the Azure AI Studio that you want to use for a custom copilot scenario.
 
 > To complete this exercise, your Azure subscription must be approved for access to the Azure OpenAI service. Fill in the [registration form](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access) to request access to Azure OpenAI models.
 
-This exercise will take approximately **30** minutes.
+This exercise will take approximately **45** minutes.
 
 ## Create an AI hub and project in the Azure AI Studio
 
