@@ -1,9 +1,9 @@
 ---
 lab:
-    title: 'Explore the model catalog in Azure AI Studio'
+    title: 'Explore, deploy, and chat with language models in the Azure AI Studio'
 ---
 
-# Explore the model catalog in Azure AI Studio
+# Explore, deploy, and chat with language models in the Azure AI Studio
 
 The Azure AI Studio’s model catalog serves as a central repository where you can explore and use a variety of models, facilitating the creation of your generative AI scenario.
 
