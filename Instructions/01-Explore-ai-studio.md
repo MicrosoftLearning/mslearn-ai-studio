@@ -1,9 +1,9 @@
 ---
 lab:
-    title: 'Explore Azure AI Studio'
+    title: 'Explore the components and tools of the Azure AI Studio'
 ---
 
-# Explore Azure AI Studio
+# Explore the components and tools of the Azure AI Studio
 
 In this exercise, you use Azure AI Studio to create a project and explore a generative AI model.
 
