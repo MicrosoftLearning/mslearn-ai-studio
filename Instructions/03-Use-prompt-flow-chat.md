@@ -1,9 +1,9 @@
 ---
 lab:
-    title: 'Get started building custom copliots with prompt flow in the Azure AI Studio'
+    title: 'Build a custom copliots with prompt flow in the Azure AI Studio'
 ---
 
-# Get started building custom copliots with prompt flow in the Azure AI Studio
+# Build a custom copliots with prompt flow in the Azure AI Studio
 
 In this exercise, you'll use Azure AI Studio's prompt flow to create a custom copilot that uses a user prompt and chat history as inputs, and uses a GPT model from Azure OpenAI to generate an output.
 

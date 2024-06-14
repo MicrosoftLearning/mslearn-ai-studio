@@ -1,9 +1,9 @@
 ---
 lab:
-    title: 'Evaluate language apps in the Azure AI Studio'
+    title: 'Evaluate the performance of your custom copilot in the Azure AI Studio'
 ---
 
-# Evaluate language apps in the Azure AI Studio
+# Evaluate the performance of your custom copilot in the Azure AI Studio
 
 In this exercise, you'll explore built-in and custom evaluations to assess and compare the performance of your AI applications with the Azure AI Studio.
 

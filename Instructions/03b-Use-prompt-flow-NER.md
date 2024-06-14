@@ -1,9 +1,9 @@
 ---
 lab:
-    title: 'Get started with prompt flow in the Azure AI Studio'
+    title: 'Use prompt flow for Named Entity Recognition (NER) in the Azure AI Studio'
 ---
 
-# Get started with prompt flow in the Azure AI Studio
+# Use prompt flow for Named Entity Recognition (NER) in the Azure AI Studio
 
 Extracting valuable information from text is known as Named Entity Recognition (NER). Entities are key words that are of interest to you in a given text.
 

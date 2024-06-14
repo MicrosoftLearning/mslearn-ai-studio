@@ -1,9 +1,9 @@
 ---
 lab:
-    title: 'Finetune a language model in the Azure AI Studio'
+    title: 'Finetune a language model for chat completion in the Azure AI Studio'
 ---
 
-# Finetune a language model in the Azure AI Studio
+# Finetune a language model for chat completion in the Azure AI Studio
 
 In this exercise, you'll finetune a language model with the Azure AI Studio that you want to use for a custom copilot scenario.
 
