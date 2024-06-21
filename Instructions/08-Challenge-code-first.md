@@ -14,9 +14,9 @@ This exercise will take approximately **90** minutes.
 
 ## Clone and deploy an Azure Developer CLI AI project template
 
-To get started with the Azure Developer CLI AI project template, navigate to the [MS Learn collection](https://aka.ms/azd-templates-ai). By exploring the collection, you can find several projects grouped by technology and use case, including multi-modal and multi-agent projects samples, copilot-like projects and samples integrating different frameworks and Azure services.
+To get started with the Azure Developer CLI AI project template, navigate to the [MS Learn collection](https://learn.microsoft.com/collections/5pq0uompdgje8d/?WT.mc_id=academic-140829-cacaste). By exploring the collection, you can find several projects grouped by technology and use case, including multi-modal and multi-agent projects samples, copilot-like projects and samples integrating different frameworks and Azure services.
 
-For this exercise, we'll take the **[Contoso Chat Retail copilot with Azure AI Studio & PromptFlow (Python)](https://github.com/Azure-Samples/contoso-chat)** project template as an example. This project template is a code-first experience that uses Prompty and PromptFlow to build a custom copilot for a retail chatbot assistant of a fictional company called Contoso Outdoors.  The solution uses a retrieval-augmented generation pattern to ground responses in the company's product and customer data. Customers can ask questions about the retailer's product catalog, and also get recommendations based on their prior purchases.
+For this exercise, we'll take the **[Contoso Chat Retail copilot with Azure AI Studio & PromptFlow (Python)](https://aka.ms/contoso-retail-sample)** project template as an example. This project template is a code-first experience that uses Prompty and PromptFlow to build a custom copilot for a retail chatbot assistant of a fictional company called Contoso Outdoors.  The solution uses a retrieval-augmented generation pattern to ground responses in the company's product and customer data. Customers can ask questions about the retailer's product catalog, and also get recommendations based on their prior purchases.
 
 By clicking the project link included in the collection, you'll be redirected to the GitHub repository hosting the template code. The README file in the repository provides a detailed description of the project, including the architecture, the prerequisites, and the steps to deploy the project.
 
@@ -29,7 +29,7 @@ For the sake of this exercise you'll use [GitHub Codespaces](https://github.com/
 ![Create GitHub Codespaces](./media/create_codespaces.png)
 1. In a few seconds, you'll be prompted with a new browser tab with the Codespaces environment, which comes attached with a Visual Studio Code editor. You can either continue working here or open the environment in your local Visual Studio Code editor by clicking the **Open in VS Code Desktop** button from the top left menu.
 
-The next step is connecting your local environment with the Azure subscription where you'd like to deploy the project. To do this, you'll need to install the [Azure Developer CLI](https://aka.ms/install-azd) and sign in into your Azure Account from the VS Code terminal. Use the following command:
+The next step is connecting your local environment with the Azure subscription where you'd like to deploy the project. To do this, you'll need to install the [Azure Developer CLI](https://aka.ms/install-azd?WT.mc_id=academic-140829-cacaste) and sign in into your Azure Account from the VS Code terminal. Use the following command:
 
 ```bash
     azd auth login --use-device-code
