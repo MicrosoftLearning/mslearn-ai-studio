@@ -80,7 +80,7 @@ To use a language model in prompt flow, you need to deploy a model first. The Az
 
 Now that you have a deployed model with an updated system message, you can evaluate the model.
 
-## Evaluate a language model in the Azure AI Studio
+## Manually evaluate a language model in the Azure AI Studio
 
 You can manually review model responses based on test data. Manually reviewing allows you to test different inputs one at a time to evaluate whether the model performs as expected.
 
@@ -103,6 +103,11 @@ You can manually review model responses based on test data. Manually reviewing a
 1. Select **Save results** from the top bar. Enter `manual_evaluation_results` as the name for the results.
 1. Using the menu on the left, navigate to **Evaluations**.
 1. Select the **Manual evaluations** tab to find the manual evaluations you just saved. Note that you can explore your previously created manual evaluations, continue where you left of, and save the updated evaluations.
+
+## Evaluate your copilot with the built-in metrics
+
+When you have created a copilot with a chat flow, you can evaluate the flow by doing a batch run and assessing the performance of the flow with built-in metrics.
+
 1. Select the **Metric evaluations** tab and create a new evaluation with the following settings:
     - **Evaluation name**: *Enter a unique name*
     - **What kind of scenario are you evaluating?**: Question and answer without context
