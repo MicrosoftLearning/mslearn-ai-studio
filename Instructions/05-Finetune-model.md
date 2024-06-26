@@ -1,11 +1,11 @@
 ---
 lab:
-    title: 'Finetune a language model for chat completion in the Azure AI Studio'
+    title: 'Fine-tune a language model for chat completion in the Azure AI Studio'
 ---
 
-# Finetune a language model for chat completion in the Azure AI Studio
+# Fine-tune a language model for chat completion in the Azure AI Studio
 
-In this exercise, you'll finetune a language model with the Azure AI Studio that you want to use for a custom copilot scenario.
+In this exercise, you'll fine-tune a language model with the Azure AI Studio that you want to use for a custom copilot scenario.
 
 > To complete this exercise, your Azure subscription must be approved for access to the Azure OpenAI service. Fill in the [registration form](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access) to request access to Azure OpenAI models.
 
@@ -42,14 +42,14 @@ You start by creating an Azure AI Studio project within an Azure AI hub:
 1. Review your configuration and create your project.
 1. Wait for your project to be created.
 
-## Finetune a GPT-3.5 model
+## Fine-tune a GPT-3.5 model
 
-Before you can finetune a model, you need a dataset.
+Before you can fine-tune a model, you need a dataset.
 
 1. Save the training dataset as JSONL file locally: https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/main/data/travel-finetune.jsonl
 1. Navigate to the **Model catalog** page under the **Get started** section, using the menu on the left.
 1. Search for and select the `gpt-35-turbo` model, don't deploy the model yet!
-1. From the model overview, **Finetune** the model using the following configuration:
+1. From the model overview, **Fine-tune** the model using the following configuration:
     - **Model version**: *Select the default version*
     - **Model suffix**: `ft-travel`
     - **Azure OpenAI connection**: *Select the connection that was created when you created your hub*
@@ -59,22 +59,22 @@ Before you can finetune a model, you need a dataset.
     - **Task parameters**: *Keep the default settings*
 1. Finetuning will start and may take some time to complete.
 
-## Deploy the finetuned model
+## Deploy the fine-tuned model
 
-When finetuning has successfully completed, you can deploy the model.
+When fine-tuning has successfully completed, you can deploy the model.
 
-1. Select the finetuned model. Select the **Metrics** tab and explore the finetune metrics.
-1. Deploy the finetuned model with the following configurations:
+1. Select the fine-tuned model. Select the **Metrics** tab and explore the fine-tune metrics.
+1. Deploy the fine-tuned model with the following configurations:
     - **Deployment name**: *A unique name for your model, you can use the default*
     - **Deployment type**: Standard
     - **Tokens per Minute Rate Limit (thousands)**: 5K
     - **Content filter**: Default
 
-## Test the finetuned model
+## Test the fine-tuned model
 
-Now that you deployed your finetuned model, you can test the model like you can test any other deployed model.
+Now that you deployed your fine-tuned model, you can test the model like you can test any other deployed model.
 
-1. When the deployment is ready, navigate to the finetuned model and select **Open in playground**.
+1. When the deployment is ready, navigate to the fine-tuned model and select **Open in playground**.
 1. In the chat window, enter the query `What can you do?`
     Notice that even though you didn't specify the system message to instruct your model to answer travel-related questions, the model already understands what it should focus on.
 1. Try with another query like `Where should I go on holiday for my 30th birthday?`
