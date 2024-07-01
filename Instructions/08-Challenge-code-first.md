@@ -5,10 +5,12 @@ lab:
 
 # Build a custom copilot code-first with the Azure AI Studio
 
-In this exercise, you'll clone and deploy an Azure Developer CLI template that provisions and [deploys your AI project to an ML online endpoint](https://learn.microsoft.com/azure/developer/azure-developer-cli/azure-ai-ml-endpoints) on Azure AI Studio. You'll then use it as a starting point to build your own custom copilot with Azure AI and a code-first experience. 
+In this exercise, you'll clone and deploy an Azure Developer CLI template that provisions and [deploys your AI project to an ML online endpoint](https://learn.microsoft.com/azure/developer/azure-developer-cli/azure-ai-ml-endpoints?WT.mc_id=academic-140829-cacaste) on Azure AI Studio. You'll then use it as a starting point to build your own custom copilot with Azure AI and a code-first experience. 
 
-> To complete this exercise, your Azure subscription must be approved for access to the Azure OpenAI service. Fill in the [registration form](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access) to request access to Azure OpenAI models.
-> You'll also need a GitHub account to fork the project repository and test it in a GitHub Codespaces environment. Create a free account [here](https://github.com/). You'll need the Basic Tier of Azure AI Search to activate Semantic Ranker. Learn about pricing [here](https://azure.microsoft.com/pricing/details/search/). You'll also need to deploy three OpenAI models (`gpt-35-turbo`, `gpt-4`, `text-embedding-ada-002`). Learn about model region availability [here](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#model-summary-table-and-region-availability).
+> - To complete this exercise, your Azure subscription must be approved for access to the Azure OpenAI service. Fill in the [registration form](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access?WT.mc_id=academic-140829-cacaste) to request access to Azure OpenAI models.
+> - You'll also need a GitHub account to fork the project repository and test it in a GitHub Codespaces environment. Create a free account [here](https://github.com/).
+> - You'll need the Basic Tier of Azure AI Search to activate Semantic Ranker. Learn about pricing [here](https://azure.microsoft.com/pricing/details/search/).
+> - You'll also need to deploy three OpenAI models (`gpt-35-turbo`, `gpt-4`, `text-embedding-ada-002`). Learn about model region availability [here](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#model-summary-table-and-region-availability?WT.mc_id=academic-140829-cacaste).
 
 This exercise will take approximately **90** minutes.
 
@@ -95,7 +97,7 @@ Next, let's verify that we provisioned two key resources for implementing our [R
 1. **Azure Cosmos DB account** - to create a database for our customer order data.
 
 Next, we can validate that we have support resources for managing our application LLM ops needs:
-1. **Application Insights** - to support monitoring and telemerty for the deployed application.
+1. **Application Insights** - to support monitoring and telemetry for the deployed application.
 1. **Container Registry** - to store and manage Docker images used in the project, privately.
 1. **Key vault** - to store project secrets (keys, credentials) securely.
 1. **Storage account** - to store data related to AI project management (including logs).
@@ -113,7 +115,7 @@ The Azure Portal helps you manage the underlying Azure resources for your projec
 You should see something like this under the _Model deployments_ tab:
 1. Verify that you have an "AzureOpenAI Connection" with:
     - `gpt-35-turbo` - used for chat completion, forming the core chat engine.
-    - `gpt-2` - used for chat evaluation, specifically AI-assisted flows.
+    - `gpt-4` - used for chat evaluation, specifically AI-assisted flows.
     - `text-embedding-ada-002` - used for query vectorization & search.
 1. Verify that you have an Machine Learning Online "Endpoint" with:
     - `chat-model` - chat AI deployment with `mloe-xxx` endpoint resource.
@@ -130,7 +132,7 @@ To validate that the deployed copilot works, use the built-in test playground ca
 To get to this page, simply click on the _chat-deployment-xxxx_ resource from the previous step to get this _Details_ page. Then select the "Test" tab to get the test interface shown below. Note that the Details tab also has `Target URI` and `Key` values that you can use with other front-end applications (e.g., Contoso Outdoor website) to integrate this chat assistant for real-world user interactions. For now, test the copilot deployment with a test Input like this:
 
 ```bash
-  {"question": "tell me about your jackets", "customerId": "3", "chat_history": []}
+  {"question": "tell me about your hiking shoes", "customerId": "2", "chat_history": []}
 ```
 
 You should get a valid JSON response in the output component as shown below.
@@ -182,7 +184,7 @@ The `azd up` command not only provisions and deploys the application to Azure, i
         pf version
     ```
 
-4. Now, use the `pf flow test` tool to test the _contoso_chat_ flex flow application locally, with the same question we used above. Note the syntax of the command for passing the inputs:
+4. Now, use the `pf flow test` tool to test the _contoso_chat_ flex flow application locally, with the sample question below. Note the syntax of the command for passing the inputs:
 
     ```bash
         pf flow test --flow ./contoso_chat --inputs question="tell me about your jackets" customerId="3" chat_history=[]
