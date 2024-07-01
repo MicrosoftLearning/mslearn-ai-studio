@@ -7,9 +7,11 @@ lab:
 
 In this exercise, you'll use Azure AI Studio's prompt flow to create a custom copilot that uses a user prompt and chat history as inputs, and uses a GPT model from Azure OpenAI to generate an output.
 
-> To complete this exercise, your Azure subscription must be approved for access to the Azure OpenAI service. Fill in the [registration form](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access) to request access to Azure OpenAI models.
-
 This exercise will take approximately **30** minutes.
+
+## Before you start
+
+To complete this exercise, your Azure subscription must be approved for access to the Azure OpenAI service. Fill in the [registration form](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access) to request access to Azure OpenAI models.
 
 ## Create an AI hub and project in the Azure AI Studio
 

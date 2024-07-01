@@ -9,11 +9,11 @@ Azure AI Studio includes default content filters to help ensure that potentially
 
 In this exercise, you'll explore the effect of the default content filters in Azure AI Studio.
 
-> **Note**: Azure AI Studio is in preview at the time of writing, and is under active development. Some elements of the service may not be exactly as described, and some features may not work as expected.
-
-> To complete this exercise, your Azure subscription must be approved for access to the Azure OpenAI service.
-
 This exercise will take approximately **25** minutes.
+
+## Before you start
+
+To complete this exercise, your Azure subscription must be approved for access to the Azure OpenAI service. Fill in the [registration form](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access) to request access to Azure OpenAI models.
 
 ## Create an Azure AI Hub
 
