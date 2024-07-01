@@ -16,7 +16,7 @@ To complete this exercise, you'll need:
 - An Azure subscription that is approved for access to the Azure OpenAI service. Fill in the [registration form](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access?WT.mc_id=academic-140829-cacaste) to request access to Azure OpenAI models.
 - A GitHub account to fork the project repository and test it in a GitHub Codespaces environment. Create a free account [on GitHub](https://github.com/).
 - The basic tier of Azure AI Search to activate Semantic Ranker. Learn more about the [pricing details of AI Search](https://azure.microsoft.com/pricing/details/search/).
-- To deploy three OpenAI models (`gpt-35-turbo`, `gpt-4`, `text-embedding-ada-002`). To be able to deploy the models, you need to create the AI hub in a region with sufficient quota. Learn more about [model region availability](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#model-summary-table-and-region-availability?WT.mc_id=academic-140829-cacaste).
+- To deploy three OpenAI models (`gpt-35-turbo`, `gpt-4`, `text-embedding-ada-002`). To be able to deploy the models, you need to create the AI hub in a region with sufficient quota. Learn more about [model region availability](https://learn.microsoft.com/azure/ai-services/openai/concepts/models?WT.mc_id=academic-140829-cacaste#model-summary-table-and-region-availability).
 
 ## Understand the scenario
 
@@ -34,7 +34,7 @@ By selecting the project link included in the collection, you'll be redirected t
 
 ## Set up GitHub Codespaces
 
-In this exercise you'll use [GitHub Codespaces](https://github.com/features/codespaces), a GitHub feature that lets you launch a pre-configured cloud-hosted [development container](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers) directly from your repository, with one click. This way, you can quickly start coding without having to set up your local development environment, since the Codespaces already has all necessary tools and dependencies pre-installed.
+In this exercise you'll use [GitHub Codespaces](https://github.com/features/codespaces), a GitHub feature that lets you launch a pre-configured cloud-hosted [development container](https://docs.github.com/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers) directly from your repository, with one click. This way, you can quickly start coding without having to set up your local development environment, since the Codespaces already has all necessary tools and dependencies pre-installed.
 
 To initialize your development environment, follow the steps below:
 
@@ -76,7 +76,7 @@ Once you are logged in, you are ready to start provisioning the Azure resources 
     - **Select an Azure Subscription to use**: *Select a subscription that has access to Azure OpenAI models*.
     - **Select an Azure location to use**: *Select a location with model quota available*.
 
-    > Use the [model summary table and region availability](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#model-summary-table-and-region-availability) to find the region you need. For example, you can use `sweden central` as the Azure location since it is the region where the majority of the Azure OpenAI models are available.
+    > Use the [model summary table and region availability](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?WT.mc_id=academic-140829-cacaste#model-summary-table-and-region-availability) to find the region you need. For example, you can use `sweden central` as the Azure location since it is the region where the majority of the Azure OpenAI models are available.
 
 ## Validate provisioning by using Azure Portal
 
@@ -92,13 +92,13 @@ Let's explore how to validate the provisioning of resources using the Azure Port
 
     ![Azure Portal resource group overview](./media/azure-portal-resource-group.png)
 
-1. Let's start by verifying that the key [Azure AI Studio architecture](https://learn.microsoft.com/en-us/azure/ai-studio/concepts/architecture) resources were created. The figure below provides more details on what each of these resources provides to our AI application.
+1. Let's start by verifying that the key [Azure AI Studio architecture](https://learn.microsoft.com/azure/ai-studio/concepts/architecture) resources were created. The figure below provides more details on what each of these resources provides to our AI application.
 
     - **Azure AI hub**: Top-level Azure resource. Provides a collaboration environment for teams.
     - **Azure AI project**: Child of hub. Groups app components for orchestration, customization.
     - **Azure AI services**: Manages your model endpoints.
 
-    ![Azure AI Studio architecture](https://learn.microsoft.com/en-us/azure/ai-studio/media/concepts/resource-provider-connected-resources.svg)
+    ![Azure AI Studio architecture](./media/resource-provider-connected-resources.svg)
 
 1. Next, let's verify that we provisioned two key resources for implementing our [Retrieval Augmented Generation](https://learn.microsoft.com/azure/ai-studio/concepts/retrieval-augmented-generation) design pattern by storing the product and customer data for query-driven retrieval.
 
@@ -267,7 +267,7 @@ requirements.txt
 When you want to customize the code:
 
 - If you make app changes (in `contoso_chat/`) simply run `azd deploy` to redeploy the application to the previously provisioned backend. No additional re-provisioning or manual intervention steps required.
-- If you make resource changes (in `infra/` folder) then run `azd up` to reprovision and redeploy the application. It should automtically pick up your prior configuration values from `.azure/` and modify them.
+- If you make resource changes (in `infra/` folder) then run `azd up` to re-provision and redeploy the application. It should automatically pick up your prior configuration values from `.azure/` and modify them.
 
 ## Optional: Customize and redeploy the copilot
 
@@ -276,7 +276,7 @@ It's time to build your own custom copilot. Here are some things you can explore
 Remember for each of these options:
 
 - Use `azd deploy` to redeploy your application if you changed only the app code.
-- Use `azd up` to re-provision and re-deploy application if you changed resource configuration.
+- Use `azd up` to re-provision and redeploy application if you changed resource configuration.
 
 ### Customize the customer and order history data
 
