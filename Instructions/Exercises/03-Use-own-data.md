@@ -1,4 +1,4 @@
-# Ground a custom copilot by adding your own data in the Azure AI Studio
+# Create a custom copilot that uses your own data
 
 Retrieval Augmented Generation (RAG) is a technique used to build applications that integrate data from custom data sources into a prompt for a generative AI model. RAG is a commonly used pattern for developing custom *copilots* - chat-based applications that use a language model to interpret inputs and generate appropriate responses.
 
