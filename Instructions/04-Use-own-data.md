@@ -131,15 +131,16 @@ Your vector index has been saved in your Azure AI Studio project, enabling you t
 
 1. In Azure AI Studio, in your project, in the navigation pane on the left, under **Tools**, select the **Prompt flow** page.
 1. Create a new prompt flow by cloning the **Multi-Round Q&A on Your Data** sample in the gallery. Save your clone of this sample in a folder named `brochure-flow`.
-
-    <details>
+    <details>  
       <summary><b>Troubleshooting tip</b>: Permissions error</summary>
-        If you receive a permissions error when you create a new prompt flow, try the following to troubleshoot:
-        - In the Azure portal, select the AI Services resource.
-        - On the IAM page, in the Identity tab, confirm that it is system assigned managed identity.
-        - Navigate to the associated Storage Account. On the IAM page, add role assignment *Storage blob data reader*.
-        - Under **Assign access to**, choose **Managed Identity**, **+ Select members**, and select the **All system-assigned managed identities**.
-        - Review and assign to save the new settings and retry the previous step.
+        <p>If you receive a permissions error when you create a new prompt flow, try the following to troubleshoot:</p>
+        <ul>
+          <li>In the Azure portal, select the AI Services resource.</li>
+          <li>On the IAM page, in the Identity tab, confirm that it is system assigned managed identity.</li>
+          <li>Navigate to the associated Storage Account. On the IAM page, add role assignment <em>Storage blob data reader</em>.</li>
+          <li>Under <strong>Assign access to</strong>, choose <strong>Managed Identity</strong>, <strong>+ Select members</strong>, and select the <strong>All system-assigned managed identities</strong>.</li>
+          <li>Review and assign to save the new settings and retry the previous step.</li>
+        </ul>
     </details>
 
 1. When the prompt flow designer page opens, review **brochure-flow**. Its graph should resemble the following image:
