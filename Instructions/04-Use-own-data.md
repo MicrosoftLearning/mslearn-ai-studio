@@ -132,8 +132,7 @@ Your vector index has been saved in your Azure AI Studio project, enabling you t
 1. In Azure AI Studio, in your project, in the navigation pane on the left, under **Tools**, select the **Prompt flow** page.
 1. Create a new prompt flow by cloning the **Multi-Round Q&A on Your Data** sample in the gallery. Save your clone of this sample in a folder named `brochure-flow`.
 
-    > **Troubleshooting tip**:
-    > If you receive a permissions error when you create a new prompt flow, try the following to troubleshoot:
+    > **Troubleshooting tip**: If you receive a permissions error when you create a new prompt flow, try the following to troubleshoot:
     > - In the Azure portal, select the AI Services resource.
     > - On the IAM page, in the Identity tab, confirm that it is system assigned managed identity.
     > - Navigate to the associated Storage Account. On the IAM page, add role assignment *Storage blob data reader*.
