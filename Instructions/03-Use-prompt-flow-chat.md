@@ -63,7 +63,7 @@ To use a language model in prompt flow, you need to deploy a model first. The Az
 
 1. Change the **System message** to the following:
 
-   ```
+   ```md
    **Objective**: Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
 
    **Capabilities**:
