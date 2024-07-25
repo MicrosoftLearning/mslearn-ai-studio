@@ -51,6 +51,9 @@ Before you can fine-tune a model, you need a dataset.
     - **Azure OpenAI connection**: *Select the connection that was created when you created your hub*
     - **Training data**: Upload files
     - **Upload file**: Select the JSONL file you downloaded in a previous step.
+
+    > **Tip**: You don't have to wait for the data processing to be completed to continue to the next step.
+
     - **Validation data**: None
     - **Task parameters**: *Keep the default settings*
 1. Finetuning will start and may take some time to complete.
