@@ -110,7 +110,19 @@ You can manually review model responses based on test data. Manually reviewing a
 
 When you have created a copilot with a chat flow, you can evaluate the flow by doing a batch run and assessing the performance of the flow with built-in metrics.
 
-1. Select the **Metric evaluations** tab and create a new evaluation with the following settings:
+1. Select the **Metric evaluations** tab and **create a new evaluation** with the following settings:
+    <details>  
+      <summary><b>Troubleshooting tip</b>: Permissions error</summary>
+        <p>If you receive a permissions error when you create a new prompt flow, try the following to troubleshoot:</p>
+        <ul>
+          <li>In the Azure portal, select the AI Services resource.</li>
+          <li>On the IAM page, in the Identity tab, confirm that it is system assigned managed identity.</li>
+          <li>Navigate to the associated Storage Account. On the IAM page, add role assignment <em>Storage blob data reader</em>.</li>
+          <li>Under <strong>Assign access to</strong>, choose <strong>Managed Identity</strong>, <strong>+ Select members</strong>, and select the <strong>All system-assigned managed identities</strong>.</li>
+          <li>Review and assign to save the new settings and retry the previous step.</li>
+        </ul>
+    </details>
+
     - **Evaluation name**: *Enter a unique name*
     - **What kind of scenario are you evaluating?**: Question and answer without context
     - **Select the data you want to evaluate**: Add your dataset
