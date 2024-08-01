@@ -110,7 +110,7 @@ You can manually review model responses based on test data. Manually reviewing a
 
 When you have created a copilot with a chat flow, you can evaluate the flow by doing a batch run and assessing the performance of the flow with built-in metrics.
 
-1. Select the **Metric evaluations** tab and **create a new evaluation** with the following settings:
+1. Select the **Automated evaluations** tab and create a **New evaluation** with the following settings:
     <details>  
       <summary><b>Troubleshooting tip</b>: Permissions error</summary>
         <p>If you receive a permissions error when you create a new prompt flow, try the following to troubleshoot:</p>
@@ -123,6 +123,7 @@ When you have created a copilot with a chat flow, you can evaluate the flow by d
         </ul>
     </details>
 
+    - **What do you want to evaluate?**: Dataset
     - **Evaluation name**: *Enter a unique name*
     - **What kind of scenario are you evaluating?**: Question and answer without context
     - **Select the data you want to evaluate**: Add your dataset
