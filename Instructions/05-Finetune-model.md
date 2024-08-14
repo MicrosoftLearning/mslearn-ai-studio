@@ -43,9 +43,9 @@ You start by creating an Azure AI Studio project within an Azure AI hub:
 Before you can fine-tune a model, you need a dataset.
 
 1. Save the training dataset as JSONL file locally: https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/main/data/travel-finetune.jsonl
-1. Navigate to the **Model catalog** page under the **Get started** section, using the menu on the left.
-1. Search for and select the `gpt-35-turbo` model, don't deploy the model yet!
-1. From the model overview, **Fine-tune** the model using the following configuration:
+1. Navigate to the **Fine-tuning** page under the **Tools** section, using the menu on the left.
+1. Select the button to add a new fine-tune model, select the `gpt-35-turbo` model, and select **Confirm**.
+1. **Fine-tune** the model using the following configuration:
     - **Model version**: *Select the default version*
     - **Model suffix**: `ft-travel`
     - **Azure OpenAI connection**: *Select the connection that was created when you created your hub*
@@ -57,6 +57,8 @@ Before you can fine-tune a model, you need a dataset.
     - **Validation data**: None
     - **Task parameters**: *Keep the default settings*
 1. Finetuning will start and may take some time to complete.
+
+> **Note**: Fine-tuning and deployment can take some time, so you may need to check back periodically to complete the next step.
 
 ## Deploy the fine-tuned model
 
