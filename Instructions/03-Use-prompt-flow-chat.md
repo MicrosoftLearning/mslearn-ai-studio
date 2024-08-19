@@ -90,12 +90,12 @@ Now that you have played around with the system message for the deployed GPT mod
 
 You can create a new flow from a template, or create a flow based on your configurations in the playground. Since you were already experimenting in the playground, you'll use this option to create a new flow.
 
-> **Tip**: If you receive a permissions error when you create a new prompt flow, try the following to troubleshoot: 
-> - In the Azure portal, select the AI Services resource.
-> - On the IAM page, in the Identity tab, confirm that it is system assigned managed identity.
-> - Navigate to the associated Storage Account. On the IAM page, add role assignment Storage blob data reader.
-> - Under Assign access to, choose Managed Identity, + Select members, and select the All system-assigned managed identities.
-> - Review and assign to save the new settings and retry the previous step.
+> -**Tip**: If you receive a permissions error when you create a new prompt flow, try the following to troubleshoot: 
+>     - In the Azure portal, select the AI Services resource.
+>     - On the IAM page, in the Identity tab, confirm that it is system assigned managed identity.
+>     - Navigate to the associated Storage Account. On the IAM page, add role assignment Storage blob data reader.
+>     - Under Assign access to, choose Managed Identity, + Select members, and select the All system-assigned managed identities.
+>     - Review and assign to save the new settings and retry the previous step.
 
 1. In the **Chat playground**, select **Prompt flow** from the top bar.
 1. Enter `Travel-Chat` as folder name.
