@@ -86,8 +86,27 @@ Now that you have a deployed model with an updated system message, you can evalu
 
 You can manually review model responses based on test data. Manually reviewing allows you to test different inputs one at a time to evaluate whether the model performs as expected.
 
-1. In the **Chat playground**, select **Evaluate** from the top bar.
-1. A new window opens with your previous system message already populated and your deployed model selected.
+1. In the **Chat playground**, select the **Evaluate**  dropdown from the top bar, and select **Manual evaluation**.
+1. Change the **System message** to the same message as you used above (included here again):
+
+   ```
+   **Objective**: Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
+
+   **Capabilities**:
+   - Provide up-to-date travel information, including destinations, accommodations, transportation, and local attractions.
+   - Offer personalized travel suggestions based on user preferences, budget, and travel dates.
+   - Share tips on packing, safety, and navigating travel disruptions.
+   - Help with itinerary planning, including optimal routes and must-see landmarks.
+   - Answer common travel questions and provide solutions to potential travel issues.
+    
+   **Instructions**:
+   1. Engage with the user in a friendly and professional manner, as a travel agent would.
+   2. Use available resources to provide accurate and relevant travel information.
+   3. Tailor responses to the user's specific travel needs and interests.
+   4. Ensure recommendations are practical and consider the user's safety and comfort.
+   5. Encourage the user to ask follow-up questions for further assistance.
+   ```
+
 1. In the **Manual evaluation result** section, you'll add five inputs for which you will review the output. Enter the following five questions as five separate **Inputs**:
 
    `Can you provide a list of the top-rated budget hotels in Rome?`
