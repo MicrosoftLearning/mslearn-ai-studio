@@ -11,10 +11,6 @@ In this exercise, you'll explore the model catalog in Azure AI Studio.
 
 This exercise will take approximately **25** minutes.
 
-## Before you start
-
-To complete this exercise, your Azure subscription must be approved for access to the Azure OpenAI service. Fill in the [registration form](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access) to request access to Azure OpenAI models.
-
 ## Create an Azure AI hub
 
 You need an Azure AI hub in your Azure subscription to host projects. You can either create this resource while creating a project, or provision it ahead of time (which is what we'll do in this exercise).

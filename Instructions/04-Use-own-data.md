@@ -11,10 +11,6 @@ In this exercise, you'll use Azure AI Studio to integrate custom data into a gen
 
 This exercise takes approximately **45** minutes.
 
-## Before you start
-
-To complete this exercise, your Azure subscription must be approved for access to the Azure OpenAI service. Fill in the [registration form](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access) to request access to Azure OpenAI models.
-
 ## Create an Azure AI Search resource
 
 Your copilot solution will integrate custom data into a prompt flow. To support this integration, you'll need an Azure AI Search resource with which to index your data.

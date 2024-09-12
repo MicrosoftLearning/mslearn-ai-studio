@@ -9,10 +9,6 @@ In this exercise, you'll use Azure AI Studio's prompt flow to create a custom co
 
 This exercise will take approximately **30** minutes.
 
-## Before you start
-
-To complete this exercise, your Azure subscription must be approved for access to the Azure OpenAI service. Fill in the [registration form](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access) to request access to Azure OpenAI models.
-
 ## Create an AI hub and project in the Azure AI Studio
 
 You start by creating an Azure AI Studio project within an Azure AI hub:

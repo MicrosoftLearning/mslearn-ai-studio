@@ -13,7 +13,6 @@ This exercise will take approximately **90** minutes.
 
 To complete this exercise, you'll need:
 
-- An Azure subscription that is approved for access to the Azure OpenAI service. Fill in the [registration form](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access?WT.mc_id=academic-140829-cacaste) to request access to Azure OpenAI models.
 - A GitHub account to fork the project repository and test it in a GitHub Codespaces environment. Create a free account [on GitHub](https://github.com/).
 - The basic tier of Azure AI Search to activate Semantic Ranker. Learn more about the [pricing details of AI Search](https://azure.microsoft.com/pricing/details/search/).
 - To deploy three OpenAI models (`gpt-35-turbo`, `gpt-4`, `text-embedding-ada-002`). To be able to deploy the models, you need to create the AI hub in a region with sufficient quota. Learn more about [model region availability](https://learn.microsoft.com/azure/ai-services/openai/concepts/models?WT.mc_id=academic-140829-cacaste#model-summary-table-and-region-availability).
