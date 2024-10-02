@@ -9,10 +9,6 @@ In this exercise, you use Azure AI Studio to create a project and explore a gene
 
 This exercise takes approximately **30** minutes.
 
-## Before you start
-
-To complete this exercise, your Azure subscription must be approved for access to the Azure OpenAI service. Fill in the [registration form](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access) to request access to Azure OpenAI models.
-
 ## Open Azure AI Studio
 
 Let's start by exploring Azure AI Studio.

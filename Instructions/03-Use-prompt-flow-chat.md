@@ -9,10 +9,6 @@ In this exercise, you'll use Azure AI Studio's prompt flow to create a custom co
 
 This exercise will take approximately **30** minutes.
 
-## Before you start
-
-To complete this exercise, your Azure subscription must be approved for access to the Azure OpenAI service. Fill in the [registration form](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access) to request access to Azure OpenAI models.
-
 ## Create an AI hub and project in the Azure AI Studio
 
 You start by creating an Azure AI Studio project within an Azure AI hub:
@@ -89,6 +85,18 @@ Now that you have played around with the system message for the deployed GPT mod
 ## Create and run a chat flow in the Azure AI Studio
 
 You can create a new flow from a template, or create a flow based on your configurations in the playground. Since you were already experimenting in the playground, you'll use this option to create a new flow.
+
+<details>  
+    <summary><b>Troubleshooting tip</b>: Permissions error</summary>
+    <p>If you receive a permissions error when you create a new prompt flow, try the following to troubleshoot:</p>
+    <ul>
+        <li>In the Azure portal, select the AI Services resource.</li>
+        <li>On the IAM page, in the Identity tab, confirm that it is system assigned managed identity.</li>
+        <li>Navigate to the associated Storage Account. On the IAM page, add role assignment <em>Storage blob data reader</em>.</li>
+        <li>Under <strong>Assign access to</strong>, choose <strong>Managed Identity</strong>, <strong>+ Select members</strong>, and select the <strong>All system-assigned managed identities</strong>.</li>
+        <li>Review and assign to save the new settings and retry the previous step.</li>
+    </ul>
+</details>
 
 1. In the **Chat playground**, select **Prompt flow** from the top bar.
 1. Enter `Travel-Chat` as folder name.
