@@ -15,7 +15,7 @@ This exercise will take approximately **25** minutes.
 
 You need an Azure AI hub in your Azure subscription to host projects. You can either create this resource while creating a project, or provision it ahead of time (which is what we'll do in this exercise).
 
-1. In the **Management** section, select **All hubs**, then select **+ New hub**. Create a new hub with the following settings:
+1. In the **Management** section, select **All resources**, then select **+ New hub**. Create a new hub with the following settings:
     - **Hub name**: *A unique name*
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create a new resource group with a unique name, or select an existing one*
