@@ -17,7 +17,7 @@ You need an Azure AI Hub in your Azure subscription to host projects. You can ei
 
 1. In a web browser, open [https://ai.azure.com](https://ai.azure.com) and sign in using your Azure credentials.
 
-1. On the Management section, select All hubs, then select **+ New hub**. Create a new hub with the following settings:
+1. On the Management section, select All resources, then select **+ New hub**. Create a new hub with the following settings:
     - **Hub name**: *A unique name*
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create a new resource group with a unique name, or select an existing one*
@@ -50,7 +50,7 @@ You need an Azure AI Hub in your Azure subscription to host projects. You can ei
 
 An Azure AI Hub provides a collaborative workspace within which you can define one or more *projects*. Let's create a project in your Azure AI Hub.
 
-1. In Azure AI Studio, on the **Build** page, select **+ New project**. Then, in the **Create a new project** wizard, create a project with the following settings:
+1. In Azure AI Studio, on the **Hub overview** page, select **+ New project**. Then, in the **Create a new project** wizard, create a project with the following settings:
 
     - **Project name**: *A unique name for your project*
     - **Hub**: *Your AI Hub*
@@ -82,7 +82,7 @@ Now you're ready to deploy a model to use through the **Azure AI Studio**. Once 
 
 Content filters are applied to prompts and completions to prevent potentially harmful or offensive language being generated.
 
-1. In the **Build** page, select **Content filters** in the left navigation bar, then select **+ Create content filter**.
+1. Under **Components** in the left navigation bar, select **Content filters**, then select **+ Create content filter**.
 
 1. In the **Basic information** tab, provide the following information: 
     - **Name**: *A unique name for your content filter*
@@ -117,7 +117,7 @@ Content filters are applied to prompts and completions to prevent potentially ha
 
 Let's see how the model behaves in a conversational interaction.
 
-1. Navigate to the **Playground** in the left pane.
+1. Navigate to the **Project Playground** in the left pane.
 
 1. In the **Chat** mode, enter the following prompt in the **Chat session** section.
 
