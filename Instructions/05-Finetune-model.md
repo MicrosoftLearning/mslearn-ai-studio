@@ -76,9 +76,9 @@ Now that you deployed your fine-tuned model, you can test the model like you can
     Notice that even though you didn't specify the system message to instruct your model to answer travel-related questions, the model already understands what it should focus on.
 1. Try with another query like `Where should I go on holiday for my 30th birthday?`
 
-## Delete Azure resources
+## Clean up
 
-When you finish exploring the Azure AI Studio, you should delete the resources you’ve created to avoid unnecessary Azure costs.
+If you've finished exploring Azure AI Studio, you should delete the resources you’ve created to avoid unnecessary Azure costs.
 
 - Navigate to the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`.
 - In the Azure portal, on the **Home** page, select **Resource groups**.
