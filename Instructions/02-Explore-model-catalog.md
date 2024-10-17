@@ -18,22 +18,12 @@ You need an Azure AI hub in your Azure subscription to host projects. You can ei
 1. In the **Management** section, select **All resources**, then select **+ New hub**. Create a new hub with the following settings:
     - **Hub name**: *A unique name*
     - **Subscription**: *Your Azure subscription*
-    - **Resource group**: *Create a new resource group with a unique name, or select an existing one*
-    - **Location**: *Make a **random** choice from any of the following regions*\*
-        - Australia East
-        - Canada East
-        - East US
-        - East US 2
-        - France Central
-        - Japan East
-        - North Central US
-        - Sweden Central
-        - Switzerland North
-        - UK South
-    - **Connect Azure AI Services or Azure OpenAI**: *Select to create a new AI Services or use an existing one*
+    - **Resource group**: *A new resource group*
+    - **Location**: Select **Help me choose** and then select **gpt-35-turbo** in the Location helper window and use the recommended region\*
+    - **Connect Azure AI Services or Azure OpenAI**: *Create a new connection*
     - **Connect Azure AI Search**: Skip connecting
 
-    > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit in scenarios where you are sharing a tenant with other users. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region.
+    > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions in the location helper include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region. Learn more about [model availability per region](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability)
 
     After the Azure AI hub has been created, it should look similar to the following image:
 
@@ -94,12 +84,13 @@ Let's start by deploying a model from the Model catalog. You may prefer this opt
 
 1. Navigate to the **Model catalog** page under the **Get started** section, using the menu on the left.
 1. Search for and deploy the `gpt-35-turbo` model, curated by Azure AI, with the following settings:
-    - **Deployment name**: *A unique name for your model deployment, indicating it's a GPT-3.5 model*
-    - **Model version**: *Select the default version*
+    - **Deployment name**: *A unique name for your model deployment*
     - **Deployment type**: Standard
-    - **Connected Azure OpenAI resource**: *Select the default connection that was created when you created your hub*
+    - **Model version**: *Select the default version*
+    - **AI resource**: *Select the resource created previously*
     - **Tokens per Minute Rate Limit (thousands)**: 5K
-    - **Content filter**: Default
+    - **Content filter**: DefaultV2
+    - **Enable dynamic quota**: Disabled
 
 ### Deploy a model through Deployments
 
@@ -108,12 +99,13 @@ If you already know exactly which model you want to deploy, you may prefer to do
 1. Navigate to the **Deployments** page under the **Components** section, using the menu on the left.
 1. In the **Model deployments** tab, create a new deployment with the following settings:
     - **Model**: gpt-4
-    - **Deployment name**: *A unique name for your model deployment, indicating it's a GPT-4 model*
-    - **Model version**: *Select the default version*
+    - **Deployment name**: *A unique name for your model deployment*
     - **Deployment type**: Standard
-    - **Connected Azure OpenAI resource**: *Select the default connection that was created when you created your hub*
+    - **Model version**: *Select the default version*
+    - **AI resource**: *Select the resource created previously*
     - **Tokens per Minute Rate Limit (thousands)**: 5K
-    - **Content filter**: Default
+    - **Content filter**: DefaultV2
+    - **Enable dynamic quota**: Disabled
 
     > **Note**: You may have noticed some models showing the Model benchmarks, but not as an option in your model catalog. Model availability differs per location. Your location is specified on the AI hub level, where you can use the **Location helper** to specify the model you want to deploy to get a list of locations you can deploy it in.
 
@@ -133,13 +125,13 @@ Now that we have two models to compare, let's see how the models behave in a con
    You are an AI travel assistant that helps people plan their trips. Your objective is to offer support for travel-related inquiries, such as visa requirements, weather forecasts, local attractions, and cultural norms.
    ```
 
-1. Select **Apply changes**, and **Clear chat**.
+1. Select **Save**, and **Clear chat**.
 1. In the chat window, enter the query `What can you do?` and view the new response. Observe how it's different from the answer you received before. The answer is specific to travel now.
 1. Continue the conversation by asking: `I'm planning a trip to London, what can I do there?`
     The copilot offers a lot of travel related information. You may want to improve the output still. For example, you may want the answer to be more succinct.
 1. Update the system message by adding `Answer with a maximum of two sentences.` to the end of the message. Apply the change, clear the chat, and test the chat again by asking: `I'm planning a trip to London, what can I do there?`
     You may also want your copilot to continue the conversation instead of simply answering the question.
-1. Update the system message by adding `End your answer with a follow-up question.` to the end of the message. Apply the change, clear the chat, and test the chat again by asking: `I'm planning a trip to London, what can I do there?`
+1. Update the system message by adding `End your answer with a follow-up question.` to the end of the message. Save the change, clear the chat, and test the chat again by asking: `I'm planning a trip to London, what can I do there?`
 1. Change your **Deployment** to your GPT-4 model and repeat all steps in this section. Notice how the models may vary in their outputs.
 1. Finally, test both models on the query `Who is the prime minister of the UK?`. The performance on this question is related to the groundedness (whether the response is factually accurate) of the models. Does the performance correlate with your conclusions from the Model benchmarks?
 
