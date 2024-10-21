@@ -38,17 +38,18 @@ In this exercise you'll use [GitHub Codespaces](https://github.com/features/code
 
 To initialize your development environment, follow the steps below:
 
-1. **Fork the repository**: Select the **Fork** button in the top right corner of the GitHub repository page to create a copy of the repository in your GitHub account.
+1. Navigate to the **contoso-chat** repository: `https://github.com/Azure-Samples/contoso-chat`
+1. Select the **Fork** button in the top right corner of the contoso-chat GitHub repository page to create a copy of the repository in your GitHub account.
 1. Once you have your forked repository, select the **Code** button and select **Codespaces**.
 1. Select the **+** button to create a new codespace on the main branch of your forked repository.
 
     ![Create GitHub Codespaces](./media/create_codespaces.png)
 
-1. In a few seconds, you'll be redirected to a new browser tab where the Codespaces environment is setup with an [attached Visual Studio Code editor](https://code.visualstudio.com/docs/devcontainers/containers) by default. You can either continue working in the browser tab, or reconnect to the running Codespaces from your local Visual Studio Code editor by clicking the **Open in VS Code Desktop** button from the top left menu.
+1. In a few seconds, you're redirected to a new browser tab where the Codespaces environment is setup with an [attached Visual Studio Code editor](https://code.visualstudio.com/docs/devcontainers/containers) by default.
 
 ## Connect VS Code environment to Azure
 
-The next step is connecting your local development environment with the Azure subscription where you'd like to deploy the project. Start by opening a new terminal in your Visual Studio Code IDE.
+The next step is connecting your development environment with the Azure subscription where you'd like to deploy the project. Start by opening a new terminal in your VS Code environment running in Codespaces.
 
 1. First, verify that the [latest version](https://github.com/Azure/azure-dev/releases/tag/azure-dev-cli_1.9.3) of Azure Developer CLI is installed.
     ```bash
