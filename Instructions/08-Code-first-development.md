@@ -13,7 +13,6 @@ This exercise will take approximately **90** minutes.
 
 To complete this exercise, you'll need:
 
-- An Azure subscription that is approved for access to the Azure OpenAI service. Fill in the [registration form](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access?WT.mc_id=academic-140829-cacaste) to request access to Azure OpenAI models.
 - A GitHub account to fork the project repository and test it in a GitHub Codespaces environment. Create a free account [on GitHub](https://github.com/).
 - The basic tier of Azure AI Search to activate Semantic Ranker. Learn more about the [pricing details of AI Search](https://azure.microsoft.com/pricing/details/search/).
 - To deploy three OpenAI models (`gpt-35-turbo`, `gpt-4`, `text-embedding-ada-002`). To be able to deploy the models, you need to create the AI hub in a region with sufficient quota. Learn more about [model region availability](https://learn.microsoft.com/azure/ai-services/openai/concepts/models?WT.mc_id=academic-140829-cacaste#model-summary-table-and-region-availability).
@@ -53,13 +52,13 @@ The next step is connecting your development environment with the Azure subscrip
 
 1. First, verify that the [latest version](https://github.com/Azure/azure-dev/releases/tag/azure-dev-cli_1.9.3) of Azure Developer CLI is installed.
     ```bash
-        azd version
+    azd version
     ```
 
 1. Next, sign in into your Azure Account from the VS Code terminal.
 
     ```bash
-        azd auth login 
+    azd auth login 
     ```
 
 ## Provision Azure resources for your project
@@ -69,7 +68,7 @@ Once you are logged in, you are ready to start provisioning the Azure resources 
 1. Provision *and deploy* your AI application using azd.
 
     ```bash
-        azd up
+    azd up
     ```
 
 1. You should see the following prompts. Respond using the guidance below:
@@ -146,7 +145,7 @@ To validate that the deployed copilot works, use the built-in test playground ca
 1. For now, test the copilot deployment with the following test **Input**:
 
     ```bash
-      {"question": "tell me about your hiking shoes", "customerId": "2", "chat_history": []}
+    {"question": "tell me about your hiking shoes", "customerId": "2", "chat_history": []}
     ```
 
 You should get a valid JSON response in the output component as shown.
@@ -195,13 +194,13 @@ The **azd up** command not only provisions and deploys the application to Azure,
 1. Verify that you have the **Promptflow tools** installed in your development environment.
 
     ```bash
-        pf version
+    pf version
     ```
 
 1. Use the **pf flow test** tool to test the **contoso_chat** flex flow application locally, with the sample question below. Note the syntax of the command for passing the inputs:
 
     ```bash
-        pf flow test --flow ./contoso_chat --inputs question="tell me about your jackets" customerId="3" chat_history=[]
+    pf flow test --flow ./contoso_chat --inputs question="tell me about your jackets" customerId="3" chat_history=[]
     ```
 
 You should receive a response like this:
@@ -213,7 +212,7 @@ You should receive a response like this:
 1. You can trace the details of your execution with the `--ui` flag as shown below.
 
     ```bash
-        pf flow test --flow ./contoso_chat --inputs question="tell me about your jackets" customerId="3" chat_history=[] --ui
+    pf flow test --flow ./contoso_chat --inputs question="tell me about your jackets" customerId="3" chat_history=[] --ui
     ```
 
 This command should launch a **trace view** in your browser (in a new tab) with a table that provides high-level details about that test run including the latency and tokens usage.
@@ -318,7 +317,7 @@ Replace the test dataset used to run the app evaluation pipeline through GitHub 
 This project uses models and services (for example Azure AI Search) that can incur non-trivial costs if left running long-term. When you finish exploring this Azure AI AZD template, you should delete the resources you’ve created to avoid unnecessary Azure costs. You can do this by running the following command in the VS Code terminal:
 
 ```bash
-    azd down
+azd down
 ```
 
 This not only reverses the steps taken to provision and deploy the application, it also takes additional steps to *purge* resources that may otherwise be held in "soft delete" state, impacting your ability to reuse resource names or reclaim model quota. **This command will prompt you about these actions during the shutdown - so make sure you respond correctly**.

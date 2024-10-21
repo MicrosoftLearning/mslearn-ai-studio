@@ -72,6 +72,18 @@ To create a new flow with a template, you can select one of the types of flows y
 1. Select **+ Create** to create a new flow.
 1. Create a new **Standard flow** and enter `entity-recognition` as folder name.
 
+<details>  
+    <summary><b>Troubleshooting tip</b>: Permissions error</summary>
+    <p>If you receive a permissions error when you create a new prompt flow, try the following to troubleshoot:</p>
+    <ul>
+        <li>In the Azure portal, select the AI Services resource.</li>
+        <li>On the IAM page, in the Identity tab, confirm that it is system assigned managed identity.</li>
+        <li>Navigate to the associated Storage Account. On the IAM page, add role assignment <em>Storage blob data reader</em>.</li>
+        <li>Under <strong>Assign access to</strong>, choose <strong>Managed Identity</strong>, <strong>+ Select members</strong>, and select the <strong>All system-assigned managed identities</strong>.</li>
+        <li>Review and assign to save the new settings and retry the previous step.</li>
+    </ul>
+</details>
+
 A standard flow with one input, two nodes, and one output is created for you. You'll update the flow to take two inputs, extract entities, clean up the output from the LLM node, and return the entities as output.
 
 ### Start the automatic runtime

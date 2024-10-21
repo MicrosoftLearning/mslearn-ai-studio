@@ -11,10 +11,6 @@ In this exercise, you'll use Azure AI Studio to integrate custom data into a gen
 
 This exercise takes approximately **45** minutes.
 
-## Before you start
-
-To complete this exercise, your Azure subscription must be approved for access to the Azure OpenAI service. Fill in the [registration form](https://learn.microsoft.com/legal/cognitive-services/openai/limited-access) to request access to Azure OpenAI models.
-
 ## Create an Azure AI Search resource
 
 Your copilot solution will integrate custom data into a prompt flow. To support this integration, you'll need an Azure AI Search resource with which to index your data.
@@ -122,6 +118,9 @@ Before using your index in a RAG-based prompt flow, let's verify that it can be 
 1. On the Chat page, in the Options panel, ensure that your **gpt-35-turbo-16k** model deployment is selected. Then, in the main chat session panel, submit the prompt `Where can I stay in New York?`
 1. Review the response, which should be a generic answer from the model without any data from the index.
 1. On the Setup panel, select the **Add your data** tab, and then add the **brochures-index** project index and select the **hybrid (vector + keyword)** search type.
+
+   > **Note**: Some users are finding newly created indexes unavailable right away. Refreshing the browser usually helps, but if you're still experiencing the issue where it can't find the index you may need to wait until the index is recognized.
+   
 1. After the index has been added and the chat session has restarted, resubmit the prompt `Where can I stay in New York?`
 1. Review the response, which should be based on data in the index.
 
