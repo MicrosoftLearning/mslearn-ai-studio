@@ -22,42 +22,36 @@ You first need to create a project in the Azure AI Studio to create the necessar
 You start by creating an Azure AI Studio project and an Azure AI Hub to support it.
 
 1. In a web browser, open [https://ai.azure.com](https://ai.azure.com) and sign in using your Azure credentials.
-1. Select the **Build** page, then select **+ New project**.
+1. Select the **Home** page, then select **+ New project**.
 1. In the **Create a new project** wizard, create a project with the following settings:
     - **Project name**: *A unique name for your project*
-    - **Azure Hub**: *Create a new resource with the following settings:*
-        - **AI Hub name**: *A unique name*
-        - **Subscription**: *Your Azure subscription*
-        - **Resource group**: *A new resource group*
-        - **Location**: *Make a **random** choice from any of the following regions*\*
-        - Australia East
-        - Canada East
-        - East US
-        - East US 2
-        - France Central
-        - Japan East
-        - North Central US
-        - Sweden Central
-        - Switzerland North
-        - UK South
+    - **Hub**: *Create a new hub with the following settings:*
+    - **Hub name**: *A unique name*
+    - **Subscription**: *Your Azure subscription*
+    - **Resource group**: *A new resource group*
+    - **Location**: Select **Help me choose** and then select **gpt-35-turbo** in the Location helper window and use the recommended region\*
+    - **Connect Azure AI Services or Azure OpenAI**: *Create a new connection*
+    - **Connect Azure AI Search**: Skip connecting
 
-    > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit in scenarios where you are sharing a tenant with other users. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region.
+    > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions in the location helper include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region. Learn more about [model availability per region](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability)
 
 1. Review your configuration and create your project.
-1. Wait 5-10 minutes for your project to be created.
+1. Wait for your project to be created.
 
 ## Deploy a GPT model
 
 To use a LLM model in prompt flow, you need to deploy a model first. The Azure AI Studio allows you to deploy OpenAI models that you can use in your flows.
 
 1. In the navigation pane on the left, under **Components**, select the **Deployments** page.
-1. In Azure OpenAI Studio, navigate to the **Deployments** page.
 1. Create a new deployment of the **gpt-35-turbo** model with the following settings:
-    - **Model**: `gpt-35-turbo`
-    - **Model version**: *Leave the default value*
-    - **Deployment name**: `gpt-35-turbo`
-    - Set the **Advanced** options to use the default content filter and to restrict the tokens-per-minute (TPM) to **5K**.
-
+    - **Deployment name**: *A unique name for your model deployment*
+    - **Deployment type**: Standard
+    - **Model version**: *Select the default version*
+    - **AI resource**: *Select the resource created previously*
+    - **Tokens per Minute Rate Limit (thousands)**: 5K
+    - **Content filter**: DefaultV2
+    - **Enable dynamic quota**: Disabled
+   
 Now that you have your LLM model deployed, you can create a flow in Azure AI Studio that calls the deployed model.
 
 ## Create and run a flow in the Azure AI Studio
@@ -91,9 +85,8 @@ A standard flow with one input, two nodes, and one output is created for you. Yo
 To test your flow, you need compute. The necessary compute is made available to you through the runtime.
 
 1. After creating the new flow that you named `entity-recognition`, the flow should open in the studio.
-1. Select the **Select runtime** field from the top bar.
-1. In the **Automatic runtime** list, select **Start** to start the automatic runtime.
-1. Wait for the runtime to start.
+1. Select **Start compute session** from the top bar.
+1. The compute session will take 1-3 minutes to start.
 
 ### Configure the inputs
 
