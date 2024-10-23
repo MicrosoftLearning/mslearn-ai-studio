@@ -20,22 +20,12 @@ You need an Azure AI Hub in your Azure subscription to host projects. You can ei
 1. On the Management section, select All resources, then select **+ New hub**. Create a new hub with the following settings:
     - **Hub name**: *A unique name*
     - **Subscription**: *Your Azure subscription*
-    - **Resource group**: *Create a new resource group with a unique name, or select an existing one*
-    - **Location**: *Make a **random** choice from any of the following regions*\*
-        - Australia East
-        - Canada East
-        - East US
-        - East US 2
-        - France Central
-        - Japan East
-        - North Central US
-        - Sweden Central
-        - Switzerland North
-        - UK South
-    - **Connect Azure AI Services or Azure OpenAI**: Select to create a new AI Services or use an existing one
+    - **Resource group**: *A new resource group*
+    - **Location**: Select **Help me choose** and then select **gpt-35-turbo** in the Location helper window and use the recommended region\*
+    - **Connect Azure AI Services or Azure OpenAI**: *Create a new connection*
     - **Connect Azure AI Search**: Skip connecting
 
-    > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit in scenarios where you are sharing a tenant with other users. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region.
+    > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions in the location helper include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region. Learn more about [model availability per region](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability)
 
 1. Select **Create**. The creation of the first hub may take a few minutes to complete. During the hub creation, the following AI resources will also be created for you: 
     - AI Services
@@ -68,14 +58,14 @@ Now you're ready to deploy a model to use through the **Azure AI Studio**. Once 
 1. In Azure AI Studio, create a new deployment with the following settings:
 
     - **Model**: gpt-35-turbo
+    - **Deployment name**: *A unique name for your model deployment*
     - **Deployment type**: Standard
-    - **Connected Azure OpenAI resource**: *Your Azure OpenAI connection*
-    - **Model version:** Auto-update to default
-    - **Deployment name**: *A unique name of your choice*
-    - **Advanced options**
-        - **Content filter**: Default
-        - **Tokens per minute rate limit**: 5K
-
+    - **Model version**: *Select the default version*
+    - **AI resource**: *Select the resource created previously*
+    - **Tokens per Minute Rate Limit (thousands)**: 5K
+    - **Content filter**: DefaultV2
+    - **Enable dynamic quota**: Disabled
+      
 > **Note**: Each Azure AI Studio model is optimized for a different balance of capabilities and performance. We'll use the **GPT 3.5 Turbo** model in this exercise, which is highly capable for natural language generation and chat scenarios.
 
 ## Explore content filters
