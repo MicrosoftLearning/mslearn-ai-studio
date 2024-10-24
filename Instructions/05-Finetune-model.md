@@ -5,9 +5,13 @@ lab:
 
 # Fine-tune a language model for chat completion in the Azure AI Studio
 
-In this exercise, you'll fine-tune a language model with the Azure AI Studio that you want to use for a custom copilot scenario.
+When you want a language model to behave a certain way, you can use prompt engineering to define the desired behavior. When you want to improve the consistency of the desired behavior, you can opt to fine-tune a model, comparing it to your prompt engineering approach to evaluate which method best fits your needs.
 
-This exercise will take approximately **45** minutes.
+In this exercise, you'll fine-tune a language model with the Azure AI Studio that you want to use for a custom chat application scenario. You'll compare the fine-tuned model with a base model to assess whether the fine-tuned model fits your needs better.
+
+Imagine you work for a travel agency and you're developing a chat application to help people plan their vacations. The goal is to create a simple and inspiring chat that suggests destinations and activities. Since the chat isn't connected to any data sources, it should **not** provide specific recommendations for hotels, flights, or restaurants to ensure trust with your customers.
+
+This exercise will take approximately **60** minutes.
 
 ## Create an AI hub and project in the Azure AI Studio
 
@@ -36,7 +40,7 @@ You start by creating an Azure AI Studio project within an Azure AI hub:
 
 ## Fine-tune a GPT-3.5 model
 
-Before you can fine-tune a model, you need a dataset.
+As fine-tuning a model takes some time to complete, you'll start the fine-tuning job first. Before you can fine-tune a model, you need a dataset.
 
 1. Save the training dataset as JSONL file locally: https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/main/data/travel-finetune.jsonl
 1. Navigate to the **Fine-tuning** page under the **Tools** section, using the menu on the left.
@@ -52,13 +56,51 @@ Before you can fine-tune a model, you need a dataset.
 
     - **Validation data**: None
     - **Task parameters**: *Keep the default settings*
-1. Finetuning will start and may take some time to complete.
+1. Fine-tuning will start and may take some time to complete.
 
-> **Note**: Fine-tuning and deployment can take some time, so you may need to check back periodically to complete the next step.
+> **Note**: Fine-tuning and deployment can take some time, so you may need to check back periodically. You can already continue with the next step while you wait.
+
+## Chat with a base model
+
+While you wait for the fine-tuning job to complete, let's chat with a base GPT 3.5 model to assess how it performs.
+
+1. Navigate to the **Deployments** page under the **Components** section, using the menu on the left.
+1. Select the **+ Deploy model** button, and select the **Deploy base model** option.
+1. Deploy a `gpt-35-turbo` model, which is the same type of model you used when fine-tuning.
+1. When deployment is completed, navigate to the **Chat** page under the **Project playground** section.
+1. Select your deployed `gpt-35-model` base model in the setup deployment.
+1. In the chat window, enter the query `What can you do?` and view the response.
+    The answers are very generic. Remember we want to create a chat application that inspires people to travel.
+1. Update the system message with the following prompt:
+    ```
+    You are an AI assistant that helps people plan their holidays.
+    ```
+1. Select **Save**, then select **Clear chat**, and ask again `What can you do?`
+    As a response, the assistant may tell you that it can help you book flights, hotels and rental cars for your trip. You want to avoid this behavior.
+1. Update the system message again with a new prompt:
+
+    ```
+    You are an AI travel assistant that helps people plan their trips. Your objective is to offer support for travel-related inquiries, such as visa requirements, weather forecasts, local attractions, and cultural norms.
+    You should not provide any hotel, flight, rental car or restaurant recommendations.
+    Ask engaging questions to help someone plan their trip and think about what they want to do on their holiday.
+    ```
+
+1. Select **Save**, and **Clear chat**.
+1. Continue testing your chat application to verify it doesn't provide any information that isn't grounded in retrieved data. For example, ask the following questions and explore the model's answers:
+   
+     `Where in Rome should I stay?`
+    
+    `I'm mostly there for the food. Where should I stay to be within walking distance of affordable restaurants?`
+    
+    `Give me a list of five hotels in Trastevere.`
+
+    The model may provide you with a list of hotels, even when you instructed it not to give hotel recommendations. This is an example of inconsistent behavior. Let's explore whether the fine-tuned model performs better in these cases.
+
+1. Navigate to the **Fine-tuning** page under **Tools** to find your fine-tuning job and its status. If it's still running, you can opt to continue manually evaluating your deployed base model. If it's completed, you can continue with the next section.
 
 ## Deploy the fine-tuned model
 
-When fine-tuning has successfully completed, you can deploy the model.
+When fine-tuning has successfully completed, you can deploy the fine-tuned model.
 
 1. Select the fine-tuned model. Select the **Metrics** tab and explore the fine-tune metrics.
 1. Deploy the fine-tuned model with the following configurations:
@@ -66,15 +108,28 @@ When fine-tuning has successfully completed, you can deploy the model.
     - **Deployment type**: Standard
     - **Tokens per Minute Rate Limit (thousands)**: 5K
     - **Content filter**: Default
+1. Wait for the deployment to be complete before you can test it, this may take a while.
 
 ## Test the fine-tuned model
 
-Now that you deployed your fine-tuned model, you can test the model like you can test any other deployed model.
+Now that you deployed your fine-tuned model, you can test the model like you can tested the your deployed base model.
 
 1. When the deployment is ready, navigate to the fine-tuned model and select **Open in playground**.
-1. In the chat window, enter the query `What can you do?`
-    Notice that even though you didn't specify the system message to instruct your model to answer travel-related questions, the model already understands what it should focus on.
-1. Try with another query like `Where should I go on holiday for my 30th birthday?`
+1. Update the system message with the following instructions:
+
+    ```
+    You are an AI travel assistant that helps people plan their trips. Your objective is to offer support for travel-related inquiries, such as visa requirements, weather forecasts, local attractions, and cultural norms.
+    You should not provide any hotel, flight, rental car or restaurant recommendations.
+    Ask engaging questions to help someone plan their trip and think about what they want to do on their holiday.
+    ```
+
+1. Test your fine-tuned model to assess whether its behavior is more consistent now. For example, ask the following questions again and explore the model's answers:
+   
+     `Where in Rome should I stay?`
+    
+    `I'm mostly there for the food. Where should I stay to be within walking distance of affordable restaurants?`
+    
+    `Give me a list of five hotels in Trastevere.`
 
 ## Clean up
 
