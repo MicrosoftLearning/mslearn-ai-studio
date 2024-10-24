@@ -18,24 +18,14 @@ You start by creating an Azure AI Studio project within an Azure AI hub:
 1. In the **Create a new project** wizard, create a project with the following settings:
     - **Project name**: *A unique name for your project*
     - **Hub**: *Create a new hub with the following settings:*
-        - **Hub name**: *A unique name*
-        - **Subscription**: *Your Azure subscription*
-        - **Resource group**: *A new resource group*
-        - **Location**: *Make a **random** choice from any of the following regions*\*
-        - Australia East
-        - Canada East
-        - East US
-        - East US 2
-        - France Central
-        - Japan East
-        - North Central US
-        - Sweden Central
-        - Switzerland North
-        - UK South
+    - **Hub name**: *A unique name*
+    - **Subscription**: *Your Azure subscription*
+    - **Resource group**: *A new resource group*
+    - **Location**: Select **Help me choose** and then select **gpt-35-turbo** in the Location helper window and use the recommended region\*
     - **Connect Azure AI Services or Azure OpenAI**: *Create a new connection*
     - **Connect Azure AI Search**: Skip connecting
 
-    > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region. Learn more about [model availability per region](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability)
+    > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions in the location helper include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region. Learn more about [model availability per region](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability)
 
 1. Review your configuration and create your project.
 1. Wait for your project to be created.
@@ -47,11 +37,12 @@ To use a language model in prompt flow, you need to deploy a model first. The Az
 1. In the navigation pane on the left, under **Components**, select the **Deployments** page.
 1. Create a new deployment of the **gpt-35-turbo** model with the following settings:
     - **Deployment name**: *A unique name for your model deployment*
-    - **Model version**: *Select the default version*
     - **Deployment type**: Standard
-    - **Connected Azure OpenAI resource**: *Select the default connection*
+    - **Model version**: *Select the default version*
+    - **AI resource**: *Select the resource created previously*
     - **Tokens per Minute Rate Limit (thousands)**: 5K
-    - **Content filter**: Default
+    - **Content filter**: DefaultV2
+    - **Enable dynamic quota**: Disabled
 1. Wait for the model to be deployed. When the deployment is ready, select **Open in playground**.
 1. In the chat window, enter the query `What can you do?`.
 
@@ -77,7 +68,7 @@ To use a language model in prompt flow, you need to deploy a model first. The Az
    5. Encourage the user to ask follow-up questions for further assistance.
    ```
 
-1. Select **Apply changes**.
+1. Select **Save**.
 1. In the chat window, enter the same query as before: `What can you do?` Note the change in response.
 
 Now that you have played around with the system message for the deployed GPT model, you can further customize the application by working with prompt flow.
