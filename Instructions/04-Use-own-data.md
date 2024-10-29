@@ -135,7 +135,7 @@ Your vector index has been saved in your Azure AI Studio project, enabling you t
         <p>If you receive a permissions error when you create a new prompt flow, try the following to troubleshoot:</p>
         <ul>
           <li>In the Azure portal, select the AI Services resource.</li>
-          <li>On the Resource management section, in the Identity page, confirm that it is system assigned managed identity.</li>
+          <li>On the Resource Management section, in the Identity page, confirm that it is system assigned managed identity.</li>
           <li>Navigate to the associated Storage Account. On the IAM page, add role assignment <em>Storage blob data reader</em>.</li>
           <li>Under <strong>Assign access to</strong>, choose <strong>Managed Identity</strong>, <strong>+ Select members</strong>, and select the <strong>All system-assigned managed identities</strong>.</li>
           <li>Review and assign to save the new settings and retry the previous step.</li>
