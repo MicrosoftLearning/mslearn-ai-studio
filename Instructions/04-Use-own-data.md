@@ -102,7 +102,7 @@ Now that you've added a data source to your project, you can use it to create an
         - **Virtual machine**: Auto select
     - **Search settings**:
         - **Vector settings**: Add vector search to this search resource
-        - **Select an embedding model**: *Select the default Azure OpenAI resource for your hub.*
+        - **Azure OpenAI connection**: *Select the default Azure OpenAI resource for your hub.*
         
 1. Wait for the indexing process to be completed, which can take several minutes. The index creation operation consists of the following jobs:
 
