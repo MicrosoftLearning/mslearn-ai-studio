@@ -67,10 +67,13 @@ You need two models to implement your solution:
 1. Create a new deployment of the **text-embedding-ada-002** model with the following settings:
 
     - **Deployment name**: `text-embedding-ada-002`
-    - **Model version**: *Default*
-    - **Advanced options**:
-        - **Content filter**: *Default*
-        - **Tokens per minute rate limit**: `5K`
+    - **Deployment type**: Standard
+    - **Model version**: *Select the default version*
+    - **AI resource**: *Select the resource created previously*
+    - **Tokens per Minute Rate Limit (thousands)**: 5K
+    - **Content filter**: DefaultV2
+    - **Enable dynamic quota**: Disabled
+      
 1. Repeat the previous steps to deploy a **gpt-35-turbo-16k** model with the deployment name `gpt-35-turbo-16k`.
 
     > **Note**: Reducing the Tokens Per Minute (TPM) helps avoid over-using the quota available in the subscription you are using. 5,000 TPM is sufficient for the data used in this exercise.
@@ -93,16 +96,16 @@ Now that you've added a data source to your project, you can use it to create an
 
 1. In Azure AI Studio, in your project, in the navigation pane on the left, under **Components**, select the **Indexes** page.
 1. Add  a new index with the following settings:
-    - **Source data**:
+    - **Source location**:
         - **Data source**: Data in Azure AI Studio
             - *Select the **brochures** data source*
-    - **Index settings**:
+    - **Index configuration**:
         - **Select Azure AI Search service**: *Select the **AzureAISearch** connection to your Azure AI Search resource*
-        - **Index name**: `brochures-index`
+        - **Vector index**: `brochures-index`
         - **Virtual machine**: Auto select
     - **Search settings**:
         - **Vector settings**: Add vector search to this search resource
-        - **Select an embedding model**: *Select the default Azure OpenAI resource for your hub.*
+        - **Azure OpenAI connection**: *Select the default Azure OpenAI resource for your hub.*
         
 1. Wait for the indexing process to be completed, which can take several minutes. The index creation operation consists of the following jobs:
 
@@ -135,9 +138,9 @@ Your vector index has been saved in your Azure AI Studio project, enabling you t
         <p>If you receive a permissions error when you create a new prompt flow, try the following to troubleshoot:</p>
         <ul>
           <li>In the Azure portal, select the AI Services resource.</li>
-          <li>On the IAM page, in the Identity tab, confirm that it is system assigned managed identity.</li>
+          <li>Under Resource Management, in the Identity tab, confirm that it is system assigned managed identity.</li>
           <li>Navigate to the associated Storage Account. On the IAM page, add role assignment <em>Storage blob data reader</em>.</li>
-          <li>Under <strong>Assign access to</strong>, choose <strong>Managed Identity</strong>, <strong>+ Select members</strong>, and select the <strong>All system-assigned managed identities</strong>.</li>
+          <li>Under <strong>Assign access to</strong>, choose <strong>Managed Identity</strong>, <strong>+ Select members</strong>, select the <strong>All system-assigned managed identities</strong>, and select your Azure AI services resource.</li>
           <li>Review and assign to save the new settings and retry the previous step.</li>
         </ul>
     </details>
@@ -175,7 +178,7 @@ Your vector index has been saved in your Azure AI Studio project, enabling you t
     - **deployment_name**: gpt-35-turbo-16k
     - **response_format**: {"type":"text"}
 
-1. In the **lookup** section, set the following parameter values:
+1. Wait for the compute session to start, then in the **lookup** section, set the following parameter values:
 
     - **mlindex_content**: *Select the empty field to open the Generate pane*
         - **index_type**: Registered Index
