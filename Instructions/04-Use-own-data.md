@@ -42,17 +42,17 @@ Your copilot solution will integrate custom data into a prompt flow. To support 
 Now you're ready to create an Azure AI Studio project and the Azure AI resources to support it.
 
 1. In a web browser, open [Azure AI Studio](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials.
-1. On the Azure AI Studio **Home** page, select **+ New project**. Then, in the **Create a project** wizard, create a project with the following settings:
+1. On the Azure AI Studio **Home** page, select **+ New project**.
+1. In the **Create a project** wizard, give your project a unique name then select **Customize** and create a project with the following settings:
 
-    - **Project name**: *A unique name for your project*
-    - **Hub**: *Create a new resource with the following settings:*
+    - **Create a hub**: *Create a new resource with the following settings:*
 
         - **Hub name**: *A unique name*
         - **Azure Subscription**: *Your Azure subscription*
         - **Resource group**: *Select the resource group containing your Azure AI Search resource*
         - **Location**: *The same location as your Azure AI Search resource*
-        - **Azure OpenAI**: (New) *Autofills with your selected hub name*
-        - **Azure AI Search**: *Select your Azure AI Search resource*
+        - **Connect Azure AI Services or Azure OpenAI**: (New) *Autofills with your selected hub name*
+        - **Connect Azure AI Search**: *Select your Azure AI Search resource*
 
 1. Wait for your project to be created.
 
@@ -64,7 +64,7 @@ You need two models to implement your solution:
 - A model that can generate natural language responses to questions based on your data.
 
 1. In the Azure AI Studio, in your project, in the navigation pane on the left, under **Components**, select the **Deployments** page.
-1. Create a new deployment of the **text-embedding-ada-002** model with the following settings:
+1. Create a new deployment of the **text-embedding-ada-002** model with the following settings by selecting **Customize** in the Deploy model wizard::
 
     - **Deployment name**: `text-embedding-ada-002`
     - **Deployment type**: Standard
