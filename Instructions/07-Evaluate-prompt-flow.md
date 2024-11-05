@@ -139,7 +139,7 @@ When you have created a copilot with a chat flow, you can evaluate the flow by d
     - **query**: Select **question** as the data source
     - **response**: Select **answer** as the data source
       
-1. Select **Next** then review your data and submit the new evaluation.
+1. Select **Next** then review your data and **Submit** the new evaluation.
 1. Wait for the evaluations to be completed, you may need to refresh.
 1. Select the evaluation run you just created.
 1. Explore the **Metric dashboard** and **Detailed metrics result**.
