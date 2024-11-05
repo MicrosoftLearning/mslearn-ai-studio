@@ -20,7 +20,7 @@ You start by creating an Azure AI Studio project within an Azure AI hub:
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *A new resource group*
     - **Location**: Select **Help me choose** and then select **gpt-35-turbo** in the Location helper window and use the recommended region\*
-    - **Connect Azure AI Services or Azure OpenAI**: *Create a new connection*
+    - **Connect Azure AI Services or Azure OpenAI**: *A new connection*
     - **Connect Azure AI Search**: Skip connecting
 
     > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions in the location helper include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region. Learn more about [model availability per region](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability)
@@ -33,7 +33,7 @@ You start by creating an Azure AI Studio project within an Azure AI hub:
 To use a language model in prompt flow, you need to deploy a model first. The Azure AI Studio allows you to deploy OpenAI models that you can use in your flows.
 
 1. In the navigation pane on the left, under **Components**, select the **Deployments** page.
-1. Create a new deployment of the **gpt-35-turbo** model with the following settings:
+1. Create a new deployment of the **gpt-35-turbo** model with the following settings by selecting **Customize** in the **Deploy model** wizard:
     - **Deployment name**: *A unique name for your model deployment*
     - **Deployment type**: Standard
     - **Model version**: *Select the default version*
@@ -42,7 +42,7 @@ To use a language model in prompt flow, you need to deploy a model first. The Az
     - **Content filter**: DefaultV2
     - **Enable dynamic quota**: Disabled
 1. Wait for the model to be deployed. When the deployment is ready, select **Open in playground**.
-1. Change the **System message** to the following:
+1. In the **Give the model instructions and context** text box, change the content to the following:
 
    ```
    **Objective**: Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
@@ -129,13 +129,16 @@ When you have created a copilot with a chat flow, you can evaluate the flow by d
 
     - **What do you want to evaluate?**: Dataset
     - **Evaluation name**: *Enter a unique name*
-    - **What kind of scenario are you evaluating?**: Question and answer without context
     - Select **Next**
     - **Select the data you want to evaluate**: Add your dataset
         - Download the https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/main/data/travel-qa.jsonl JSONL file and upload it to the UI.
+    - Select **Next**
     - **Select metrics**: Coherence, Fluency
     - **Connection**: *Your AI Services connection*
     - **Deployment name/Model**: *Your deployed GPT-3.5 model*
+    - **query**: Select **question** as the data source
+    - **response**: Select **answer** as the data source
+      
 1. Select **Next** then review your data and submit the new evaluation.
 1. Wait for the evaluations to be completed, you may need to refresh.
 1. Select the evaluation run you just created.

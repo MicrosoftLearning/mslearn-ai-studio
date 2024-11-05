@@ -39,6 +39,9 @@ You start by creating an Azure AI Studio project within an Azure AI hub:
 As fine-tuning a model takes some time to complete, you'll start the fine-tuning job first. Before you can fine-tune a model, you need a dataset.
 
 1. Save the training dataset as JSONL file locally: https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/main/data/travel-finetune.jsonl
+
+    > **Note**: Your device might default to saving the file as a .txt file. Select all files and remove the .txt suffix to ensure you're saving the file as JSONL.
+
 1. Navigate to the **Fine-tuning** page under the **Tools** section, using the menu on the left.
 1. Select the button to add a new fine-tune model, select the `gpt-35-turbo` model, and select **Confirm**.
 1. **Fine-tune** the model using the following configuration:
@@ -46,10 +49,20 @@ As fine-tuning a model takes some time to complete, you'll start the fine-tuning
     - **Model suffix**: `ft-travel`
     - **Azure OpenAI connection**: *Select the connection that was created when you created your hub*
     - **Training data**: Upload files
+
+    <details>  
+    <summary><b>Troubleshooting tip</b>: Permissions error</summary>
+    <p>If you receive a permissions error when you create a new prompt flow, try the following to troubleshoot:</p>
+    <ul>
+        <li>In the Azure portal, select the AI Services resource.</li>
+        <li>On the IAM page, in the Identity tab, confirm that it is system assigned managed identity.</li>
+        <li>Navigate to the associated Storage Account. On the IAM page, add role assignment <em>Storage blob data reader</em>.</li>
+        <li>Under <strong>Assign access to</strong>, choose <strong>Managed Identity</strong>, <strong>+ Select members</strong>, and select the <strong>All system-assigned managed identities</strong>.</li>
+        <li>Review and assign to save the new settings and retry the previous step.</li>
+    </ul>
+    </details>
+
     - **Upload file**: Select the JSONL file you downloaded in a previous step.
-
-    > **Tip**: You don't have to wait for the data processing to be completed to continue to the next step.
-
     - **Validation data**: None
     - **Task parameters**: *Keep the default settings*
 1. Fine-tuning will start and may take some time to complete.
