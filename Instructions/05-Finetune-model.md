@@ -81,14 +81,14 @@ While you wait for the fine-tuning job to complete, let's chat with a base GPT 3
 1. In the chat window, enter the query `What can you do?` and view the response.
     The answers are very generic. Remember we want to create a chat application that inspires people to travel.
 1. Update the system message with the following prompt:
-    ```
+    ```md
     You are an AI assistant that helps people plan their holidays.
     ```
 1. Select **Save**, then select **Clear chat**, and ask again `What can you do?`
     As a response, the assistant may tell you that it can help you book flights, hotels and rental cars for your trip. You want to avoid this behavior.
 1. Update the system message again with a new prompt:
 
-    ```
+    ```md
     You are an AI travel assistant that helps people plan their trips. Your objective is to offer support for travel-related inquiries, such as visa requirements, weather forecasts, local attractions, and cultural norms.
     You should not provide any hotel, flight, rental car or restaurant recommendations.
     Ask engaging questions to help someone plan their trip and think about what they want to do on their holiday.
@@ -97,11 +97,11 @@ While you wait for the fine-tuning job to complete, let's chat with a base GPT 3
 1. Select **Save**, and **Clear chat**.
 1. Continue testing your chat application to verify it doesn't provide any information that isn't grounded in retrieved data. For example, ask the following questions and explore the model's answers:
    
-     `Where in Rome should I stay?`
+    `Where in Rome should I stay?`
     
     `I'm mostly there for the food. Where should I stay to be within walking distance of affordable restaurants?`
-    
-    `Give me a list of five hotels in Trastevere.`
+
+    `Give me a list of five bed and breakfasts in Trastevere.`
 
     The model may provide you with a list of hotels, even when you instructed it not to give hotel recommendations. This is an example of inconsistent behavior. Let's explore whether the fine-tuned model performs better in these cases.
 
@@ -126,7 +126,7 @@ Now that you deployed your fine-tuned model, you can test the model like you can
 1. When the deployment is ready, navigate to the fine-tuned model and select **Open in playground**.
 1. Update the system message with the following instructions:
 
-    ```
+    ```md
     You are an AI travel assistant that helps people plan their trips. Your objective is to offer support for travel-related inquiries, such as visa requirements, weather forecasts, local attractions, and cultural norms.
     You should not provide any hotel, flight, rental car or restaurant recommendations.
     Ask engaging questions to help someone plan their trip and think about what they want to do on their holiday.
@@ -134,11 +134,11 @@ Now that you deployed your fine-tuned model, you can test the model like you can
 
 1. Test your fine-tuned model to assess whether its behavior is more consistent now. For example, ask the following questions again and explore the model's answers:
    
-     `Where in Rome should I stay?`
+    `Where in Rome should I stay?`
     
     `I'm mostly there for the food. Where should I stay to be within walking distance of affordable restaurants?`
-    
-    `Give me a list of five hotels in Trastevere.`
+
+    `Give me a list of five bed and breakfasts in Trastevere.`
 
 ## Clean up
 
