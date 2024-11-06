@@ -20,7 +20,7 @@ You start by creating an Azure AI Studio project within an Azure AI hub:
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *A new resource group*
     - **Location**: Select **Help me choose** and then select **gpt-35-turbo** in the Location helper window and use the recommended region\*
-    - **Connect Azure AI Services or Azure OpenAI**: *A new connection*
+    - **Connect Azure AI Services or Azure OpenAI**: (New) *Autofills with your selected hub name*
     - **Connect Azure AI Search**: Skip connecting
 
     > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions in the location helper include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region. Learn more about [model availability per region](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability)
@@ -139,7 +139,7 @@ When you have created a copilot with a chat flow, you can evaluate the flow by d
     - **query**: Select **question** as the data source
     - **response**: Select **answer** as the data source
       
-1. Select **Next** then review your data and submit the new evaluation.
+1. Select **Next** then review your data and **Submit** the new evaluation.
 1. Wait for the evaluations to be completed, you may need to refresh.
 1. Select the evaluation run you just created.
 1. Explore the **Metric dashboard** and **Detailed metrics result**.
