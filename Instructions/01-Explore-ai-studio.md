@@ -1,6 +1,6 @@
 ---
 lab:
-    title: 'Explore the components and tools of the Azure AI Studio'
+    title: 'Explore the components and tools of the Azure AI Foundry'
 ---
 
 # Explore the components and tools of the Azure AI Studio
