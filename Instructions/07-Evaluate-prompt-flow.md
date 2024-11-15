@@ -1,17 +1,17 @@
 ---
 lab:
-    title: 'Evaluate the performance of your custom copilot in the Azure AI Studio'
+    title: 'Evaluate the performance of your custom copilot in the Azure AI Foundry'
 ---
 
-# Evaluate the performance of your custom copilot in the Azure AI Studio
+# Evaluate the performance of your custom copilot in the Azure AI Foundry
 
-In this exercise, you'll explore built-in and custom evaluations to assess and compare the performance of your AI applications with the Azure AI Studio.
+In this exercise, you'll explore built-in and custom evaluations to assess and compare the performance of your AI applications with the Azure AI Foundry portal.
 
 This exercise will take approximately **30** minutes.
 
-## Create an AI hub and project in the Azure AI Studio
+## Create an AI hub and project in the Azure AI Foundry
 
-You start by creating an Azure AI Studio project within an Azure AI hub:
+You start by creating an Azure AI Foundry project within an Azure AI hub:
 
 1. In a web browser, open [https://ai.azure.com](https://ai.azure.com) and sign in using your Azure credentials.
 1. Select the **Home** page, then select **+ New project**.
@@ -30,7 +30,7 @@ You start by creating an Azure AI Studio project within an Azure AI hub:
 
 ## Deploy a GPT model
 
-To use a language model in prompt flow, you need to deploy a model first. The Azure AI Studio allows you to deploy OpenAI models that you can use in your flows.
+To use a language model in prompt flow, you need to deploy a model first. The Azure AI Foundry portal allows you to deploy OpenAI models that you can use in your flows.
 
 1. In the navigation pane on the left, under **Components**, select the **Deployments** page.
 1. Create a new deployment of the **gpt-35-turbo** model with the following settings by selecting **Customize** in the **Deploy model** wizard:
@@ -67,7 +67,7 @@ To use a language model in prompt flow, you need to deploy a model first. The Az
 
 Now that you have a deployed model with an updated system message, you can evaluate the model.
 
-## Manually evaluate a language model in the Azure AI Studio
+## Manually evaluate a language model in the Azure AI Foundry portal
 
 You can manually review model responses based on test data. Manually reviewing allows you to test different inputs one at a time to evaluate whether the model performs as expected.
 
@@ -146,7 +146,7 @@ When you have created a copilot with a chat flow, you can evaluate the flow by d
 
 ## Delete Azure resources
 
-When you finish exploring the Azure AI Studio, you should delete the resources you’ve created to avoid unnecessary Azure costs.
+When you finish exploring the Azure AI Foundry, you should delete the resources you’ve created to avoid unnecessary Azure costs.
 
 - Navigate to the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`.
 - In the Azure portal, on the **Home** page, select **Resource groups**.

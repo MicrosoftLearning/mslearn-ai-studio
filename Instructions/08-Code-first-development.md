@@ -5,7 +5,7 @@ lab:
 
 # Build a custom copilot using code-first development tools
 
-In this exercise, you'll clone and deploy an Azure Developer CLI template that provisions and [deploys your AI project to an online endpoint](https://learn.microsoft.com/azure/developer/azure-developer-cli/azure-ai-ml-endpoints?WT.mc_id=academic-140829-cacaste) on Azure AI Studio. You'll then use it as a starting point to build your own custom copilot with Azure AI and a code-first experience.
+In this exercise, you'll clone and deploy an Azure Developer CLI template that provisions and [deploys your AI project to an online endpoint](https://learn.microsoft.com/azure/developer/azure-developer-cli/azure-ai-ml-endpoints?WT.mc_id=academic-140829-cacaste) on Azure AI Foundry. You'll then use it as a starting point to build your own custom copilot with Azure AI and a code-first experience.
 
 This exercise will take approximately **90** minutes.
 
@@ -21,7 +21,7 @@ To complete this exercise, you'll need:
 
 To get started with the Azure Developer CLI AI project template, navigate to the [Azure AI Templates with Azure Developer CLI collection](https://learn.microsoft.com/collections/5pq0uompdgje8d/?WT.mc_id=academic-140829-cacaste). By exploring the collection, you can find several projects grouped by technology and use case, including multi-modal and multi-agent projects samples, copilot-like projects and samples integrating different frameworks and Azure services.
 
-For this exercise, you'll take the **[Contoso Chat Retail copilot with Azure AI Studio & PromptFlow (Python)](https://aka.ms/contoso-retail-sample)** project template as your starting point. This project template is a code-first experience that uses Prompty and PromptFlow to build a custom copilot (chat AI) that can be integrated into the retail  website (chat UI) of a fictional company called Contoso Outdoors.
+For this exercise, you'll take the **[Contoso Chat Retail copilot with Azure AI Foundry & PromptFlow (Python)](https://aka.ms/contoso-retail-sample)** project template as your starting point. This project template is a code-first experience that uses Prompty and PromptFlow to build a custom copilot (chat AI) that can be integrated into the retail  website (chat UI) of a fictional company called Contoso Outdoors.
 
 ![Contoso Chat UI/UX](./media/contoso_outdoors_website.png)
 
@@ -83,7 +83,7 @@ Once you are logged in, you are ready to start provisioning the Azure resources 
 Provisioning and deploying an AI application using azd can take 10 minutes or more to complete. You can track progress by:
 
 - Viewing detailed progress in the [Azure Portal](https://ms.portal.azure.com/). Search for the resource group corresponding to your environment name. Select the **Deployments** option in the sidebar, then monitor the deployment status of the resources being created.
-- Visiting the [Azure AI Studio](https://ai.azure.com) portal. Sign in using your Azure account. Search for the AI hub corresponding to the resource group above (you may need to refresh a few times). Select the listed AI project, then select **Deployments** in its sidebar to track status for models and chat application deployments.
+- Visiting the [Azure AI Foundry portal](https://ai.azure.com) portal. Sign in using your Azure account. Search for the AI hub corresponding to the resource group above (you may need to refresh a few times). Select the listed AI project, then select **Deployments** in its sidebar to track status for models and chat application deployments.
 
 Let's explore how to validate the provisioning of resources using the Azure Portal.
 
@@ -92,13 +92,13 @@ Let's explore how to validate the provisioning of resources using the Azure Port
 
     ![Azure Portal resource group overview](./media/azure-portal-resource-group.png)
 
-1. Let's start by verifying that the key [Azure AI Studio architecture](https://learn.microsoft.com/azure/ai-studio/concepts/architecture) resources were created. The figure below provides more details on what each of these resources provides to our AI application.
+1. Let's start by verifying that the key [Azure AI Foundry architecture](https://learn.microsoft.com/azure/ai-studio/concepts/architecture) resources were created. The figure below provides more details on what each of these resources provides to our AI application.
 
     - **Azure AI hub**: Top-level Azure resource. Provides a collaboration environment for teams.
     - **Azure AI project**: Child of hub. Groups app components for orchestration, customization.
     - **Azure AI services**: Manages your model endpoints.
 
-    ![Azure AI Studio architecture](./media/resource-provider-connected-resources.svg)
+    ![Azure AI Foundry architecture](./media/resource-provider-connected-resources.svg)
 
 1. Next, let's verify that we provisioned two key resources for implementing our [Retrieval Augmented Generation](https://learn.microsoft.com/azure/ai-studio/concepts/retrieval-augmented-generation) design pattern by storing the product and customer data for query-driven retrieval.
 
@@ -115,11 +115,11 @@ Let's explore how to validate the provisioning of resources using the Azure Port
 
 1. Last but not least, you'll notice a new resource with type **Machine learning online deployment**. This is the resource corresponding to our deployed Azure AI project endpoint (for the chat copilot).
 
-## Validate deployment using the Azure AI Studio
+## Validate deployment using the Azure AI Foundry
 
-The Azure Portal helps you manage the underlying Azure resources for your project. The Azure AI Studio portal helps you *build and manage* the AI projects themselves, end-to-end, from model selection to application deployment. The `azd up` command should have completed the entire process from provisioning required models, to deploying and hosting the copilot API endpoint for usage. Let's validate that the application is functioning as expected.
+The Azure Portal helps you manage the underlying Azure resources for your project. The Azure AI Foundry portal helps you *build and manage* the AI projects themselves, end-to-end, from model selection to application deployment. The `azd up` command should have completed the entire process from provisioning required models, to deploying and hosting the copilot API endpoint for usage. Let's validate that the application is functioning as expected.
 
-1. Visit the **Manage** page in the [Azure AI Studio](https://ai.azure.com/manage) to view all Azure AI hubs in your subscription.
+1. Visit the **Manage** page in the [Azure AI Foundry portal](https://ai.azure.com/manage) to view all Azure AI hubs in your subscription.
 1. Select the hub for your resource group to view all Azure AI projects within it.
 1. Select the default AI project in hub, then select **Deployments** in the menu on the left.
 1. Under **Model deployments**, verify that you have an Azure OpenAI Connection including the deployments of:
@@ -131,13 +131,13 @@ The Azure Portal helps you manage the underlying Azure resources for your projec
 
     ![Azure AI Project Deployments](./media/azure-ai-project-deployment.png)
 
-## Test the deployment (in the cloud) using Azure AI Studio
+## Test the deployment (in the cloud) using Azure AI Foundry
 
-To validate that the deployed copilot works, use the built-in test playground capability in the Azure AI Studio.
+To validate that the deployed copilot works, use the built-in test playground capability in the Azure AI Foundry portal.
 
 ![Chat deployment details](./media/chat-deployment-details.png)
 
-1. In the Azure AI Studio, from the **App deployments** list, select the **chat-deployment-xxxx** deployment.
+1. In the Azure AI Foundry portal, from the **App deployments** list, select the **chat-deployment-xxxx** deployment.
 1. On the **Details** page of the deployed chat application, select the **Test** tab to get the test interface.
 
     Note that the **Details** tab also has `Target URI` and `Key` values that you can use with other front-end applications (for example the Contoso Outdoor website) to integrate this chat assistant for real-world user interactions.

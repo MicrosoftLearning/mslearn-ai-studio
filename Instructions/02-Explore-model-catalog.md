@@ -1,13 +1,13 @@
 ---
 lab:
-    title: 'Explore, deploy, and chat with language models in the Azure AI Studio'
+    title: 'Explore, deploy, and chat with language models in the Azure AI Foundry portal'
 ---
 
-# Explore, deploy, and chat with language models in the Azure AI Studio
+# Explore, deploy, and chat with language models in the Azure AI Foundry portal
 
-The Azure AI Studio’s model catalog serves as a central repository where you can explore and use a variety of models, facilitating the creation of your generative AI scenario.
+The Azure AI Foundry portal’s model catalog serves as a central repository where you can explore and use a variety of models, facilitating the creation of your generative AI scenario.
 
-In this exercise, you'll explore the model catalog in Azure AI Studio.
+In this exercise, you'll explore the model catalog in Azure AI Foundry portal.
 
 This exercise will take approximately **25** minutes.
 
@@ -27,21 +27,21 @@ You need an Azure AI hub in your Azure subscription to host projects. You can ei
 
     After the Azure AI hub has been created, it should look similar to the following image:
 
-    ![Screenshot of a Azure AI hub details in Azure AI Studio.](./media/azure-ai-resource.png)
+    ![Screenshot of a Azure AI hub details in Azure AI Foundry portal.](./media/azure-ai-resource.png)
 
-1. Open a new browser tab (leaving the Azure AI Studio tab open) and browse to the Azure portal at [https://portal.azure.com](https://portal.azure.com?azure-portal=true), signing in with your Azure credentials if prompted.
+1. Open a new browser tab (leaving the Azure AI Foundry portal tab open) and browse to the Azure portal at [https://portal.azure.com](https://portal.azure.com?azure-portal=true), signing in with your Azure credentials if prompted.
 1. Browse to the resource group where you created your Azure AI hub, and view the Azure resources that have been created.
 
     ![Screenshot of an Azure AI hub and related resources in the Azure portal.](./media/azure-portal.png)
 
-1. Return to the Azure AI Studio browser tab.
+1. Return to the Azure AI Foundry portal browser tab.
 1. View each of the pages in the pane on the left side of the page for your Azure AI hub, and note the artifacts you can create and manage. On the **Connections** page, observe that connections to Azure OpenAI and AI services have already been created.
 
 ## Create a project
 
 An Azure AI hub provides a collaborative workspace within which you can define one or more *projects*. Let's create a project in your Azure AI hub.
 
-1. In Azure AI Studio, ensure you're in the hub you just created (you can verify your location by checking the path at the top of the screen).
+1. In Azure AI Foundry portal, ensure you're in the hub you just created (you can verify your location by checking the path at the top of the screen).
 1. Navigate to **All projects** using the menu on the left.
 1. Select **+ New project**.
 1. In the **Create a new project** wizard, create a project with the following settings:
@@ -49,7 +49,7 @@ An Azure AI hub provides a collaborative workspace within which you can define o
     - **Project name**: *A unique name for your project*
 1. Wait for your project to be created. When it's ready, it should look similar to the following image:
 
-    ![Screenshot of a project details page in Azure AI Studio.](./media/azure-ai-project.png)
+    ![Screenshot of a project details page in Azure AI Foundry portal.](./media/azure-ai-project.png)
 
 1. View the pages in the pane on the left side, expanding each section, and note the tasks you can perform and the resources you can manage in a project.
 
@@ -61,7 +61,7 @@ Imagine you want to create a custom copilot that serves as a travel assistant. S
 
 Your copilot will need to provide factually accurate information, so groundedness is important. Next to that, you want the copilot's answers to be easy to read and understand. Therefore, you also want to pick a model that is rates high on fluency and coherence.
 
-1. In the Azure AI Studio, navigate to **Model benchmarks** under the **Get started** section, using the menu on the left.
+1. In the Azure AI Foundry portal, navigate to **Model benchmarks** under the **Get started** section, using the menu on the left.
     In the **Quality benchmarks** tab, you can find some charts already visualized for you, comparing different models.
 1. Filter the shown models:
     - **Tasks**: Question answering
@@ -139,7 +139,7 @@ Now that you have explored both models, consider what model you would choose now
 
 ## Clean up
 
-If you've finished exploring Azure AI Studio, you should delete the resources you have created in this exercise to avoid incurring unnecessary Azure costs.
+If you've finished exploring Azure AI Foundry portal, you should delete the resources you have created in this exercise to avoid incurring unnecessary Azure costs.
 
 1. Return to the browser tab containing the Azure portal (or re-open the [Azure portal](https://portal.azure.com?azure-portal=true) in a new browser tab) and view the contents of the resource group where you deployed the resources used in this exercise.
 1. On the toolbar, select **Delete resource group**.

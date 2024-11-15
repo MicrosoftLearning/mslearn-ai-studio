@@ -1,9 +1,9 @@
 ---
 lab:
-    title: 'Use prompt flow for Named Entity Recognition (NER) in the Azure AI Studio'
+    title: 'Use prompt flow for Named Entity Recognition (NER) in the Azure AI Foundry portal'
 ---
 
-# Use prompt flow for Named Entity Recognition (NER) in the Azure AI Studio
+# Use prompt flow for Named Entity Recognition (NER) in the Azure AI Foundry portal
 
 Extracting valuable information from text is known as Named Entity Recognition (NER). Entities are key words that are of interest to you in a given text.
 
@@ -11,15 +11,15 @@ Extracting valuable information from text is known as Named Entity Recognition (
 
 Large Language Models (LLMs) can be used to perform NER. To create an application that takes a text as input and outputs entities, you can create a flow that uses a LLM node with prompt flow.
 
-In this exercise, you'll use Azure AI Studio's prompt flow to create an LLM application that expects an entity type and text as input. It calls a GPT model from Azure OpenAI through a LLM node to extract the required entity from the given text, cleans the result and outputs the extracted entities.
+In this exercise, you'll use Azure AI Foundry portal's prompt flow to create an LLM application that expects an entity type and text as input. It calls a GPT model from Azure OpenAI through a LLM node to extract the required entity from the given text, cleans the result and outputs the extracted entities.
 
 ![Exercise overview](./media/get-started-lab.png)
 
-You first need to create a project in the Azure AI Studio to create the necessary Azure resources. Then, you can deploy a GPT model with the Azure OpenAI service. Once you have the necessary resources, you can create the flow. Finally you'll run the flow to test it and view the sample output.
+You first need to create a project in the Azure AI Foundry portal to create the necessary Azure resources. Then, you can deploy a GPT model with the Azure OpenAI service. Once you have the necessary resources, you can create the flow. Finally you'll run the flow to test it and view the sample output.
 
-## Create a project in the Azure AI Studio
+## Create a project in the Azure AI Foundry portal
 
-You start by creating an Azure AI Studio project and an Azure AI Hub to support it.
+You start by creating an Azure AI Foundry portal project and an Azure AI Hub to support it.
 
 1. In a web browser, open [https://ai.azure.com](https://ai.azure.com) and sign in using your Azure credentials.
 1. Select the **Home** page, then select **+ New project**.
@@ -40,7 +40,7 @@ You start by creating an Azure AI Studio project and an Azure AI Hub to support 
 
 ## Deploy a GPT model
 
-To use a LLM model in prompt flow, you need to deploy a model first. The Azure AI Studio allows you to deploy OpenAI models that you can use in your flows.
+To use a LLM model in prompt flow, you need to deploy a model first. The Azure AI Foundry portal allows you to deploy OpenAI models that you can use in your flows.
 
 1. In the navigation pane on the left, under **Components**, select the **Deployments** page.
 1. Create a new deployment of the **gpt-35-turbo** model with the following settings:
@@ -52,9 +52,9 @@ To use a LLM model in prompt flow, you need to deploy a model first. The Azure A
     - **Content filter**: DefaultV2
     - **Enable dynamic quota**: Disabled
    
-Now that you have your LLM model deployed, you can create a flow in Azure AI Studio that calls the deployed model.
+Now that you have your language model deployed, you can create a flow in Azure AI Foundry portal that calls the deployed model.
 
-## Create and run a flow in the Azure AI Studio
+## Create and run a flow in the Azure AI Foundry portal
 
 Now that you have all necessary resources provisioned, you can create a flow.
 
@@ -180,7 +180,7 @@ Now that you've developed the flow, you can run it to test it. Since you've adde
 
 ## Delete Azure resources
 
-When you finish exploring the Azure AI Studio, you should delete the resources you’ve created to avoid unnecessary Azure costs.
+When you finish exploring the Azure AI Foundry portal, you should delete the resources you’ve created to avoid unnecessary Azure costs.
 
 - Navigate to the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`.
 - In the Azure portal, on the **Home** page, select **Resource groups**.

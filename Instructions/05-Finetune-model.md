@@ -1,21 +1,21 @@
 ---
 lab:
-    title: 'Fine-tune a language model for chat completion in the Azure AI Studio'
+    title: 'Fine-tune a language model for chat completion in the Azure AI Foundry'
 ---
 
-# Fine-tune a language model for chat completion in the Azure AI Studio
+# Fine-tune a language model for chat completion in the Azure AI Foundry
 
 When you want a language model to behave a certain way, you can use prompt engineering to define the desired behavior. When you want to improve the consistency of the desired behavior, you can opt to fine-tune a model, comparing it to your prompt engineering approach to evaluate which method best fits your needs.
 
-In this exercise, you'll fine-tune a language model with the Azure AI Studio that you want to use for a custom chat application scenario. You'll compare the fine-tuned model with a base model to assess whether the fine-tuned model fits your needs better.
+In this exercise, you'll fine-tune a language model with the Azure AI Foundry that you want to use for a custom chat application scenario. You'll compare the fine-tuned model with a base model to assess whether the fine-tuned model fits your needs better.
 
 Imagine you work for a travel agency and you're developing a chat application to help people plan their vacations. The goal is to create a simple and inspiring chat that suggests destinations and activities. Since the chat isn't connected to any data sources, it should **not** provide specific recommendations for hotels, flights, or restaurants to ensure trust with your customers.
 
 This exercise will take approximately **60** minutes.
 
-## Create an AI hub and project in the Azure AI Studio
+## Create an AI hub and project in the Azure AI Foundry portal
 
-You start by creating an Azure AI Studio project within an Azure AI hub:
+You start by creating an Azure AI Foundry portal project within an Azure AI hub:
 
 1. In a web browser, open [https://ai.azure.com](https://ai.azure.com) and sign in using your Azure credentials.
 1. Select the **Home** page, then select **+ New project**.
@@ -142,7 +142,7 @@ Now that you deployed your fine-tuned model, you can test the model like you can
 
 ## Clean up
 
-If you've finished exploring Azure AI Studio, you should delete the resources you’ve created to avoid unnecessary Azure costs.
+If you've finished exploring Azure AI Foundry, you should delete the resources you’ve created to avoid unnecessary Azure costs.
 
 - Navigate to the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`.
 - In the Azure portal, on the **Home** page, select **Resource groups**.
