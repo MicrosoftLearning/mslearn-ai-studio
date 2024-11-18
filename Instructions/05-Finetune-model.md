@@ -41,11 +41,11 @@ As fine-tuning a model takes some time to complete, you'll start the fine-tuning
     > **Note**: Your device might default to saving the file as a .txt file. Select all files and remove the .txt suffix to ensure you're saving the file as JSONL.
 
 1. Navigate to the **Fine-tuning** page under the **Build and customize** section, using the menu on the left.
-1. Select the button to add a new fine-tune model, select the `gpt-35-turbo` model, and select **Confirm**.
+1. Select the button to add a new fine-tune model, select the `gpt-35-turbo` model, select **Next** and then **Confirm**.
 1. **Fine-tune** the model using the following configuration:
     - **Model version**: *Select the default version*
     - **Model suffix**: `ft-travel`
-    - **Connected AI resource**: *Select the connection that was created when you created your hub*
+    - **Connected AI resource**: *Select the connection that was created when you created your hub. Should be selected by default.*
     - **Training data**: Upload files
 
     <details>  
