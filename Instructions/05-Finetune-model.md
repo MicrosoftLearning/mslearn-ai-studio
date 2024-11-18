@@ -50,7 +50,7 @@ As fine-tuning a model takes some time to complete, you'll start the fine-tuning
 
     <details>  
     <summary><b>Troubleshooting tip</b>: Permissions error</summary>
-    <p>If you receive a permissions error when you create a new prompt flow, try the following to troubleshoot:</p>
+    <p>If you receive a permissions error, try the following to troubleshoot:</p>
     <ul>
         <li>In the Azure portal, select the AI Services resource.</li>
         <li>On the IAM page, in the Identity tab, confirm that it is system assigned managed identity.</li>
