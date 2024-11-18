@@ -115,6 +115,10 @@ You can manually review model responses based on test data. Manually reviewing a
 
 When you have created a chat application with prompt flow, you can evaluate the flow by doing a batch run and assessing the performance of the flow with built-in metrics.
 
+![Diagram of construction of input dataset for evaluation.](./media/diagram-dataset-evaluation.png)
+
+To evaluate a chat flow, the user queries, and chat responses are provided as input for an evaluation.
+
 To save time, we have created a batch output dataset for you that contains the results of multiple inputs being processed by a prompt flow. Each of the results are stored in the dataset you'll evaluate in the next step.
 
 1. Select the **Automated evaluations** tab and create a **New evaluation** with the following settings:
