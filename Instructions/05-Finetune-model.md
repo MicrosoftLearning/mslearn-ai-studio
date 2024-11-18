@@ -140,7 +140,7 @@ Now that you deployed your fine-tuned model, you can test the model like you can
 
 ## Clean up
 
-If you've finished exploring Azure AI Foundry, you should delete the resources you’ve created to avoid unnecessary Azure costs.
+If you've finished exploring Azure AI Foundry, you should delete the resources you've created to avoid unnecessary Azure costs.
 
 - Navigate to the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`.
 - In the Azure portal, on the **Home** page, select **Resource groups**.
