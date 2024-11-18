@@ -32,7 +32,8 @@ You start by creating an Azure AI Foundry project within an Azure AI hub:
 
 To use a language model in prompt flow, you need to deploy a model first. The Azure AI Foundry portal allows you to deploy OpenAI models that you can use in your flows.
 
-1. In the navigation pane on the left, under **Components**, select the **Deployments** page.
+1. Navigate to the **Models + endpoints** page under the **My assets** section, using the menu on the left.
+1. Select the **+ Deploy model** button, and select the **Deploy base model** option.
 1. Create a new deployment of the **gpt-35-turbo** model with the following settings by selecting **Customize** in the **Deploy model** wizard:
     - **Deployment name**: *A unique name for your model deployment*
     - **Deployment type**: Standard
@@ -62,8 +63,8 @@ To use a language model in prompt flow, you need to deploy a model first. The Az
    5. Encourage the user to ask follow-up questions for further assistance.
    ```
 
-1. Select **Save**.
-1. In the chat window, enter the query: `What can you do?` to verify that the language model is behaving as expected.
+1. Select **Apply changes**.
+1. In the chat (history) window, enter the query: `What can you do?` to verify that the language model is behaving as expected.
 
 Now that you have a deployed model with an updated system message, you can evaluate the model.
 
@@ -112,7 +113,9 @@ You can manually review model responses based on test data. Manually reviewing a
 
 ## Evaluate your copilot with the built-in metrics
 
-When you have created a copilot with a chat flow, you can evaluate the flow by doing a batch run and assessing the performance of the flow with built-in metrics.
+When you have created a chat application with prompt flow, you can evaluate the flow by doing a batch run and assessing the performance of the flow with built-in metrics.
+
+To save time, we have created a batch output dataset for you that contains the results of multiple inputs being processed by a prompt flow. Each of the results are stored in the dataset you'll evaluate in the next step.
 
 1. Select the **Automated evaluations** tab and create a **New evaluation** with the following settings:
     <details>  
