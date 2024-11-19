@@ -22,28 +22,30 @@ You first need to create a project in the Azure AI Foundry portal to create the 
 You start by creating an Azure AI Foundry portal project and an Azure AI Hub to support it.
 
 1. In a web browser, open [https://ai.azure.com](https://ai.azure.com) and sign in using your Azure credentials.
-1. Select the **Home** page, then select **+ New project**.
-1. In the **Create a new project** wizard, create a project with the following settings:
+1. In the home page, select **+ Create project**.
+1. In the **Create a project** wizard you can see all the Azure resources that will be automatically created with your project, or you can customize the following settings by selecting **Customize** before selecting **Create**:
+
     - **Project name**: *A unique name for your project*
     - **Hub**: *Create a new hub with the following settings:*
     - **Hub name**: *A unique name*
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *A new resource group*
     - **Location**: Select **Help me choose** and then select **gpt-35-turbo** in the Location helper window and use the recommended region\*
-    - **Connect Azure AI Services or Azure OpenAI**: *Create a new connection*
+    - **Connect Azure AI Services or Azure OpenAI**: (New) *Autofills with your selected hub name*
     - **Connect Azure AI Search**: Skip connecting
 
     > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions in the location helper include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region. Learn more about [model availability per region](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability)
 
-1. Review your configuration and create your project.
-1. Wait for your project to be created.
+1. If you selected **Customize**, select **Next** and review your configuration.
+1. Select **Create** and wait for the process to complete.
 
 ## Deploy a GPT model
 
 To use a LLM model in prompt flow, you need to deploy a model first. The Azure AI Foundry portal allows you to deploy OpenAI models that you can use in your flows.
 
-1. In the navigation pane on the left, under **Components**, select the **Deployments** page.
-1. Create a new deployment of the **gpt-35-turbo** model with the following settings:
+1. In the navigation pane on the left, under **My assets**, select the **Models + endpoints** page.
+1. Create a new deployment of the **gpt-35-turbo** model with the following settings by selecting **Customize** in the deployment details:
+   
     - **Deployment name**: *A unique name for your model deployment*
     - **Deployment type**: Standard
     - **Model version**: *Select the default version*
@@ -62,7 +64,7 @@ Now that you have all necessary resources provisioned, you can create a flow.
 
 To create a new flow with a template, you can select one of the types of flows you want to develop.
 
-1. In the navigation pane on the left, under **Tools**, select **Prompt flow**.
+1. In the navigation pane on the left, under **Build and customize**, select **Prompt flow**.
 1. Select **+ Create** to create a new flow.
 1. Create a new **Standard flow** and enter `entity-recognition` as folder name.
 
@@ -71,7 +73,7 @@ To create a new flow with a template, you can select one of the types of flows y
     <p>If you receive a permissions error when you create a new prompt flow, try the following to troubleshoot:</p>
     <ul>
         <li>In the Azure portal, select the AI Services resource.</li>
-        <li>On the IAM page, in the Identity tab, confirm that it is system assigned managed identity.</li>
+        <li>Under Resource Management, in the Identity tab, confirm that it is system assigned managed identity.</li>
         <li>Navigate to the associated Storage Account. On the IAM page, add role assignment <em>Storage blob data reader</em>.</li>
         <li>Under <strong>Assign access to</strong>, choose <strong>Managed Identity</strong>, <strong>+ Select members</strong>, and select the <strong>All system-assigned managed identities</strong>.</li>
         <li>Review and assign to save the new settings and retry the previous step.</li>
@@ -108,12 +110,11 @@ The standard flow already includes a node that uses the LLM tool. You can find t
 
 1. Navigate to the **LLM node** named `joke`.
 1. Replace the name with `NER_LLM`
-1. For **Connection**, select the `Default_AzureOpenAI` connection.
+1. For **Connection**, select the connection that was created for you when you created the AI hub.
 1. For **deployment_name**, select the `gpt-35-turbo` model you deployed.
 1. Replace the prompt field with the following code:
 
    ```yml
-   {% raw %}
    system:
 
    Your task is to find entities of a certain type from the given text content.
@@ -126,7 +127,6 @@ The standard flow already includes a node that uses the LLM tool. You can find t
    Entity type: {{entity_type}}
    Text content: {{text}}
    Entities:
-   {% endraw %}
    ```
 
 1. Select **Validate and parse input**.
