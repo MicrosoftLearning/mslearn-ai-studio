@@ -1,11 +1,11 @@
 ---
 lab:
-    title: 'Explore, deploy, and chat with language models in the Azure AI Foundry portal'
+    title: 'Explore, deploy, and chat with language models in the Azure AI Foundry'
 ---
 
-# Explore, deploy, and chat with language models in the Azure AI Foundry portal
+# Explore, deploy, and chat with language models in the Azure AI Foundry
 
-The Azure AI Foundry portal’s model catalog serves as a central repository where you can explore and use a variety of models, facilitating the creation of your generative AI scenario.
+The Azure AI Foundry model catalog serves as a central repository where you can explore and use a variety of models, facilitating the creation of your generative AI scenario.
 
 In this exercise, you'll explore the model catalog in Azure AI Foundry portal.
 
