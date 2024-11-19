@@ -138,7 +138,7 @@ To save time, we have created a batch output dataset for you that contains the r
     - **Evaluation name**: *Enter a unique name*
     - Select **Next**
     - **Select the data you want to evaluate**: Add your dataset
-        - Download the https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/main/data/travel-qa.jsonl JSONL file and upload it to the UI.
+        - Download the [validation dataset](https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/main/data/travel-qa.jsonl) at `https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/main/data/travel-qa.jsonl`, save it as a JSONL file and upload it to the UI.
     - Select **Next**
     - **Select metrics**: Coherence, Fluency
     - **Connection**: *Your AI Services connection*
