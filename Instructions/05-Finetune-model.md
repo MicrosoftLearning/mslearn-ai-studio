@@ -81,9 +81,11 @@ While you wait for the fine-tuning job to complete, let's chat with a base GPT 3
 1. In the chat window, enter the query `What can you do?` and view the response.
     The answers are very generic. Remember we want to create a chat application that inspires people to travel.
 1. Update the system message in the setup pane with the following prompt:
+
     ```md
     You are an AI assistant that helps people plan their holidays.
     ```
+
 1. Select **Apply changes**, then select **Clear chat**, and ask again `What can you do?`
     As a response, the assistant may tell you that it can help you book flights, hotels and rental cars for your trip. You want to avoid this behavior.
 1. Update the system message again with a new prompt:
