@@ -7,7 +7,7 @@ lab:
 
 Retrieval Augmented Generation (RAG) is a technique used to build applications that integrate data from custom data sources into a prompt for a generative AI model. RAG is a commonly used pattern for developing custom *copilots* - chat-based applications that use a language model to interpret inputs and generate appropriate responses.
 
-In this exercise, you'll use Azure AI Studio to integrate custom data into a generative AI prompt flow.
+In this exercise, you'll use Azure AI Foundry portal to integrate custom data into a generative AI prompt flow.
 
 This exercise takes approximately **45** minutes.
 
@@ -39,23 +39,22 @@ Your copilot solution will integrate custom data into a prompt flow. To support 
 
 ## Create an Azure AI project
 
-Now you're ready to create an Azure AI Studio project and the Azure AI resources to support it.
+Now you're ready to create an Azure AI Foundry project and the Azure AI resources to support it.
 
-1. In a web browser, open [Azure AI Studio](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials.
-1. On the Azure AI Studio **Home** page, select **+ New project**.
-1. In the **Create a project** wizard, give your project a unique name then select **Customize** and create a project with the following settings:
+1. In a web browser, open [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials.
+1. In the home page, select **+ Create project**.
+1. In the **Create a project** wizard you can see all the Azure resources that will be automatically created with your project. Select **Customize** and connect to your Azure AI Search resource:
 
-    - **Create a hub**: *Create a new resource with the following settings:*
+    - **Hub name**: *A unique name*
+    - **Azure Subscription**: *Your Azure subscription*
+    - **Resource group**: *Select the resource group containing your Azure AI Search resource*
+    - **Location**: *The same location as your Azure AI Search resource*
+    - **Connect Azure AI Services or Azure OpenAI**: (New) *Autofills with your selected hub name*
+    - **Connect Azure AI Search**: *Select your Azure AI Search resource*
 
-        - **Hub name**: *A unique name*
-        - **Azure Subscription**: *Your Azure subscription*
-        - **Resource group**: *Select the resource group containing your Azure AI Search resource*
-        - **Location**: *The same location as your Azure AI Search resource*
-        - **Connect Azure AI Services or Azure OpenAI**: (New) *Autofills with your selected hub name*
-        - **Connect Azure AI Search**: *Select your Azure AI Search resource*
-
-1. Wait for your project to be created.
-
+1. Select **Next** and review your configuration.
+1. Select **Create** and wait for the process to complete.
+   
 ## Deploy models
 
 You need two models to implement your solution:
@@ -63,8 +62,8 @@ You need two models to implement your solution:
 - An *embedding* model to vectorize text data for efficient indexing and processing.
 - A model that can generate natural language responses to questions based on your data.
 
-1. In the Azure AI Studio, in your project, in the navigation pane on the left, under **Components**, select the **Deployments** page.
-1. Create a new deployment of the **text-embedding-ada-002** model with the following settings by selecting **Customize** in the Deploy model wizard::
+1. In the Azure AI Foundry portal, in your project, in the navigation pane on the left, under **My assets**, select the **Models + endpoints** page.
+1. Create a new deployment of the **text-embedding-ada-002** model with the following settings by selecting **Customize** in the Deploy model wizard:
 
     - **Deployment name**: `text-embedding-ada-002`
     - **Deployment type**: Standard
@@ -83,21 +82,21 @@ You need two models to implement your solution:
 The data for your copilot consists of a set of travel brochures in PDF format from the fictitious travel agency *Margie's Travel*. Let's add them to the project.
 
 1. Download the [zipped archive of brochures](https://github.com/MicrosoftLearning/mslearn-ai-studio/raw/main/data/brochures.zip) from `https://github.com/MicrosoftLearning/mslearn-ai-studio/raw/main/data/brochures.zip` and extract it to a folder named **brochures** on your local file system.
-1. In Azure AI Studio, in your project, in the navigation pane on the left, under **Components**, select the **Data** page.
+1. In Azure AI Foundry portal, in your project, in the navigation pane on the left, under **My assets**, select the **Data + indexes** page.
 1. Select **+ New data**.
 1. In the **Add your data** wizard, expand the drop-down menu to select **Upload files/folders**.
 1. Select **Upload folder** and select the **brochures** folder.
-1. Set the data name to `brochures`.
+1. Select **Next** and set the data name to `brochures`.
 1. Wait for the folder to be uploaded and note that it contains several .pdf files.
 
 ## Create an index for your data
 
 Now that you've added a data source to your project, you can use it to create an index in your Azure AI Search resource.
 
-1. In Azure AI Studio, in your project, in the navigation pane on the left, under **Components**, select the **Indexes** page.
-1. Add  a new index with the following settings:
+1. In Azure AI Foundry portal, in your project, in the navigation pane on the left, under **My assets**, select the **Data + indexes** page.
+1. In the **Indexes** tab, add a new index with the following settings:
     - **Source location**:
-        - **Data source**: Data in Azure AI Studio
+        - **Data source**: Data in Azure AI Foundry portal
             - *Select the **brochures** data source*
     - **Index configuration**:
         - **Select Azure AI Search service**: *Select the **AzureAISearch** connection to your Azure AI Search resource*
@@ -117,10 +116,10 @@ Now that you've added a data source to your project, you can use it to create an
 
 Before using your index in a RAG-based prompt flow, let's verify that it can be used to affect generative AI responses.
 
-1. In the navigation pane on the left, under **Project playground**, select the **Chat** page.
+1. In the navigation pane on the left, select the **Playgrounds** page.
 1. On the Chat page, in the Setup pane, ensure that your **gpt-35-turbo-16k** model deployment is selected. Then, in the main chat session panel, submit the prompt `Where can I stay in New York?`
 1. Review the response, which should be a generic answer from the model without any data from the index.
-1. In the Setup pane, select the **Add your data** tab, and then add the **brochures-index** project index and select the **hybrid (vector + keyword)** search type.
+1. In the Setup pane, expand the **Add your data** field, and then add the **brochures-index** project index and select the **hybrid (vector + keyword)** search type.
 
    > **Note**: Some users are finding newly created indexes unavailable right away. Refreshing the browser usually helps, but if you're still experiencing the issue where it can't find the index you may need to wait until the index is recognized.
 
@@ -129,9 +128,9 @@ Before using your index in a RAG-based prompt flow, let's verify that it can be 
 
 ## Use the index in a prompt flow
 
-Your vector index has been saved in your Azure AI Studio project, enabling you to use it easily in a prompt flow.
+Your vector index has been saved in your Azure AI Foundry project, enabling you to use it easily in a prompt flow.
 
-1. In Azure AI Studio, in your project, in the navigation pane on the left, under **Tools**, select the **Prompt flow** page.
+1. In Azure AI Foundry portal, in your project, in the navigation pane on the left, under **Build and customize**, select the **Prompt flow** page.
 1. Create a new prompt flow by cloning the **Multi-Round Q&A on Your Data** sample in the gallery. Save your clone of this sample in a folder named `brochure-flow`.
     <details>  
       <summary><b>Troubleshooting tip</b>: Permissions error</summary>
@@ -233,7 +232,7 @@ Now that you have a working flow that uses your indexed data, you can deploy it 
         - **Inferencing data collection**: Selected
     - **Advanced settings**:
         - *Use the default settings*
-1. In Azure AI Studio, in your project, in the navigation pane on the left, under **Components**, select the **Deployments** page.
+1. In Azure AI Foundry portal, in your project, in the navigation pane on the left, under **My assets**, select the **Models + endpoints** page.
 1. Keep refreshing the view until the **brochure-endpoint-1** deployment is shown as having *succeeded* under the **brochure-endpoint** endpoint (this may take a significant period of time).
 1. When the deployment has succeeded, select it. Then, on its **Test** page, enter the prompt `What is there to do in San Francisco?` and review the response.
 1. Enter the prompt `Where else could I go?` and review the response.
@@ -241,9 +240,9 @@ Now that you have a working flow that uses your indexed data, you can deploy it 
 
 ## Challenge 
 
-Now you've experienced how to integrate your own data in a copilot built with the Azure AI Studio, let's explore further!
+Now you've experienced how to integrate your own data in a copilot built with the Azure AI Foundry portal, let's explore further!
 
-Try adding a new data source through the Azure AI Studio, index it, and integrate the indexed data in a prompt flow. Some data sets you could try are:
+Try adding a new data source through the Azure AI Foundry portal, index it, and integrate the indexed data in a prompt flow. Some data sets you could try are:
 
 - A collection of (research) articles you have on your computer.
 - A set of presentations from past conferences.
@@ -255,4 +254,4 @@ Be as resourceful as you can to create your data source and integrate it in your
 
 To avoid unnecessary Azure costs and resource utilization, you should remove the resources you deployed in this exercise.
 
-1. If you've finished exploring Azure AI Studio, return to the [Azure portal](https://portal.azure.com) at `https://portal.azure.com` and sign in using your Azure credentials if necessary. Then delete the resources in the resource group where you provisioned your Azure AI Search and Azure AI resources.
+1. If you've finished exploring Azure AI Foundry, return to the [Azure portal](https://portal.azure.com) at `https://portal.azure.com` and sign in using your Azure credentials if necessary. Then delete the resources in the resource group where you provisioned your Azure AI Search and Azure AI resources.

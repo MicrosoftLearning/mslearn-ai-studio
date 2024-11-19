@@ -1,33 +1,31 @@
 ---
 lab:
-    title: 'Fine-tune a language model for chat completion in the Azure AI Studio'
+    title: 'Fine-tune a language model for chat completion in the Azure AI Foundry'
 ---
 
-# Fine-tune a language model for chat completion in the Azure AI Studio
+# Fine-tune a language model for chat completion in the Azure AI Foundry
 
 When you want a language model to behave a certain way, you can use prompt engineering to define the desired behavior. When you want to improve the consistency of the desired behavior, you can opt to fine-tune a model, comparing it to your prompt engineering approach to evaluate which method best fits your needs.
 
-In this exercise, you'll fine-tune a language model with the Azure AI Studio that you want to use for a custom chat application scenario. You'll compare the fine-tuned model with a base model to assess whether the fine-tuned model fits your needs better.
+In this exercise, you'll fine-tune a language model with the Azure AI Foundry that you want to use for a custom chat application scenario. You'll compare the fine-tuned model with a base model to assess whether the fine-tuned model fits your needs better.
 
 Imagine you work for a travel agency and you're developing a chat application to help people plan their vacations. The goal is to create a simple and inspiring chat that suggests destinations and activities. Since the chat isn't connected to any data sources, it should **not** provide specific recommendations for hotels, flights, or restaurants to ensure trust with your customers.
 
 This exercise will take approximately **60** minutes.
 
-## Create an AI hub and project in the Azure AI Studio
+## Create an AI hub and project in the Azure AI Foundry portal
 
-You start by creating an Azure AI Studio project within an Azure AI hub:
+You start by creating an Azure AI Foundry portal project within an Azure AI hub:
 
 1. In a web browser, open [https://ai.azure.com](https://ai.azure.com) and sign in using your Azure credentials.
-1. Select the **Home** page, then select **+ New project**.
+1. From the home page, select **+ Create project**.
 1. In the **Create a new project** wizard, create a project with the following settings:
     - **Project name**: *A unique name for your project*
-    - **Hub**: *Create a new hub with the following settings:*
-    - **Hub name**: *A unique name*
-    - **Subscription**: *Your Azure subscription*
-    - **Resource group**: *A new resource group*
-    - **Location**: Choose one of the following regions **East US2**, **North Central US**, **Sweden Central**, **Switzerland West**\*
-    - **Connect Azure AI Services or Azure OpenAI**: (New) *Autofills with your selected hub name*
-    - **Connect Azure AI Search**: Skip connecting
+    - **Hub**: *Create a new hub with a unique name. Once you confirm the hub name, select **Customize***
+        - **Resource group**: (New) *Autofills with your project name*
+        - **Location**: Choose one of the following regions **East US2**, **North Central US**, **Sweden Central**, **Switzerland West**\*
+        - **Connect Azure AI Services or Azure OpenAI**: (New) *Autofills with your selected hub name*
+        - **Connect Azure AI Search**: Skip connecting
 
     > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions in the location helper include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region. Learn more about [Fine-tuning model regions](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=python-secure%2Cglobal-standard%2Cstandard-chat-completions#fine-tuning-models)
 
@@ -42,17 +40,17 @@ As fine-tuning a model takes some time to complete, you'll start the fine-tuning
 
     > **Note**: Your device might default to saving the file as a .txt file. Select all files and remove the .txt suffix to ensure you're saving the file as JSONL.
 
-1. Navigate to the **Fine-tuning** page under the **Tools** section, using the menu on the left.
-1. Select the button to add a new fine-tune model, select the `gpt-35-turbo` model, and select **Confirm**.
+1. Navigate to the **Fine-tuning** page under the **Build and customize** section, using the menu on the left.
+1. Select the button to add a new fine-tune model, select the `gpt-35-turbo` model, select **Next** and then **Confirm**.
 1. **Fine-tune** the model using the following configuration:
     - **Model version**: *Select the default version*
     - **Model suffix**: `ft-travel`
-    - **Azure OpenAI connection**: *Select the connection that was created when you created your hub*
+    - **Connected AI resource**: *Select the connection that was created when you created your hub. Should be selected by default.*
     - **Training data**: Upload files
 
     <details>  
     <summary><b>Troubleshooting tip</b>: Permissions error</summary>
-    <p>If you receive a permissions error when you create a new prompt flow, try the following to troubleshoot:</p>
+    <p>If you receive a permissions error, try the following to troubleshoot:</p>
     <ul>
         <li>In the Azure portal, select the AI Services resource.</li>
         <li>On the IAM page, in the Identity tab, confirm that it is system assigned managed identity.</li>
@@ -73,18 +71,18 @@ As fine-tuning a model takes some time to complete, you'll start the fine-tuning
 
 While you wait for the fine-tuning job to complete, let's chat with a base GPT 3.5 model to assess how it performs.
 
-1. Navigate to the **Deployments** page under the **Components** section, using the menu on the left.
+1. Navigate to the **Models + endpoints** page under the **My assets** section, using the menu on the left.
 1. Select the **+ Deploy model** button, and select the **Deploy base model** option.
 1. Deploy a `gpt-35-turbo` model, which is the same type of model you used when fine-tuning.
-1. When deployment is completed, navigate to the **Chat** page under the **Project playground** section.
-1. Select your deployed `gpt-35-model` base model in the setup deployment.
+1. When deployment is completed, select the **Open in playground** button.
+1. Verify your deployed `gpt-35-model` base model is selected in setup pane.
 1. In the chat window, enter the query `What can you do?` and view the response.
     The answers are very generic. Remember we want to create a chat application that inspires people to travel.
-1. Update the system message with the following prompt:
+1. Update the system message in the setup pane with the following prompt:
     ```md
     You are an AI assistant that helps people plan their holidays.
     ```
-1. Select **Save**, then select **Clear chat**, and ask again `What can you do?`
+1. Select **Apply changes**, then select **Clear chat**, and ask again `What can you do?`
     As a response, the assistant may tell you that it can help you book flights, hotels and rental cars for your trip. You want to avoid this behavior.
 1. Update the system message again with a new prompt:
 
@@ -94,7 +92,7 @@ While you wait for the fine-tuning job to complete, let's chat with a base GPT 3
     Ask engaging questions to help someone plan their trip and think about what they want to do on their holiday.
     ```
 
-1. Select **Save**, and **Clear chat**.
+1. Select **Apply changes**, and **Clear chat**.
 1. Continue testing your chat application to verify it doesn't provide any information that isn't grounded in retrieved data. For example, ask the following questions and explore the model's answers:
    
     `Where in Rome should I stay?`
@@ -105,7 +103,7 @@ While you wait for the fine-tuning job to complete, let's chat with a base GPT 3
 
     The model may provide you with a list of hotels, even when you instructed it not to give hotel recommendations. This is an example of inconsistent behavior. Let's explore whether the fine-tuned model performs better in these cases.
 
-1. Navigate to the **Fine-tuning** page under **Tools** to find your fine-tuning job and its status. If it's still running, you can opt to continue manually evaluating your deployed base model. If it's completed, you can continue with the next section.
+1. Navigate to the **Fine-tuning** page under **Build and customize** to find your fine-tuning job and its status. If it's still running, you can opt to continue manually evaluating your deployed base model. If it's completed, you can continue with the next section.
 
 ## Deploy the fine-tuned model
 
@@ -142,7 +140,7 @@ Now that you deployed your fine-tuned model, you can test the model like you can
 
 ## Clean up
 
-If you've finished exploring Azure AI Studio, you should delete the resources you’ve created to avoid unnecessary Azure costs.
+If you've finished exploring Azure AI Foundry, you should delete the resources you've created to avoid unnecessary Azure costs.
 
 - Navigate to the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`.
 - In the Azure portal, on the **Home** page, select **Resource groups**.
