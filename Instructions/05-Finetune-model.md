@@ -21,7 +21,9 @@ You start by creating an Azure AI Foundry portal project within an Azure AI hub:
 1. From the home page, select **+ Create project**.
 1. In the **Create a new project** wizard, create a project with the following settings:
     - **Project name**: *A unique name for your project*
-    - **Hub**: *Create a new hub with a unique name. Once you confirm the hub name, select **Customize***
+    - Select **Customize**
+        - **Hub**: *Autofills with default name*
+        - **Subscription**: *Autofills with your signed in account*
         - **Resource group**: (New) *Autofills with your project name*
         - **Location**: Choose one of the following regions **East US2**, **North Central US**, **Sweden Central**, **Switzerland West**\*
         - **Connect Azure AI Services or Azure OpenAI**: (New) *Autofills with your selected hub name*
@@ -36,7 +38,7 @@ You start by creating an Azure AI Foundry portal project within an Azure AI hub:
 
 As fine-tuning a model takes some time to complete, you'll start the fine-tuning job first. Before you can fine-tune a model, you need a dataset.
 
-1. Save the training dataset as JSONL file locally: [https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/main/data/travel-finetune.jsonl](https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel-finetune-hotel.jsonl)
+1. Download the [training dataset](https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel-finetune-hotel.jsonl) at `https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel-finetune-hotel.jsonl`and save it as a JSONL file locally.
 
     > **Note**: Your device might default to saving the file as a .txt file. Select all files and remove the .txt suffix to ensure you're saving the file as JSONL.
 
