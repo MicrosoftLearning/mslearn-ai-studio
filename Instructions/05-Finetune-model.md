@@ -123,7 +123,7 @@ When fine-tuning has successfully completed, you can deploy the fine-tuned model
 
 ## Test the fine-tuned model
 
-Now that you deployed your fine-tuned model, you can test the model like you can tested the your deployed base model.
+Now that you deployed your fine-tuned model, you can test it like you tested your deployed base model.
 
 1. When the deployment is ready, navigate to the fine-tuned model and select **Open in playground**.
 1. Update the system message with the following instructions:
