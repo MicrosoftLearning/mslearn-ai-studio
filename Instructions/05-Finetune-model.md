@@ -76,6 +76,9 @@ While you wait for the fine-tuning job to complete, let's chat with a base GPT 3
 1. Navigate to the **Models + endpoints** page under the **My assets** section, using the menu on the left.
 1. Select the **+ Deploy model** button, and select the **Deploy base model** option.
 1. Deploy a `gpt-35-turbo` model, which is the same type of model you used when fine-tuning.
+
+> **Note**: If your current AI resource location doesn't have quota available for the model you want to deploy, you will be asked to choose a different location where a new AI resource will be created and connected to your project.
+
 1. When deployment is completed, select the **Open in playground** button.
 1. Verify your deployed `gpt-35-model` base model is selected in setup pane.
 1. In the chat window, enter the query `What can you do?` and view the response.
@@ -123,7 +126,7 @@ When fine-tuning has successfully completed, you can deploy the fine-tuned model
 
 ## Test the fine-tuned model
 
-Now that you deployed your fine-tuned model, you can test the model like you can tested the your deployed base model.
+Now that you deployed your fine-tuned model, you can test it like you tested your deployed base model.
 
 1. When the deployment is ready, navigate to the fine-tuned model and select **Open in playground**.
 1. Update the system message with the following instructions:
