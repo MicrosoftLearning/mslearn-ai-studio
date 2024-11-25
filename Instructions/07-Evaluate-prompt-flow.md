@@ -143,8 +143,8 @@ To save time, we have created a batch output dataset for you that contains the r
     - **Select metrics**: Coherence, Fluency
     - **Connection**: *Your AI Services connection*
     - **Deployment name/Model**: *Your deployed GPT-3.5 model*
-    - **query**: Select **question** as the data source
-    - **response**: Select **answer** as the data source
+    - **query**: Select **query** as the data source
+    - **response**: Select **response** as the data source
       
 1. Select **Next** then review your data and **Submit** the new evaluation.
 1. Wait for the evaluations to be completed, you may need to refresh.
