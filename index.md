@@ -4,7 +4,7 @@ permalink: index.html
 layout: home
 ---
 
-# Develop Generative AI applications with Azure AI Studio
+# Develop generative AI apps in Azure AI Foundry portal
 
 The following exercises are designed to provide you with a hands-on learning experience in which you'll explore common patterns and techniques that developers use to build generative AI applications like chat-based "copilots", and learn how to implement those patterns using Azure AI Services - in particular, Azure OpenAI Service and Azure AI Studio.
 
