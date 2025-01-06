@@ -1,11 +1,11 @@
 ---
 lab:
-    title: 'Create a custom copilot that uses your own data'
+    title: 'Create a generative AI app that uses your own data'
 ---
 
-# Create a custom copilot that uses your own data
+# Create a generative AI app that uses your own data
 
-Retrieval Augmented Generation (RAG) is a technique used to build applications that integrate data from custom data sources into a prompt for a generative AI model. RAG is a commonly used pattern for developing custom *copilots* - chat-based applications that use a language model to interpret inputs and generate appropriate responses.
+Retrieval Augmented Generation (RAG) is a technique used to build applications that integrate data from custom data sources into a prompt for a generative AI model. RAG is a commonly used pattern for developing generative AI apps - chat-based applications that use a language model to interpret inputs and generate appropriate responses.
 
 In this exercise, you'll use Azure AI Foundry portal to integrate custom data into a generative AI prompt flow.
 
@@ -13,7 +13,7 @@ This exercise takes approximately **45** minutes.
 
 ## Create an Azure AI Search resource
 
-Your copilot solution will integrate custom data into a prompt flow. To support this integration, you'll need an Azure AI Search resource with which to index your data.
+Your generative AI app solution will integrate custom data into a prompt flow. To support this integration, you'll need an Azure AI Search resource with which to index your data.
 
 1. In a web browser, open the [Azure portal](https://portal.azure.com) at `https://portal.azure.com` and sign in using your Azure credentials.
 1. On the home page, select **+ Create a resource** and search for `Azure AI Search`. Then create a new Azure AI Search resource with the following settings:
@@ -240,7 +240,7 @@ Now that you have a working flow that uses your indexed data, you can deploy it 
 
 ## Challenge 
 
-Now you've experienced how to integrate your own data in a copilot built with the Azure AI Foundry portal, let's explore further!
+Now you've experienced how to integrate your own data in a generative AI app built with the Azure AI Foundry portal, let's explore further!
 
 Try adding a new data source through the Azure AI Foundry portal, index it, and integrate the indexed data in a prompt flow. Some data sets you could try are:
 
