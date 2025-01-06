@@ -27,7 +27,7 @@ An Azure AI hub provides a collaborative workspace within which you can define o
     > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions in the location helper include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region. Learn more about [model availability per region](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability)
 
 1. If you selected **Customize**, select **Next** and review your configuration.
-1. 1. Select **Create** and wait for the process to complete.
+1. Select **Create** and wait for the process to complete.
    
     After the Azure AI hub and project have been created, it should look similar to the following image:
 
@@ -50,16 +50,16 @@ Imagine you want to create a custom copilot that serves as a travel assistant. S
 
 Your copilot will need to provide factually accurate information, so groundedness is important. Next to that, you want the copilot's answers to be easy to read and understand. Therefore, you also want to pick a model that rates high on fluency and coherence.
 
-1. In the Azure AI Foundry project portal, navigate to **Model benchmarks** using the menu on the left.
-    In the **Quality benchmarks** tab, you can find some charts already visualized for you, comparing different models.
-1. Filter the shown models:
-    - **Tasks**: Question answering
-    - **Collections**: Azure OpenAI
-    - **Metrics**: Coherence, Fluency, Groundedness
-1. Explore the resulting charts and the comparison table. When exploring, you can try and answer the following questions:
+1. In the Azure AI Foundry project portal, navigate to **Model catalog** using the menu on the left.
+    In the catalog page, select **Compare with benchmarks**. In the Model benchmarks page, you will find a chart already plotted for you, comparing different models.
+1. Select **+ Model to compare** and add **gpt-4-32k** and **gpt-4** to the metrics chart. In the **X-axis** dropdown menu, under **Quality**, select the following metrics and observe each resulting chart before switching to the next:
+    - Coherence
+    - Fluency
+    - Groundedness
+1. When exploring the results, you can try and answer the following questions:
     - Do you notice a difference in performance between GPT-3.5 and GPT-4 models?
     - Is there a difference between versions of the same model?
-    - How do the 32k variants differ from the base models?
+    - How does the 32k variant of GPT-4 differ from the base model?
 
 From the Azure OpenAI collection, you can choose between GPT-3.5 and GPT-4 models. Let's deploy these two models and explore how they compare for your use case.
 
@@ -82,6 +82,8 @@ Let's start by deploying a model from the Model catalog. You may prefer this opt
     - **Content filter**: DefaultV2
     - **Enable dynamic quota**: Disabled
 
+    > **Note**: If your current AI resource location doesn't have quota available for the model you want to deploy, you will be asked to choose a different location where a new AI resource will be created and connected to your project.
+
 ### Deploy a model through Models + endpoints
 
 If you already know exactly which model you want to deploy, you may prefer to do it through **Models + endpoints**.
@@ -96,8 +98,6 @@ If you already know exactly which model you want to deploy, you may prefer to do
     - **Tokens per Minute Rate Limit (thousands)**: 5K
     - **Content filter**: DefaultV2
     - **Enable dynamic quota**: Disabled
-
-    > **Note**: If your current AI resource location doesn't have quota available for the model you want to deploy, you will be asked to choose a different location where a new AI resource will be created and connected to your project.
 
 ## Test your models in the chat playground
 
