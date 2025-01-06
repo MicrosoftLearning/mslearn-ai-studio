@@ -124,8 +124,10 @@ The standard flow already includes a node that uses the LLM tool. You can find t
 
    user:
    
-   Entity type: \\{\\{entity_type\\}\\}
-   Text content: \\{\\{text\\}\\}
+   {% raw %}
+   Entity type: {{entity_type}}
+   Text content: {{text}}
+   {% endraw %}
    Entities:
    ```
 
