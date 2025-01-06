@@ -72,7 +72,9 @@ You need two models to implement your solution:
     - **Tokens per Minute Rate Limit (thousands)**: 5K
     - **Content filter**: DefaultV2
     - **Enable dynamic quota**: Disabled
-      
+
+    > **Note**: If your current AI resource location doesn't have quota available for the model you want to deploy, you will be asked to choose a different location where a new AI resource will be created and connected to your project.
+
 1. Repeat the previous steps to deploy a **gpt-35-turbo-16k** model with the deployment name `gpt-35-turbo-16k`.
 
     > **Note**: Reducing the Tokens Per Minute (TPM) helps avoid over-using the quota available in the subscription you are using. 5,000 TPM is sufficient for the data used in this exercise.
