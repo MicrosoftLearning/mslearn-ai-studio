@@ -42,6 +42,9 @@ To use a language model in prompt flow, you need to deploy a model first. The Az
     - **Tokens per Minute Rate Limit (thousands)**: 5K
     - **Content filter**: DefaultV2
     - **Enable dynamic quota**: Disabled
+
+    > **Note**: If your current AI resource location doesn't have quota available for the model you want to deploy, you will be asked to choose a different location where a new AI resource will be created and connected to your project.
+
 1. Wait for the model to be deployed. When the deployment is ready, select **Open in playground**.
 1. In the **Give the model instructions and context** text box, change the content to the following:
 

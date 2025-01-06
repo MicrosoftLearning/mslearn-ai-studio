@@ -55,9 +55,9 @@ As fine-tuning a model takes some time to complete, you'll start the fine-tuning
     <p>If you receive a permissions error, try the following to troubleshoot:</p>
     <ul>
         <li>In the Azure portal, select the AI Services resource.</li>
-        <li>On the IAM page, in the Identity tab, confirm that it is system assigned managed identity.</li>
-        <li>Navigate to the associated Storage Account. On the IAM page, add role assignment <em>Storage blob data reader</em>.</li>
-        <li>Under <strong>Assign access to</strong>, choose <strong>Managed Identity</strong>, <strong>+ Select members</strong>, and select the <strong>All system-assigned managed identities</strong>.</li>
+        <li>Under Resource Management, in the Identity tab, confirm that it is system assigned managed identity.</li>
+        <li>Navigate to the associated Storage Account. On the IAM page, add role assignment <em>Storage Blob Data Owner</em>.</li>
+        <li>Under <strong>Assign access to</strong>, choose <strong>Managed Identity</strong>, <strong>+ Select members</strong>, select the <strong>All system-assigned managed identities</strong>, and select your Azure AI services resource.</li>
         <li>Review and assign to save the new settings and retry the previous step.</li>
     </ul>
     </details>
