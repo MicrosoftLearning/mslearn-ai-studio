@@ -230,7 +230,7 @@ Now that you have a working flow that uses your indexed data, you can deploy it 
         - **Endpoint name**: *Use the default unique endpoint name*
         - **Deployment name**: *Use the default deployment endpoint name*
         - **Virtual machine**: Standard_DS3_v2
-        - **Instance count**: 3
+        - **Instance count**: 2
         - **Inferencing data collection**: Selected
     - **Advanced settings**:
         - *Use the default settings*
