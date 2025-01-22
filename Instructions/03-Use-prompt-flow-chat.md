@@ -83,7 +83,7 @@ You can create a new flow from a template, or create a flow based on your config
     <summary><b>Troubleshooting tip</b>: Permissions error</summary>
     <p>If you receive a permissions error when you create a new prompt flow, try the following to troubleshoot:</p>
     <ul>
-        <li>In the Azure portal, select the AI Services resource used to deploy the GPT model.</li>
+        <li>In the Azure portal, select the AI Services resource.</li>
         <li>Under Resource Management, in the Identity tab, confirm that it is system assigned managed identity.</li>
         <li>Navigate to the associated Storage Account. On the IAM page, add role assignment <em>Storage blob data reader</em>.</li>
         <li>Under <strong>Assign access to</strong>, choose <strong>Managed Identity</strong>, <strong>+ Select members</strong>, select the <strong>All system-assigned managed identities</strong>, and select your Azure AI services resource.</li>
