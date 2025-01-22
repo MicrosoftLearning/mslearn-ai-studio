@@ -42,6 +42,9 @@ To use a language model in prompt flow, you need to deploy a model first. The Az
     - **Tokens per Minute Rate Limit (thousands)**: 5K
     - **Content filter**: DefaultV2
     - **Enable dynamic quota**: Disabled
+
+    > **Note**: If your current AI resource location doesn't have quota available for the model you want to deploy, you will be asked to choose a different location where a new AI resource will be created and connected to your project.
+
 1. Wait for the model to be deployed. When the deployment is ready, select **Open in playground**.
 1. In the chat window, enter the query `What can you do?`.
 
@@ -83,7 +86,7 @@ You can create a new flow from a template, or create a flow based on your config
         <li>In the Azure portal, select the AI Services resource.</li>
         <li>Under Resource Management, in the Identity tab, confirm that it is system assigned managed identity.</li>
         <li>Navigate to the associated Storage Account. On the IAM page, add role assignment <em>Storage blob data reader</em>.</li>
-        <li>Under <strong>Assign access to</strong>, choose <strong>Managed Identity</strong>, <strong>+ Select members</strong>, and select the <strong>All system-assigned managed identities</strong>.</li>
+        <li>Under <strong>Assign access to</strong>, choose <strong>Managed Identity</strong>, <strong>+ Select members</strong>, select the <strong>All system-assigned managed identities</strong>, and select your Azure AI services resource.</li>
         <li>Review and assign to save the new settings and retry the previous step.</li>
     </ul>
 </details>
