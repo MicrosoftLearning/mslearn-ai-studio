@@ -1,67 +1,122 @@
 ---
 lab:
-    title: 'Explore the components and tools of the Azure AI Foundry'
+    title: 'Explore Azure AI Foundry'
 ---
 
-# Explore the components and tools of the Azure AI Foundry
+# Explore Azure AI Foundry
 
-In this exercise, you use Azure AI Foundry portal to create a project and explore a generative AI model.
+In this exercise, you use Azure AI Foundry portal to create a hub and project.
 
 This exercise takes approximately **30** minutes.
 
 ## Open Azure AI Foundry portal
 
-Let's start by exploring Azure AI Foundry portal.
+Let's start by signing into Azure AI Foundry portal.
 
-1. In a web browser, open [https://ai.azure.com](https://ai.azure.com) and sign in using your Azure credentials. The home page of Azure AI Foundry portal looks similar to the following image:
+1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image:
 
-    ![Screenshot of Azure AI Foundry portal.](./media/azure-ai-studio-home.png)
+    ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
 
-1. Review the information on the home page and view each of the tabs, noting the options to explore models and capabilities, create projects, and manage resources.
+1. Review the information on the home page.
 
-## Create an Azure AI hub and project
+## Create a hub and project
 
-An Azure AI hub provides a collaborative workspace within which you can define one or more *projects*. Let's create a project and Azure AI hub.
+An Azure AI *hub* provides a collaborative workspace within which you can define one or more *projects*. Let's create a project and Azure AI hub and review the Azure resources that are created to support them.
 
-1. In the home page, select **+ Create project**. In the **Create a project** wizard you can see all the Azure resources that will be automatically created with your project, or you can customize the following settings by selecting **Customize** before selecting **Create**:
-   
-    - **Hub name**: *A unique name*
+1. In the home page, select **+ Create project**.
+1. In the **Create a project** wizard, enter a suitable project name for (for example, `my-ai-project`) then review the Azure resources that will be automatically created to support your project.
+1. Select **Customize** and specify the following settings for your hub:
+    - **Hub name**: *A unique name - for example `my-ai-hub`*
     - **Subscription**: *Your Azure subscription*
-    - **Resource group**: *Create a new resource group with a unique name, or select an existing one*
-    - **Location**: Select **Help me choose** and then select **gpt-35-turbo** in the Location helper window and use the recommended region\*
-    - **Connect Azure AI Services or Azure OpenAI**: *Select to create a new AI Services or use an existing one*
+    - **Resource group**: *Create a new resource group with a unique name (for example, `my-ai-resources`), or select an existing one*
+    - **Location**: Select **Help me choose** and then select **gpt-4** in the Location helper window and use the recommended region\*
+    - **Connect Azure AI Services or Azure OpenAI**: *Create a new AI Services resource with an appropriate name (for example, `my-ai-services`) or use an existing one*
     - **Connect Azure AI Search**: Skip connecting
 
     > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit in scenarios where you are sharing a tenant with other users. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region.
 
-1. If you selected **Customize**, select **Next** and review your configuration.
-1. Select **Create** and wait for the process to complete.
-   
-    After the Azure AI hub and project have been created, it should look similar to the following image:
+1. Select **Next** and review your configuration. Then select **Create** and wait for the process to complete.
+1. When your project is created, close any tips that are displayed and review the project page in Azure AI Foundry portal, which should look similar to the following image:
 
-    ![Screenshot of a Azure AI hub details in Azure AI Foundry portal.](./media/azure-ai-resource.png)
+    ![Screenshot of a Azure AI project details in Azure AI Foundry portal.](./media/ai-foundry-project.png)
 
-1. Open a new browser tab (leaving the Azure AI Foundry portal tab open) and browse to the Azure portal at [https://portal.azure.com](https://portal.azure.com?azure-portal=true), signing in with your Azure credentials if prompted.
-1. Browse to the resource group where you created your Azure AI hub, and view the Azure resources that have been created.
+1. At the bottom of the navigation pane on the left, select **Management center**. The management center is where you can configure settings at both the *hub* and *project* levels; which are both shown in the navigation pane.
 
-    ![Screenshot of an Azure AI hub and related resources in the Azure portal.](./media/azure-portal.png)
+    ![Screenshot of the Management center page in Azure AI Foundry portal.](./media/ai-foundry-management.png)
 
-1. Return to the Azure AI Foundry portal browser tab.
-1. View each of the pages in the pane on the left side of the page for your Azure AI hub, and note the artifacts you can create and manage. On the **Management center** page, you can select **Connected resources**, either under your hub or your project, and observe that connections to Azure OpenAI and AI services have already been created.
-1. If you are in the Management center page, select **Go to project**.
+    Note that in the navigation pane, you can view and manage hub and project level assets in the following pages:
 
-## Deploy and test a model
+    - Overview
+    - Users
+    - Models and endpoints
+    - Connected resources
+    - Compute (*hub-level only*)
 
-You can use a project to create complex AI solutions based on generative AI models. A full exploration of all of the development options available in Azure AI Foundry portal is beyond the scope of this exercise, but we'll explore some basic ways in which you can work with models in a project.
+    > **Note**: Depending on the permissions assigned to your Entra ID in your Azure tenant, you may not be able to manage resources at the hub level.
+
+1. In the navigation pane, in the section for your hub, select the **Overview** page to view details of your hub. 
+1. In the **Hub properties** pane, select the link to the resource group associated with the hub to open a new browser tab and navigate to the Azure portal. Sign in with your Azure credentials if prompted.
+1. View the resource group in the Azure portal to see the Azure resources that have been created to support your hub and project.
+
+    ![Screenshot of an Azure AI hub and related resources in the Azure portal.](./media/azure-portal-resources.png)
+
+    Note that the resources have been created in the region you selected when creating the hub.
+
+## Add a connected resource
+
+Suppose your project needs access to a second **Azure AI Services** resource in a different region.
+
+1. In the Azure portal, in the page for your resource group, select **+ Create** and search for `Azure AI Services`. In the results, select the **Azure AI Services** multi-service resource as shown in the following image:
+
+    ![Screenshot of the Azure AI Services resource tile in the Azure portal.](./media/azure-ai-services.png)
+
+1. Create a new **Azure AI Services** resource with the following settings:
+    - **Subscription**: *Your Azure subscription*
+    - **Resource group**: *The resource group containing your existing Azure AI Foundry resources*
+    - **Region**: *Select any available region other than the one containing your existing resources*
+    - **Name**: *A unique name*
+    - **Pricing tier**: Standard S0
+1. Wait for the AI Services resource to be created.
+1. Return to the Azure AI Foundry portal browser tab, and in the **Management center** view, in the navigation pane, in the section for your *<u>project</u>*, view the **Connected resources** page. The existing connected resources in your project are listed.
+
+    ![Screenshot of connected resources in an AI Foundry project.](./media/ai-foundry-project-resources.png)
+
+1. Select **+ New connection** and select the **Azure AI Services** resource type. Then browse the available resources to find the AI Services resource you created in the Azure portal and use its **Add Connection** button to add it to your project.
+
+    ![Screenshot of the Connect an Azure AI services resources dialog box in an AI Foundry project.](./media/add-resource.png)
+
+1. When the new resource is connected, close the **Connect an Azure AI services resources** dialog box and verify that new connected resources for Azure AI Services and Azure OpenAI Service are listed.
+
+## Explore AI Services
+
+Your Azure AI Foundry project has access to Azure AI Services. Let's try that out in the portal.
+
+1. In the Management center page, in the navigation pane, under your project, select **Go to project**.
+1. In the navigation pane for your project, select **AI Services** and select the **Language and Translator** tile.
+
+    ![Screenshot of the Language and Translator tile in Azure AI Foundry portal.](./media/language-and-translator.png)
+
+1. In the **Explore Language capabilities** section, view the **Translation** tab and select **Text translation**.
+
+    ![Screenshot of the Text translation tile in Azure AI Foundry portal.](./media/text-translation.png)
+
+1. In the **Text translation** page, in the **Try it out** section, view the **Try with your own** tab.
+1. Select either of your Azure AI Services resources and then try translating some text (for example, `Hello world`) from one language to another.
+
+    ![Screenshot of the Text translation tile in Azure AI Foundry portal.](./media/try-translation.png)
+
+## Deploy and test a generative AI model
+
+Your project also contains connected resources for Azure OpenAI, which enables you to use Azure OpenAI language models to implement generative AI solutions.
 
 1. In the pane on the left for your project, in the **My assets** section, select the **Models + endpoints** page.
-1. In the **Models + endpoints** page, in the **Model deployments** tab, select **+ Deploy model**.
-1. Search for the **gpt-35-turbo** model from the list, select and confirm.
+1. In the **Models + endpoints** page, in the **Model deployments** tab, in the **+ Deploy model** menu, select **Deploy base model**.
+1. Search for the **gpt-4** model in the list, and then select and confirm it.
 1. Deploy the model with the following settings by selecting **Customize** in the deployment details:
-    - **Deployment name**: *A unique name for your model deployment*
+    - **Deployment name**: *A unique name for your model deployment - for example `gpt-4-model`*
     - **Deployment type**: Standard
     - **Model version**: *Select the default version*
-    - **AI resource**: *Select the resource created previously*
+    - **Connected AI resource**: *Select either of your Azure OpenAI resource connections*
     - **Tokens per Minute Rate Limit (thousands)**: 5K
     - **Content filter**: DefaultV2
     - **Enable dynamic quota**: Disabled
@@ -70,14 +125,18 @@ You can use a project to create complex AI solutions based on generative AI mode
 
 1. After the model has been deployed, in the deployment overview page, select **Open in playground**.
 1. In the **Chat playground** page, ensure that your model deployment is selected in the **Deployment** section.
-1. In the chat window, enter a query such as *What is AI?* and view the response:
+1. In the chat window, enter a query such as `How can I use Azure AI Services in a software development project?` and view the response:
 
-    ![Screenshot of the playground in Azure AI Foundry portal.](./media/playground.png)
+    ![Screenshot of the playground in Azure AI Foundry portal.](./media/ai-foundry-playground.png)
+
+## Summary
+
+In this exercise, you've explored Azure AI Foundry, and seen how to create and manage hubs and projects, add connected resources, and explore Azure AI Services and Azure openAi models in the Azure AI Foundry portal.y
 
 ## Clean up
 
 If you've finished exploring Azure AI Foundry portal, you should delete the resources you have created in this exercise to avoid incurring unnecessary Azure costs.
 
-1. Return to the browser tab containing the Azure portal (or re-open the [Azure portal](https://portal.azure.com?azure-portal=true) in a new browser tab) and view the contents of the resource group where you deployed the resources used in this exercise.
+1. Return to the browser tab containing the Azure portal (or re-open the [Azure portal](https://portal.azure.com) at `https://portal.azure.com` in a new browser tab) and view the contents of the resource group where you deployed the resources used in this exercise.
 1. On the toolbar, select **Delete resource group**.
 1. Enter the resource group name and confirm that you want to delete it.
