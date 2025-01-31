@@ -131,7 +131,7 @@ Your project also contains connected resources for Azure OpenAI, which enables y
 
 ## Summary
 
-In this exercise, you've explored Azure AI Foundry, and seen how to create and manage hubs and projects, add connected resources, and explore Azure AI Services and Azure openAi models in the Azure AI Foundry portal.y
+In this exercise, you've explored Azure AI Foundry, and seen how to create and manage hubs and projects, add connected resources, and explore Azure AI Services and Azure OpenAI models in the Azure AI Foundry portal.
 
 ## Clean up
 
