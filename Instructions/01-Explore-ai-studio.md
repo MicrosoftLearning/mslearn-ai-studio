@@ -1,9 +1,9 @@
 ---
 lab:
-    title: 'Explore Azure AI Foundry'
+    title: 'Explore the Azure AI Foundry portal'
 ---
 
-# Explore Azure AI Foundry
+# Explore the Azure AI Foundry portal
 
 In this exercise, you use Azure AI Foundry portal to create a hub and project.
 
