@@ -112,7 +112,7 @@ You can manually review model responses based on test data. Manually reviewing a
 1. You can now manually review the outputs for each question by selecting the thumbs up or down icon at the bottom right of a response. Rate each response, ensuring you include at least one thumbs up and one thumbs down response in your ratings.
 1. Select **Save results** from the top bar. Enter `manual_evaluation_results` as the name for the results.
 1. Using the menu on the left, navigate to **Evaluation**.
-1. Select the **Manual evaluations** tab to find the manual evaluations you just saved. Note that you can explore your previously created manual evaluations, continue where you left of, and save the updated evaluations.
+1. Select the **Manual evaluations** tab to find the manual evaluations you just saved. Note that you can explore your previously created manual evaluations, continue where you left off, and save the updated evaluations.
 
 ## Evaluate your copilot with the built-in metrics
 
