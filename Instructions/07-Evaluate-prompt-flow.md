@@ -1,9 +1,10 @@
 ---
 lab:
-    title: 'Evaluate the performance of your custom copilot in the Azure AI Foundry'
+    title: 'Evaluate generative AI performance'
+    description: 'Learn how to evaluate models and chat flows to optimize the performance of your chat app and its ability to respond appropriately.
 ---
 
-# Evaluate the performance of your custom copilot in the Azure AI Foundry
+# Evaluate generative AI performance
 
 In this exercise, you'll explore built-in and custom evaluations to assess and compare the performance of your AI applications with the Azure AI Foundry portal.
 
@@ -114,7 +115,7 @@ You can manually review model responses based on test data. Manually reviewing a
 1. Using the menu on the left, navigate to **Evaluation**.
 1. Select the **Manual evaluations** tab to find the manual evaluations you just saved. Note that you can explore your previously created manual evaluations, continue where you left off, and save the updated evaluations.
 
-## Evaluate your copilot with the built-in metrics
+## Evaluate your chat app with the built-in metrics
 
 When you have created a chat application with prompt flow, you can evaluate the flow by doing a batch run and assessing the performance of the flow with built-in metrics.
 

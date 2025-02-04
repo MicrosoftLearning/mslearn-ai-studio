@@ -1,9 +1,10 @@
 ---
 lab:
-    title: 'Explore, deploy, and chat with language models in the Azure AI Foundry'
+    title: 'Choose and deploy a language model'
+    description: 'Generative AI applications are built on one or more language models. Learn how to find and select appropriate models for your generative AI project.'
 ---
 
-# Explore, deploy, and chat with language models in the Azure AI Foundry
+# Choose and deploy a language model
 
 The Azure AI Foundry model catalog serves as a central repository where you can explore and use a variety of models, facilitating the creation of your generative AI scenario.
 

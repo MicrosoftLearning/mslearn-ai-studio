@@ -1,11 +1,12 @@
 ---
 lab:
-    title: 'Explore the Azure AI Foundry portal'
+    title: 'Prepare for an AI development project'
+    description: 'Learn how to organize cloud resources in hubs and projects so that developers are set up for success when building AI solutions.'
 ---
 
-# Explore the Azure AI Foundry portal
+# Prepare for an AI development project
 
-In this exercise, you use Azure AI Foundry portal to create a hub and project.
+In this exercise, you use Azure AI Foundry portal to create a hub and project, ready for a team of developers to build an AI solution.
 
 This exercise takes approximately **30** minutes.
 

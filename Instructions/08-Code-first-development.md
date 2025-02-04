@@ -1,9 +1,10 @@
 ---
 lab:
-    title: 'Build a custom copilot using code-first development tools'
+    title: 'Build a generative AI app  using code-first development tools'
+    description: 'Learn how to use code to create and update the elements of your generative AI app to support automated build and deployment in a DevOps scenario.'
 ---
 
-# Build a custom copilot using code-first development tools
+# Build a generative AI app using code-first development tools
 
 In this exercise, you'll clone and deploy an Azure Developer CLI template that provisions and [deploys your AI project to an online endpoint](https://learn.microsoft.com/azure/developer/azure-developer-cli/azure-ai-ml-endpoints?WT.mc_id=academic-140829-cacaste) on Azure AI Foundry. You'll then use it as a starting point to build your own custom copilot with Azure AI and a code-first experience.
 

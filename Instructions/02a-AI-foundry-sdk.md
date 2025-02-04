@@ -1,13 +1,14 @@
 ---
 lab:
-    title: 'Create a chat app with the Azure AI Foundry SDK'
+    title: 'Create a generative AI chat app'
+    description: 'Learn how to use the Azure AI Foundry SDK to build an app that connects to your project and chats with a language model.'
 ---
 
-# Create a chat app with the Azure AI Foundry SDK
+# Create a generative AI chat app
 
-In this exercise, you use the Azure AI Foundry SDK to create a simple chat app.
+In this exercise, you use the Azure AI Foundry SDK to create a simple chat app that connects to a project and chats with a language model.
 
-This exercise takes approximately **20** minutes.
+This exercise takes approximately **30** minutes.
 
 ## Create an Azure AI Foundry project
 
@@ -80,7 +81,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
 1. After the repo has been cloned, navigate to the **mslearn-ai-foundry/labfiles/01a-azure-foundry-sdk/python** folder:
 
     ```
-    cd mslearn-ai-foundry/labfiles/01a-azure-foundry-sdk/python
+    cd mslearn-ai-foundry/labfiles/chat-app/python
     ```
 
 1. In the cloud shell command line pane, enter the following command to install the Python libraries you'll use, which are:
