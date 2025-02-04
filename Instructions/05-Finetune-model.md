@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Fine-tune a language model'
-    description: 'Learn how to use your own additional training data to fine-tune a model and customize its behavior.
+    description: 'Learn how to use your own additional training data to fine-tune a model and customize its behavior.'
 ---
 
 # Fine-tune a language model

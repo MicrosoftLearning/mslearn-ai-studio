@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Evaluate generative AI performance'
-    description: 'Learn how to evaluate models and chat flows to optimize the performance of your chat app and its ability to respond appropriately.
+    description: 'Learn how to evaluate models and chat flows to optimize the performance of your chat app and its ability to respond appropriately.'
 ---
 
 # Evaluate generative AI performance
