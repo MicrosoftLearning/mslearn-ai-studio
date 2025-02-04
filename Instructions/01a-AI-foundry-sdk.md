@@ -45,13 +45,15 @@ Let's start by creating an Azure AI Foundry project.
 
 YNow you're ready to deploy a generative AI language model to support your chat application. In this example, you'll use the Microsoft Phi-4 model; but the principles are the same for any model.
 
+1. In the toolbar at the top right of your Azure AI Foundry project page, use the **Preview features** icon to enable the **Deploy models to Azure AI model inference service** feature. This feature ensures your model deployment is available to the Azure AI Inference service, which you'll use in your application code.
 1. In the pane on the left for your project, in the **My assets** section, select the **Models + endpoints** page.
 1. In the **Models + endpoints** page, in the **Model deployments** tab, in the **+ Deploy model** menu, select **Deploy base model**.
 1. Search for the **Phi-4** model in the list, and then select and confirm it.
-1. Select the **Serverless API with Azure AI Content Safety** deployment option.
-1. Deploy the model with the following settings by selecting **Customize** in the deployment details:
+1. Agree to the license agreement if prompted, and then deploy the model with the following settings by selecting **Customize** in the deployment details:
     - **Deployment name**: *A unique name for your model deployment - for example `phi-4-model` (remember the name you assign, you'll need it later*)
-    - **Content filter**: Enabled
+    - **Deployment type**: Global standard
+    - **Deployment details**: *Use the default settings*
+1. Wait for the deployment provisioning state to be **Completed**.
 
 ## Create a client application to chat with the model
 
