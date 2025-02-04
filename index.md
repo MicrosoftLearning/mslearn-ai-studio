@@ -16,7 +16,7 @@ The following quickstart exercises are designed to provide you with a hands-on l
 {% for activity in labs  %}
 ### [{{ activity.lab.title }}]({{ site.github.url }}{{ activity.url }})
 
-{activity.lab.description}
+{{activity.lab.description}}
 
 {% endfor %}
 
