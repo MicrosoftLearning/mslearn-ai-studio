@@ -78,7 +78,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
     git clone https://github.com/microsoftlearning/mslearn-ai-studio mslearn-ai-foundry
     ```
 
-1. After the repo has been cloned, navigate to the **mslearn-ai-foundry/labfiles/01a-azure-foundry-sdk/python** folder:
+1. After the repo has been cloned, navigate to the folder containing the chat application code files:
 
     ```
     cd mslearn-ai-foundry/labfiles/chat-app/python
