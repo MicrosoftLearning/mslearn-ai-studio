@@ -14,6 +14,7 @@ The following quickstart exercises are designed to provide you with a hands-on l
 
 {% assign labs = site.pages | where_exp:"page", "page.url contains '/Instructions'" %}
 {% for activity in labs  %}
+<hr>
 ### [{{ activity.lab.title }}]({{ site.github.url }}{{ activity.url }})
 
 {{activity.lab.description}}
