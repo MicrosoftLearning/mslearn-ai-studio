@@ -109,7 +109,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
 1. Enter the following command to edit the **chat-app.py** Python code file that has been provided:
 
     ```
-    chat-app.py
+    code chat-app.py
     ```
 
 1. In the code file, note the existing **import** statements that have been added at the top of the file. Then, under the comment **# Add AI Projects reference**, add the following code to reference the Azure AI Projects library:
