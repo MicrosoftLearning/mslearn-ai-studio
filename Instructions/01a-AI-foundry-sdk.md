@@ -88,13 +88,13 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
     - **azure-ai-inference**: Used to chat with a generative AI model.
 
     ```
-    pip install python-dotenv azure-identity azure-ai-projects azure-ai-inference
+   pip install python-dotenv azure-identity azure-ai-projects azure-ai-inference
     ```
 
 1. Enter the following command to edit the **.env** Python configuration file that has been provided:
 
     ```
-    code .env
+   code .env
     ```
 
     The file is opened in a code editor.
@@ -109,20 +109,20 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
 1. Enter the following command to edit the **chat-app.py** Python code file that has been provided:
 
     ```
-    code chat-app.py
+   code chat-app.py
     ```
 
 1. In the code file, note the existing **import** statements that have been added at the top of the file. Then, under the comment **# Add AI Projects reference**, add the following code to reference the Azure AI Projects library:
 
     ```python
-    from azure.ai.projects import AIProjectClient
+   from azure.ai.projects import AIProjectClient
     ```
 
 1. In the **main** function, under the comment **# Get configuration settings**, note that the code loads the project connection string and model deployment name values you defined in the **.env** file.
 1. Under the comment **# Initialize the project client**, add the following code to connect to your Azure AI Foundry project using the Azure credentials you are currently signed in with:
 
     ```python
-    project = AIProjectClient.from_connection_string(
+   project = AIProjectClient.from_connection_string(
         conn_str=project_connection,
         credential=DefaultAzureCredential()
         )
@@ -131,20 +131,20 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
 1. Under the comment **# Get a chat client**, add the following code to create a client object for chatting with a model:
 
     ```python
-    chat = project.inference.get_chat_completions_client()
+   chat = project.inference.get_chat_completions_client()
     ```
 
 1. Note that the code includes a loop to allow a user to input a prompt until they enter "quit". Then in the loop section, under the comment **# Get a chat completion**, add the following code to submit the prompt and retrieve the completion from your model:
 
     ```python
-    response = chat.complete(
+   response = chat.complete(
         model=model_deployment,
         messages=[
             {"role": "system", "content": "You are a helpful AI assistant that answers questions."},
             {"role": "user", "content": input_text},
             ],
         )
-    print(response.choices[0].message.content)
+   print(response.choices[0].message.content)
     ```
 
 1. Use the **CTRL+S** command to save your changes to the code file and then use the **CTRL+Q** command to close the code editor while keeping the cloud shell command line open.
@@ -154,7 +154,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
 1. In the cloud shell command line pane, enter the following command to run the Python code:
 
     ```
-    python chat-app.py
+   python chat-app.py
     ```
 
 1. When prompted, enter a question, such as `What is the fastest animal on Earth?` and review the response from your generative AI model.
