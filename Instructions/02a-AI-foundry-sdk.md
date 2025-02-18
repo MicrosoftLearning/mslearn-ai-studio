@@ -44,7 +44,7 @@ Let's start by creating an Azure AI Foundry project.
 
 ## Deploy a generative AI model
 
-YNow you're ready to deploy a generative AI language model to support your chat application. In this example, you'll use the Microsoft Phi-4 model; but the principles are the same for any model.
+Now you're ready to deploy a generative AI language model to support your chat application. In this example, you'll use the Microsoft Phi-4 model; but the principles are the same for any model.
 
 1. In the toolbar at the top right of your Azure AI Foundry project page, use the **Preview features** icon to enable the **Deploy models to Azure AI model inference service** feature. This feature ensures your model deployment is available to the Azure AI Inference service, which you'll use in your application code.
 1. In the pane on the left for your project, in the **My assets** section, select the **Models + endpoints** page.
