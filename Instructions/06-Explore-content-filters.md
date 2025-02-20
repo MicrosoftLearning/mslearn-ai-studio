@@ -84,7 +84,7 @@ Content filters are applied to prompts and completions to prevent potentially ha
 
 1. Return to the **Models + endpoints** page and notice that your deployment now references the custom content filter you've created.
 
-    ![Screenshot of the deployment page in Azure AI Foundry portal.](./media/azure-ai-deployment.png)
+    ![Screenshot of the deployment page in Azure AI Foundry portal.](./media/model-gpt-4-custom-filter.png)
 
 ## Generate natural language output
 
