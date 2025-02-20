@@ -45,6 +45,7 @@ You start by creating an Azure AI Foundry portal project and an Azure AI Hub to 
 To use a LLM model in prompt flow, you need to deploy a model first. The Azure AI Foundry portal allows you to deploy OpenAI models that you can use in your flows.
 
 1. In the navigation pane on the left, under **My assets**, select the **Models + endpoints** page.
+1. Select **+ Deploy model** and **Deploy base model**.
 1. Create a new deployment of the **gpt-4** model with the following settings by selecting **Customize** in the deployment details:
    
     - **Deployment name**: *A unique name for your model deployment*
