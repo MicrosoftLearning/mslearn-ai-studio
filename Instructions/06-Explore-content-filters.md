@@ -44,7 +44,7 @@ Now you're ready to deploy a model to use through the **Azure AI Foundry portal*
     - **Model version**: *Select the default version*
     - **AI resource**: *Select the resource created previously*
     - **Tokens per Minute Rate Limit (thousands)**: 5K
-    - **Content filter**: DefaultV2
+    - **Content safety**: DefaultV2
     - **Enable dynamic quota**: Disabled
       
 > **Note**: Each Azure AI Foundry model is optimized for a different balance of capabilities and performance. We'll use the **GPT-4** model in this exercise, which is highly capable for natural language generation and chat scenarios.
