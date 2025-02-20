@@ -21,11 +21,11 @@ You start by creating an Azure AI Foundry portal project within an Azure AI hub:
     - **Hub name**: *A unique name*
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *A new resource group*
-    - **Location**: Select **Help me choose** and then select **gpt-35-turbo** in the Location helper window and use the recommended region\*
+    - **Location**: Select **Help me choose** and then select **gpt-4** in the Location helper window and use the recommended region\*
     - **Connect Azure AI Services or Azure OpenAI**: (New) *Autofills with your selected hub name*
     - **Connect Azure AI Search**: Skip connecting
 
-    > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions in the location helper include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region. Learn more about [model availability per region](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability)
+    > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions in the location helper include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region. Learn more about [model availability per region](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#availability)
 
 1. If you selected **Customize**, select **Next** and review your configuration.
 1. Select **Create** and wait for the process to complete.
@@ -35,7 +35,7 @@ You start by creating an Azure AI Foundry portal project within an Azure AI hub:
 To use a language model in prompt flow, you need to deploy a model first. The Azure AI Foundry portal allows you to deploy OpenAI models that you can use in your flows.
 
 1. In the navigation pane on the left, under **My assets**, select the **Models + endpoints** page.
-1. Create a new deployment of the **gpt-35-turbo** model with the following settings:
+1. Create a new deployment of the **gpt-4** model with the following settings:
     - **Deployment name**: *A unique name for your model deployment*
     - **Deployment type**: Standard
     - **Model version**: *Select the default version*
@@ -107,7 +107,7 @@ You can create a new flow from a template, or create a flow based on your config
 
 1. In the LLM node section, for **Connection**, select the connection that was created for you when you created the AI hub.
 1. For **Api**, select **chat**.
-1. For **deployment_name**, select the **gpt-35-turbo** model you deployed.
+1. For **deployment_name**, select the **gpt-4** model you deployed.
 1. For **response_format**, select **{"type":"text"}**.
 1. Review the prompt field and ensure it looks like the following:
 
