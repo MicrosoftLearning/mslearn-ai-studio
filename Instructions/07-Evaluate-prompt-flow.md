@@ -20,11 +20,11 @@ You start by creating an Azure AI Foundry project within an Azure AI hub:
     - **Hub name**: *A unique name*
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *A new resource group*
-    - **Location**: Select **Help me choose** and then select **gpt-35-turbo** in the Location helper window and use the recommended region\*
+    - **Location**: Select **Help me choose** and then select **gpt-4** in the Location helper window and use the recommended region\*
     - **Connect Azure AI Services or Azure OpenAI**: (New) *Autofills with your selected hub name*
     - **Connect Azure AI Search**: Skip connecting
 
-    > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions in the location helper include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region. Learn more about [model availability per region](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability)
+    > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions in the location helper include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region. Learn more about [model availability per region](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#availability)
 
 1. Select **Next** and review your configuration.
 1. Select **Create a project** and wait for the process to complete.
@@ -35,13 +35,13 @@ To use a language model in prompt flow, you need to deploy a model first. The Az
 
 1. Navigate to the **Models + endpoints** page under the **My assets** section, using the menu on the left.
 1. Select the **+ Deploy model** button, and select the **Deploy base model** option.
-1. Create a new deployment of the **gpt-35-turbo** model with the following settings by selecting **Customize** in the **Deploy model** wizard:
+1. Create a new deployment of the **gpt-4** model with the following settings by selecting **Customize** in the **Deploy model** wizard:
     - **Deployment name**: *A unique name for your model deployment*
     - **Deployment type**: Standard
     - **Model version**: *Select the default version*
     - **AI resource**: *Select the resource created previously*
     - **Tokens per Minute Rate Limit (thousands)**: 5K
-    - **Content filter**: DefaultV2
+    - **Content safety**: DefaultV2
     - **Enable dynamic quota**: Disabled
 
     > **Note**: If your current AI resource location doesn't have quota available for the model you want to deploy, you will be asked to choose a different location where a new AI resource will be created and connected to your project.
@@ -149,7 +149,7 @@ To save time, we have created a batch output dataset for you that contains the r
     - Select **Next**
     - **Select metrics**: Coherence, Fluency
     - **Connection**: *Your AI Services connection*
-    - **Deployment name/Model**: *Your deployed GPT-3.5 model*
+    - **Deployment name/Model**: *Your deployed GPT-4 model*
     - **query**: Select **query** as the data source
     - **response**: Select **response** as the data source
       
