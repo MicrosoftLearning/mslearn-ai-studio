@@ -53,7 +53,7 @@ To use a LLM model in prompt flow, you need to deploy a model first. The Azure A
     - **Model version**: *Select the default version*
     - **AI resource**: *Select the resource created previously*
     - **Tokens per Minute Rate Limit (thousands)**: 5K
-    - **Content safety**: DefaultV2
+    - **Content filter**: DefaultV2
     - **Enable dynamic quota**: Disabled
    
 Now that you have your language model deployed, you can create a flow in Azure AI Foundry portal that calls the deployed model.
