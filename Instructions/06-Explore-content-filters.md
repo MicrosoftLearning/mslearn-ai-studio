@@ -23,11 +23,11 @@ You start by creating an Azure AI Foundry portal project within an Azure AI hub:
     - **Hub name**: *A unique name*
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *A new resource group*
-    - **Location**: Select **Help me choose** and then select **gpt-35-turbo** in the Location helper window and use the recommended region\*
+    - **Location**: Select **Help me choose** and then select **gpt-4** in the Location helper window and use the recommended region\*
     - **Connect Azure AI Services or Azure OpenAI**: (New) *Autofills with your selected hub name*
     - **Connect Azure AI Search**: Skip connecting
 
-    > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions in the location helper include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region. Learn more about [model availability per region](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability)
+    > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions in the location helper include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region. Learn more about [model availability per region](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#availability)
 
 1. If you selected **Customize**, select **Next** and review your configuration.
 1. Select **Create** and wait for the process to complete.
@@ -37,7 +37,7 @@ You start by creating an Azure AI Foundry portal project within an Azure AI hub:
 Now you're ready to deploy a model to use through the **Azure AI Foundry portal**. Once deployed, you will use the model to generate natural language content.
 
 1. In the navigation pane on the left, under **My assets**, select the **Models + endpoints** page.
-1. Create a new deployment of the **gpt-35-turbo** model with the following settings by selecting **Customize** in the Deploy model wizard:
+1. Create a new deployment of the **gpt-4** model with the following settings by selecting **Customize** in the Deploy model wizard:
    
     - **Deployment name**: *A unique name for your model deployment*
     - **Deployment type**: Standard
@@ -47,7 +47,7 @@ Now you're ready to deploy a model to use through the **Azure AI Foundry portal*
     - **Content filter**: DefaultV2
     - **Enable dynamic quota**: Disabled
       
-> **Note**: Each Azure AI Foundry model is optimized for a different balance of capabilities and performance. We'll use the **GPT 3.5 Turbo** model in this exercise, which is highly capable for natural language generation and chat scenarios.
+> **Note**: Each Azure AI Foundry model is optimized for a different balance of capabilities and performance. We'll use the **GPT-4** model in this exercise, which is highly capable for natural language generation and chat scenarios.
 
 ## Explore content filters
 
