@@ -35,7 +35,7 @@ You start by creating an Azure AI Foundry portal project within an Azure AI hub:
 1. Review your configuration and create your project.
 1. Wait for your project to be created.
 
-## Fine-tune a GPT-3.5 model
+## Fine-tune a GPT-4 model
 
 As fine-tuning a model takes some time to complete, you'll start the fine-tuning job first. Before you can fine-tune a model, you need a dataset.
 
@@ -44,7 +44,7 @@ As fine-tuning a model takes some time to complete, you'll start the fine-tuning
     > **Note**: Your device might default to saving the file as a .txt file. Select all files and remove the .txt suffix to ensure you're saving the file as JSONL.
 
 1. Navigate to the **Fine-tuning** page under the **Build and customize** section, using the menu on the left.
-1. Select the button to add a new fine-tune model, select the `gpt-35-turbo` model, select **Next** and then **Confirm**.
+1. Select the button to add a new fine-tune model, select the `gpt-4` model, select **Next** and then **Confirm**.
 1. **Fine-tune** the model using the following configuration:
     - **Model version**: *Select the default version*
     - **Model suffix**: `ft-travel`
@@ -72,16 +72,16 @@ As fine-tuning a model takes some time to complete, you'll start the fine-tuning
 
 ## Chat with a base model
 
-While you wait for the fine-tuning job to complete, let's chat with a base GPT 3.5 model to assess how it performs.
+While you wait for the fine-tuning job to complete, let's chat with a base GPT 4 model to assess how it performs.
 
 1. Navigate to the **Models + endpoints** page under the **My assets** section, using the menu on the left.
 1. Select the **+ Deploy model** button, and select the **Deploy base model** option.
-1. Deploy a `gpt-35-turbo` model, which is the same type of model you used when fine-tuning.
+1. Deploy a `gpt-4` model, which is the same type of model you used when fine-tuning.
 
 > **Note**: If your current AI resource location doesn't have quota available for the model you want to deploy, you will be asked to choose a different location where a new AI resource will be created and connected to your project.
 
 1. When deployment is completed, select the **Open in playground** button.
-1. Verify your deployed `gpt-35-model` base model is selected in setup pane.
+1. Verify your deployed `gpt-4` base model is selected in setup pane.
 1. In the chat window, enter the query `What can you do?` and view the response.
     The answers are very generic. Remember we want to create a chat application that inspires people to travel.
 1. Update the system message in the setup pane with the following prompt:
