@@ -201,7 +201,7 @@ Your vector index has been saved in your Azure AI Foundry project, enabling you 
 
 1. In the **chat_with_context** section, select the following settings (leaving others as they are):
 
-    - **Connection**: Default_AzureOpenAI
+    - **Connection**: *The default Azure OpenAI resource for your AI hub*
     - **Api**: Chat
     - **deployment_name**: gpt-4
     - **response_format**: {"type":"text"}
