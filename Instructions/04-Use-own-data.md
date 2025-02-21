@@ -76,7 +76,7 @@ You need two models to implement your solution:
 
     > **Note**: If your current AI resource location doesn't have quota available for the model you want to deploy, you will be asked to choose a different location where a new AI resource will be created and connected to your project.
 
-1. Repeat the previous steps to deploy a **gpt-35-turbo-16k** model with the deployment name `gpt-35-turbo-16k`.
+1. Repeat the previous steps to deploy a **gpt-4** model with the deployment name `gpt-4`.
 
     > **Note**: Reducing the Tokens Per Minute (TPM) helps avoid over-using the quota available in the subscription you are using. 5,000 TPM is sufficient for the data used in this exercise.
 
@@ -120,7 +120,7 @@ Now that you've added a data source to your project, you can use it to create an
 Before using your index in a RAG-based prompt flow, let's verify that it can be used to affect generative AI responses.
 
 1. In the navigation pane on the left, select the **Playgrounds** page.
-1. On the Chat page, in the Setup pane, ensure that your **gpt-35-turbo-16k** model deployment is selected. Then, in the main chat session panel, submit the prompt `Where can I stay in New York?`
+1. On the Chat page, in the Setup pane, ensure that your **gpt-4** model deployment is selected. Then, in the main chat session panel, submit the prompt `Where can I stay in New York?`
 1. Review the response, which should be a generic answer from the model without any data from the index.
 1. In the Setup pane, expand the **Add your data** field, and then add the **brochures-index** project index and select the **hybrid (vector + keyword)** search type.
 
@@ -177,7 +177,7 @@ Your vector index has been saved in your Azure AI Foundry project, enabling you 
 
     - **Connection**: *The default Azure OpenAI resource for your AI hub*
     - **Api**: chat
-    - **deployment_name**: gpt-35-turbo-16k
+    - **deployment_name**: gpt-4
     - **response_format**: {"type":"text"}
 
 1. Wait for the compute session to start, then in the **lookup** section, set the following parameter values:
@@ -203,7 +203,7 @@ Your vector index has been saved in your Azure AI Foundry project, enabling you 
 
     - **Connection**: Default_AzureOpenAI
     - **Api**: Chat
-    - **deployment_name**: gpt-35-turbo-16k
+    - **deployment_name**: gpt-4
     - **response_format**: {"type":"text"}
 
     Then ensure that the **inputs** for this tool include the following parameters:
