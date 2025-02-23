@@ -8,7 +8,7 @@ lab:
 
 The Azure AI Foundry model catalog serves as a central repository where you can explore and use a variety of models, facilitating the creation of your generative AI scenario.
 
-In this exercise, you'll explore the model catalog in Azure AI Foundry portal. and compare potential models for a generative AI travel assistant application that offers support for travel-related inquiries, such as visa requirements, weather forecasts, local attractions, and cultural norms.
+In this exercise, you'll explore the model catalog in Azure AI Foundry portal, and compare potential models for a generative AI application that assists in solving problems.
 
 This exercise will take approximately **25** minutes.
 
