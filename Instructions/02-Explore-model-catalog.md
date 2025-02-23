@@ -172,9 +172,9 @@ In the **Setup** pane, select your *gpt-4* model.
 
 ## Reflect on the models
 
-    You've compared two models, which may vary in terms of both their ability to generate appropriate responses and in their cost. In any generative scenario, you need to find a model with the right balance of suitability for the task you need it to perform and the cost of using the model for the number of requests you expect it to have to handle.
+You've compared two models, which may vary in terms of both their ability to generate appropriate responses and in their cost. In any generative scenario, you need to find a model with the right balance of suitability for the task you need it to perform and the cost of using the model for the number of requests you expect it to have to handle.
 
-    The details and benchmarks provided in the model catalog, along with the ability to visually compare models provides a useful starting point when identifying candidate models for a generative Ai solution. You can then test candidate models with a variety of system and user prompts in the chat playground.
+The details and benchmarks provided in the model catalog, along with the ability to visually compare models provides a useful starting point when identifying candidate models for a generative Ai solution. You can then test candidate models with a variety of system and user prompts in the chat playground.
 
 ## Clean up
 
