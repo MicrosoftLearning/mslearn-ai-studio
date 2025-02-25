@@ -1,0 +1,51 @@
+﻿using System;
+using System.IO;
+using System.Text;
+using Microsoft.Extensions.Configuration;
+
+// Add references
+
+
+namespace chat_app
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            try
+            {
+                // Get config settings
+                IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
+                IConfigurationRoot configuration = builder.Build();
+                string project_connection = configuration["PROJECT_CONNECTION"];
+                string model_deployment = configuration["MODEL_DEPLOYMENT"];
+
+                // Initialize the project client
+
+
+                // Get a chat client
+
+
+                // Loop until the user types 'quit'
+                string input_text = "";
+                while (input_text.ToLower() != "quit")
+                {
+                    // Get user input
+                    Console.WriteLine("Enter the prompt (or type 'quit' to exit):");
+                    input_text = Console.ReadLine();
+
+                    // Get a chat completion
+
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+    }
+}
+
