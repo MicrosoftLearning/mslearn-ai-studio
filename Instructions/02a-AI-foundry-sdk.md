@@ -95,7 +95,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
     **C#**
 
     ```
-   cd mslearn-ai-foundry/labfiles/chat-app/python
+   cd mslearn-ai-foundry/labfiles/chat-app/c-sharp
     ```
 
 1. In the cloud shell command line pane, enter the following command to install the libraries you'll use:
