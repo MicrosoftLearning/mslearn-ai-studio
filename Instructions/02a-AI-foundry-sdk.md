@@ -86,13 +86,13 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
 
 1. After the repo has been cloned, navigate to the folder containing the chat application code files:  
 
-    #### Python
+    **Python**
 
     ```
    cd mslearn-ai-foundry/labfiles/chat-app/python
     ```
 
-    #### C#
+    **C#**
 
     ```
    cd mslearn-ai-foundry/labfiles/chat-app/python
@@ -100,13 +100,13 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
 
 1. In the cloud shell command line pane, enter the following command to install the libraries you'll use:
 
-    #### Python
+    **Python**
 
     ```
    pip install python-dotenv azure-identity azure-ai-projects azure-ai-inference
     ```
 
-    #### C#
+    **C#**
 
     ```
    dotnet add package Azure.AI.Inference
@@ -117,13 +117,13 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
 
 1. Enter the following command to edit the configuration file that has been provided:
 
-    #### Python
+    **Python**
 
     ```
    code .env
     ```
 
-    #### C#
+    **C#**
 
     ```
    code appsettings.json
@@ -140,13 +140,13 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
 
 1. Enter the following command to edit the code file that has been provided:
 
-    #### Python
+    **Python**
 
     ```
    code chat-app.py
     ```
 
-    #### C#
+    **C#**
 
     ```
    code Program.cs
@@ -154,7 +154,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
 
 1. In the code file, note the existing statements that have been added at the top of the file to import the necessary SDK namespaces. Then, under the comment **# Add references**, add the following code to reference the namespaces in the libraries you installed previously:
 
-    #### Python
+    **Python**
 
     ```
    from dotenv import load_dotenv
@@ -162,7 +162,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
    from azure.ai.projects import AIProjectClient
     ```
 
-    #### C#
+    **C#**
 
     ```
    using Azure.Identity;
@@ -173,7 +173,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
 1. In the **main** function, under the comment **# Get configuration settings**, note that the code loads the project connection string and model deployment name values you defined in the configuration file.
 1. Under the comment **# Initialize the project client**, add the following code to connect to your Azure AI Foundry project using the Azure credentials you are currently signed in with:
 
-    #### Python
+    **Python**
 
     ```
    projectClient = AIProjectClient.from_connection_string(
@@ -181,7 +181,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
         credential=DefaultAzureCredential())
     ```
 
-    #### C#
+    **C#**
 
     ```
    var projectClient = new AIProjectClient(project_connection,
@@ -190,13 +190,13 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
 
 1. Under the comment **# Get a chat client**, add the following code to create a client object for chatting with a model:
 
-    #### Python
+    **Python**
 
     ```
    chat = projectClient.inference.get_chat_completions_client()
     ```
 
-    #### C#
+    **C#**
 
     ```
    ChatCompletionsClient chat = projectClient.GetChatCompletionsClient();
@@ -204,7 +204,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
 
 1. Note that the code includes a loop to allow a user to input a prompt until they enter "quit". Then in the loop section, under the comment **# Get a chat completion**, add the following code to submit the prompt and retrieve the completion from your model:
 
-    #### Python
+    **Python**
 
     ```python
    response = chat.complete(
@@ -217,7 +217,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
    print(response.choices[0].message.content)
     ```
 
-    #### C#
+    **C#**
 
     ```
    var requestOptions = new ChatCompletionsOptions()
@@ -240,13 +240,13 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
 
 1. In the cloud shell command line pane, enter the following command to run the app:
 
-    #### Python
+    **Python**
 
     ```
    python chat-app.py
     ```
 
-    #### C#
+    **C#**
 
     ```
    dotnet run
