@@ -230,7 +230,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
            }
    };
     
-    Response<ChatCompletions> response = chatClient.Complete(requestOptions);
+    Response<ChatCompletions> response = chat.Complete(requestOptions);
     Console.WriteLine(response.Value.Content);
     ```
 

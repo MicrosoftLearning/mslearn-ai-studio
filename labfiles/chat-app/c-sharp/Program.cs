@@ -1,4 +1,5 @@
 ﻿using System;
+using Azure;
 using System.IO;
 using System.Text;
 using Microsoft.Extensions.Configuration;
