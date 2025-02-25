@@ -34,8 +34,13 @@ namespace chat_app
                     // Get user input
                     Console.WriteLine("Enter the prompt (or type 'quit' to exit):");
                     input_text = Console.ReadLine();
+                    if (input_text.ToLower() != "quit")
+                    {
+                        // Get a chat completion
 
-                    // Get a chat completion
+
+                    }
+
 
                 }
 

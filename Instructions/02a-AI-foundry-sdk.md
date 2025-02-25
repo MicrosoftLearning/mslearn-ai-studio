@@ -73,6 +73,8 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
 
 1. In the cloud shell toolbar, in the **Settings** menu, select **Go to Classic version** (this is required to use the code editor).
 
+    > **Tip**: As you paste commands into the cloudshell, the ouput may take up a large amount of the screen buffer. You can clear the screen by entering the `cls` command to make it easier to focus on each task.
+
 1. In the PowerShell pane, enter the following commands to clone the GitHub repo for this exercise:
 
     ```
