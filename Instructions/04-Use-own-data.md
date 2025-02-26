@@ -161,6 +161,10 @@ Your vector index has been saved in your Azure AI Foundry project, enabling you 
 
 1. Use the **Start compute session** button to start the runtime compute for the flow.
 
+> While this lab may not require intensive computing, we highly recommend allocating more computing power. We suggest using Compute Settings as below 
+> - Compute Type : **Serverless**
+> - VM Size : **Standard_D12**, which contains 4 cores, 28 GB of RAM, and 200 GB of disk space.
+
     Wait for the runtime to start. This provides a compute context for the prompt flow. While you're waiting, in the **Flow** tab, review the sections for the tools in the flow.
 
 1. In the **Inputs** section, ensure the inputs include:
