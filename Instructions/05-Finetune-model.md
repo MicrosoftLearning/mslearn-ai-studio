@@ -26,11 +26,14 @@ You start by creating an Azure AI Foundry portal project within an Azure AI hub:
         - **Hub**: *Autofills with default name*
         - **Subscription**: *Autofills with your signed in account*
         - **Resource group**: (New) *Autofills with your project name*
-        - **Location**: Choose one of the following regions **East US2**, **North Central US**, **Sweden Central**, **Switzerland West**\*
+        - **Location**: Choose one of the following regions\*:
+            - North Central US
+            - Sweden Central
+            - [Any other region that supports fine-tuning for gpt-4 models](https://learn.microsoft.com/azure/ai-services/openai/concepts/models?tabs=python-secure%2Cglobal-standard%2Cstandard-chat-completions#fine-tuning-models)
         - **Connect Azure AI Services or Azure OpenAI**: (New) *Autofills with your selected hub name*
         - **Connect Azure AI Search**: Skip connecting
 
-    > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions in the location helper include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region. Learn more about [Fine-tuning model regions](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=python-secure%2Cglobal-standard%2Cstandard-chat-completions#fine-tuning-models)
+    > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions in the location helper include default quota for the model type(s) used in this exercise. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region. Learn more about [Fine-tuning model regions](https://learn.microsoft.com/azure/ai-services/openai/concepts/models?tabs=python-secure%2Cglobal-standard%2Cstandard-chat-completions#fine-tuning-models)
 
 1. Review your configuration and create your project.
 1. Wait for your project to be created.
@@ -76,7 +79,7 @@ While you wait for the fine-tuning job to complete, let's chat with a base GPT 4
 
 1. Navigate to the **Models + endpoints** page under the **My assets** section, using the menu on the left.
 1. Select the **+ Deploy model** button, and select the **Deploy base model** option.
-1. Deploy a `gpt-4` model, which is the same type of model you used when fine-tuning.
+1. Deploy a `gpt-4` model of the same version you selected when fine-tuning.
 
 > **Note**: If your current AI resource location doesn't have quota available for the model you want to deploy, you will be asked to choose a different location where a new AI resource will be created and connected to your project.
 

@@ -12,49 +12,30 @@ In this exercise, you'll use Azure AI Foundry portal to integrate custom data in
 
 This exercise takes approximately **45** minutes.
 
-## Create an Azure AI Search resource
+## Create an Azure AI Foundry project
 
-Your generative AI app solution will integrate custom data into a prompt flow. To support this integration, you'll need an Azure AI Search resource with which to index your data.
+Let's start by creating an Azure AI Foundry project and the service resources it needs to support using your own data - including an Azure AI Search resource.
 
-1. In a web browser, open the [Azure portal](https://portal.azure.com) at `https://portal.azure.com` and sign in using your Azure credentials.
-1. On the home page, select **+ Create a resource** and search for `Azure AI Search`. Then create a new Azure AI Search resource with the following settings:
+1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image:
 
-    - **Subscription**: *Select your Azure subscription*
-    - **Resource group**: *Select or create a resource group*
-    - **Service name**: *Enter a unique service name*
-    - **Location**: *Make a **random** choice from any of the following regions*\*
-        - Australia East
-        - Canada East
-        - East US
-        - East US 2
-        - France Central
-        - Japan East
-        - North Central US
-        - Sweden Central
-        - Switzerland 
-    - **Pricing tier**: Standard
+    ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
 
-    > \* Later, you're going to create an Azure AI Hub (which includes an Azure OpenAI service) in the same region as your Azure AI Search resource. Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit in scenarios where you are sharing a tenant with other users. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another Azure AI hub in a different region.
-
-1. Wait for your Azure AI Search resource deployment to be completed.
-
-## Create an Azure AI project
-
-Now you're ready to create an Azure AI Foundry project and the Azure AI resources to support it.
-
-1. In a web browser, open [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials.
 1. In the home page, select **+ Create project**.
-1. In the **Create a project** wizard you can see all the Azure resources that will be automatically created with your project. Select **Customize** and connect to your Azure AI Search resource:
+1. In the **Create a project** wizard, enter a suitable project name for (for example, `my-ai-project`) then review the Azure resources that will be automatically created to support your project.
+1. Select **Customize** and specify the following settings for your hub:
+    - **Hub name**: *A unique name - for example `my-ai-hub`*
+    - **Subscription**: *Your Azure subscription*
+    - **Resource group**: *Create a new resource group with a unique name (for example, `my-ai-resources`), or select an existing one*
+    - **Location**: Select **Help me choose** and then select both **gpt-4** and **text-embedding-ada-002** in the Location helper window and use the recommended region\*
+    - **Connect Azure AI Services or Azure OpenAI**: *Create a new AI Services resource with an appropriate name (for example, `my-ai-services`) or use an existing one*
+    - **Connect Azure AI Search**: *Create a new Azure AI Search resource with a unique name*
 
-    - **Hub name**: *A unique name*
-    - **Azure Subscription**: *Your Azure subscription*
-    - **Resource group**: *Select the resource group containing your Azure AI Search resource*
-    - **Location**: *The same location as your Azure AI Search resource*
-    - **Connect Azure AI Services or Azure OpenAI**: (New) *Autofills with your selected hub name*
-    - **Connect Azure AI Search**: *Select your Azure AI Search resource*
+    > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region.
 
-1. Select **Next** and review your configuration.
-1. Select **Create** and wait for the process to complete.
+1. Select **Next** and review your configuration. Then select **Create** and wait for the process to complete.
+1. When your project is created, close any tips that are displayed and review the project **Overview** page in Azure AI Foundry portal, which should look similar to the following image:
+
+    ![Screenshot of a Azure AI project details in Azure AI Foundry portal.](./media/ai-foundry-project.png)
    
 ## Deploy models
 
