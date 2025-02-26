@@ -232,8 +232,8 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
            }
    };
     
-    Response<ChatCompletions> response = chat.Complete(requestOptions);
-    Console.WriteLine(response.Value.Content);
+   Response<ChatCompletions> response = chat.Complete(requestOptions);
+   Console.WriteLine(response.Value.Content);
     ```
 
 1. Use the **CTRL+S** command to save your changes to the code file and then use the **CTRL+Q** command to close the code editor while keeping the cloud shell command line open.
