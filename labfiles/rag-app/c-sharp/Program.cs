@@ -66,7 +66,7 @@ namespace rag_app
                         // Get a chat completion
                         ChatClient chatClient = azureOpenAIClient.GetChatClient(model_deployment);
 
-                        // dditional parameters to apply RAG pattern using the AI Search index
+                        // Additional parameters to apply RAG pattern using the AI Search index
                         // (DataSource is in preview and subject to breaking changes)
                         #pragma warning disable AOAI001
 
