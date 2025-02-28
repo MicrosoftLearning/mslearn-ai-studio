@@ -55,7 +55,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
 
 > **Tip**: You can choose to develop your solution using Python or Microsoft C#. Follow the instructions in the appropriate section for your chosen language.
 
-### Clone the application repo
+### Prepare the application configuration
 
 1. In the Azure AI Foundry portal, view the **Overview** page for your project.
 1. In the **Project details** area, note the **Project connection string**. You'll use this connection string to connect to your project in a client application.
@@ -74,8 +74,6 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
     rm -r mslearn-ai-foundry -f
     git clone https://github.com/microsoftlearning/mslearn-ai-studio mslearn-ai-foundry
     ```
-
-### Prepare the application configuration
 
 > **Note**: Follow the steps for your chosen programming language.
 

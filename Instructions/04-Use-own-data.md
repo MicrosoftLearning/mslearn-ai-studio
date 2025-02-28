@@ -10,7 +10,7 @@ Retrieval Augmented Generation (RAG) is a technique used to build applications t
 
 In this exercise, you'll use Azure AI Foundry portal to integrate custom data into a generative AI prompt flow.
 
-This exercise takes approximately **45** minutes.
+This exercise takes approximately **60** minutes.
 
 ## Create an Azure AI Foundry project
 
@@ -221,6 +221,137 @@ Now that you have a working flow that uses your indexed data, you can deploy it 
 1. When the deployment has succeeded, select it. Then, on its **Test** page, enter the prompt `What is there to do in San Francisco?` and review the response.
 1. Enter the prompt `Where else could I go?` and review the response.
 1. View the **Consume** page for the endpoint, and note that it contains connection information and sample code that you can use to build a client application for your endpoint - enabling you to integrate the prompt flow solution into an application as a custom copilot.
+
+## Create a RAG client app with the Azure AI Foundry and Azure OpenAI SDKs
+
+You can use the Azure AI Foundry and Azure OpenAI SDKs to implement the RAG pattern in a client application. Let's explore the code in a simple example.
+
+> **Tip**: You can choose to develop your RAG solution using Python or Microsoft C#. Follow the instructions in the appropriate section for your chosen language.
+
+### Prepare the application configuration
+
+1. In the Azure AI Foundry portal, view the **Overview** page for your project.
+1. In the **Project details** area, note the **Project connection string**. You'll use this connection string to connect to your project in a client application.
+1. Open a new browser tab (keeping the Azure AI Foundry portal open in the existing tab). Then in the new tab, browse to the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`; signing in with your Azure credentials if prompted.
+1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal.
+
+    > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, switch it to ***PowerShell***.
+
+1. In the cloud shell toolbar, in the **Settings** menu, select **Go to Classic version** (this is required to use the code editor).
+
+    > **Tip**: As you paste commands into the cloudshell, the ouput may take up a large amount of the screen buffer. You can clear the screen by entering the `cls` command to make it easier to focus on each task.
+
+1. In the PowerShell pane, enter the following commands to clone the GitHub repo for this exercise:
+
+    ```
+    rm -r mslearn-ai-foundry -f
+    git clone https://github.com/microsoftlearning/mslearn-ai-studio mslearn-ai-foundry
+    ```
+
+> **Note**: Follow the steps for your chosen programming language.
+
+1. After the repo has been cloned, navigate to the folder containing the chat application code files:  
+
+    **Python**
+
+    ```
+   cd mslearn-ai-foundry/labfiles/rag-app/python
+    ```
+
+    **C#**
+
+    ```
+   cd mslearn-ai-foundry/labfiles/rag-app/c-sharp
+    ```
+
+1. In the cloud shell command line pane, enter the following command to install the libraries you'll use:
+
+    **Python**
+
+    ```
+   pip install python-dotenv azure-ai-projects azure-identity openai
+    ```
+
+    **C#**
+
+    ```
+   dotnet add package Azure.Identity
+   dotnet add package Azure.AI.Projects --prerelease
+   dotnet add package Azure.AI.OpenAI --prerelease
+    ```
+    
+
+1. Enter the following command to edit the configuration file that has been provided:
+
+    **Python**
+
+    ```
+   code .env
+    ```
+
+    **C#**
+
+    ```
+   code appsettings.json
+    ```
+
+    The file is opened in a code editor.
+
+1. In the code file, replace the following placeholders: 
+    - **your_project_endpoint**: Replace with the connection string for your project (copied from the project **Overview** page in the Azure AI Foundry portal)
+    - **your_model_deployment** Replace with the name you assigned to your model deployment (which should be `gpt-4`)
+    - **your_index**: Replace with your index name (which should be `brochures-index`)
+1. After you've replaced the placeholders, use the **CTRL+S** command to save your changes and then use the **CTRL+Q** command to close the code editor while keeping the cloud shell command line open.
+
+### Explore code to implement the RAG pattern
+
+1. Enter the following command to edit the code file that has been provided:
+
+    **Python**
+
+    ```
+   code rag-app.py
+    ```
+
+    **C#**
+
+    ```
+   code Program.cs
+    ```
+
+1. Review the code in the file, noting that it:
+    - Uses the Azure AI Foundry SDK to connect to your project (using the project connection string)
+    - Retrieves the default Azure AI Search connection from your project so it can determine the endpoint and key for your Azure AI Search service.
+    - Creates an authenticated Azure OpenAI client based on the default Azure OpenAI service connection in your project.
+    - Submits a prompt (including a system and user message) to the Azure OpenAI client, adding additional information about the Azure AI Search index to be used to ground the prompt.
+    - Displays the response from the grounded prompt.
+1. Use the **CTRL+Q** command to close the code editor without saving any changes, while keeping the cloud shell command line open.
+
+### Run the chat application
+
+1. In the cloud shell command line pane, enter the following command to run the app:
+
+    **Python**
+
+    ```
+   python rag-app.py
+    ```
+
+    **C#**
+
+    ```
+   dotnet run
+    ```
+
+1. When prompted, enter a question, such as `Where can I travel to?` and review the response from your generative AI model.
+
+    Note that the response includes source references to indicate the indexed data in which the answer was found.
+
+1. Try a few more questions, for example `Where should I stay in London?
+
+    > **Note**: This simple example application doesn't include any logic to retain the conversation history, so each prompt is treated as a new conversation.
+
+1. When you're finished, enter `quit` to exit the program. Then close the cloud shell pane.
 
 ## Challenge 
 
