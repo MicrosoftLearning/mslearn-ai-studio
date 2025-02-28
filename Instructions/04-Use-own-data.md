@@ -117,21 +117,17 @@ Your vector index has been saved in your Azure AI Foundry project, enabling you 
 1. In Azure AI Foundry portal, in your project, in the navigation pane on the left, under **Build and customize**, select the **Prompt flow** page.
 1. Create a new prompt flow by cloning the **Multi-Round Q&A on Your Data** sample in the gallery. Save your clone of this sample in a folder named `brochure-flow`.
 
----
-
     <details> 
-      <summary><b>Troubleshooting tip</b>: Permissions error</summary>
+        <summary><font color="red"><b>Troubleshooting tip</b>: Permissions error</font></summary>
         <p>If you receive a permissions error when you create a new prompt flow, try the following to troubleshoot:</p>
         <ul>
-          <li>In the Azure portal, in the resource group for your Azure AI Foundry hub, select the AI Services resource.</li>
-          <li>Under <b>Resource Management</b>, in the <b>Identity</b> tab, ensure that the status of <b>System assigned</b>> managed identity is <b>On</b>.</li>
-          <li>In the resource group for your Azure AI Foundry hub, select the Storage Account</li>
-          <li>On the <b>Access control (IAM)</b> page, add a role assignment to assign the <b>Storage blob data reader</b> role to the managed Identity for your Azure AI services resource.</li>
-          <li>Wait for the role to be assigned, and then retry the previous step.</li>
+            <li>In the Azure portal, in the resource group for your Azure AI Foundry hub, select the AI Services resource.</li>
+            <li>Under <b>Resource Management</b>, in the <b>Identity</b> tab, ensure that the status of <b>System assigned</b>> managed identity is <b>On</b>.</li>
+            <li>In the resource group for your Azure AI Foundry hub, select the Storage Account</li>
+            <li>On the <b>Access control (IAM)</b> page, add a role assignment to assign the <b>Storage blob data reader</b> role to the managed Identity for your Azure AI services resource.</li>
+            <li>Wait for the role to be assigned, and then retry the previous step.</li>
         </ul>
     </details>
-
----
 
 1. When the prompt flow designer page opens, review **brochure-flow**. Its graph should resemble the following image:
 
