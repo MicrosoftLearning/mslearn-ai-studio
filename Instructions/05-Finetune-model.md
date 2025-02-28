@@ -39,7 +39,7 @@ You start by creating an Azure AI Foundry portal project within an Azure AI hub:
 
 ## Fine-tune a GPT-4 model
 
-As fine-tuning a model takes some time to complete, you'll start the fine-tuning job first. Before you can fine-tune a model, you need a dataset.
+Because fine-tuning a model takes some time to complete, you'll start the fine-tuning job now and come back to it after exploring a base model that has not been fine-tuned for comparison purposes.
 
 1. Download the [training dataset](https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel-finetune-hotel.jsonl) at `https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel-finetune-hotel.jsonl`and save it as a JSONL file locally.
 
