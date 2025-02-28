@@ -8,9 +8,9 @@ lab:
 
 Retrieval Augmented Generation (RAG) is a technique used to build applications that integrate data from custom data sources into a prompt for a generative AI model. RAG is a commonly used pattern for developing generative AI apps - chat-based applications that use a language model to interpret inputs and generate appropriate responses.
 
-In this exercise, you'll use Azure AI Foundry portal to integrate custom data into a generative AI prompt flow.
+In this exercise, you'll use Azure AI Foundry portal to integrate custom data into a generative AI prompt flow. You'll also explore how to implement the RAG pattern in a client app by using the Azure AI Foundry and Azure OpenAI SDKs.
 
-This exercise takes approximately **60** minutes.
+This exercise takes approximately **45** minutes.
 
 ## Create an Azure AI Foundry project
 
@@ -89,7 +89,7 @@ Now that you've added a data source to your project, you can use it to create an
     - **Search settings**:
         - **Vector settings**: Add vector search to this search resource
         - **Azure OpenAI connection**: *Select the default Azure OpenAI resource for your hub.*
-        
+
 1. Wait for the indexing process to be completed, which can take several minutes. The index creation operation consists of the following jobs:
 
     - Crack, chunk, and embed the text tokens in your brochures data.
@@ -120,17 +120,17 @@ Your vector index has been saved in your Azure AI Foundry project, enabling you 
       <summary><b>Troubleshooting tip</b>: Permissions error</summary>
         <p>If you receive a permissions error when you create a new prompt flow, try the following to troubleshoot:</p>
         <ul>
-          <li>In the Azure portal, select the AI Services resource.</li>
-          <li>Under Resource Management, in the Identity tab, confirm that it is system assigned managed identity.</li>
-          <li>Navigate to the associated Storage Account. On the IAM page, add role assignment <em>Storage blob data reader</em>.</li>
-          <li>Under <strong>Assign access to</strong>, choose <strong>Managed Identity</strong>, <strong>+ Select members</strong>, select the <strong>All system-assigned managed identities</strong>, and select your Azure AI services resource.</li>
-          <li>Review and assign to save the new settings and retry the previous step.</li>
+          <li>In the Azure portal, in the resource group for your Azure AI Foundry hub, select the AI Services resource.</li>
+          <li>Under <b>Resource Management</b>, in the <b>Identity</b> tab, ensure that the status of <b>System assigned</b>> managed identity is <b>On</b>.</li>
+          <li>In the resource group for your Azure AI Foundry hub, select the Storage Account</li>
+          <li>On the <b>Access control (IAM)</b> page, add a role assignment to assign the <b>Storage blob data reader</b> role to the managed Identity for your Azure AI services resource.</li>
+          <li>Wiat for the role to be assigned, and then retry the previous step.</li>
         </ul>
     </details>
 
 1. When the prompt flow designer page opens, review **brochure-flow**. Its graph should resemble the following image:
 
-    ![A screenshot a a prompt flow graph](./media/chat-flow.png)
+    ![A screenshot of a prompt flow graph.](./media/chat-flow.png)
 
     The sample prompt flow you are using implements the prompt logic for a chat application in which the user can iteratively submit text input to chat interface. The conversational history is retained and included in the context for each iteration. The prompt flow orchestrate a sequence of *tools* to:
 
@@ -142,7 +142,9 @@ Your vector index has been saved in your Azure AI Foundry project, enabling you 
 
 1. Use the **Start compute session** button to start the runtime compute for the flow.
 
-    Wait for the runtime to start. This provides a compute context for the prompt flow. While you're waiting, in the **Flow** tab, review the sections for the tools in the flow.
+    Wait for the compute session to start. This provides a compute context for the prompt flow. While you're waiting, in the **Flow** tab, review the sections for the tools in the flow.
+
+    Then, when the compute session has started...
 
 1. In the **Inputs** section, ensure the inputs include:
     - **chat_history**
@@ -199,32 +201,11 @@ Your vector index has been saved in your Azure AI Foundry project, enabling you 
 1. Review the response, which should be based on data in the index and take into account the chat history (so "there" is understood as "in London").
 1. Review the outputs for each tool in the flow, noting how each tool in the flow operated on its inputs to prepare a contextualized prompt and get an appropriate response.
 
-## Deploy the flow
-
-Now that you have a working flow that uses your indexed data, you can deploy it as a service to be consumed by a copilot application.
-
-> **Note**: Depending on the region and datacenter load, deployments can sometimes take a while and will sometimes throw an error when interacting with the deployment. Feel free to move on to the challenge section below while it deploys or skip the testing of your deployment if you're short on time.
-
-1. On the toolbar, select **Deploy**.
-1. Create a deployment with the following settings:
-    - **Basic settings**:
-        - **Endpoint**: New
-        - **Endpoint name**: *Use the default unique endpoint name*
-        - **Deployment name**: *Use the default deployment endpoint name*
-        - **Virtual machine**: Standard_DS3_v2
-        - **Instance count**: 3
-        - **Inferencing data collection**: Selected
-    - **Advanced settings**:
-        - *Use the default settings*
-1. In Azure AI Foundry portal, in your project, in the navigation pane on the left, under **My assets**, select the **Models + endpoints** page.
-1. Keep refreshing the view until the **brochure-endpoint-1** deployment is shown as having *succeeded* under the **brochure-endpoint** endpoint (this may take a significant period of time).
-1. When the deployment has succeeded, select it. Then, on its **Test** page, enter the prompt `What is there to do in San Francisco?` and review the response.
-1. Enter the prompt `Where else could I go?` and review the response.
-1. View the **Consume** page for the endpoint, and note that it contains connection information and sample code that you can use to build a client application for your endpoint - enabling you to integrate the prompt flow solution into an application as a custom copilot.
+    You now have a working prompt flow that uses your Azure AI Search index to implement the RAG pattern. To learn more about how to deploy and consume your prompt flow, see the [Azure AI Foundry documentation](https://learn.microsoft.com/eazure/ai-foundry/how-to/flow-deploy) 
 
 ## Create a RAG client app with the Azure AI Foundry and Azure OpenAI SDKs
 
-You can use the Azure AI Foundry and Azure OpenAI SDKs to implement the RAG pattern in a client application. Let's explore the code in a simple example.
+While a prompt flow is a great way to encapsulate your model and data in a RAG-based application, you can also use the Azure AI Foundry and Azure OpenAI SDKs to implement the RAG pattern in a client application. Let's explore the code to accomplish this in a simple example.
 
 > **Tip**: You can choose to develop your RAG solution using Python or Microsoft C#. Follow the instructions in the appropriate section for your chosen language.
 
@@ -347,13 +328,13 @@ You can use the Azure AI Foundry and Azure OpenAI SDKs to implement the RAG patt
 
     Note that the response includes source references to indicate the indexed data in which the answer was found.
 
-1. Try a few more questions, for example `Where should I stay in London?
+1. Try a few more questions, for example `Where should I stay in London?`
 
     > **Note**: This simple example application doesn't include any logic to retain the conversation history, so each prompt is treated as a new conversation.
 
 1. When you're finished, enter `quit` to exit the program. Then close the cloud shell pane.
 
-## Challenge 
+## Challenge
 
 Now you've experienced how to integrate your own data in a generative AI app built with the Azure AI Foundry portal, let's explore further!
 
@@ -363,7 +344,7 @@ Try adding a new data source through the Azure AI Foundry portal, index it, and 
 - A set of presentations from past conferences.
 - Any of the datasets available in the [Azure Search sample data](https://github.com/Azure-Samples/azure-search-sample-data) repository.
 
-Be as resourceful as you can to create your data source and integrate it in your prompt flow. Try out the new prompt flow and submit prompts that could only be answered by the data set you chose!
+Be as resourceful as you can to create your data source and integrate it in a prompt flow or client app. Test your solution by submitting prompts that could only be answered by the data set you chose!
 
 ## Clean up
 
