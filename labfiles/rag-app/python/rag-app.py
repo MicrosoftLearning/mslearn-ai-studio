@@ -11,9 +11,12 @@ from azure.ai.projects.models import ConnectionType
 import openai
 
 def main(): 
-        
+
+    # Clear the console
+    os.system('cls' if os.name=='nt' else 'clear')
+
     try: 
-    
+        
         # Get configuration settings 
         load_dotenv()
         project_connection = os.getenv("PROJECT_CONNECTION")

@@ -13,6 +13,9 @@ namespace chat_app
     {
         static void Main(string[] args)
         {
+            // Clear the console
+            Console.Clear();
+            
             try
             {
                 // Get config settings
