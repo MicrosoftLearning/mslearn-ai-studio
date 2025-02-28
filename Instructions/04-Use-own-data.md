@@ -201,7 +201,7 @@ Your vector index has been saved in your Azure AI Foundry project, enabling you 
 1. Review the response, which should be based on data in the index and take into account the chat history (so "there" is understood as "in London").
 1. Review the outputs for each tool in the flow, noting how each tool in the flow operated on its inputs to prepare a contextualized prompt and get an appropriate response.
 
-    You now have a working prompt flow that uses your Azure AI Search index to implement the RAG pattern. To learn more about how to deploy and consume your prompt flow, see the [Azure AI Foundry documentation](https://learn.microsoft.com/eazure/ai-foundry/how-to/flow-deploy) 
+    You now have a working prompt flow that uses your Azure AI Search index to implement the RAG pattern. To learn more about how to deploy and consume your prompt flow, see the [Azure AI Foundry documentation](https://learn.microsoft.com/azure/ai-foundry/how-to/flow-deploy).
 
 ## Create a RAG client app with the Azure AI Foundry and Azure OpenAI SDKs
 
