@@ -1,7 +1,9 @@
-﻿/* Required packages
+﻿/*
+Required packages:
 dotnet add package Azure.AI.Projects --prerelease
 dotnet add package Azure.Identity
-dotnet add package Azure.AI.OpenAI --prerelease */
+dotnet add package Azure.AI.OpenAI --prerelease
+*/
 
 using System;
 using Azure;
