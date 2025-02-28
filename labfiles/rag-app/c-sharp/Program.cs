@@ -42,8 +42,6 @@ namespace rag_app
                 // Use the AI search service connection to get service details
                 ConnectionResponse searchConnection = connectionsClient.GetDefaultConnection(ConnectionType.AzureAISearch, true);
                 var searchProperties = searchConnection.Properties as ConnectionPropertiesApiKeyAuth;
-                var credential = new AzureKeyCredential(searchProperties.Credentials.Key);
-                Uri endpoint = new Uri(searchProperties.Target);
                 string search_url = searchProperties.Target;
                 string search_key = searchProperties.Credentials.Key;
 
