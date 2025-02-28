@@ -122,7 +122,7 @@ Your vector index has been saved in your Azure AI Foundry project, enabling you 
         <p>If you receive a permissions error when you create a new prompt flow, try the following to troubleshoot:</p>
         <ul>
             <li>In the Azure portal, in the resource group for your Azure AI Foundry hub, select the AI Services resource.</li>
-            <li>Under <b>Resource Management</b>, in the <b>Identity</b> tab, ensure that the status of <b>System assigned</b>> managed identity is <b>On</b>.</li>
+            <li>Under <b>Resource Management</b>, in the <b>Identity</b> tab, ensure that the status of <b>System assigned</b> managed identity is <b>On</b>.</li>
             <li>In the resource group for your Azure AI Foundry hub, select the Storage Account</li>
             <li>On the <b>Access control (IAM)</b> page, add a role assignment to assign the <b>Storage blob data reader</b> role to the managed Identity for your Azure AI services resource.</li>
             <li>Wait for the role to be assigned, and then retry the previous step.</li>
