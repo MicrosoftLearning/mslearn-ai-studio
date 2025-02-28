@@ -92,7 +92,7 @@ Let's see how the model behaves in a conversational interaction.
 
 1. Navigate to the **Playgrounds** in the left pane.
 
-1. In the **Chat** mode, enter the following prompt in the **Chat history** section.
+1. Open the **Chat playground** and enter the following prompt in the **Chat history** section.
 
     ```
    Describe characteristics of Scottish people.
@@ -108,13 +108,13 @@ Let's see how the model behaves in a conversational interaction.
 
 1. Apply the changes to the system message.
 
-1. In the **Chat session** section, re-enter the following prompt.
+1. In the **Chat history** section, re-enter the following prompt.
 
     ```
    Describe characteristics of Scottish people.
     ```
 
-8. Observe the output, which should hopefully indicate that the request to be racist and derogative is not supported. This prevention of offensive output is the result of the default content filters in Azure AI Foundry portal.
+8. Observe the output, which should hopefully indicate that the request to be racist and derogative is not supported. This prevention of offensive output is the result of content filtering.
 
 > **Tip**: For more details about the categories and severity levels used in content filters, see [Content filtering](https://learn.microsoft.com/azure/ai-studio/concepts/content-filtering) in the Azure AI Foundry portal service documentation.
 
