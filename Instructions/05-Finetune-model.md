@@ -26,10 +26,7 @@ You start by creating an Azure AI Foundry portal project within an Azure AI hub:
         - **Hub**: *Autofills with default name*
         - **Subscription**: *Autofills with your signed in account*
         - **Resource group**: (New) *Autofills with your project name*
-        - **Location**: Choose one of the following regions\*:
-            - North Central US
-            - Sweden Central
-            - [Any other region that supports fine-tuning for gpt-4 models](https://learn.microsoft.com/azure/ai-services/openai/concepts/models?tabs=python-secure%2Cglobal-standard%2Cstandard-chat-completions#fine-tuning-models)
+        -  **Location**: Select **Help me choose** and then select **gpt-4-finetune** in the Location helper window and use the recommended region\*
         - **Connect Azure AI Services or Azure OpenAI**: (New) *Autofills with your selected hub name*
         - **Connect Azure AI Search**: Skip connecting
 
