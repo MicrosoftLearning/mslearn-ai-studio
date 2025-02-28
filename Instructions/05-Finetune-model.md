@@ -12,7 +12,9 @@ In this exercise, you'll fine-tune a language model with the Azure AI Foundry th
 
 Imagine you work for a travel agency and you're developing a chat application to help people plan their vacations. The goal is to create a simple and inspiring chat that suggests destinations and activities. Since the chat isn't connected to any data sources, it should **not** provide specific recommendations for hotels, flights, or restaurants to ensure trust with your customers.
 
-This exercise will take approximately **60** minutes.
+This exercise will take approximately **60** minutes\*.
+
+> \* **Note**: This timing is an estimate based on the average experience. Fine-tuning is dependent on cloud infrastructure resources, which can take a variable amount of time to provision depending on data center capacity and concurrent demand. Some activities in this exercise may take a <u>long</u> time to complete, and require patience. If things are taking a while, consider reviewing the [Azure AI Foundry fine-tuning documentation](https://learn.microsoft.com/azure/ai-studio/concepts/fine-tuning-overview) or taking a break.
 
 ## Create an AI hub and project in the Azure AI Foundry portal
 
@@ -68,7 +70,7 @@ As fine-tuning a model takes some time to complete, you'll start the fine-tuning
     - **Task parameters**: *Keep the default settings*
 1. Fine-tuning will start and may take some time to complete.
 
-> **Note**: Fine-tuning and deployment can take some time, so you may need to check back periodically. You can already continue with the next step while you wait.
+> **Note**: Fine-tuning and deployment can take a significant amount of time (30 minutes or longer), so you may need to check back periodically. You can already continue with the next step while you wait.
 
 ## Chat with a base model
 
@@ -76,7 +78,11 @@ While you wait for the fine-tuning job to complete, let's chat with a base GPT 4
 
 1. Navigate to the **Models + endpoints** page under the **My assets** section, using the menu on the left.
 1. Select the **+ Deploy model** button, and select the **Deploy base model** option.
-1. Deploy a `gpt-4` model of the same version you selected when fine-tuning.
+1. Deploy a `gpt-4` model with the following settings:
+    - **Deployment name**: *A unique name for your model, you can use the default*
+    - **Deployment type**: Standard
+    - **Tokens per Minute Rate Limit (thousands)**: 5K
+    - **Content filter**: Default
 
 > **Note**: If your current AI resource location doesn't have quota available for the model you want to deploy, you will be asked to choose a different location where a new AI resource will be created and connected to your project.
 
@@ -101,36 +107,54 @@ While you wait for the fine-tuning job to complete, let's chat with a base GPT 4
     ```
 
 1. Select **Apply changes**, and **Clear chat**.
-1. Continue testing your chat application to verify it doesn't provide any information that isn't grounded in retrieved data. For example, ask the following questions and explore the model's answers:
+1. Continue testing your chat application to verify it doesn't provide any information that isn't grounded in retrieved data. For example, ask the following questions and review the model's answers, paying particular attention to the tone and writing style that the model uses to respond:
    
     `Where in Rome should I stay?`
     
     `I'm mostly there for the food. Where should I stay to be within walking distance of affordable restaurants?`
 
-    `Give me a list of five bed and breakfasts in Trastevere.`
+    `What are some local delicacies I should try?`
 
-    The model may provide you with a list of hotels, even when you instructed it not to give hotel recommendations. This is an example of inconsistent behavior. Let's explore whether the fine-tuned model performs better in these cases.
+    `When is the best time of year to visit in terms of the weather?`
 
-1. Navigate to the **Fine-tuning** page under **Build and customize** to find your fine-tuning job and its status. If it's still running, you can opt to continue manually evaluating your deployed base model. If it's completed, you can continue with the next section.
+    `What's the best way to get around the city?`
+
+## Review the training file
+
+The base model seems to work well enough, but you may be looking for a particular conversational style from your generative AI app. The training data used for fine-tuning offers you the chance to create explicit examples of the kinds of response you want.
+
+1. Open the JSONL file you downloaded previously (you can open it in any text editor)
+1. Examine the list of the JSON documents in the training data file. The first one should be similar to this (formatted for readability):
+
+    ```json
+    {"messages": [
+        {"role": "system", "content": "You are an AI travel assistant that helps people plan their trips. Your objective is to offer support for travel-related inquiries, such as visa requirements, weather forecasts, local attractions, and cultural norms. You should not provide any hotel, flight, rental car or restaurant recommendations. Ask engaging questions to help someone plan their trip and think about what they want to do on their holiday."},
+        {"role": "user", "content": "What's a must-see in Paris?"},
+        {"role": "assistant", "content": "Oh la la! You simply must twirl around the Eiffel Tower and snap a chic selfie! After that, consider visiting the Louvre Museum to see the Mona Lisa and other masterpieces. What type of attractions are you most interested in?"}
+        ]}
+    ```
+
+    Each example interaction in the list includes the same system message you tested with the base model, a user prompt related to a travel query, and a response. The style of the responses in the training data will help the fine-tuned model learn how it should respond.
 
 ## Deploy the fine-tuned model
 
 When fine-tuning has successfully completed, you can deploy the fine-tuned model.
 
+1. Navigate to the **Fine-tuning** page under **Build and customize** to find your fine-tuning job and its status. If it's still running, you can opt to continue chatting with your deployed base model or take a break. If it's completed, you can continue.
 1. Select the fine-tuned model. Select the **Metrics** tab and explore the fine-tune metrics.
 1. Deploy the fine-tuned model with the following configurations:
     - **Deployment name**: *A unique name for your model, you can use the default*
     - **Deployment type**: Standard
     - **Tokens per Minute Rate Limit (thousands)**: 5K
     - **Content filter**: Default
-1. Wait for the deployment to be complete before you can test it, this may take a while.
+1. Wait for the deployment to be complete before you can test it, this might take a while. Check the **Provisioning state** until it has succeeded (you may need to refresh the browser to see the updated status).
 
 ## Test the fine-tuned model
 
 Now that you deployed your fine-tuned model, you can test it like you tested your deployed base model.
 
 1. When the deployment is ready, navigate to the fine-tuned model and select **Open in playground**.
-1. Update the system message with the following instructions:
+1. Ensure the system message includes these instructions:
 
     ```md
     You are an AI travel assistant that helps people plan their trips. Your objective is to offer support for travel-related inquiries, such as visa requirements, weather forecasts, local attractions, and cultural norms.
@@ -144,7 +168,13 @@ Now that you deployed your fine-tuned model, you can test it like you tested you
     
     `I'm mostly there for the food. Where should I stay to be within walking distance of affordable restaurants?`
 
-    `Give me a list of five bed and breakfasts in Trastevere.`
+    `What are some local delicacies I should try?`
+
+    `When is the best time of year to visit in terms of the weather?`
+
+    `What's the best way to get around the city?`
+
+1. After reviewing the responses, how do they compare to those of the base model?
 
 ## Clean up
 
