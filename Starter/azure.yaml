@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+
+name: azd-aistudio-starter
+metadata:
+  template: azd-aistudio-starter@0.0.1-beta
+workflows:
+  up:
+    steps:
+      - azd: provision
+# ################################################################
+# Uncomment the following section and bring your AI code to life.
+# Then, use `azd deploy` to deploy your project to Azure.
+# ################################################################
+# services:
+#   chat:
+#     host: ai.endpoint
+#     language: python
+#     project: ./src/my-app
+#     config:
+#       deployment:
+#         path: ./deployment.yaml

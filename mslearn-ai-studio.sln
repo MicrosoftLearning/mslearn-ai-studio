@@ -1,0 +1,42 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "labfiles", "labfiles", "{E34FE7DF-E823-91FC-26CE-DC3F33A9AAE2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "chat-app", "chat-app", "{B73CF433-E9E9-DD29-298F-B742666D4747}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chat_app", "labfiles\chat-app\c-sharp\chat_app.csproj", "{A53A0714-FD76-A58F-7944-E1AB460D4BD7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "rag-app", "rag-app", "{DC2CBBB6-F782-E461-D258-586C22191629}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rag_app", "labfiles\rag-app\c-sharp\rag_app.csproj", "{01057EE9-001E-0241-99C4-073D05302C9B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A53A0714-FD76-A58F-7944-E1AB460D4BD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A53A0714-FD76-A58F-7944-E1AB460D4BD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A53A0714-FD76-A58F-7944-E1AB460D4BD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A53A0714-FD76-A58F-7944-E1AB460D4BD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01057EE9-001E-0241-99C4-073D05302C9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01057EE9-001E-0241-99C4-073D05302C9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01057EE9-001E-0241-99C4-073D05302C9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01057EE9-001E-0241-99C4-073D05302C9B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B73CF433-E9E9-DD29-298F-B742666D4747} = {E34FE7DF-E823-91FC-26CE-DC3F33A9AAE2}
+		{A53A0714-FD76-A58F-7944-E1AB460D4BD7} = {B73CF433-E9E9-DD29-298F-B742666D4747}
+		{DC2CBBB6-F782-E461-D258-586C22191629} = {E34FE7DF-E823-91FC-26CE-DC3F33A9AAE2}
+		{01057EE9-001E-0241-99C4-073D05302C9B} = {DC2CBBB6-F782-E461-D258-586C22191629}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AE2B9AFF-C723-4AB1-8021-536D8470339C}
+	EndGlobalSection
+EndGlobal
