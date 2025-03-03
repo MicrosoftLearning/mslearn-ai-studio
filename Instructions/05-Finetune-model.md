@@ -29,14 +29,14 @@ You can create an Azure AI hub and project manually through the Azure AI Foundry
 1. In the PowerShell pane, enter the following commands to clone this exercise's repo:
 
      ```powershell
-    rm -r mslearn-genaiops -f
-    git clone https://github.com/MicrosoftLearning/mslearn-genaiops
+    rm -r mslearn-ai-studio -f
+    git clone https://github.com/MicrosoftLearning/mslearn-ai-studio
      ```
 
 1. After the repo has been cloned, enter the following commands to initialize the Starter template.
 
      ```powershell
-    cd ./mslearn-genaiops/Starter
+    cd ./mslearn-ai-studio/Starter
     azd init
      ```
 
