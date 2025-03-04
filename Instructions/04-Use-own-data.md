@@ -145,6 +145,8 @@ Your vector index has been saved in your Azure AI Foundry project, enabling you 
 
     Wait for the compute session to start. This provides a compute context for the prompt flow. While you're waiting, in the **Flow** tab, review the sections for the tools in the flow.
 
+    >**Note**: Due to infrastructure and capacity limitations, the compute session may fail to start during high-demand periods. If that happens, you can skip using prompt flow and start the task **Create a RAG client app with the Azure AI Foundry and Azure OpenAI SDKs**.
+
     Then, when the compute session has started...
 
 1. In the **Inputs** section, ensure the inputs include:
@@ -164,7 +166,7 @@ Your vector index has been saved in your Azure AI Foundry project, enabling you 
     - **deployment_name**: gpt-4
     - **response_format**: {"type":"text"}
 
-1. Wait for the compute session to start, then in the **lookup** section, set the following parameter values:
+1. In the **lookup** section, set the following parameter values:
 
     - **mlindex_content**: *Select the empty field to open the Generate pane*
         - **index_type**: Registered Index
