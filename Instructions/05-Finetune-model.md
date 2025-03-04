@@ -41,10 +41,7 @@ You start by creating an Azure AI Foundry portal project within an Azure AI hub:
 
 Because fine-tuning a model takes some time to complete, you'll start the fine-tuning job now and come back to it after exploring a base model that has not been fine-tuned for comparison purposes.
 
-1. Download the [training dataset](https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel-finetune-hotel.jsonl) at `https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel-finetune-hotel.jsonl`and save it as a JSONL file locally.
-
-    > **Note**: Your device might default to saving the file as a .txt file. Select all files and remove the .txt suffix to ensure you're saving the file as JSONL.
-
+1. In the VS Code Explorer (left pane), open the script **fine-tune-app.py** in the **labfiles/fine-tune-app/Python** folder.
 1. Navigate to the **Fine-tuning** page under the **Build and customize** section, using the menu on the left.
 1. Select the button to add a new fine-tune model, select the `gpt-4` model, select **Next** and then **Confirm**.
 1. **Fine-tune** the model using the following configuration:
