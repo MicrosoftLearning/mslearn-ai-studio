@@ -49,17 +49,12 @@ You can create an Azure AI hub and project manually through the Azure AI Foundry
      ```
 
 1. When prompted, choose which subscription you want to use and then choose one of the following locations for resource provision:
-   - East US
-   - East US 2
    - North Central US
-   - South Central US
    - Sweden Central
-   - West US
-   - West US 3
 
 1. Wait for the script to complete - this typically takes around 10 minutes, but in some cases may take longer.
 
-    > **Note**: Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions above include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit. In the event of a quota limit being reached, there's a possibility you may need to create another resource group in a different region. Learn more about [model availability per region](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=standard%2Cstandard-chat-completions#global-standard-model-availability)
+     > **Note**: Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions in the location helper include default quota for the model type(s) used in this exercise. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region. Learn more about [Fine-tuning model regions](https://learn.microsoft.com/azure/ai-services/openai/concepts/models?tabs=python-secure%2Cglobal-standard%2Cstandard-chat-completions#fine-tuning-models)
 
     <details>
       <summary><b>Troubleshooting tip</b>: No quota available in a given region</summary>
@@ -86,18 +81,14 @@ You can create an Azure AI hub and project manually through the Azure AI Foundry
 
 To quickly experiment and iterate, you'll use a notebook with Python code in Visual Studio (VS) Code. Let's get VS Code ready to use for local ideation.
 
-1. Open VS Code and **Clone** the following Git repo: [https://github.com/MicrosoftLearning/mslearn-ai-studio.git](https://github.com/MicrosoftLearning/mslearn-ai-studio.git)
+1. Open VS Code and **Clone** the following Git repo: `https://github.com/MicrosoftLearning/mslearn-ai-studio`
 1. Store the clone on a local drive, and open the folder after cloning.
-1. In the VS Code Explorer (left pane), open the script **fine-tune-app.py** in the **labfiles/fine-tune-app** folder.
    
 ## Fine-tune a GPT-4 model
 
 Because fine-tuning a model takes some time to complete, you'll start the fine-tuning job now and come back to it after exploring a base model that has not been fine-tuned for comparison purposes.
 
-1. Download the [training dataset](https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel-finetune-hotel.jsonl) at `https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel-finetune-hotel.jsonl`and save it as a JSONL file locally.
-
-    > **Note**: Your device might default to saving the file as a .txt file. Select all files and remove the .txt suffix to ensure you're saving the file as JSONL.
-
+1. In the VS Code Explorer (left pane), open the script **fine-tune-app.py** in the **labfiles/fine-tune-app/Python** folder.
 1. Navigate to the **Fine-tuning** page under the **Build and customize** section, using the menu on the left.
 1. Select the button to add a new fine-tune model, select the `gpt-4` model, select **Next** and then **Confirm**.
 1. **Fine-tune** the model using the following configuration:
