@@ -16,80 +16,27 @@ This exercise will take approximately **60** minutes\*.
 
 > \* **Note**: This timing is an estimate based on the average experience. Fine-tuning is dependent on cloud infrastructure resources, which can take a variable amount of time to provision depending on data center capacity and concurrent demand. Some activities in this exercise may take a <u>long</u> time to complete, and require patience. If things are taking a while, consider reviewing the [Azure AI Foundry fine-tuning documentation](https://learn.microsoft.com/azure/ai-studio/concepts/fine-tuning-overview) or taking a break.
 
-## Create an Azure AI hub and project
+## Create an AI hub and project in the Azure AI Foundry portal
 
-You can create an Azure AI hub and project manually through the Azure AI Foundry portal, as well as deploy the models used in the exercise. However, you can also automate this process through the use of a template application with [Azure Developer CLI (azd)](https://aka.ms/azd).
+You start by creating an Azure AI Foundry portal project within an Azure AI hub:
 
-1. In a web browser, open [Azure portal](https://portal.azure.com) at `https://portal.azure.com` and sign in using your Azure credentials.
+1. In a web browser, open [https://ai.azure.com](https://ai.azure.com) and sign in using your Azure credentials.
+1. From the home page, select **+ Create project**.
+1. In the **Create a new project** wizard, create a project with the following settings:
+    - **Project name**: *A unique name for your project*
+    - Select **Customize**
+        - **Hub**: *Autofills with default name*
+        - **Subscription**: *Autofills with your signed in account*
+        - **Resource group**: (New) *Autofills with your project name*
+        -  **Location**: Select **Help me choose** and then select **gpt-4-finetune** in the Location helper window and use the recommended region\*
+        - **Connect Azure AI Services or Azure OpenAI**: (New) *Autofills with your selected hub name*
+        - **Connect Azure AI Search**: Skip connecting
 
-1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal. For more information about using the Azure Cloud Shell, see the [Azure Cloud Shell documentation](https://docs.microsoft.com/azure/cloud-shell/overview).
+    > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions in the location helper include default quota for the model type(s) used in this exercise. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region. Learn more about [Fine-tuning model regions](https://learn.microsoft.com/azure/ai-services/openai/concepts/models?tabs=python-secure%2Cglobal-standard%2Cstandard-chat-completions#fine-tuning-models)
 
-    > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, switch it to ***PowerShell***.
+1. Review your configuration and create your project.
+1. Wait for your project to be created.
 
-1. In the PowerShell pane, enter the following commands to clone this exercise's repo:
-
-     ```powershell
-    rm -r mslearn-genaiops -f
-    git clone https://github.com/MicrosoftLearning/mslearn-genaiops
-     ```
-
-1. After the repo has been cloned, enter the following commands to initialize the Starter template.
-
-     ```powershell
-    cd ./mslearn-genaiops/Starter
-    azd init
-     ```
-
-1. Once prompted, give the new environment a name as it will be used as basis for giving unique names to all the provisioned resources.
-
-1. Next, enter the following command to run the Starter template. It will provision an AI Hub with dependent resources, AI project, AI Services and an online endpoint. It will also deploy the models GPT-4 Turbo, GPT-4o, and GPT-4o mini.
-
-     ```powershell
-    azd up  
-     ```
-
-1. When prompted, choose which subscription you want to use and then choose one of the following locations for resource provision:
-   - East US
-   - East US 2
-   - North Central US
-   - South Central US
-   - Sweden Central
-   - West US
-   - West US 3
-
-1. Wait for the script to complete - this typically takes around 10 minutes, but in some cases may take longer.
-
-    > **Note**: Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions above include default quota for the model type(s) used in this exercise. Randomly choosing a region reduces the risk of a single region reaching its quota limit. In the event of a quota limit being reached, there's a possibility you may need to create another resource group in a different region. Learn more about [model availability per region](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=standard%2Cstandard-chat-completions#global-standard-model-availability)
-
-    <details>
-      <summary><b>Troubleshooting tip</b>: No quota available in a given region</summary>
-        <p>If you receive a deployment error for any of the models due to no quota available in the region you chose, try running the following commands:</p>
-        <ul>
-          <pre><code>azd env set AZURE_ENV_NAME new_env_name
-   azd env set AZURE_RESOURCE_GROUP new_rg_name
-   azd env set AZURE_LOCATION new_location
-   azd up</code></pre>
-        Replacing <code>new_env_name</code>, <code>new_rg_name</code>, and <code>new_location</code> with new values. The new location must be one of the regions listed at the beginning of the exercise, e.g <code>eastus2</code>, <code>northcentralus</code>, etc.
-        </ul>
-    </details>
-
-1. Once all resources have been provisioned, use the following commands to fetch the endpoint and access key to your AI Services resource. Note that you must replace `<rg-env_name>` and `<aoai-xxxxxxxxxx>` with the names of your resource group and AI Services resource. Both are printed in the deployment's output.
-
-     ```powershell
-    Get-AzCognitiveServicesAccount -ResourceGroupName <rg-env_name> -Name <aoai-xxxxxxxxxx> | Select-Object -Property endpoint
-    Get-AzCognitiveServicesAccountKey -ResourceGroupName <rg-env_name> -Name <aoai-xxxxxxxxxx> | Select-Object -Property Key1
-     ```
-
-1. Copy these values as they will be used later on.
-
-## Set up your local development environment
-
-To quickly experiment and iterate, you'll use a notebook with Python code in Visual Studio (VS) Code. Let's get VS Code ready to use for local ideation.
-
-1. Open VS Code and **Clone** the following Git repo: [https://github.com/MicrosoftLearning/mslearn-ai-studio.git](https://github.com/MicrosoftLearning/mslearn-ai-studio.git)
-1. Store the clone on a local drive, and open the folder after cloning.
-1. In the VS Code Explorer (left pane), open the script **fine-tune-app.py** in the **labfiles/fine-tune-app** folder.
-   
 ## Fine-tune a GPT-4 model
 
 Because fine-tuning a model takes some time to complete, you'll start the fine-tuning job now and come back to it after exploring a base model that has not been fine-tuned for comparison purposes.
