@@ -1,5 +1,5 @@
 ---
-title: Azure OpenAI Exercises
+title: Develop generative AI solutions
 permalink: index.html
 layout: home
 ---
