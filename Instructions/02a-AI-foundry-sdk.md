@@ -24,11 +24,18 @@ Let's start by creating an Azure AI Foundry project.
     - **Hub name**: *A unique name - for example `my-ai-hub`*
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create a new resource group with a unique name (for example, `my-ai-resources`), or select an existing one*
-    - **Location**: Select **Help me choose** and then select **gpt-4** in the Location helper window and use the recommended region\*
+    - **Location**: Select any of the following regions\*:
+        - East US
+        - East US 2
+        - North Central US
+        - South Central US
+        - Sweden Central
+        - West US
+        - West US 3
     - **Connect Azure AI Services or Azure OpenAI**: *Create a new AI Services resource with an appropriate name (for example, `my-ai-services`) or use an existing one*
     - **Connect Azure AI Search**: Skip connecting
 
-    > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region.
+    > \* At the time of writing, the Microsoft *Phi-4* we're going to use in this exercise is available in these regions. You can check the latest regional availability for specific models in the [Azure AI Foundry documentation](https://learn.microsoft.com/azure/ai-foundry/how-to/deploy-models-serverless-availability#region-availability). In the event of a regional quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region.
 
 1. Select **Next** and review your configuration. Then select **Create** and wait for the process to complete.
 1. When your project is created, close any tips that are displayed and review the project page in Azure AI Foundry portal, which should look similar to the following image:
@@ -102,9 +109,9 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
     **C#**
 
     ```
-   dotnet add package Azure.AI.Inference --version 1.0.0-beta.3
-   dotnet add package Azure.AI.Projects --version 1.0.0-beta.3
    dotnet add package Azure.Identity
+   dotnet add package Azure.AI.Projects --version 1.0.0-beta.3
+   dotnet add package Azure.AI.Inference --version 1.0.0-beta.3
     ```
     
 
