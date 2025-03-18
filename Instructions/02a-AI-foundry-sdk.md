@@ -160,6 +160,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
    from dotenv import load_dotenv
    from azure.identity import DefaultAzureCredential
    from azure.ai.projects import AIProjectClient
+   from azure.ai.inference.models import SystemMessage, UserMessage
     ```
 
     **C#**
@@ -208,14 +209,13 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
 
     ```python
    response = chat.complete(
-        model=model_deployment,
-        messages=[
-            {"role": "system", "content": "You are a helpful AI assistant that answers questions."},
-            {"role": "user", "content": input_text},
-            ],
-        )
-   print(response.choices[0].message.content)
-    ```
+       model=model_deployment,
+       messages=[
+           SystemMessage("You are a helpful AI assistant that answers questions."),
+           UserMessage(input_text)
+       ])
+   print(response.choices[0].message.content
+```
 
     **C#**
 
