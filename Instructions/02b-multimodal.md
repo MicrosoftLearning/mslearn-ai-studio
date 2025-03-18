@@ -265,7 +265,7 @@ Now that you've deployed the model, you can use the deployment in a client appli
 
 1. In the code editor for the **chat-app.py** file, in the loop section, under the comment **Get a response to image input**, add the following code to submit a prompt that includes the following image:
 
-    ![A photo of an orange.](../../labfiles/multimodal/orange.jpg)
+    ![A photo of an orange.](../labfiles/multimodal/orange.jpg)
 
     **Python**
 
