@@ -8,7 +8,7 @@ lab:
 
 Retrieval Augmented Generation (RAG) is a technique used to build applications that integrate data from custom data sources into a prompt for a generative AI model. RAG is a commonly used pattern for developing generative AI apps - chat-based applications that use a language model to interpret inputs and generate appropriate responses.
 
-In this exercise, you'll use Azure AI Foundry portal to integrate custom data into a generative AI prompt flow. You'll also explore how to implement the RAG pattern in a client app by using the Azure AI Foundry and Azure OpenAI SDKs.
+In this exercise, you'll use Azure AI Foundry portal and the Azure AI Foundry and Azure OpenAI SDKs to integrate custom data into a generative AI app.
 
 This exercise takes approximately **45** minutes.
 
@@ -21,7 +21,7 @@ Let's start by creating an Azure AI Foundry project and the service resources it
     ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
 
 1. In the home page, select **+ Create project**.
-1. In the **Create a project** wizard, enter a suitable project name for (for example, `my-ai-project`) then review the Azure resources that will be automatically created to support your project.
+1. In the **Create a project** wizard, enter a suitable project name for (for example, `my-ai-project`) and if an existing hub is suggested, choose the option to create a new one. Then review the Azure resources that will be automatically created to support your hub and project.
 1. Select **Customize** and specify the following settings for your hub:
     - **Hub name**: *A unique name - for example `my-ai-hub`*
     - **Subscription**: *Your Azure subscription*
@@ -90,125 +90,29 @@ Now that you've added a data source to your project, you can use it to create an
         - **Vector settings**: Add vector search to this search resource
         - **Azure OpenAI connection**: *Select the default Azure OpenAI resource for your hub.*
 
-1. Wait for the indexing process to be completed, which can take several minutes. The index creation operation consists of the following jobs:
+1. Wait for the indexing process to be completed, which can take a while depending on available compute resources in your subscription. The index creation operation consists of the following jobs:
 
     - Crack, chunk, and embed the text tokens in your brochures data.
     - Create the Azure AI Search index.
     - Register the index asset.
 
-## Test the index
+## Test the index in the playground
 
 Before using your index in a RAG-based prompt flow, let's verify that it can be used to affect generative AI responses.
 
-1. In the navigation pane on the left, select the **Playgrounds** page.
-1. On the Chat page, in the Setup pane, ensure that your **gpt-4** model deployment is selected. Then, in the main chat session panel, submit the prompt `Where can I stay in New York?`
+1. In the navigation pane on the left, select the **Playgrounds** page and open the **Chat** playground.
+1. On the Chat playground page, in the Setup pane, ensure that your **gpt-4** model deployment is selected. Then, in the main chat session panel, submit the prompt `Where can I stay in New York?`
 1. Review the response, which should be a generic answer from the model without any data from the index.
 1. In the Setup pane, expand the **Add your data** field, and then add the **brochures-index** project index and select the **hybrid (vector + keyword)** search type.
 
-   > **Note**: Some users are finding newly created indexes unavailable right away. Refreshing the browser usually helps, but if you're still experiencing the issue where it can't find the index you may need to wait until the index is recognized.
+   > **Tip**: In some cases, newly created indexes may not be available right away. Refreshing the browser usually helps, but if you're still experiencing the issue where it can't find the index you may need to wait until the index is recognized.
 
 1. After the index has been added and the chat session has restarted, resubmit the prompt `Where can I stay in New York?`
 1. Review the response, which should be based on data in the index.
 
-## Use the index in a prompt flow
-
-Your vector index has been saved in your Azure AI Foundry project, enabling you to use it easily in a prompt flow.
-
-1. In Azure AI Foundry portal, in your project, in the navigation pane on the left, under **Build and customize**, select the **Prompt flow** page.
-1. Create a new prompt flow by cloning the **Multi-Round Q&A on Your Data** sample in the gallery. Save your clone of this sample in a folder named `brochure-flow`.
-
-    <details> 
-        <summary><font color="red"><b>Troubleshooting tip</b>: Permissions error</font></summary>
-        <p>If you receive a permissions error when you create a new prompt flow, try the following to troubleshoot:</p>
-        <ul>
-            <li>In the Azure portal, in the resource group for your Azure AI Foundry hub, select the AI Services resource.</li>
-            <li>Under <b>Resource Management</b>, in the <b>Identity</b> tab, ensure that the status of <b>System assigned</b> managed identity is <b>On</b>.</li>
-            <li>In the resource group for your Azure AI Foundry hub, select the Storage Account</li>
-            <li>On the <b>Access control (IAM)</b> page, add a role assignment to assign the <b>Storage blob data reader</b> role to the managed Identity for your Azure AI services resource.</li>
-            <li>Wait for the role to be assigned, and then retry the previous step.</li>
-        </ul>
-    </details>
-
-1. When the prompt flow designer page opens, review **brochure-flow**. Its graph should resemble the following image:
-
-    ![A screenshot of a prompt flow graph.](./media/chat-flow.png)
-
-    The sample prompt flow you are using implements the prompt logic for a chat application in which the user can iteratively submit text input to chat interface. The conversational history is retained and included in the context for each iteration. The prompt flow orchestrate a sequence of *tools* to:
-
-    - Append the history to the chat input to define a prompt in the form of a contextualized form of a question.
-    - Retrieve the context using your index and a query type of your own choice based on the question.
-    - Generate prompt context by using the retrieved data from the index to augment the question.
-    - Create prompt variants by adding a system message and structuring the chat history.
-    - Submit the prompt to a language model to generate a natural language response.
-
-1. Use the **Start compute session** button to start the runtime compute for the flow.
-
-    Wait for the compute session to start. This provides a compute context for the prompt flow. While you're waiting, in the **Flow** tab, review the sections for the tools in the flow.
-
-    >**Note**: Due to infrastructure and capacity limitations, the compute session may fail to start during high-demand periods. If that happens, you can skip using prompt flow and start the task **Create a RAG client app with the Azure AI Foundry and Azure OpenAI SDKs**.
-
-    Then, when the compute session has started...
-
-1. In the **Inputs** section, ensure the inputs include:
-    - **chat_history**
-    - **chat_input**
-
-    The default chat history in this sample includes some conversation about AI.
-
-1. In the **Outputs** section, ensure that the output includes:
-
-    - **chat_output** with value ${chat_with_context.output}
-
-1. In the **modify_query_with_history** section, select the following settings (leaving others as they are):
-
-    - **Connection**: *The default Azure OpenAI resource for your AI hub*
-    - **Api**: chat
-    - **deployment_name**: gpt-4
-    - **response_format**: {"type":"text"}
-
-1. In the **lookup** section, set the following parameter values:
-
-    - **mlindex_content**: *Select the empty field to open the Generate pane*
-        - **index_type**: Registered Index
-        - **mlindex_asset_id**: brochures-index:1
-    - **queries**: ${modify_query_with_history.output}
-    - **query_type**: Hybrid (vector + keyword)
-    - **top_k**: 2
-
-1. In the **generate_prompt_context** section, review the Python script and ensure that the **inputs** for this tool include the following parameter:
-
-    - **search_result** *(object)*: ${lookup.output}
-
-1. In the **Prompt_variants** section, review the Python script and ensure that the **inputs** for this tool include the following parameters:
-
-    - **contexts** *(string)*: ${generate_prompt_context.output}
-    - **chat_history** *(string)*: ${inputs.chat_history}
-    - **chat_input** *(string)*: ${inputs.chat_input}
-
-1. In the **chat_with_context** section, select the following settings (leaving others as they are):
-
-    - **Connection**: *The default Azure OpenAI resource for your AI hub*
-    - **Api**: Chat
-    - **deployment_name**: gpt-4
-    - **response_format**: {"type":"text"}
-
-    Then ensure that the **inputs** for this tool include the following parameters:
-    - **prompt_text** *(string)*: ${Prompt_variants.output}
-
-1. On the toolbar, use the **Save** button to save the changes you've made to the tools in the prompt flow.
-1. On the toolbar, select **Chat**. A chat pane opens with the sample conversation history and the input already filled in based on the sample values. You can ignore these.
-1. In the chat pane, replace the default input with the question `Where can I stay in London?` and submit it.
-1. Review the response, which should be based on data in the index.
-1. Review the outputs for each tool in the flow.
-1. In the chat pane, enter the question `What can I do there?`
-1. Review the response, which should be based on data in the index and take into account the chat history (so "there" is understood as "in London").
-1. Review the outputs for each tool in the flow, noting how each tool in the flow operated on its inputs to prepare a contextualized prompt and get an appropriate response.
-
-    You now have a working prompt flow that uses your Azure AI Search index to implement the RAG pattern. To learn more about how to deploy and consume your prompt flow, see the [Azure AI Foundry documentation](https://learn.microsoft.com/azure/ai-foundry/how-to/flow-deploy).
-
 ## Create a RAG client app with the Azure AI Foundry and Azure OpenAI SDKs
 
-While a prompt flow is a great way to encapsulate your model and data in a RAG-based application, you can also use the Azure AI Foundry and Azure OpenAI SDKs to implement the RAG pattern in a client application. Let's explore the code to accomplish this in a simple example.
+Now that you have a working index, you can use the Azure AI Foundry and Azure OpenAI SDKs to implement the RAG pattern in a client application. Let's explore the code to accomplish this in a simple example.
 
 > **Tip**: You can choose to develop your RAG solution using Python or Microsoft C#. Follow the instructions in the appropriate section for your chosen language.
 
@@ -341,13 +245,13 @@ While a prompt flow is a great way to encapsulate your model and data in a RAG-b
 
 Now you've experienced how to integrate your own data in a generative AI app built with the Azure AI Foundry portal, let's explore further!
 
-Try adding a new data source through the Azure AI Foundry portal, index it, and integrate the indexed data in a prompt flow. Some data sets you could try are:
+Try adding a new data source through the Azure AI Foundry portal, index it, and integrate the indexed data in a client app. Some data sets you could try are:
 
 - A collection of (research) articles you have on your computer.
 - A set of presentations from past conferences.
 - Any of the datasets available in the [Azure Search sample data](https://github.com/Azure-Samples/azure-search-sample-data) repository.
 
-Be as resourceful as you can to create your data source and integrate it in a prompt flow or client app. Test your solution by submitting prompts that could only be answered by the data set you chose!
+Test your solution by submitting prompts that could only be answered by the data set you chose!
 
 ## Clean up
 
