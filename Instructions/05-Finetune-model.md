@@ -20,7 +20,7 @@ This exercise will take approximately **60** minutes\*.
 
 You start by creating an Azure AI Foundry portal project within an Azure AI hub:
 
-1. In a web browser, open [https://ai.azure.com](https://ai.azure.com) and sign in using your Azure credentials.
+1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials.
 1. From the home page, select **+ Create project**.
 1. In the **Create a new project** wizard, create a project with the following settings:
     - **Project name**: *A unique name for your project*
@@ -46,7 +46,7 @@ Because fine-tuning a model takes some time to complete, you'll start the fine-t
     > **Note**: Your device might default to saving the file as a .txt file. Select all files and remove the .txt suffix to ensure you're saving the file as JSONL.
 
 1. Navigate to the **Fine-tuning** page under the **Build and customize** section, using the menu on the left.
-1. Select the button to add a new fine-tune model, select the `gpt-4` model, select **Next** and then **Confirm**.
+1. Select the button to add a new fine-tune model, select the `gpt-4` model and then select **Next**.
 1. **Fine-tune** the model using the following configuration:
     - **Model version**: *Select the default version*
     - **Model suffix**: `ft-travel`
