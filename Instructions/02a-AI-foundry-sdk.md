@@ -215,7 +215,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry SDK to deve
            UserMessage(input_text)
        ])
    print(response.choices[0].message.content
-```
+    ```
 
     **C#**
 
