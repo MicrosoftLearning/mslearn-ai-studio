@@ -12,6 +12,8 @@ In this exercise, you'll use Azure AI Foundry portal and the Azure AI Foundry an
 
 This exercise takes approximately **45** minutes.
 
+> **Note**: This exercise is based on pre-release SDKs, which may be subject to change. Where necessary, we've used specific versions of packages; which may not reflect the latest available versions.
+
 ## Create an Azure AI Foundry project
 
 Let's start by creating an Azure AI Foundry project and the service resources it needs to support using your own data - including an Azure AI Search resource.

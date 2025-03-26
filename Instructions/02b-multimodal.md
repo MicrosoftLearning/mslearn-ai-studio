@@ -10,6 +10,8 @@ In this exercise, you use the *Phi-4-multimodal-instruct* generative AI model to
 
 This exercise takes approximately **30** minutes.
 
+> **Note**: This exercise is based on pre-release SDKs, which may be subject to change. Where necessary, we've used specific versions of packages; which may not reflect the latest available versions.
+
 ## Create an Azure AI Foundry project
 
 Let's start by creating an Azure AI Foundry project.

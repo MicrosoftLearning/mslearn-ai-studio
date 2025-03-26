@@ -10,6 +10,8 @@ In this exercise, you use the Azure AI Foundry SDK to create a simple chat app t
 
 This exercise takes approximately **30** minutes.
 
+> **Note**: This exercise is based on pre-release SDKs, which may be subject to change. Where necessary, we've used specific versions of packages; which may not reflect the latest available versions.
+
 ## Create an Azure AI Foundry project
 
 Let's start by creating an Azure AI Foundry project.
@@ -37,7 +39,7 @@ Let's start by creating an Azure AI Foundry project.
 
 ## Deploy a generative AI model
 
-Now you're ready to deploy a generative AI language model to support your chat application. In this example, you'll use the Microsoft Phi-4 model; but the principles are the same for any model.
+Now you're ready to deploy a generative AI language model to support your chat application. In this example, you'll use the OpenAI gpt-4 model; but the principles are the same for any model.
 
 1. In the toolbar at the top right of your Azure AI Foundry project page, use the **Preview features** icon to enable the **Deploy models to Azure AI model inference service** feature. This feature ensures your model deployment is available to the Azure AI Inference service, which you'll use in your application code.
 1. In the pane on the left for your project, in the **My assets** section, select the **Models + endpoints** page.
@@ -48,7 +50,7 @@ Now you're ready to deploy a generative AI language model to support your chat a
     - **Deployment type**: Global Standard
     - **Model version**: *Select the default version*
     - **Connected AI resource**: *Your Azure OpenAI resource connection*
-    - **Tokens per Minute Rate Limit (thousands)**: 5K
+    - **Tokens per Minute Rate Limit (thousands)**: 5K (*or the maximum available if lower*)
     - **Content filter**: DefaultV2
     - **Enable dynamic quota**: Disabled
 
