@@ -344,7 +344,7 @@ Let's make a few code modifications to see how to implement a chat application u
     **C#**
 
     ```csharp
-   ChatClient openaiClient = projectClient.GetAzureOpenAIChatClient();
+   ChatClient openaiClient = projectClient.GetAzureOpenAIChatClient(model_deployment);
     ```
 
     > **Note**: This code uses the Azure AI Foundry project client to create a secure connection to the default Azure OpenAI service endpoint associated with your project. You can also connect *directly* to the endpoint by using the Azure OpenAI SDK, specifying the endpoint URI displayed for the service connection in the Azure AI Foundry portal or in the corresponding Azure OpenAI or AI Services resource page in the Azure portal, and using an authentication key or Entra credential token. For more information about connecting to the Azure OpenAI service, see [Azure OpenAI supported programming languages](https://learn.microsoft.com/azure/ai-services/openai/supported-languages).
