@@ -30,7 +30,7 @@ Let's start by creating an Azure AI Foundry project and the service resources it
     - **Connect Azure AI Services or Azure OpenAI**: *Create a new AI Services resource with an appropriate name (for example, `my-ai-services`) or use an existing one*
     - **Connect Azure AI Search**: *Create a new Azure AI Search resource with a unique name*
 
-    > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region.
+    > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. In the event of a quota limit being reached and no region is recommended for both models, select only one of them and use its recommended region. You will create another resource in a different region for the second model later in the exercise.
 
 1. Select **Next** and review your configuration. Then select **Create** and wait for the process to complete.
 1. When your project is created, close any tips that are displayed and review the project **Overview** page in Azure AI Foundry portal, which should look similar to the following image:
@@ -189,7 +189,7 @@ Now that you have a working index, you can use the Azure AI Foundry and Azure Op
     - **your_project_endpoint**: Replace with the connection string for your project (copied from the project **Overview** page in the Azure AI Foundry portal)
     - **your_model_deployment** Replace with the name you assigned to your model deployment (which should be `gpt-4`)
     - **your_index**: Replace with your index name (which should be `brochures-index`)
-1. After you've replaced the placeholders, use the **CTRL+S** command to save your changes and then use the **CTRL+Q** command to close the code editor while keeping the cloud shell command line open.
+1. After you've replaced the placeholders, within the code editor, use the **CTRL+S** command or **Right-click > Save** to save your changes and then use the **CTRL+Q** command or **Right-click > Quit** to close the code editor while keeping the cloud shell command line open.
 
 ### Explore code to implement the RAG pattern
 
