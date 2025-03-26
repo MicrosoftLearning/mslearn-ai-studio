@@ -39,8 +39,8 @@ An Azure AI hub provides a collaborative workspace within which you can define o
 
 There are multiple options for deploying models in the Azure AI Foundry portal. In this exercise, you'll use the **Azure AI model inference** deployment option, which supports both *Azure OpenAI* models and *Model as a service* models from the Azure AI Foundry model catalog. Since all models are deployed to a common endpoint hosted by your Azure AI Services resource, it is easy to switch between models when testing them in order to compare behavior and performance.
 
-1. In the toolbar at the top right of your Azure AI Foundry project page, use the **Preview features** icon to display preview features.
-1. Enable the **Deploy models to Azure AI model inference service** feature. Then close the **Preview features** pane.
+1. In the toolbar at the top right of your Azure AI Foundry project page, use the **Preview features** icon (📣) to display preview features.
+1. Verify that the **Deploy models to Azure AI model inference service** feature is enabled. Then close the **Preview features** pane.
 
 ## Review model details and benchmarks
 
@@ -101,7 +101,6 @@ Let's start by deploying a model from the Model catalog. You may prefer this opt
     - **Connected AI resource**: *Your Azure OpenAI resource connection*
     - **Tokens per Minute Rate Limit (thousands)**: 5K
     - **Content filter**: DefaultV2
-    - **Enable dynamic quota**: Disabled
       
     > **Note**: Reducing the TPM helps avoid over-using the quota available in the subscription you are using. 5,000 TPM is sufficient for the data used in this exercise.
 

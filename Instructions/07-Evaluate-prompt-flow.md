@@ -10,24 +10,28 @@ In this exercise, you'll explore built-in and custom evaluations to assess and c
 
 This exercise will take approximately **30** minutes.
 
-## Create an AI hub and project in the Azure AI Foundry
+## Create an Azure AI hub and project
 
-You start by creating an Azure AI Foundry project within an Azure AI hub:
+An Azure AI hub provides a collaborative workspace within which you can define one or more *projects*. Let's create a project and Azure AI hub.
 
-1. In a web browser, open [https://ai.azure.com](https://ai.azure.com) and sign in using your Azure credentials.
-1. Select the **Home** page, then select **+ New project**.
-1. In the **Create a project** wizard, give a unique name for your project then select **Customize** and set the following settings:
-    - **Hub name**: *A unique name*
+1. In a web browser, open [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials.
+
+1. In the home page, select **+ Create project**.
+1. In the **Create a project** wizard, enter a suitable project name for (for example, `my-ai-project`) then review the Azure resources that will be automatically created to support your project.
+1. Select **Customize** and specify the following settings for your hub:
+    - **Hub name**: *A unique name - for example `my-ai-hub`*
     - **Subscription**: *Your Azure subscription*
-    - **Resource group**: *A new resource group*
+    - **Resource group**: *Create a new resource group with a unique name (for example, `my-ai-resources`), or select an existing one*
     - **Location**: Select **Help me choose** and then select **gpt-4** in the Location helper window and use the recommended region\*
-    - **Connect Azure AI Services or Azure OpenAI**: (New) *Autofills with your selected hub name*
+    - **Connect Azure AI Services or Azure OpenAI**: *Create a new AI Services resource with an appropriate name (for example, `my-ai-services`) or use an existing one*
     - **Connect Azure AI Search**: Skip connecting
 
-    > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. The listed regions in the location helper include default quota for the model type(s) used in this exercise. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region. Learn more about [model availability per region](https://learn.microsoft.com/azure/ai-services/openai/concepts/models#availability)
+    > \* Model quotas are constrained at the tenant level by regional quotas. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region.
 
-1. Select **Next** and review your configuration.
-1. Select **Create a project** and wait for the process to complete.
+1. Select **Next** and review your configuration. Then select **Create** and wait for the process to complete.
+1. When your project is created, close any tips that are displayed and review the project page in Azure AI Foundry portal, which should look similar to the following image:
+
+    ![Screenshot of a Azure AI project details in Azure AI Foundry portal.](./media/ai-foundry-project.png)
 
 ## Deploy a GPT model
 
@@ -156,7 +160,7 @@ To save time, we have created a batch output dataset for you that contains the r
 1. Select **Next** then review your data and **Submit** the new evaluation.
 1. Wait for the evaluations to be completed, you may need to refresh.
 1. Select the evaluation run you just created.
-1. Explore the **Metric dashboard** and **Detailed metrics result**.
+1. Explore the **Metric dashboard** in the **Report** tab and **Detailed metrics result** in the **Data** tab.
 
 ## Delete Azure resources
 
