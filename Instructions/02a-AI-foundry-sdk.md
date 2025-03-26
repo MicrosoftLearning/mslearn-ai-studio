@@ -164,7 +164,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
    from dotenv import load_dotenv
    from azure.identity import DefaultAzureCredential
    from azure.ai.projects import AIProjectClient
-   from azure.ai.inference.models import SystemMessage, UserMessage
+   from azure.ai.inference.models import SystemMessage, UserMessage, AssistantMessage
     ```
 
     **C#**
