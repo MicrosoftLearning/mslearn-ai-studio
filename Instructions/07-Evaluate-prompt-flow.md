@@ -160,7 +160,7 @@ To save time, we have created a batch output dataset for you that contains the r
 1. Select **Next** then review your data and **Submit** the new evaluation.
 1. Wait for the evaluations to be completed, you may need to refresh.
 1. Select the evaluation run you just created.
-1. Explore the **Metric dashboard** and **Detailed metrics result**.
+1. Explore the **Metric dashboard** in the **Report** tab and **Detailed metrics result** in the **Data** tab.
 
 ## Delete Azure resources
 
