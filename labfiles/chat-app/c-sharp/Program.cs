@@ -30,6 +30,9 @@ namespace chat_app
                 // Get a chat client
 
 
+                // Initialize prompt with system message
+
+
                 // Loop until the user types 'quit'
                 string input_text = "";
                 while (input_text.ToLower() != "quit")

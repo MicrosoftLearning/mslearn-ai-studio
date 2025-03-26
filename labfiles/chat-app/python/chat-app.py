@@ -19,6 +19,9 @@ def main():
         
 
         ## Get a chat client
+
+
+        ## Initialize prompt with system message
          
 
         # Loop until the user types 'quit'
