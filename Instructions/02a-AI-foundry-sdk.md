@@ -209,6 +209,8 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
    ChatCompletionsClient chat = projectClient.GetChatCompletionsClient();
     ```
 
+    > **Note**: This code uses the Azure AI Foundry project client to create a secure connection to the default Azure AI Model Inference service endpoint associated with your project. You can also connect *directly* to the endpoint by using the Azure AI Model Inference SDK, specifying the endpoint URI displayed for the service connection in the Azure AI Foundry portal or in the corresponding Azure AI Services resource page in the Azure portal, and using an authentication key or Entra credential token. For more information about connecting to the Azure AI Model Inferencing service, see [Azure AI Model Inference API](https://learn.microsoft.com/azure/machine-learning/reference-model-inference-api).
+
 1. Find the comment **Initialize prompt with system message**, and add the following code to initialize a collection of messages with a system prompt.
 
     **Python**
@@ -344,6 +346,8 @@ Let's make a few code modifications to see how to implement a chat application u
     ```csharp
    ChatClient openaiClient = projectClient.GetAzureOpenAIChatClient();
     ```
+
+    > **Note**: This code uses the Azure AI Foundry project client to create a secure connection to the default Azure OpenAI service endpoint associated with your project. You can also connect *directly* to the endpoint by using the Azure OpenAI SDK, specifying the endpoint URI displayed for the service connection in the Azure AI Foundry portal or in the corresponding Azure OpenAI or AI Services resource page in the Azure portal, and using an authentication key or Entra credential token. For more information about connecting to the Azure OpenAI service, see [Azure OpenAI supported programming languages](https://learn.microsoft.com/azure/ai-services/openai/supported-languages).
 
 1. Find the comment **Initialize prompt with system message**, and modify the code to initialize a collection of messages with a system prompt as follows:
 
