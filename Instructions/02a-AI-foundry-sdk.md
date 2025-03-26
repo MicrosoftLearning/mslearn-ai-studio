@@ -409,9 +409,7 @@ Let's make a few code modifications to see how to implement a chat application u
 
 1. Test the app by submitting questions as before. When you're finished, enter `quit` to exit the program.
 
-    The Azure AI Model Inference SDK and OpenAI SDKs use similar classes and code constructs, so the code required minimal changes.
-
-    You can use the Azure AI Model Inference SDK with *any* model that is deployed to an Azure AI Model Inference service endpoint. The OpenAI SDK only works with OpenAI models, but you can use it for models deployed to either an Azure AI Model Inference service endpoint or to an Azure OpenAI endpoint.  
+    > **Note**: The Azure AI Model Inference SDK and OpenAI SDKs use similar classes and code constructs, so the code required minimal changes. You can use the Azure AI Model Inference SDK with *any* model that is deployed to an Azure AI Model Inference service endpoint. The OpenAI SDK only works with OpenAI models, but you can use it for models deployed to either an Azure AI Model Inference service endpoint or to an Azure OpenAI endpoint.  
 
 ## Summary
 
