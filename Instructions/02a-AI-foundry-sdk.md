@@ -353,12 +353,14 @@ Let's make a few code modifications to see how to implement a chat application u
     **Python**
 
     ```python
+   # Get a chat client 
    openai_client = projectClient.inference.get_azure_openai_client(api_version="2024-10-21")
     ```
 
     **C#**
 
     ```csharp
+   // Get a chat client
    ChatClient openaiClient = projectClient.GetAzureOpenAIChatClient(model_deployment);
     ```
 
@@ -369,6 +371,7 @@ Let's make a few code modifications to see how to implement a chat application u
     **Python**
 
     ```python
+   # Initialize prompt with system message
    prompt=[
         {"role": "system", "content": "You are a helpful AI assistant that answers questions."}
     ]
@@ -377,6 +380,7 @@ Let's make a few code modifications to see how to implement a chat application u
     **C#**
 
     ```csharp
+   // Initialize prompt with system message
     var prompt = new List<ChatMessage>(){
         new SystemChatMessage("You are a helpful AI assistant that answers questions.")
     };
@@ -387,6 +391,7 @@ Let's make a few code modifications to see how to implement a chat application u
     **Python**
 
     ```python
+   # Get a chat completion
    prompt.append({"role": "user", "content": input_text})
    response = openai_client.chat.completions.create(
         model=model_deployment,
@@ -399,6 +404,7 @@ Let's make a few code modifications to see how to implement a chat application u
     **C#**
 
     ```csharp
+   // Get a chat completion
    prompt.Add(new UserChatMessage(input_text));
    ChatCompletion completion = openaiClient.CompleteChat(prompt);
    var completionText = completion.Content[0].Text;
