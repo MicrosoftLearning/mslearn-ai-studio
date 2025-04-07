@@ -313,7 +313,7 @@ Let's make a few code modifications to see how to implement a chat application u
     **C#**
 
     ```
-   dotnet add package Azure.AI.Projects --version 1.0.0-beta.5
+   dotnet add package Azure.AI.Projects --version 1.0.0-beta.6
    dotnet add package Azure.AI.OpenAI --prerelease
     ```
 
