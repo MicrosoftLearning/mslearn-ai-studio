@@ -59,7 +59,7 @@ You need two models to implement your solution:
 
     > **Note**: If your current AI resource location doesn't have quota available for the model you want to deploy, you will be asked to choose a different location where a new AI resource will be created and connected to your project.
 
-1. Repeat the previous steps to deploy a **gpt-4** model with the deployment name `gpt-4`.
+1. Repeat the previous steps to deploy a **gpt-4** model with the deployment name `gpt-4` using a **standard** deployment of the default version with a TPM rate limit of 5K.
 
     > **Note**: Reducing the Tokens Per Minute (TPM) helps avoid over-using the quota available in the subscription you are using. 5,000 TPM is sufficient for the data used in this exercise.
 
@@ -67,7 +67,7 @@ You need two models to implement your solution:
 
 The data for your copilot consists of a set of travel brochures in PDF format from the fictitious travel agency *Margie's Travel*. Let's add them to the project.
 
-1. Download the [zipped archive of brochures](https://github.com/MicrosoftLearning/mslearn-ai-studio/raw/main/data/brochures.zip) from `https://github.com/MicrosoftLearning/mslearn-ai-studio/raw/main/data/brochures.zip` and extract it to a folder named **brochures** on your local file system.
+1. In a new browser tab, download the [zipped archive of brochures](https://github.com/MicrosoftLearning/mslearn-ai-studio/raw/main/data/brochures.zip) from `https://github.com/MicrosoftLearning/mslearn-ai-studio/raw/main/data/brochures.zip` and extract it to a folder named **brochures** on your local file system.
 1. In Azure AI Foundry portal, in your project, in the navigation pane on the left, under **My assets**, select the **Data + indexes** page.
 1. Select **+ New data**.
 1. In the **Add your data** wizard, expand the drop-down menu to select **Upload files/folders**.
@@ -91,12 +91,18 @@ Now that you've added a data source to your project, you can use it to create an
     - **Search settings**:
         - **Vector settings**: Add vector search to this search resource
         - **Azure OpenAI connection**: *Select the default Azure OpenAI resource for your hub.*
+        - **Embedding model**: text-embedding-ada-002
+        - **Embedding model deployment**: *Your deployment of the* text-embedding-ada-002 *model*
 
-1. Wait for the indexing process to be completed, which can take a while depending on available compute resources in your subscription. The index creation operation consists of the following jobs:
+1. Create the vector index and wait for the indexing process to be completed, which can take a while depending on available compute resources in your subscription.
+
+    The index creation operation consists of the following jobs:
 
     - Crack, chunk, and embed the text tokens in your brochures data.
     - Create the Azure AI Search index.
     - Register the index asset.
+
+    > **Tip**: While you're waiting for the index to be created, why not take a look at the brochures you downloaded to get familiar with their contents?
 
 ## Test the index in the playground
 
@@ -123,13 +129,18 @@ Now that you have a working index, you can use the Azure AI Foundry and Azure Op
 1. In the Azure AI Foundry portal, view the **Overview** page for your project.
 1. In the **Project details** area, note the **Project connection string**. You'll use this connection string to connect to your project in a client application.
 1. Open a new browser tab (keeping the Azure AI Foundry portal open in the existing tab). Then in the new tab, browse to the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`; signing in with your Azure credentials if prompted.
-1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal.
+
+    Close any welcome notifications to see the Azure portal home page.
+
+1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment with no storage in your subscription.
+
+    The cloud shell provides a command line interface in a pane at the bottom of the Azure portal. You can resize or maximize this pane to make it easier to work in.
 
     > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, switch it to ***PowerShell***.
 
 1. In the cloud shell toolbar, in the **Settings** menu, select **Go to Classic version** (this is required to use the code editor).
 
-    > **Tip**: As you paste commands into the cloudshell, the ouput may take up a large amount of the screen buffer. You can clear the screen by entering the `cls` command to make it easier to focus on each task.
+    **<font color="red">Ensure you've switched to the classic version of the cloud shell before continuing.</font>**
 
 1. In the PowerShell pane, enter the following commands to clone the GitHub repo containing the code files for this exercise:
 
@@ -138,9 +149,11 @@ Now that you have a working index, you can use the Azure AI Foundry and Azure Op
     git clone https://github.com/microsoftlearning/mslearn-ai-studio mslearn-ai-foundry
     ```
 
-> **Note**: Follow the steps for your chosen programming language.
+    > **Tip**: As you paste commands into the cloudshell, the output may take up a large amount of the screen buffer. You can clear the screen by entering the `cls` command to make it easier to focus on each task.
 
-1. After the repo has been cloned, navigate to the folder containing the chat application code files:  
+1. After the repo has been cloned, navigate to the folder containing the chat application code files:
+
+    > **Note**: Follow the steps for your chosen programming language.
 
     **Python**
 
@@ -211,10 +224,12 @@ Now that you have a working index, you can use the Azure AI Foundry and Azure Op
 
 1. Review the code in the file, noting that it:
     - Uses the Azure AI Foundry SDK to connect to your project (using the project connection string)
+    - Creates an authenticated Azure OpenAI client from your project connection.
     - Retrieves the default Azure AI Search connection from your project so it can determine the endpoint and key for your Azure AI Search service.
-    - Creates an authenticated Azure OpenAI client based on the default Azure OpenAI service connection in your project.
-    - Submits a prompt (including a system and user message) to the Azure OpenAI client, adding additional information about the Azure AI Search index to be used to ground the prompt.
+    - Creates a suitable system message.
+    - Submits a prompt (including the system and a user message based on the user input) to the Azure OpenAI client, adding additional information about the Azure AI Search index to be used to ground the prompt.
     - Displays the response from the grounded prompt.
+    - Adds the response to the chat history.
 1. Use the **CTRL+Q** command to close the code editor without saving any changes, while keeping the cloud shell command line open.
 
 ### Run the chat application
@@ -233,27 +248,13 @@ Now that you have a working index, you can use the Azure AI Foundry and Azure Op
    dotnet run
     ```
 
-1. When prompted, enter a question, such as `Where can I travel to?` and review the response from your generative AI model.
+1. When prompted, enter a question, such as `Where should I stay in London?` and review the response from your generative AI model.
 
     Note that the response includes source references to indicate the indexed data in which the answer was found.
 
-1. Try a few more questions, for example `Where should I stay in London?`
-
-    > **Note**: This simple example application doesn't include any logic to retain the conversation history, so each prompt is treated as a new conversation.
+1. Try a follow-up question, for example `What can I do there?`
 
 1. When you're finished, enter `quit` to exit the program. Then close the cloud shell pane.
-
-## Challenge
-
-Now you've experienced how to integrate your own data in a generative AI app built with the Azure AI Foundry portal, let's explore further!
-
-Try adding a new data source through the Azure AI Foundry portal, index it, and integrate the indexed data in a client app. Some data sets you could try are:
-
-- A collection of (research) articles you have on your computer.
-- A set of presentations from past conferences.
-- Any of the datasets available in the [Azure Search sample data](https://github.com/Azure-Samples/azure-search-sample-data) repository.
-
-Test your solution by submitting prompts that could only be answered by the data set you chose!
 
 ## Clean up
 

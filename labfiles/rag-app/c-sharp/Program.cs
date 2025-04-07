@@ -1,14 +1,8 @@
-﻿/*
-Required packages:
-dotnet add package Azure.AI.Projects --prerelease
-dotnet add package Azure.Identity
-dotnet add package Azure.AI.OpenAI --prerelease
-*/
-
-using System;
+﻿using System;
 using Azure;
 using System.IO;
 using System.Text;
+using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
 using Azure.Identity;
 using Azure.AI.Projects;
@@ -16,7 +10,6 @@ using Azure.AI.OpenAI;
 using System.ClientModel;
 using Azure.AI.OpenAI.Chat;
 using OpenAI.Chat;
-
 
 namespace rag_app
 {
@@ -26,7 +19,7 @@ namespace rag_app
         {
             // Clear the console
             Console.Clear();
-            
+
             try
             {
                 // Get config settings
@@ -37,23 +30,23 @@ namespace rag_app
                 string index_name = configuration["INDEX_NAME"];
 
                 // Initialize the project client
-                var projectClient = new AIProjectClient(project_connection,
-                    new DefaultAzureCredential());
-                
-                var connectionsClient = projectClient.GetConnectionsClient();
+                var projectClient = new AIProjectClient(project_connection, new DefaultAzureCredential());
+
+                // Get an Azure OpenAI chat client
+                ChatClient chatClient = projectClient.GetAzureOpenAIChatClient(model_deployment);
 
                 // Use the AI search service connection to get service details
+                var connectionsClient = projectClient.GetConnectionsClient();
                 ConnectionResponse searchConnection = connectionsClient.GetDefaultConnection(ConnectionType.AzureAISearch, true);
                 var searchProperties = searchConnection.Properties as ConnectionPropertiesApiKeyAuth;
                 string search_url = searchProperties.Target;
                 string search_key = searchProperties.Credentials.Key;
 
-                // Get an Azure OpenAI client
-                ConnectionResponse aoaiConnection = connectionsClient.GetDefaultConnection(ConnectionType.AzureAIServices, true);
-                var aoaiProperties = aoaiConnection.Properties as ConnectionPropertiesApiKeyAuth;
-                AzureOpenAIClient azureOpenAIClient = new(
-                    new Uri(aoaiProperties.Target),
-                    new AzureKeyCredential(aoaiProperties.Credentials.Key));
+                // Initialize prompt with system message
+                var prompt = new List<ChatMessage>()
+                {
+                    new SystemChatMessage("You are a travel assistant that provides information on travel services available from Margie's Travel.")
+                };
 
                 // Loop until the user types 'quit'
                 string input_text = "";
@@ -62,15 +55,16 @@ namespace rag_app
                     // Get user input
                     Console.WriteLine("Enter the prompt (or type 'quit' to exit):");
                     input_text = Console.ReadLine();
+
                     if (input_text.ToLower() != "quit")
                     {
-                        // Get a chat completion
-                        ChatClient chatClient = azureOpenAIClient.GetChatClient(model_deployment);
+                        // Add the user input message to the prompt
+                        prompt.Add(new UserChatMessage(input_text));
 
-                        // Additional parameters to apply RAG pattern using the AI Search index
                         // (DataSource is in preview and subject to breaking changes)
                         #pragma warning disable AOAI001
 
+                        // Additional parameters to apply RAG pattern using the AI Search index
                         ChatCompletionOptions options = new();
                         options.AddDataSource(new AzureSearchChatDataSource()
                         {
@@ -79,15 +73,14 @@ namespace rag_app
                             Authentication = DataSourceAuthentication.FromApiKey(search_key),
                         });
 
-                        ChatCompletion completion = chatClient.CompleteChat(
-                            [
-                                new SystemChatMessage("You are an AI travel assistant that helps people plan trips."),
-                                new UserChatMessage(input_text),
-                            ],
-                            options);
+                        // Submit the prompt with the data source options and display the response
+                        ChatCompletion completion = chatClient.CompleteChat(prompt, options);
+                        var completionText = completion.Content[0].Text;
+                        Console.WriteLine(completionText);
 
-                        Console.WriteLine($"{completion.Role}: {completion.Content[0].Text}");
-                        
+                        // Add the response to the chat history
+                        prompt.Add(new AssistantChatMessage(completionText));
+
                         #pragma warning restore AOAI001
                     }
                 }
@@ -99,4 +92,3 @@ namespace rag_app
         }
     }
 }
-
