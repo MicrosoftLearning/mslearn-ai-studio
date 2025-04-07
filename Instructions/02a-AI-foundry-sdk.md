@@ -21,7 +21,7 @@ Let's start by creating an Azure AI Foundry project.
     ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
 
 1. In the home page, select **+ Create project**.
-1. In the **Create a project** wizard, enter a suitable project name for (for example, `my-ai-project`) then review the Azure resources that will be automatically created to support your project.
+1. In the **Create a project** wizard, enter a suitable project name (for example, `my-ai-project`) and if an existing hub is suggested, choose the option to create a new one. Then review the Azure resources that will be automatically created to support your hub and project.
 1. Select **Customize** and specify the following settings for your hub:
     - **Hub name**: *A unique name - for example `my-ai-hub`*
     - **Subscription**: *Your Azure subscription*
@@ -30,7 +30,7 @@ Let's start by creating an Azure AI Foundry project.
     - **Connect Azure AI Services or Azure OpenAI**: *Create a new AI Services resource with an appropriate name (for example, `my-ai-services`) or use an existing one*
     - **Connect Azure AI Search**: Skip connecting
 
-    > \* In the event of a regional quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region.
+    > \* Model quotas are constrained at the tenant level by regional quotas. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region.
 
 1. Select **Next** and review your configuration. Then select **Create** and wait for the process to complete.
 1. When your project is created, close any tips that are displayed and review the project page in Azure AI Foundry portal, which should look similar to the following image:
@@ -46,17 +46,17 @@ Now you're ready to deploy a generative AI language model to support your chat a
 1. In the **Models + endpoints** page, in the **Model deployments** tab, in the **+ Deploy model** menu, select **Deploy base model**.
 1. Search for the **gpt-4** model in the list, and then select and confirm it.
 1. Deploy the model with the following settings by selecting **Customize** in the deployment details:
-    - **Deployment name**: *A unique name for your model deployment - for example `gpt-4`*
-    - **Deployment type**: Global Standard
-    - **Model version**: *Select the default version*
-    - **Connected AI resource**: *Your Azure OpenAI resource connection*
-    - **Tokens per Minute Rate Limit (thousands)**: 5K (*or the maximum available if lower*)
+    - **Deployment name**: *A unique name for your model deployment - for example `gpt-4` (remember the name you choose - you'll need it later)*
+    - **Deployment type**: Standard
+    - **Model version**: 0613
+    - **Connected AI resource**: *Select your Azure OpenAI resource connection*
+    - **Tokens per Minute Rate Limit (thousands)**: 5K
     - **Content filter**: DefaultV2
     - **Enable dynamic quota**: Disabled
 
     > **Note**: Reducing the TPM helps avoid over-using the quota available in the subscription you are using. 5,000 TPM is sufficient for the data used in this exercise.
 
-1. Wait for the deployment provisioning state to be **Completed**.
+1. Wait for the deployment to complete.
 
 ## Create a client application to chat with the model
 
@@ -77,7 +77,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
 
     **<font color="red">Ensure you've switched to the classic version of the cloud shell before continuing.</font>**
 
-1. In the PowerShell pane, enter the following commands to clone the GitHub repo for this exercise:
+1. In the PowerShell pane, enter the following commands to clone the GitHub repo containing the code files for this exercise:
 
     ```
     rm -r mslearn-ai-foundry -f

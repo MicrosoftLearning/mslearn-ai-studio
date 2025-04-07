@@ -97,16 +97,18 @@ Let's start by deploying a model from the Model catalog. You may prefer this opt
 1. Return to the **Model catalog** home page.
 1. Search for and select the `gpt-4` model, just as you did previously.
 1. On the **gpt-4** page, select **Deploy** and deploy the model with the following settings by selecting **Customize** in the deployment details:
-    - **Deployment name**: *A unique name for your model deployment - for example `gpt-4-model`*
-    - **Deployment type**: Global Standard
-    - **Model version**: *Select the default version*
-    - **Connected AI resource**: *Your Azure OpenAI resource connection*
+1. Deploy the model with the following settings by selecting **Customize** in the deployment details:
+    - **Deployment name**: *A unique name for your model deployment - for example `gpt-4`*
+    - **Deployment type**: Standard
+    - **Model version**: 0613
+    - **Connected AI resource**: *Select your Azure OpenAI resource connection*
     - **Tokens per Minute Rate Limit (thousands)**: 5K
     - **Content filter**: DefaultV2
+    - **Enable dynamic quota**: Disabled
       
     > **Note**: Reducing the TPM helps avoid over-using the quota available in the subscription you are using. 5,000 TPM is sufficient for the data used in this exercise.
 
-1. Wait for the **Provisioning state** of the deployment to be **Succeeded**.
+1. Wait for the deployment to complete.
 
 ### Deploy a model through *Models + endpoints*
 
@@ -116,11 +118,11 @@ If you already know exactly which model you want to deploy, you may prefer to do
 1. In the **Model deployments** tab, in the **+ Deploy model** drop-down list, select **Deploy base model**. Then search for `Phi-3.5-mini-instruct` and confirm you selection.
 1. Agree to the model license.
 1. Deploy a **Phi-3.5-mini-instruct** model with the following settings:
-    - **Deployment name**: *A unique name for your model deployment - for example, `phi-35-model`*
+    - **Deployment name**: *A unique name for your model deployment - for example, `Phi-3.5-mini-instruct`*
     - **Deployment type**: Global Standard
     - **Deployment details**: *Use the default settings*
 
-1. Wait for the **Provisioning state** of the deployment to be **Succeeded**.
+1. Wait for the deployment to complete.
 
 ## Test your models in the chat playground
 
