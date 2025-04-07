@@ -166,6 +166,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
     **Python**
 
     ```python
+   # Add references
    from dotenv import load_dotenv
    from azure.identity import DefaultAzureCredential
    from azure.ai.projects import AIProjectClient
@@ -175,6 +176,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
     **C#**
 
     ```csharp
+   // Add references
    using Azure.Identity;
    using Azure.AI.Projects;
    using Azure.AI.Inference;
@@ -188,6 +190,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
     **Python**
 
     ```python
+   # Initialize the project client
    projectClient = AIProjectClient.from_connection_string(
         conn_str=project_connection,
         credential=DefaultAzureCredential())
@@ -196,6 +199,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
     **C#**
 
     ```csharp
+   // Initialize the project client
    var projectClient = new AIProjectClient(project_connection,
                         new DefaultAzureCredential());
     ```
@@ -205,12 +209,14 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
     **Python**
 
     ```python
+   # Get a chat client
    chat = projectClient.inference.get_chat_completions_client()
     ```
 
     **C#**
 
     ```csharp
+   // Get a chat client
    ChatCompletionsClient chat = projectClient.GetChatCompletionsClient();
     ```
 
@@ -221,6 +227,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
     **Python**
 
     ```python
+   # Initialize prompt with system message
    prompt=[
             SystemMessage("You are a helpful AI assistant that answers questions.")
         ]
@@ -229,7 +236,8 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
     **C#**
 
     ```csharp
-    var prompt = new List<ChatRequestMessage>(){
+   // Initialize prompt with system message
+   var prompt = new List<ChatRequestMessage>(){
                     new ChatRequestSystemMessage("You are a helpful AI assistant that answers questions.")
                 };
     ```
@@ -239,6 +247,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
     **Python**
 
     ```python
+   # Get a chat completion
    prompt.append(UserMessage(input_text))
    response = chat.complete(
        model=model_deployment,
@@ -251,6 +260,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
     **C#**
 
     ```csharp
+   // Get a chat completion
    prompt.Add(new ChatRequestUserMessage(input_text));
    var requestOptions = new ChatCompletionsOptions()
    {
