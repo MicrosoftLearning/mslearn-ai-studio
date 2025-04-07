@@ -250,8 +250,8 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
    # Get a chat completion
    prompt.append(UserMessage(input_text))
    response = chat.complete(
-       model=model_deployment,
-       messages=prompt)
+        model=model_deployment,
+        messages=prompt)
    completion = response.choices[0].message.content
    print(completion)
    prompt.append(AssistantMessage(completion))
@@ -370,16 +370,16 @@ Let's make a few code modifications to see how to implement a chat application u
 
     ```python
    prompt=[
-       {"role": "system", "content": "You are a helpful AI assistant that answers questions."}
-   ]
+        {"role": "system", "content": "You are a helpful AI assistant that answers questions."}
+    ]
     ```
 
     **C#**
 
     ```csharp
     var prompt = new List<ChatMessage>(){
-       new SystemChatMessage("You are a helpful AI assistant that answers questions.")
-   };
+        new SystemChatMessage("You are a helpful AI assistant that answers questions.")
+    };
     ```
 
 1. Find the comment **Get a chat completion** and modify code to add the user input to the prompt, retrieve the completion from your model, and add the completion to the prompt as follows:
@@ -389,8 +389,8 @@ Let's make a few code modifications to see how to implement a chat application u
     ```python
    prompt.append({"role": "user", "content": input_text})
    response = openai_client.chat.completions.create(
-       model=model_deployment,
-       messages=prompt)
+        model=model_deployment,
+        messages=prompt)
    completion = response.choices[0].message.content
    print(completion)
    prompt.append({"role": "assistant", "content": completion})
