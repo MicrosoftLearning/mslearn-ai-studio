@@ -2,6 +2,7 @@
 using Azure;
 using System.IO;
 using System.Text;
+using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
 
 // Add references

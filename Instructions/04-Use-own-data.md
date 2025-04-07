@@ -188,7 +188,7 @@ Now that you have a working index, you can use the Azure AI Foundry and Azure Op
     The file is opened in a code editor.
 
 1. In the code file, replace the following placeholders: 
-    - **your_project_endpoint**: Replace with the connection string for your project (copied from the project **Overview** page in the Azure AI Foundry portal)
+    - **your_project_connection_string**: Replace with the connection string for your project (copied from the project **Overview** page in the Azure AI Foundry portal)
     - **your_model_deployment** Replace with the name you assigned to your model deployment (which should be `gpt-4`)
     - **your_index**: Replace with your index name (which should be `brochures-index`)
 1. After you've replaced the placeholders, within the code editor, use the **CTRL+S** command or **Right-click > Save** to save your changes and then use the **CTRL+Q** command or **Right-click > Quit** to close the code editor while keeping the cloud shell command line open.
