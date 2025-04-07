@@ -23,7 +23,7 @@ Let's start by creating an Azure AI Foundry project and the service resources it
     ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
 
 1. In the home page, select **+ Create project**.
-1. In the **Create a project** wizard, enter a suitable project name for (for example, `my-ai-project`) and if an existing hub is suggested, choose the option to create a new one. Then review the Azure resources that will be automatically created to support your hub and project.
+1. In the **Create a project** wizard, enter a suitable project name (for example, `my-ai-project`) and if an existing hub is suggested, choose the option to create a new one. Then review the Azure resources that will be automatically created to support your hub and project.
 1. Select **Customize** and specify the following settings for your hub:
     - **Hub name**: *A unique name - for example `my-ai-hub`*
     - **Subscription**: *Your Azure subscription*
@@ -131,7 +131,7 @@ Now that you have a working index, you can use the Azure AI Foundry and Azure Op
 
     > **Tip**: As you paste commands into the cloudshell, the ouput may take up a large amount of the screen buffer. You can clear the screen by entering the `cls` command to make it easier to focus on each task.
 
-1. In the PowerShell pane, enter the following commands to clone the GitHub repo for this exercise:
+1. In the PowerShell pane, enter the following commands to clone the GitHub repo containing the code files for this exercise:
 
     ```
     rm -r mslearn-ai-foundry -f
