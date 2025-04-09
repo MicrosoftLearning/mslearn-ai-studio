@@ -3,6 +3,9 @@ lab:
     title: 'Create a generative AI app that uses your own data'
     description: 'Learn how to use the Retrieval Augmented Generation (RAG) model to build a chat app that grounds prompts using your own data.'
 ---
+<!--
+Rewrite to use gpt-4o
+-->
 
 # Create a generative AI app that uses your own data
 

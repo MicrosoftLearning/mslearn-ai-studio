@@ -16,7 +16,7 @@ This exercise takes approximately **40** minutes.
 
 Let's start by creating an Azure AI Foundry project.
 
-1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image:
+1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image (close the **Help** pane if it is open):
 
     ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
 
@@ -26,11 +26,11 @@ Let's start by creating an Azure AI Foundry project.
     - **Hub name**: *A unique name - for example `my-ai-hub`*
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create a new resource group with a unique name (for example, `my-ai-resources`), or select an existing one*
-    - **Location**: Select **Help me choose** and then select **gpt-4** in the Location helper window and use the recommended region\*
+    - **Location**: Select **Help me choose** and then select **gpt-4o** in the Location helper window and use the recommended region\*
     - **Connect Azure AI Services or Azure OpenAI**: *Create a new AI Services resource with an appropriate name (for example, `my-ai-services`) or use an existing one*
     - **Connect Azure AI Search**: Skip connecting
 
-    > \* Model quotas are constrained at the tenant level by regional quotas. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region.
+    > \* Azure OpenAI resources are constrained by regional model quotas. In the event of a quota limit being exceeded later in the exercise, there's a possibility you may need to create another resource in a different region.
 
 1. Select **Next** and review your configuration. Then select **Create** and wait for the process to complete.
 1. When your project is created, close any tips that are displayed and review the project page in Azure AI Foundry portal, which should look similar to the following image:
@@ -39,22 +39,21 @@ Let's start by creating an Azure AI Foundry project.
 
 ## Deploy a generative AI model
 
-Now you're ready to deploy a generative AI language model to support your chat application. In this example, you'll use the OpenAI gpt-4 model; but the principles are the same for any model.
+Now you're ready to deploy a generative AI language model to support your chat application. In this example, you'll use the OpenAI gpt-4o model; but the principles are the same for any model.
 
-1. In the toolbar at the top right of your Azure AI Foundry project page, use the **Preview features** icon to enable the **Deploy models to Azure AI model inference service** feature. This feature ensures your model deployment is available to the Azure AI Inference service, which you'll use in your application code.
 1. In the pane on the left for your project, in the **My assets** section, select the **Models + endpoints** page.
 1. In the **Models + endpoints** page, in the **Model deployments** tab, in the **+ Deploy model** menu, select **Deploy base model**.
-1. Search for the **gpt-4** model in the list, and then select and confirm it.
+1. Search for the **gpt-4o** model in the list, and then select and confirm it.
 1. Deploy the model with the following settings by selecting **Customize** in the deployment details:
-    - **Deployment name**: *A unique name for your model deployment - for example `gpt-4` (remember the name you choose - you'll need it later)*
-    - **Deployment type**: Standard
-    - **Model version**: 0613
+    - **Deployment name**: *A unique name for your model deployment - for example `gpt-4o`*
+    - **Deployment type**: Global Standard
+    - **Automatic version update**: Enabled
+    - **Model version**: *Select the most recent available version*
     - **Connected AI resource**: *Select your Azure OpenAI resource connection*
-    - **Tokens per Minute Rate Limit (thousands)**: 5K
+    - **Tokens per Minute Rate Limit (thousands)**: 50K *(or the maximum available in your subscription if less than 50K)*
     - **Content filter**: DefaultV2
-    - **Enable dynamic quota**: Disabled
 
-    > **Note**: Reducing the TPM helps avoid over-using the quota available in the subscription you are using. 5,000 TPM is sufficient for the data used in this exercise.
+    > **Note**: Reducing the TPM helps avoid over-using the quota available in the subscription you are using. 50,000 TPM should be sufficient for the data used in this exercise. If your available quota is lower than this, you will be able to complete the exercise but you may experience errors if the rate limit is exceeded.
 
 1. Wait for the deployment to complete.
 
@@ -82,7 +81,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
 
     **<font color="red">Ensure you've switched to the classic version of the cloud shell before continuing.</font>**
 
-1. In the PowerShell pane, enter the following commands to clone the GitHub repo containing the code files for this exercise:
+1. In the cloud shell pane, enter the following commands to clone the GitHub repo containing the code files for this exercise:
 
     ```
     rm -r mslearn-ai-foundry -f
@@ -295,6 +294,8 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
 1. When prompted, enter a question, such as `What is the fastest animal on Earth?` and review the response from your generative AI model.
 1. Try some follow-up questions, like `Where can I see one?` or `Are they endangered?`. The conversation should continue, using the chat history as context for each iteration.
 1. When you're finished, enter `quit` to exit the program.
+
+> **Tip**: If the app fails because the rate limit is exceeded. Wait a few seconds and try again. If there is insufficient quota available in your subscription, the model may not be able to respond.
 
 ## Use the OpenAI SDK
 

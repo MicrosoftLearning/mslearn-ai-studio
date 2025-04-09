@@ -14,7 +14,7 @@ This exercise takes approximately **30** minutes.
 
 Let's start by signing into Azure AI Foundry portal.
 
-1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image:
+1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image (close the **Help** pane if it is open):
 
     ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
 
@@ -30,11 +30,11 @@ An Azure AI *hub* provides a collaborative workspace within which you can define
     - **Hub name**: *A unique name - for example `my-ai-hub`*
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create a new resource group with a unique name (for example, `my-ai-resources`), or select an existing one*
-    - **Location**: Select **Help me choose** and then select **gpt-4** in the Location helper window and use the recommended region\*
+    - **Location**: Select **Help me choose** and then select **gpt-4o** in the Location helper window and use the recommended region\*
     - **Connect Azure AI Services or Azure OpenAI**: *Create a new AI Services resource with an appropriate name (for example, `my-ai-services`) or use an existing one*
     - **Connect Azure AI Search**: Skip connecting
 
-    > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region.
+    > \* Azure OpenAI resources are constrained by regional model quotas. In the event of a quota limit being exceeded later in the exercise, there's a possibility you may need to create another resource in a different region.
 
 1. Select **Next** and review your configuration. Then select **Create** and wait for the process to complete.
 1. When your project is created, close any tips that are displayed and review the project page in Azure AI Foundry portal, which should look similar to the following image:
@@ -112,21 +112,30 @@ Your project also contains connected resources for Azure OpenAI, which enables y
 
 1. In the pane on the left for your project, in the **My assets** section, select the **Models + endpoints** page.
 1. In the **Models + endpoints** page, in the **Model deployments** tab, in the **+ Deploy model** menu, select **Deploy base model**.
-1. Search for the **gpt-4** model in the list, and then select and confirm it.
+1. Search for the **gpt-4o** model in the list, and then select and confirm it.
 1. Deploy the model with the following settings by selecting **Customize** in the deployment details:
-    - **Deployment name**: *A unique name for your model deployment - for example `gpt-4-model`*
-    - **Deployment type**: Standard
-    - **Model version**: *Select the default version*
-    - **Connected AI resource**: *Select either of your Azure OpenAI resource connections*
-    - **Tokens per Minute Rate Limit (thousands)**: 5K
+    - **Deployment name**: *A unique name for your model deployment - for example `gpt-4o`*
+    - **Deployment type**: Global Standard
+    - **Automatic version update**: Enabled
+    - **Model version**: *Select the most recent available version*
+    - **Connected AI resource**: *Select your Azure OpenAI resource connection*
+    - **Tokens per Minute Rate Limit (thousands)**: 50K *(or the maximum available in your subscription if less than 50K)*
     - **Content filter**: DefaultV2
-    - **Enable dynamic quota**: Disabled
-      
-    > **Note**: Reducing the TPM helps avoid over-using the quota available in the subscription you are using. 5,000 TPM is sufficient for the data used in this exercise.
+
+    > **Note**: Reducing the TPM helps avoid over-using the quota available in the subscription you are using. 50,000 TPM should be sufficient for the data used in this exercise. If your available quota is lower than this, you will be able to complete the exercise but you may experience errors if the rate limit is exceeded.
+
+1. Wait for the deployment to complete.
 
 1. After the model has been deployed, in the deployment overview page, select **Open in playground**.
 1. In the **Chat playground** page, ensure that your model deployment is selected in the **Deployment** section.
-1. In the chat window, enter a query such as `How can I use Azure AI Services in a software development project?` and view the response:
+1. In the **Setup** pane, in the **Give the model instructions and context** box, enter the following instructions:
+
+    ```
+    You are a history teacher who can answer questions about past events all around the world.
+    ```
+
+1. Apply the changes to update the system message.
+1. In the chat window, enter a query such as `What are the key events in the history of Scotland?` and view the response:
 
     ![Screenshot of the playground in Azure AI Foundry portal.](./media/ai-foundry-playground.png)
 

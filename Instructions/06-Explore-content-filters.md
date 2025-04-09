@@ -4,6 +4,10 @@ lab:
     description: 'Learn how to apply content filters that mitigate potentially offensive or harmful output in your generative AI app.'
 ---
 
+<!--
+Rewrite to use Phi?
+-->
+
 # Apply content filters to prevent the output of harmful content
 
 Azure AI Foundry includes default content filters to help ensure that potentially harmful prompts and completions are identified and removed from interactions with the service. Additionally, you can apply for permission to define custom content filters for your specific needs to ensure your model deployments enforce the appropriate responsible AI principles for your generative AI scenario. Content filtering is one element of an effective approach to responsible AI when working with generative AI models.

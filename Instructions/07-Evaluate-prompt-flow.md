@@ -4,6 +4,10 @@ lab:
     description: 'Learn how to evaluate models and chat flows to optimize the performance of your chat app and its ability to respond appropriately.'
 ---
 
+<!--
+Rewrite to use Phi?
+-->
+
 # Evaluate generative AI performance
 
 In this exercise, you'll explore built-in and custom evaluations to assess and compare the performance of your AI applications with the Azure AI Foundry portal.

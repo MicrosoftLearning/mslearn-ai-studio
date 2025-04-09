@@ -62,20 +62,24 @@ Now you're ready to deploy a *Phi-4-multimodal-instruct* model to support multim
 
 Now that you've deployed the model, you can use the deployment in a client application.
 
-> **Tip**: You can choose to develop your solution using Python or Microsoft C# *(coming soon)*. Follow the instructions in the appropriate section for your chosen language.
+> **Tip**: You can choose to develop your solution using Python or Microsoft C#. Follow the instructions in the appropriate section for your chosen language.
 
 ### Prepare the application configuration
 
 1. In the Azure AI Foundry portal, view the **Overview** page for your project.
 2. In the **Project details** area, note the **Project connection string**. You'll use this connection string to connect to your project in a client application.
 3. Open a new browser tab (keeping the Azure AI Foundry portal open in the existing tab). Then in the new tab, browse to the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`; signing in with your Azure credentials if prompted.
-4. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment. The cloud shell provides a command line interface in a pane at the bottom of the Azure portal.
+4. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment with no storage in your subscription.
+
+    The cloud shell provides a command line interface in a pane at the bottom of the Azure portal. You can resize or maximize this pane to make it easier to work in.
 
     > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, switch it to ***PowerShell***.
 
 5. In the cloud shell toolbar, in the **Settings** menu, select **Go to Classic version** (this is required to use the code editor).
 
-6. In the PowerShell pane, enter the following commands to clone the GitHub repo containing the code files for this exercise:
+    **<font color="red">Ensure you've switched to the classic version of the cloud shell before continuing.</font>**
+
+6. In the cloud shell pane, enter the following commands to clone the GitHub repo containing the code files for this exercise:
 
     ```
     rm -r mslearn-ai-foundry -f

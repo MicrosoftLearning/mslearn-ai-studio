@@ -16,7 +16,7 @@ This exercise will take approximately **25** minutes.
 
 An Azure AI hub provides a collaborative workspace within which you can define one or more *projects*. Let's create a project and Azure AI hub.
 
-1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image:
+1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image (close the **Help** pane if it is open):
 
     ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
 
@@ -26,11 +26,11 @@ An Azure AI hub provides a collaborative workspace within which you can define o
     - **Hub name**: *A unique name - for example `my-ai-hub`*
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create a new resource group with a unique name (for example, `my-ai-resources`), or select an existing one*
-    - **Location**: Select **Help me choose** and then select **gpt-4** in the Location helper window and use the recommended region\*
+    - **Location**: Select **Help me choose** and then select **gpt-4o** in the Location helper window and use the recommended region\*
     - **Connect Azure AI Services or Azure OpenAI**: *Create a new AI Services resource with an appropriate name (for example, `my-ai-services`) or use an existing one*
     - **Connect Azure AI Search**: Skip connecting
 
-    > \* Model quotas are constrained at the tenant level by regional quotas. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region.
+    > \* Azure OpenAI resources are constrained by regional model quotas. In the event of a quota limit being exceeded later in the exercise, there's a possibility you may need to create another resource in a different region.
 
 1. Select **Next** and review your configuration. Then select **Create** and wait for the process to complete.
 1. When your project is created, close any tips that are displayed and review the project page in Azure AI Foundry portal, which should look similar to the following image:
@@ -49,19 +49,19 @@ There are multiple options for deploying models in the Azure AI Foundry portal. 
 To help you choose a model, you can explore model descriptions and benchmarks to determine which model best fits your needs.
 
 1. In the Azure AI Foundry project portal, in the navigation pane on the left, select **Model catalog**.
-1. In the model catalog home page, search for `gpt-4` to find the **gpt-4** chat completion model.
+1. In the model catalog home page, search for `gpt-4o` to find the **gpt-4o** chat completion model.
 
-    ![Screenshot of a search for "gpt-4" in the model catalog.](./media/model-catalog-search-gpt4.png)
+    ![Screenshot of a search for "gpt-4o" in the model catalog.](./media/model-catalog-search-gpt4.png)
 
-1. Select the **gpt-4** model and view its details. Read the description and review the other information available on the page.
+1. Select the **gpt-4o** model and view its details. Read the description and review the other information available on the page.
 
-    ![Screenshot of the gpt-4 model details page.](./media/gpt4-details.png)
+    ![Screenshot of the gpt-4o model details page.](./media/gpt4-details.png)
 
-1. On the **gpt-4** page, view the **Benchmarks** tab to see how the model compares across some standard performance benchmarks with other models that are used in similar scenarios.
+1. On the **gpt-4o** page, view the **Benchmarks** tab to see how the model compares across some standard performance benchmarks with other models that are used in similar scenarios.
 
-    ![Screenshot of the gpt-4 model benchmarks page.](./media/gpt4-benchmarks.png)
+    ![Screenshot of the gpt-4o model benchmarks page.](./media/gpt4-benchmarks.png)
 
-1. Use the back arrow (**&larr;**) next to the **gpt-4** page title to return to the model catalog home page.
+1. Use the back arrow (**&larr;**) next to the **gpt-4o** page title to return to the model catalog home page.
 1. In the model catalog, search for `Phi-3.5-mini-instruct` and view the details and benchmarks for the **Phi-3.5-mini-instruct** model.
 
 ## Compare models
@@ -75,10 +75,10 @@ You've reviewed two different models, both of which could be used to implement a
 
 1. In the **Models to compare** pane on the left, note that you can select popular tasks, such as *question answering* to automatically select commonly used models for specific tasks.
 1. Use the **Clear all models** (&#128465;) icon to remove all of the pre-selected models.
-1. Use the **+ Model to compare** button to add the **gpt-4** model to the list. Then use the same button to add the **Phi-3.5-mini-instruct** model to the list.
+1. Use the **+ Model to compare** button to add the **gpt-4o** model to the list. Then use the same button to add the **Phi-3.5-mini-instruct** model to the list.
 1. Review the chart, which compares the models based on **Quality Index** (a standardized score indicating model quality) and **Cost**. You can see the specific values for a model by holding the mouse over the point that represents it in the chart.
 
-    ![Screenshot of the model comparison chart for gpt-4 and Phi-3.5-mini-instruct.](./media/comparison-chart.png)
+    ![Screenshot of the model comparison chart for gpt-4o and Phi-3.5-mini-instruct.](./media/comparison-chart.png)
 
 1. In the **X-axis** dropdown menu, under **Quality**, select the following metrics and observe each resulting chart before switching to the next:
     - Accuracy
@@ -95,18 +95,18 @@ Now that you have explored your options through model benchmarks, you're ready t
 Let's start by deploying a model from the Model catalog. You may prefer this option when you want to review multiple available models.
 
 1. Return to the **Model catalog** home page.
-1. Search for and select the `gpt-4` model, just as you did previously.
-1. On the **gpt-4** page, select **Deploy** and deploy the model with the following settings by selecting **Customize** in the deployment details:
+1. Search for and select the `gpt-4o` model, just as you did previously.
+1. On the **gpt-4o** page, select **Deploy** and deploy the model with the following settings by selecting **Customize** in the deployment details:
 1. Deploy the model with the following settings by selecting **Customize** in the deployment details:
-    - **Deployment name**: *A unique name for your model deployment - for example `gpt-4`*
-    - **Deployment type**: Standard
-    - **Model version**: 0613
+    - **Deployment name**: *A unique name for your model deployment - for example `gpt-4o`*
+    - **Deployment type**: Global Standard
+    - **Automatic version update**: Enabled
+    - **Model version**: *Select the most recent available version*
     - **Connected AI resource**: *Select your Azure OpenAI resource connection*
-    - **Tokens per Minute Rate Limit (thousands)**: 5K
+    - **Tokens per Minute Rate Limit (thousands)**: 50K *(or the maximum available in your subscription if less than 50K)*
     - **Content filter**: DefaultV2
-    - **Enable dynamic quota**: Disabled
-      
-    > **Note**: Reducing the TPM helps avoid over-using the quota available in the subscription you are using. 5,000 TPM is sufficient for the data used in this exercise.
+
+    > **Note**: Reducing the TPM helps avoid over-using the quota available in the subscription you are using. 50,000 TPM should be sufficient for the data used in this exercise. If your available quota is lower than this, you will be able to complete the exercise but you may need to wait and resubmit prompts if the rate limit is exceeded.
 
 1. Wait for the deployment to complete.
 
@@ -134,9 +134,9 @@ Now that you have two models to compare, let's see how the models behave in a co
 1. In the **Setup** pane, in the **Give the model instructions and context** field, set the system prompt to `You are an AI assistant that helps solve problems.`
 1. Select **Apply changes**.
 
-### Chat with the *gpt-4* model
+### Chat with the *gpt-4o* model
 
-In the **Setup** pane, select your *gpt-4* model.
+In the **Setup** pane, select your *gpt-4o* model.
 1. In the chat window, enter the following query
 
     ```
