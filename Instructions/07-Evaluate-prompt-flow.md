@@ -1,73 +1,85 @@
 ---
 lab:
-    title: 'Evaluate generative AI performance'
-    description: 'Learn how to evaluate models and chat flows to optimize the performance of your chat app and its ability to respond appropriately.'
+    title: 'Evaluate generative AI model performance'
+    description: 'Learn how to evaluate models and prompts to optimize the performance of your chat app and its ability to respond appropriately.'
 ---
 
-<!--
-Rewrite to use Phi?
--->
+# Evaluate generative AI model performance
 
-# Evaluate generative AI performance
-
-In this exercise, you'll explore built-in and custom evaluations to assess and compare the performance of your AI applications with the Azure AI Foundry portal.
+In this exercise, you'll use manual and automated evaluations to assess the performance of a model in the Azure AI Foundry portal.
 
 This exercise will take approximately **30** minutes.
 
-## Create an Azure AI hub and project
+## Create an Azure AI Foundry project
 
-An Azure AI hub provides a collaborative workspace within which you can define one or more *projects*. Let's create a project and Azure AI hub.
+Let's start by creating an Azure AI Foundry project.
 
-1. In a web browser, open [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials.
+1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image (close the **Help** pane if it is open):
+
+    ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
 
 1. In the home page, select **+ Create project**.
-1. In the **Create a project** wizard, enter a suitable project name for (for example, `my-ai-project`) then review the Azure resources that will be automatically created to support your project.
+1. In the **Create a project** wizard, enter a valid name for your project and if an existing hub is suggested, choose the option to create a new one. Then review the Azure resources that will be automatically created to support your hub and project.
 1. Select **Customize** and specify the following settings for your hub:
-    - **Hub name**: *A unique name - for example `my-ai-hub`*
+    - **Hub name**: *A valid name for your hub*
     - **Subscription**: *Your Azure subscription*
-    - **Resource group**: *Create a new resource group with a unique name (for example, `my-ai-resources`), or select an existing one*
-    - **Location**: Select **Help me choose** and then select **gpt-4** in the Location helper window and use the recommended region\*
-    - **Connect Azure AI Services or Azure OpenAI**: *Create a new AI Services resource with an appropriate name (for example, `my-ai-services`) or use an existing one*
+    - **Resource group**: *Create or select a resource group*
+    - **Location**: Select one of the following regions\*
+        - East US 2
+        - France Central
+        - UK South
+        - Sweden Central
+    - **Connect Azure AI Services or Azure OpenAI**: *Create a new AI Services resource*
     - **Connect Azure AI Search**: Skip connecting
 
-    > \* Model quotas are constrained at the tenant level by regional quotas. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region.
+    > \* At the time of writing, these regions support the evaluation of AI safety metrics.
 
 1. Select **Next** and review your configuration. Then select **Create** and wait for the process to complete.
 1. When your project is created, close any tips that are displayed and review the project page in Azure AI Foundry portal, which should look similar to the following image:
 
     ![Screenshot of a Azure AI project details in Azure AI Foundry portal.](./media/ai-foundry-project.png)
 
-## Deploy a GPT model
+## Deploy models
 
-To use a language model in prompt flow, you need to deploy a model first. The Azure AI Foundry portal allows you to deploy OpenAI models that you can use in your flows.
+In this exercise, you'll evaluate the performance of a gpt-4o-mini model. You'll also use a gpt-4o model to generate AI-assisted evaluation metrics.
 
-1. Navigate to the **Models + endpoints** page under the **My assets** section, using the menu on the left.
-1. Select the **+ Deploy model** button, and select the **Deploy base model** option.
-1. Create a new deployment of the **gpt-4** model with the following settings by selecting **Customize** in the **Deploy model** wizard:
-    - **Deployment name**: *A unique name for your model deployment*
-    - **Deployment type**: Standard
-    - **Model version**: *Select the default version*
-    - **AI resource**: *Select the resource created previously*
-    - **Tokens per Minute Rate Limit (thousands)**: 5K
+1. In the navigation pane on the left for your project, in the **My assets** section, select the **Models + endpoints** page.
+1. In the **Models + endpoints** page, in the **Model deployments** tab, in the **+ Deploy model** menu, select **Deploy base model**.
+1. Search for the **gpt-4o** model in the list, and then select and confirm it.
+1. Deploy the model with the following settings by selecting **Customize** in the deployment details:
+    - **Deployment name**: *A valid name for your model deployment*
+    - **Deployment type**: Global Standard
+    - **Automatic version update**: Enabled
+    - **Model version**: *Select the most recent available version*
+    - **Connected AI resource**: *Select your Azure OpenAI resource connection*
+    - **Tokens per Minute Rate Limit (thousands)**: 50K *(or the maximum available in your subscription if less than 50K)*
     - **Content filter**: DefaultV2
-    - **Enable dynamic quota**: Disabled
 
-    > **Note**: If your current AI resource location doesn't have quota available for the model you want to deploy, you will be asked to choose a different location where a new AI resource will be created and connected to your project.
+    > **Note**: Reducing the TPM helps avoid over-using the quota available in the subscription you are using. 50,000 TPM should be sufficient for the data used in this exercise. If your available quota is lower than this, you will be able to complete the exercise but you may experience errors if the rate limit is exceeded.
 
-1. Wait for the model to be deployed. When the deployment is ready, select **Open in playground**.
-1. In the **Give the model instructions and context** text box, change the content to the following:
+1. Wait for the deployment to complete.
+1. Return to the **Models + endpoints** page and repeat the previous steps to deploy a **gpt-4o-mini** model with the same settings.
+
+## Manually evaluate a model
+
+You can manually review model responses based on test data. Manually reviewing allows you to test different inputs to evaluate whether the model performs as expected.
+
+1. In a new browser tab, download the [travel_evaluation_data.csv](https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel_evaluation_data.csv) from `https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel_evaluation_data.csv` and save it in a local folder.
+1. Back on the Azure AI Foundry portal tab, in the navigation pane, in the **Assess and improve** section, select **Evaluation**.
+1. In the **Evaluation** page, view the **Manual evaluations** tab and select **+ New manual evaluation**.
+1. Change the **System message** to the following instructions for an AI travel assistant:
 
    ```
-   **Objective**: Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
+   Objective: Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
 
-   **Capabilities**:
+   Capabilities:
    - Provide up-to-date travel information, including destinations, accommodations, transportation, and local attractions.
    - Offer personalized travel suggestions based on user preferences, budget, and travel dates.
    - Share tips on packing, safety, and navigating travel disruptions.
    - Help with itinerary planning, including optimal routes and must-see landmarks.
    - Answer common travel questions and provide solutions to potential travel issues.
     
-   **Instructions**:
+   Instructions:
    1. Engage with the user in a friendly and professional manner, as a travel agent would.
    2. Use available resources to provide accurate and relevant travel information.
    3. Tailor responses to the user's specific travel needs and interests.
@@ -75,29 +87,41 @@ To use a language model in prompt flow, you need to deploy a model first. The Az
    5. Encourage the user to ask follow-up questions for further assistance.
    ```
 
-1. Select **Apply changes**.
-1. In the chat (history) window, enter the query: `What can you do?` to verify that the language model is behaving as expected.
+1. In the **Configurations** section, in the **Model** list, select your **gpt-4o-mini** model deployment.
+1. In the **Manual evaluation result** section, select **Import test data** and upload the **travel_evaluation_data.csv** file you downloaded previously; mapping the dataset fields as follows:
+    - **Input**: Question
+    - **Expected response**: ExpectedResponse
+1. Review the questions and expected answers in the test file - you'll use these to evaluate the responses that the model generates.
+1. Select **Run** from the top bar to generate outputs for all questions you added as inputs. After a few minutes, the responses from the model should be shown in a new **Output** column, like this:
 
-Now that you have a deployed model with an updated system message, you can evaluate the model.
+    ![Screenshot of a manual evaluation page in Azure AI Foundry portal.](./media/manual-evaluation.png)
 
-## Manually evaluate a language model in the Azure AI Foundry portal
+1. Review the outputs for each question, comparing the output from the model to the expected answer and "scoring" the results by selecting the thumbs up or down icon at the bottom right of each response.
+1. After you've scored the responses, review the summary tiles above the list. Then in the toolbar, select **Save results** and assign a suitable name. Saving results enables you to retrieve them later for further evaluation or comparison with a different model.
 
-You can manually review model responses based on test data. Manually reviewing allows you to test different inputs one at a time to evaluate whether the model performs as expected.
+## Use automated evaluation
 
-1. In the **Chat playground**, select the **Evaluate**  dropdown from the top bar, and select **Manual evaluation**.
-1. Change the **System message** to the same message as you used above (included here again):
+While manually comparing model output to your own expected responses can be a useful way to assess a model's performance, it's a time-consuming approach in scenarios where you expect a wide range of questions and responses; and it provides little in the way of standardized metrics that you can use to compare different model and prompt combinations.
+
+Automated evaluation is an approach that attempts to address these shortcomings by calculating metrics and using AI to assess responses for coherence, relevance, and other factors.
+
+1. Use the back arrow (**&larr;**) next to the **Manual evaluation** page title to return to the **Evaluation** page.
+1. View the **Automated evaluations** tab.
+1. Select **Create a new evaluation**, and when prompted, select the option to evaluate a **Model and prompt**
+1. In the **Create a new evaluation** page, in the **Basic information** section, review the default auto-generated evaluation name (you can change this if you like) and select your **gpt-40-mini** model deployment.
+1. Change the **System message** to the same instructions for an AI travel assistant you used previously:
 
    ```
-   **Objective**: Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
+   Objective: Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
 
-   **Capabilities**:
+   Capabilities:
    - Provide up-to-date travel information, including destinations, accommodations, transportation, and local attractions.
    - Offer personalized travel suggestions based on user preferences, budget, and travel dates.
    - Share tips on packing, safety, and navigating travel disruptions.
    - Help with itinerary planning, including optimal routes and must-see landmarks.
    - Answer common travel questions and provide solutions to potential travel issues.
     
-   **Instructions**:
+   Instructions:
    1. Engage with the user in a friendly and professional manner, as a travel agent would.
    2. Use available resources to provide accurate and relevant travel information.
    3. Tailor responses to the user's specific travel needs and interests.
@@ -105,68 +129,33 @@ You can manually review model responses based on test data. Manually reviewing a
    5. Encourage the user to ask follow-up questions for further assistance.
    ```
 
-1. In the **Manual evaluation result** section, you'll add five inputs for which you will review the output. Enter the following five questions as five separate **Inputs**:
+1. In the **Configure test data** section, note that you can use a GPT model to generate test data for you (which you could then edit and supplement to match your own expectations), use an existing dataset, or upload a file. In this exercise, select **Use existing dataset** and then select the **travel_evaluation_data_csv_*xxxx...*** dataset (which was created when you uploaded the .csv file previously).
+1. Review the sample rows from the dataset, and then in the **Choose your data column** section, select the following column mappings:
+    - **Query**: Question
+    - **Context**: *Leave this blank. It's used to evaluate "groundedness" when  associating a contextual data source with your model.*
+    - **Ground truth**: ExpectedAnswer
+1. In the **Choose what you'd like to evaluate** section, select <u>all</u> of the following evaluation categories:
+    - AI Quality (AI assisted)
+    - Risk and safety (AI assisted)
+    - AI quality (NLP)
+1. In the **Choose a model deployment as judge** list, select your **gpt-4o** model. This model will be used to assess the responses from the ***gpt-4o-mini** model for language-related quality and standard generative AI comparison metrics.
+1. Select **Create** to start the evaluation process, and wait for it to complete. It may take a few minutes.
 
-   `Can you provide a list of the top-rated budget hotels in Rome?`
+    > **Tip**: If an error indicating that project permissions are being set is dispayed, wait a minute and then select **Create** again. It can take some time for resource permissions for a newly created project to propagate.
 
-   `I'm looking for a vegan-friendly restaurant in New York City. Can you help?`
+1. When the evaluation has completed, scroll down if necessary to see the **Metric dashboard** area and view the **AI quality (AI Assisted)** metrics:
 
-   `Can you suggest a 7-day itinerary for a family vacation in Orlando, Florida?`
+    ![Screenshot of AI quality metrics in Azure AI Foundry portal.](./media/ai-quality-metrics.png)
 
-   `Can you help me plan a surprise honeymoon trip to the Maldives?`
+    Use the **<sup>(i) </sup>** icons to view the metric definitions.
 
-   `Are there any guided tours available for the Great Wall of China?`
+1. View the **Risk and safety** tab to see the metrics associated with potentially harmful content.
+1. View the **AI quality (NLP**) tab to see standard metrics for generative AI models.
+1. Scroll back to the top of the page if necessary, and select the **Data** tab to see the raw data from the evaluation. The data includes the metrics for each input as well as explanations of the reasoning the gpt-4o model applied when assessing the responses.
 
-1. Select **Run** from the top bar to generate outputs for all questions you added as inputs.
-1. You can now manually review the outputs for each question by selecting the thumbs up or down icon at the bottom right of a response. Rate each response, ensuring you include at least one thumbs up and one thumbs down response in your ratings.
-1. Select **Save results** from the top bar. Enter `manual_evaluation_results` as the name for the results.
-1. Using the menu on the left, navigate to **Evaluation**.
-1. Select the **Manual evaluations** tab to find the manual evaluations you just saved. Note that you can explore your previously created manual evaluations, continue where you left off, and save the updated evaluations.
+    ![Screenshot of evaluation data in Azure AI Foundry portal.](./media/evaluation-data.png)
 
-## Evaluate your chat app with the built-in metrics
-
-When you have created a chat application with prompt flow, you can evaluate the flow by doing a batch run and assessing the performance of the flow with built-in metrics.
-
-![Diagram of construction of input dataset for evaluation.](./media/diagram-dataset-evaluation.png)
-
-To evaluate a chat flow, the user queries, and chat responses are provided as input for an evaluation.
-
-To save time, we have created a batch output dataset for you that contains the results of multiple inputs being processed by a prompt flow. Each of the results are stored in the dataset you'll evaluate in the next step.
-
-1. Select the **Automated evaluations** tab and create a **New evaluation** with the following settings:
-    <details>  
-      <summary><b>Troubleshooting tip</b>: Permissions error</summary>
-        <p>If you receive a permissions error when you create a new prompt flow, try the following to troubleshoot:</p>
-        <ul>
-          <li>In the Azure portal, select the AI Services resource.</li>
-          <li>On the Identity tab under Resource Management, confirm that it is system assigned managed identity.</li>
-          <li>Navigate to the associated Storage Account. On the IAM page, add role assignment <em>Storage blob data reader</em>.</li>
-          <li>Under <strong>Assign access to</strong>, choose <strong>Managed Identity</strong>, <strong>+ Select members</strong>, and select the <strong>All system-assigned managed identities</strong>.</li>
-          <li>Review and assign to save the new settings and retry the previous step.</li>
-        </ul>
-    </details>
-
-    - **What do you want to evaluate?**: Dataset
-    - **Evaluation name**: *Enter a unique name*
-    - Select **Next**
-    - **Select the data you want to evaluate**: Add your dataset
-        - Download the [validation dataset](https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/main/data/travel-qa.jsonl) at `https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/main/data/travel-qa.jsonl`, save it as a JSONL file and upload it to the UI.
-
-    > **Note**: Your device might default to saving the file as a .txt file. Select all files and remove the .txt suffix to ensure you're saving the file as JSONL.
-
-    - Select **Next**
-    - **Select metrics**: Coherence, Fluency
-    - **Connection**: *Your AI Services connection*
-    - **Deployment name/Model**: *Your deployed GPT-4 model*
-    - **query**: Select **query** as the data source
-    - **response**: Select **response** as the data source
-      
-1. Select **Next** then review your data and **Submit** the new evaluation.
-1. Wait for the evaluations to be completed, you may need to refresh.
-1. Select the evaluation run you just created.
-1. Explore the **Metric dashboard** in the **Report** tab and **Detailed metrics result** in the **Data** tab.
-
-## Delete Azure resources
+## Clean up
 
 When you finish exploring the Azure AI Foundry, you should delete the resources you’ve created to avoid unnecessary Azure costs.
 

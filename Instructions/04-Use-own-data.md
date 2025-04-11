@@ -3,9 +3,6 @@ lab:
     title: 'Create a generative AI app that uses your own data'
     description: 'Learn how to use the Retrieval Augmented Generation (RAG) model to build a chat app that grounds prompts using your own data.'
 ---
-<!--
-Rewrite to use gpt-4o
--->
 
 # Create a generative AI app that uses your own data
 
@@ -26,22 +23,22 @@ Let's start by creating an Azure AI Foundry project and the service resources it
     ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
 
 1. In the home page, select **+ Create project**.
-1. In the **Create a project** wizard, enter a suitable project name (for example, `my-ai-project`) and if an existing hub is suggested, choose the option to create a new one. Then review the Azure resources that will be automatically created to support your hub and project.
+1. In the **Create a project** wizard, enter a valid name for your project, and if an existing hub is suggested, choose the option to create a new one. Then review the Azure resources that will be automatically created to support your hub and project.
 1. Select **Customize** and specify the following settings for your hub:
-    - **Hub name**: *A unique name - for example `my-ai-hub`*
+    - **Hub name**: *A valid name for your hub*
     - **Subscription**: *Your Azure subscription*
-    - **Resource group**: *Create a new resource group with a unique name (for example, `my-ai-resources`), or select an existing one*
-    - **Location**: Select **Help me choose** and then select both **gpt-4** and **text-embedding-ada-002** in the Location helper window and use the recommended region\*
-    - **Connect Azure AI Services or Azure OpenAI**: *Create a new AI Services resource with an appropriate name (for example, `my-ai-services`) or use an existing one*
+    - **Resource group**: *Create or select a resource group*
+    - **Location**: Select **Help me choose** and then select **gpt-4o** in the Location helper window and use the recommended region\*
+    - **Connect Azure AI Services or Azure OpenAI**: *Create a new AI Services resource*
     - **Connect Azure AI Search**: *Create a new Azure AI Search resource with a unique name*
 
-    > \* Azure OpenAI resources are constrained at the tenant level by regional quotas. In the event of a quota limit being reached and no region is recommended for both models, select only one of them and use its recommended region. You will create another resource in a different region for the second model later in the exercise.
+    > \* Azure OpenAI resources are constrained by regional model quotas. In the event of a quota limit being exceeded later in the exercise, there's a possibility you may need to create another resource in a different region.
 
 1. Select **Next** and review your configuration. Then select **Create** and wait for the process to complete.
-1. When your project is created, close any tips that are displayed and review the project **Overview** page in Azure AI Foundry portal, which should look similar to the following image:
+1. When your project is created, close any tips that are displayed and review the project page in Azure AI Foundry portal, which should look similar to the following image:
 
     ![Screenshot of a Azure AI project details in Azure AI Foundry portal.](./media/ai-foundry-project.png)
-   
+
 ## Deploy models
 
 You need two models to implement your solution:
@@ -52,23 +49,22 @@ You need two models to implement your solution:
 1. In the Azure AI Foundry portal, in your project, in the navigation pane on the left, under **My assets**, select the **Models + endpoints** page.
 1. Create a new deployment of the **text-embedding-ada-002** model with the following settings by selecting **Customize** in the Deploy model wizard:
 
-    - **Deployment name**: `text-embedding-ada-002`
-    - **Deployment type**: Standard
+    - **Deployment name**: *A valid name for your model deployment*
+    - **Deployment type**: Global Standard
     - **Model version**: *Select the default version*
-    - **AI resource**: *Select the resource created previously*
-    - **Tokens per Minute Rate Limit (thousands)**: 5K
+    - **Connected AI resource**: *Select the resource created previously*
+    - **Tokens per Minute Rate Limit (thousands)**: 50K *(or the maximum available in your subscription if less than 50K)*
     - **Content filter**: DefaultV2
-    - **Enable dynamic quota**: Disabled
 
     > **Note**: If your current AI resource location doesn't have quota available for the model you want to deploy, you will be asked to choose a different location where a new AI resource will be created and connected to your project.
 
-1. Repeat the previous steps to deploy a **gpt-4** model with the deployment name `gpt-4` using a **standard** deployment of the default version with a TPM rate limit of 5K.
+1. Return to the **Models + endpoints** page and repeat the previous steps to deploy a **gpt-4o** model using a **Global Standard** deployment of the most recent version with a TPM rate limit of **50K** (or the maximum available in your subscription if less than 50K).
 
-    > **Note**: Reducing the Tokens Per Minute (TPM) helps avoid over-using the quota available in the subscription you are using. 5,000 TPM is sufficient for the data used in this exercise.
+    > **Note**: Reducing the Tokens Per Minute (TPM) helps avoid over-using the quota available in the subscription you are using. 50,000 TPM is sufficient for the data used in this exercise.
 
 ## Add data to your project
 
-The data for your copilot consists of a set of travel brochures in PDF format from the fictitious travel agency *Margie's Travel*. Let's add them to the project.
+The data for your app consists of a set of travel brochures in PDF format from the fictitious travel agency *Margie's Travel*. Let's add them to the project.
 
 1. In a new browser tab, download the [zipped archive of brochures](https://github.com/MicrosoftLearning/mslearn-ai-studio/raw/main/data/brochures.zip) from `https://github.com/MicrosoftLearning/mslearn-ai-studio/raw/main/data/brochures.zip` and extract it to a folder named **brochures** on your local file system.
 1. In Azure AI Foundry portal, in your project, in the navigation pane on the left, under **My assets**, select the **Data + indexes** page.
@@ -85,7 +81,7 @@ Now that you've added a data source to your project, you can use it to create an
 1. In Azure AI Foundry portal, in your project, in the navigation pane on the left, under **My assets**, select the **Data + indexes** page.
 1. In the **Indexes** tab, add a new index with the following settings:
     - **Source location**:
-        - **Data source**: Data in Azure AI Foundry portal
+        - **Data source**: Data in Azure AI Foundry
             - *Select the **brochures** data source*
     - **Index configuration**:
         - **Select Azure AI Search service**: *Select the **AzureAISearch** connection to your Azure AI Search resource*
@@ -112,7 +108,7 @@ Now that you've added a data source to your project, you can use it to create an
 Before using your index in a RAG-based prompt flow, let's verify that it can be used to affect generative AI responses.
 
 1. In the navigation pane on the left, select the **Playgrounds** page and open the **Chat** playground.
-1. On the Chat playground page, in the Setup pane, ensure that your **gpt-4** model deployment is selected. Then, in the main chat session panel, submit the prompt `Where can I stay in New York?`
+1. On the Chat playground page, in the Setup pane, ensure that your **gpt-4o** model deployment is selected. Then, in the main chat session panel, submit the prompt `Where can I stay in New York?`
 1. Review the response, which should be a generic answer from the model without any data from the index.
 1. In the Setup pane, expand the **Add your data** field, and then add the **brochures-index** project index and select the **hybrid (vector + keyword)** search type.
 
@@ -137,7 +133,7 @@ Now that you have a working index, you can use the Azure AI Foundry and Azure Op
 
 1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment with no storage in your subscription.
 
-    The cloud shell provides a command line interface in a pane at the bottom of the Azure portal. You can resize or maximize this pane to make it easier to work in.
+    The cloud shell provides a command-line interface in a pane at the bottom of the Azure portal. You can resize or maximize this pane to make it easier to work in.
 
     > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, switch it to ***PowerShell***.
 
@@ -145,7 +141,7 @@ Now that you have a working index, you can use the Azure AI Foundry and Azure Op
 
     **<font color="red">Ensure you've switched to the classic version of the cloud shell before continuing.</font>**
 
-1. In the PowerShell pane, enter the following commands to clone the GitHub repo containing the code files for this exercise:
+1. In the cloud shell pane, enter the following commands to clone the GitHub repo containing the code files for this exercise (type the command, or copy it to the clipboard and then right-click in the command line and paste as plain text):
 
     ```
     rm -r mslearn-ai-foundry -f
@@ -170,7 +166,7 @@ Now that you have a working index, you can use the Azure AI Foundry and Azure Op
    cd mslearn-ai-foundry/labfiles/rag-app/c-sharp
     ```
 
-1. In the cloud shell command line pane, enter the following command to install the libraries you'll use:
+1. In the cloud shell command-line pane, enter the following command to install the libraries you'll use:
 
     **Python**
 
@@ -205,9 +201,9 @@ Now that you have a working index, you can use the Azure AI Foundry and Azure Op
 
 1. In the code file, replace the following placeholders: 
     - **your_project_connection_string**: Replace with the connection string for your project (copied from the project **Overview** page in the Azure AI Foundry portal)
-    - **your_model_deployment** Replace with the name you assigned to your model deployment (which should be `gpt-4`)
+    - **your_model_deployment** Replace with the name you assigned to your **gpt-4o** model deployment
     - **your_index**: Replace with your index name (which should be `brochures-index`)
-1. After you've replaced the placeholders, within the code editor, use the **CTRL+S** command or **Right-click > Save** to save your changes and then use the **CTRL+Q** command or **Right-click > Quit** to close the code editor while keeping the cloud shell command line open.
+1. After you've replaced the placeholders, in the code editor, use the **CTRL+S** command or **Right-click > Save** to save your changes and then use the **CTRL+Q** command or **Right-click > Quit** to close the code editor while keeping the cloud shell command line open.
 
 ### Explore code to implement the RAG pattern
 
@@ -237,7 +233,7 @@ Now that you have a working index, you can use the Azure AI Foundry and Azure Op
 
 ### Run the chat application
 
-1. In the cloud shell command line pane, enter the following command to run the app:
+1. In the cloud shell command-line pane, enter the following command to run the app:
 
     **Python**
 

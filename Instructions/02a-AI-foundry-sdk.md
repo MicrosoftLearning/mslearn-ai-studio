@@ -16,18 +16,18 @@ This exercise takes approximately **40** minutes.
 
 Let's start by creating an Azure AI Foundry project.
 
-1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image (close the **Help** pane if it is open):
+1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image (close the **Help** pane if it's open):
 
     ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
 
 1. In the home page, select **+ Create project**.
-1. In the **Create a project** wizard, enter a suitable project name (for example, `my-ai-project`) and if an existing hub is suggested, choose the option to create a new one. Then review the Azure resources that will be automatically created to support your hub and project.
+1. In the **Create a project** wizard, enter a valid name for your project and if an existing hub is suggested, choose the option to create a new one. Then review the Azure resources that will be automatically created to support your hub and project.
 1. Select **Customize** and specify the following settings for your hub:
-    - **Hub name**: *A unique name - for example `my-ai-hub`*
+    - **Hub name**: *A valid name for your hub*
     - **Subscription**: *Your Azure subscription*
-    - **Resource group**: *Create a new resource group with a unique name (for example, `my-ai-resources`), or select an existing one*
+    - **Resource group**: *Create or select a resource group*
     - **Location**: Select **Help me choose** and then select **gpt-4o** in the Location helper window and use the recommended region\*
-    - **Connect Azure AI Services or Azure OpenAI**: *Create a new AI Services resource with an appropriate name (for example, `my-ai-services`) or use an existing one*
+    - **Connect Azure AI Services or Azure OpenAI**: *Create a new AI Services resource*
     - **Connect Azure AI Search**: Skip connecting
 
     > \* Azure OpenAI resources are constrained by regional model quotas. In the event of a quota limit being exceeded later in the exercise, there's a possibility you may need to create another resource in a different region.
@@ -41,11 +41,12 @@ Let's start by creating an Azure AI Foundry project.
 
 Now you're ready to deploy a generative AI language model to support your chat application. In this example, you'll use the OpenAI gpt-4o model; but the principles are the same for any model.
 
+1. In the toolbar at the top right of your Azure AI Foundry project page, use the **Preview features** (**&#9215;**) icon to ensure that the **Deploy models to Azure AI model inference service** feature is enabled. This feature ensures your model deployment is available to the Azure AI Inference service, which you'll use in your application code.
 1. In the pane on the left for your project, in the **My assets** section, select the **Models + endpoints** page.
 1. In the **Models + endpoints** page, in the **Model deployments** tab, in the **+ Deploy model** menu, select **Deploy base model**.
 1. Search for the **gpt-4o** model in the list, and then select and confirm it.
 1. Deploy the model with the following settings by selecting **Customize** in the deployment details:
-    - **Deployment name**: *A unique name for your model deployment - for example `gpt-4o`*
+    - **Deployment name**: *A valid name for your model deployment*
     - **Deployment type**: Global Standard
     - **Automatic version update**: Enabled
     - **Model version**: *Select the most recent available version*
@@ -73,7 +74,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
 
 1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment with no storage in your subscription.
 
-    The cloud shell provides a command line interface in a pane at the bottom of the Azure portal. You can resize or maximize this pane to make it easier to work in.
+    The cloud shell provides a command-line interface in a pane at the bottom of the Azure portal. You can resize or maximize this pane to make it easier to work in.
 
     > **Note**: If you have previously created a cloud shell that uses a *Bash* environment, switch it to ***PowerShell***.
 
@@ -81,18 +82,18 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
 
     **<font color="red">Ensure you've switched to the classic version of the cloud shell before continuing.</font>**
 
-1. In the cloud shell pane, enter the following commands to clone the GitHub repo containing the code files for this exercise:
+1. In the cloud shell pane, enter the following commands to clone the GitHub repo containing the code files for this exercise (type the command, or copy it to the clipboard and then right-click in the command line and paste as plain text):
 
     ```
     rm -r mslearn-ai-foundry -f
     git clone https://github.com/microsoftlearning/mslearn-ai-studio mslearn-ai-foundry
     ```
 
-    > **Tip**: As you paste commands into the cloudshell, the output may take up a large amount of the screen buffer. You can clear the screen by entering the `cls` command to make it easier to focus on each task.
+    > **Tip**: As you enter commands into the cloudshell, the output may take up a large amount of the screen buffer. You can clear the screen by entering the `cls` command to make it easier to focus on each task.
 
 1. After the repo has been cloned, navigate to the folder containing the chat application code files:
 
-    Use the command below depending n your choice of programming language.
+    Use the command below depending on your choice of programming language.
 
     **Python**
 
@@ -106,7 +107,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
    cd mslearn-ai-foundry/labfiles/chat-app/c-sharp
     ```
 
-1. In the cloud shell command line pane, enter the following command to install the libraries you'll use:
+1. In the cloud shell command-line pane, enter the following command to install the libraries you'll use:
 
     **Python**
 
@@ -182,7 +183,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
     ```
 
 1. In the **main** function, under the comment **Get configuration settings**, note that the code loads the project connection string and model deployment name values you defined in the configuration file.
-1. Find the comment **Initialize the project client**, and add the following code to connect to your Azure AI Foundry project using the Azure credentials you are currently signed in with:
+1. Find the comment **Initialize the project client**, and add the following code to connect to your Azure AI Foundry project using the Azure credentials you're currently signed in with:
 
     > **Tip**: Be careful to maintain the correct indentation level for your code.
 
@@ -277,7 +278,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
 
 ### Run the chat application
 
-1. In the cloud shell command line pane, under the code editor, enter the following command to run the app:
+1. In the cloud shell command-line pane, under the code editor, enter the following command to run the app:
 
     **Python**
 
@@ -320,7 +321,7 @@ Let's make a few code modifications to see how to implement a chat application u
 
 > **Note**: A different pre-release version of the Azure.AI.Projects package is required as an interim workaround for some incompatibilities with the Azure AI Model Inference SDK.
 
-1. If your code file (*chat-app.py* or *Program.cs*) is not already open, enter the following command to open it in the code editor:
+1. If your code file (*chat-app.py* or *Program.cs*) isn't already open, enter the following command to open it in the code editor:
 
     **Python**
 
@@ -387,7 +388,7 @@ Let's make a few code modifications to see how to implement a chat application u
     };
     ```
 
-1. Find the comment **Get a chat completion** and modify code to add the user input to the prompt, retrieve the completion from your model, and add the completion to the prompt as follows:
+1. Find the comment **Get a chat completion** and modify the code to add the user input to the prompt, retrieve the completion from your model, and add the completion to the prompt as follows:
 
     **Python**
 
@@ -415,7 +416,7 @@ Let's make a few code modifications to see how to implement a chat application u
 
 1. Use the **CTRL+S** command to save your changes to the code file.
 
-1. In the cloud shell command line pane, under the code editor, enter the following command to run the app:
+1. In the cloud shell command-line pane, under the code editor, enter the following command to run the app:
 
     **Python**
 

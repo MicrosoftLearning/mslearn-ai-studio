@@ -1,13 +1,3 @@
----
-lab:
-    title: 'Use prompt flow for Named Entity Recognition (NER)'
-    description: "Generative AI isn't just for chat apps - learn how to use prompt flow in a text analytics scenario where named entities must be extracted from text."
----
-
-<!--
-Delete
--->
-
 # Use prompt flow for Named Entity Recognition (NER)
 
 Extracting valuable information from text is known as Named Entity Recognition (NER). Entities are key words that are of interest to you in a given text.

@@ -1,9 +1,5 @@
 # Build a generative AI app using code-first development tools
 
-<!--
-Delete
--->
-
 In this exercise, you'll clone and deploy an Azure Developer CLI template that provisions and [deploys your AI project to an online endpoint](https://learn.microsoft.com/azure/developer/azure-developer-cli/azure-ai-ml-endpoints?WT.mc_id=academic-140829-cacaste) on Azure AI Foundry. You'll then use it as a starting point to build your own custom copilot with Azure AI and a code-first experience.
 
 This exercise will take approximately **90** minutes.
