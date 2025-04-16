@@ -110,6 +110,8 @@ Now that you've deployed the model, you can use the deployment in a client appli
     **Python**
 
     ```
+   python -m venv labenv
+   ./labenv/bin/Activate.ps1
    pip install python-dotenv azure-identity azure-ai-projects azure-ai-inference
     ```
 

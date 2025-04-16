@@ -171,6 +171,8 @@ Now that you have a working index, you can use the Azure AI Foundry and Azure Op
     **Python**
 
     ```
+   python -m venv labenv
+   ./labenv/bin/Activate.ps1
    pip install python-dotenv azure-ai-projects azure-identity openai
     ```
 

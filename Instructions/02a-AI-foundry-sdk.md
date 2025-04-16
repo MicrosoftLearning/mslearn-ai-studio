@@ -112,6 +112,8 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
     **Python**
 
     ```
+   python -m venv labenv
+   ./labenv/bin/Activate.ps1
    pip install python-dotenv azure-identity azure-ai-projects azure-ai-inference
     ```
 
