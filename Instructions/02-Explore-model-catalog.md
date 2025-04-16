@@ -12,6 +12,8 @@ In this exercise, you'll explore the model catalog in Azure AI Foundry portal, a
 
 This exercise will take approximately **25** minutes.
 
+> **Note**: Some of the technologies used in this exercise are in preview or in active development. You may experience some unexpected behavior, warnings, or errors.
+
 ## Create an Azure AI hub and project
 
 An Azure AI hub provides a collaborative workspace within which you can define one or more *projects*. Let's create a project and Azure AI hub.

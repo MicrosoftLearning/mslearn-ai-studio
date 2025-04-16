@@ -10,6 +10,8 @@ In this exercise, you'll use manual and automated evaluations to assess the perf
 
 This exercise will take approximately **30** minutes.
 
+> **Note**: Some of the technologies used in this exercise are in preview or in active development. You may experience some unexpected behavior, warnings, or errors.
+
 ## Create an Azure AI Foundry project
 
 Let's start by creating an Azure AI Foundry project.

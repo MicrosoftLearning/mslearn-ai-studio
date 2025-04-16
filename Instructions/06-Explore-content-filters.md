@@ -12,6 +12,8 @@ In this exercise, you'll explore the effect of the default content filters in Az
 
 This exercise will take approximately **25** minutes.
 
+> **Note**: Some of the technologies used in this exercise are in preview or in active development. You may experience some unexpected behavior, warnings, or errors.
+
 ## Create an Azure AI Foundry project
 
 Let's start by creating an Azure AI Foundry project.

@@ -10,6 +10,8 @@ In this exercise, you use Azure AI Foundry portal to create a hub and project, r
 
 This exercise takes approximately **30** minutes.
 
+> **Note**: Some of the technologies used in this exercise are in preview or in active development. You may experience some unexpected behavior, warnings, or errors.
+
 ## Open Azure AI Foundry portal
 
 Let's start by signing into Azure AI Foundry portal.

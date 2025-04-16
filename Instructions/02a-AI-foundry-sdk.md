@@ -10,6 +10,8 @@ In this exercise, you use the Azure AI Foundry SDK to create a simple chat app t
 
 This exercise takes approximately **40** minutes.
 
+> **Note**: Some of the technologies used in this exercise are in preview or in active development. You may experience some unexpected behavior, warnings, or errors.
+
 > **Note**: This exercise is based on pre-release SDKs, which may be subject to change. Where necessary, we've used specific versions of packages; which may not reflect the latest available versions.
 
 ## Create an Azure AI Foundry project
