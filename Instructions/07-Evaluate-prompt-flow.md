@@ -34,7 +34,7 @@ Let's start by creating an Azure AI Foundry project.
     - **Connect Azure AI Services or Azure OpenAI**: *Create a new AI Services resource*
     - **Connect Azure AI Search**: Skip connecting
 
-    > \* At the time of writing, these regions support the evaluation of AI safety metrics.
+    > \* At the time of writing, these regions support the evaluation of AI safety metrics. Model availability is constrained by regional quotas. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another project in a different region.
 
 1. Select **Next** and review your configuration. Then select **Create** and wait for the process to complete.
 1. When your project is created, close any tips that are displayed and review the project page in Azure AI Foundry portal, which should look similar to the following image:
