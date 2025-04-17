@@ -53,6 +53,7 @@ Because fine-tuning a model takes some time to complete, you'll start the fine-t
 1. Select the button to add a new fine-tune model, select the **gpt-4o** model and then select **Next**.
 1. **Fine-tune** the model using the following configuration:
     - **Model version**: *Select the default version*
+    - **Method of customization**: Supervised
     - **Model suffix**: `ft-travel`
     - **Connected AI resource**: *Select the connection that was created when you created your hub. Should be selected by default.*
     - **Training data**: Upload files
