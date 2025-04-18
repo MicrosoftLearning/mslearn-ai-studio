@@ -27,6 +27,7 @@ namespace rag_app
                 IConfigurationRoot configuration = builder.Build();
                 string project_connection = configuration["PROJECT_CONNECTION"];
                 string model_deployment = configuration["MODEL_DEPLOYMENT"];
+                string embedding_model = configuration["EMBEDDING_MODEL"];
                 string index_name = configuration["INDEX_NAME"];
 
                 // Initialize the project client
@@ -68,9 +69,13 @@ namespace rag_app
                         ChatCompletionOptions options = new();
                         options.AddDataSource(new AzureSearchChatDataSource()
                         {
+                            // The following params are used to search the index
                             Endpoint = new Uri(search_url),
                             IndexName = index_name,
                             Authentication = DataSourceAuthentication.FromApiKey(search_key),
+                            // The following params are used to vectorize the query
+                            QueryType = "vector",
+                            VectorizationSource = DataSourceVectorizer.FromDeploymentName(embedding_model),
                         });
 
                         // Submit the prompt with the data source options and display the response

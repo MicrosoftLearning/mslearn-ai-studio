@@ -202,9 +202,10 @@ Now that you have a working index, you can use the Azure AI Foundry and Azure Op
     The file is opened in a code editor.
 
 1. In the code file, replace the following placeholders: 
-    - **your_project_connection_string**: Replace with the connection string for your project (copied from the project **Overview** page in the Azure AI Foundry portal)
-    - **your_model_deployment** Replace with the name you assigned to your **gpt-4o** model deployment
-    - **your_index**: Replace with your index name (which should be `brochures-index`)
+    - **your_project_connection_string**: Replace with the connection string for your project (copied from the project **Overview** page in the Azure AI Foundry portal).
+    - **your_gpt_model_deployment** Replace with the name you assigned to your **gpt-4o** model deployment.
+    - **your_embedding_model_deployment**: Replace with the name you assigned to your **text-embedding-ada-002** model deployment.
+    - **your_index**: Replace with your index name (which should be `brochures-index`).
 1. After you've replaced the placeholders, in the code editor, use the **CTRL+S** command or **Right-click > Save** to save your changes and then use the **CTRL+Q** command or **Right-click > Quit** to close the code editor while keeping the cloud shell command line open.
 
 ### Explore code to implement the RAG pattern
@@ -228,9 +229,14 @@ Now that you have a working index, you can use the Azure AI Foundry and Azure Op
     - Creates an authenticated Azure OpenAI client from your project connection.
     - Retrieves the default Azure AI Search connection from your project so it can determine the endpoint and key for your Azure AI Search service.
     - Creates a suitable system message.
-    - Submits a prompt (including the system and a user message based on the user input) to the Azure OpenAI client, adding additional information about the Azure AI Search index to be used to ground the prompt.
+    - Submits a prompt (including the system and a user message based on the user input) to the Azure OpenAI client, adding:
+        - Connection details for the Azure AI Search index to be queried.
+        - Details of the embedding model to be used to vectorize the query\*.
     - Displays the response from the grounded prompt.
     - Adds the response to the chat history.
+
+    \* *The query for the search index is based on the prompt, and is used to find relevant text in the indexed documents. You can use a keyword-based search that submits the query as text, but using a vector-based search can be more efficient - hence the use of an embedding model to vectorize the query text before submitting it.*
+
 1. Use the **CTRL+Q** command to close the code editor without saving any changes, while keeping the cloud shell command line open.
 
 ### Run the chat application
@@ -249,11 +255,11 @@ Now that you have a working index, you can use the Azure AI Foundry and Azure Op
    dotnet run
     ```
 
-1. When prompted, enter a question, such as `Where should I stay in London?` and review the response from your generative AI model.
+1. When prompted, enter a question, such as `Where should I go on vacation to see architecture?` and review the response from your generative AI model.
 
     Note that the response includes source references to indicate the indexed data in which the answer was found.
 
-1. Try a follow-up question, for example `What can I do there?`
+1. Try a follow-up question, for example `Where can I stay there?`
 
 1. When you're finished, enter `quit` to exit the program. Then close the cloud shell pane.
 

@@ -14,6 +14,7 @@ def main():
         load_dotenv()
         project_connection = os.getenv("PROJECT_CONNECTION")
         model_deployment = os.getenv("MODEL_DEPLOYMENT")
+        embedding_model = os.getenv("EMBEDDING_MODEL")
         index_name = os.getenv("INDEX_NAME")
 
         # Initialize the project client
@@ -55,6 +56,7 @@ def main():
             rag_params = {
                 "data_sources": [
                     {
+                        # he following params are used to search the index
                         "type": "azure_search",
                         "parameters": {
                             "endpoint": search_url,
@@ -62,7 +64,13 @@ def main():
                             "authentication": {
                                 "type": "api_key",
                                 "key": search_key,
-                            }
+                            },
+                            # The following params are used to vectorize the query
+                            "query_type": "vector",
+                            "embedding_dependency": {
+                                "type": "deployment_name",
+                                "deployment_name": embedding_model,
+                            },
                         }
                     }
                 ],
