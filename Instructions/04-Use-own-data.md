@@ -70,7 +70,7 @@ The data for your app consists of a set of travel brochures in PDF format from t
 1. In Azure AI Foundry portal, in your project, in the navigation pane on the left, under **My assets**, select the **Data + indexes** page.
 1. Select **+ New data**.
 1. In the **Add your data** wizard, expand the drop-down menu to select **Upload files/folders**.
-1. Select **Upload folder** and select the **brochures** folder.
+1. Select **Upload folder** and upload the **brochures** folder. Wait until all the files in the folder are listed.
 1. Select **Next** and set the data name to `brochures`.
 1. Wait for the folder to be uploaded and note that it contains several .pdf files.
 
