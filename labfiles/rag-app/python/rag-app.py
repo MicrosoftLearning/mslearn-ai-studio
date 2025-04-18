@@ -23,6 +23,9 @@ def main():
             credential=DefaultAzureCredential()
         )
 
+        # Get an Azure OpenAI chat client
+        aoai_client = projectClient.inference.get_azure_openai_client(api_version="2024-10-21")
+
         # Use the AI search service connection to get service details
         searchConnection = projectClient.connections.get_default(
             connection_type=ConnectionType.AZURE_AI_SEARCH,
@@ -30,9 +33,6 @@ def main():
         )
         search_url = searchConnection.endpoint_url
         search_key = searchConnection.key
-
-        # Get an Azure OpenAI chat client
-        aoai_client = projectClient.inference.get_azure_openai_client(api_version="2024-10-21")
 
         # Initialize prompt with system message
         prompt = [
