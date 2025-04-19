@@ -164,7 +164,8 @@ Now that you've deployed the model, you can use the deployment in a client appli
 
     **Python**
 
-    ```
+    ```python
+   # Add references
    from dotenv import load_dotenv
    from azure.identity import DefaultAzureCredential
    from azure.ai.projects import AIProjectClient
@@ -182,7 +183,8 @@ Now that you've deployed the model, you can use the deployment in a client appli
 
     **C#**
 
-    ```
+    ```csharp
+   // Add references
    using Azure.Identity;
    using Azure.AI.Projects;
    using Azure.AI.Inference;
@@ -193,7 +195,8 @@ Now that you've deployed the model, you can use the deployment in a client appli
 
     **Python**
 
-    ```
+    ```python
+   # Get configuration settings
    project_client = AIProjectClient.from_connection_string(
         conn_str=project_connection,
         credential=DefaultAzureCredential())
@@ -201,7 +204,8 @@ Now that you've deployed the model, you can use the deployment in a client appli
 
     **C#**
 
-    ```
+    ```csharp
+   // Get configuration settings
    var projectClient = new AIProjectClient(project_connection,
                         new DefaultAzureCredential());
     ```
@@ -210,13 +214,15 @@ Now that you've deployed the model, you can use the deployment in a client appli
 
     **Python**
 
-    ```
+    ```python
+   # Get a chat client
    chat_client = project_client.inference.get_chat_completions_client(model=model_deployment)
     ```
 
     **C#**
 
-    ```
+    ```csharp
+   // Get a chat client
    ChatCompletionsClient chat = projectClient.GetChatCompletionsClient();
     ```
 
@@ -228,6 +234,7 @@ Now that you've deployed the model, you can use the deployment in a client appli
     **Python**
 
     ```python
+   # Get a response to text input
    response = chat_client.complete(
        messages=[
            SystemMessage(system_message),
@@ -238,7 +245,8 @@ Now that you've deployed the model, you can use the deployment in a client appli
 
     **C#**
 
-    ```
+    ```csharp
+   // Get a response to text input
    var requestOptions = new ChatCompletionsOptions()
    {
    Model = model_deployment,
@@ -281,6 +289,7 @@ Now that you've deployed the model, you can use the deployment in a client appli
     **Python**
 
     ```python
+   # Get a response to image input
    image_url = "https://github.com/microsoftlearning/mslearn-ai-studio/raw/refs/heads/main/labfiles/multimodal/orange.jpg"
    image_format = "jpeg"
    request = Request(image_url, headers={"User-Agent": "Mozilla/5.0"})
@@ -302,7 +311,8 @@ Now that you've deployed the model, you can use the deployment in a client appli
     **C#**
 
     ```csharp
-  string imageUrl = "https://github.com/microsoftlearning/mslearn-ai-studio/raw/refs/heads/main/labfiles/multimodal/orange.jpg";
+  // Get a response to image input
+   string imageUrl = "https://github.com/microsoftlearning/mslearn-ai-studio/raw/refs/heads/main/labfiles/multimodal/orange.jpg";
    ChatCompletionsOptions requestOptions = new ChatCompletionsOptions()
    {
        Messages = {
@@ -346,6 +356,7 @@ Now that you've deployed the model, you can use the deployment in a client appli
     **Python**
 
     ```python
+   # Get a response to audio input
    file_path="https://github.com/microsoftlearning/mslearn-ai-studio/raw/refs/heads/main/labfiles/multimodal/manzanas.mp3"
    response = chat_client.complete(
            messages=[
@@ -367,6 +378,7 @@ Now that you've deployed the model, you can use the deployment in a client appli
     **C#**
 
     ```csharp
+   // Get a response to audio input
    string audioUrl="https://github.com/microsoftlearning/mslearn-ai-studio/raw/refs/heads/main/labfiles/multimodal/manzanas.mp3";
    var requestOptions = new ChatCompletionsOptions()
    {
@@ -382,7 +394,6 @@ Now that you've deployed the model, you can use the deployment in a client appli
    var response = chat.Complete(requestOptions);
    Console.WriteLine(response.Value.Content);
     ```
-
 
 2. Use the **CTRL+S** command to save your changes to the code file. You can also close the code editor (**CTRL+Q**) if you like.
 
