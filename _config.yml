@@ -15,4 +15,4 @@ markdown: kramdown
 kramdown:
    syntax_highlighter_opts:
       disable : true
-title: Develop generative AI solutions
+title: Develop generative AI solutions in Azure
