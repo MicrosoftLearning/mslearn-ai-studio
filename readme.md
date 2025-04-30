@@ -9,7 +9,6 @@ The exercises in this repo are designed to provide you with a hands-on learning 
 - [Prepare for an AI development project](Instructions/01-Explore-ai-studio.md)
 - [Choose and deploy a language model](Instructions/02-Explore-model-catalog.md)
 - [Create a generative AI chat app](Instructions/02a-AI-foundry-sdk.md)
-- [Develop a multimodal generative AI app](Instructions/02b-multimodal.md)
 - [Use a prompt flow to manage conversation in a chat app](Instructions/03-Use-prompt-flow-chat.md)
 - [Create a generative AI app that uses your own data](Instructions/04-Use-own-data.md)
 - [Fine-tune a language model](Instructions/05-Finetune-model.md)
