@@ -1,4 +1,4 @@
-# Develop Generative AI Solutions in Azure AI Foundry
+# Develop Generative AI Solutions in Azure
 
 The exercises in this repo are designed to provide you with a hands-on learning experience in which you'll explore common tasks that developers perform when building generative AI solutions on Microsoft Azure.
 
