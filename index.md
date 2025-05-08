@@ -1,10 +1,8 @@
 ---
-title: Develop generative AI solutions
+title: Develop generative AI solutions in Azure
 permalink: index.html
 layout: home
 ---
-
-# Develop generative AI solutions in Azure
 
 The following exercises are designed to provide you with a hands-on learning experience in which you'll explore common tasks that developers do when building generative AI solutions on Microsoft Azure.
 
