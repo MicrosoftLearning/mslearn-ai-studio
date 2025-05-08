@@ -69,6 +69,7 @@ You can manually review model responses based on test data. Manually reviewing a
 1. In a new browser tab, download the [travel_evaluation_data.jsonl](https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel_evaluation_data.jsonl) from `https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel_evaluation_data.jsonl` and save it in a local folder as **travel_evaluation_data.jsonl** (be sure to save it as a .jsonl file, not a .txt file).
 1. Back on the Azure AI Foundry portal tab, in the navigation pane, in the **Assess and improve** section, select **Evaluation**.
 1. In the **Evaluation** page, view the **Manual evaluations** tab and select **+ New manual evaluation**.
+1. In the **Configurations** section, in the **Model** list, select your **gpt-4o-mini** model deployment.
 1. Change the **System message** to the following instructions for an AI travel assistant:
 
    ```
@@ -89,8 +90,7 @@ You can manually review model responses based on test data. Manually reviewing a
    5. Encourage the user to ask follow-up questions for further assistance.
    ```
 
-1. In the **Configurations** section, in the **Model** list, select your **gpt-4o-mini** model deployment.
-1. In the **Manual evaluation result** section, select **Import test data** and upload the **travel_evaluation_data.csv** file you downloaded previously; mapping the dataset fields as follows:
+1. In the **Manual evaluation result** section, select **Import test data** and upload the **travel_evaluation_data.jsonl** file you downloaded previously; mapping the dataset fields as follows:
     - **Input**: Question
     - **Expected response**: ExpectedResponse
 1. Review the questions and expected answers in the test file - you'll use these to evaluate the responses that the model generates.
@@ -140,7 +140,7 @@ Automated evaluation is an approach that attempts to address these shortcomings 
     - AI Quality (AI assisted)
     - Risk and safety (AI assisted)
     - AI quality (NLP)
-1. In the **Choose a model deployment as judge** list, select your **gpt-4o** model. This model will be used to assess the responses from the ***gpt-4o-mini** model for language-related quality and standard generative AI comparison metrics.
+1. In the **Choose a model deployment as judge** list, select your **gpt-4o** model. This model will be used to assess the responses from the **gpt-4o-mini** model for language-related quality and standard generative AI comparison metrics.
 1. Select **Create** to start the evaluation process, and wait for it to complete. It may take a few minutes.
 
     > **Tip**: If an error indicating that project permissions are being set is dispayed, wait a minute and then select **Create** again. It can take some time for resource permissions for a newly created project to propagate.
