@@ -66,7 +66,7 @@ In this exercise, you'll evaluate the performance of a gpt-4o-mini model. You'll
 
 You can manually review model responses based on test data. Manually reviewing allows you to test different inputs to evaluate whether the model performs as expected.
 
-1. In a new browser tab, download the [travel_evaluation_data.jsonl](https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel_evaluation_data.jsonl) from `https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel_evaluation_data.jsonl` and save it in a local folder.
+1. In a new browser tab, download the [travel_evaluation_data.jsonl](https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel_evaluation_data.jsonl) from `https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel_evaluation_data.jsonl` and save it in a local folder as **travel_evaluation_data.jsonl** (be sure to save it as a .jsonl file, not a .txt file).
 1. Back on the Azure AI Foundry portal tab, in the navigation pane, in the **Assess and improve** section, select **Evaluation**.
 1. In the **Evaluation** page, view the **Manual evaluations** tab and select **+ New manual evaluation**.
 1. Change the **System message** to the following instructions for an AI travel assistant:
@@ -131,7 +131,7 @@ Automated evaluation is an approach that attempts to address these shortcomings 
    5. Encourage the user to ask follow-up questions for further assistance.
    ```
 
-1. In the **Configure test data** section, note that you can use a GPT model to generate test data for you (which you could then edit and supplement to match your own expectations), use an existing dataset, or upload a file. In this exercise, select **Use existing dataset** and then select the **travel_evaluation_data_jsonl_*xxxx...*** dataset (which was created when you uploaded the .csv file previously).
+1. In the **Configure test data** section, note that you can use a GPT model to generate test data for you (which you could then edit and supplement to match your own expectations), use an existing dataset, or upload a file. In this exercise, select **Use existing dataset** and then select the **travel_evaluation_data_jsonl_*xxxx...*** dataset (which was created when you uploaded the .jsonl file previously).
 1. Review the sample rows from the dataset, and then in the **Choose your data column** section, select the following column mappings:
     - **Query**: Question
     - **Context**: *Leave this blank. It's used to evaluate "groundedness" when  associating a contextual data source with your model.*
