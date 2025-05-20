@@ -60,7 +60,7 @@ An Azure AI *project* provides a collaborative workspace for AI development. Let
 1. Select the link to the **Resource group** associated with the resource to open a new browser tab and navigate to the Azure portal. Sign in with your Azure credentials if prompted.
 1. View the resource group in the Azure portal to see the Azure resources that have been created to support your Azure AI Foundry resource and your project.
 
-    ![Screenshot of an Azure AI Fiundry resource and project resources in the Azure portal.](./media/azure-portal-resources.png)
+    ![Screenshot of an Azure AI Foundry resource and project resources in the Azure portal.](./media/azure-portal-resources.png)
 
     Note that the resources have been created in the region you selected when creating the project.
 
