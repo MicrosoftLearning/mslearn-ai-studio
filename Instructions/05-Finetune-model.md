@@ -14,36 +14,38 @@ Imagine you work for a travel agency and you're developing a chat application to
 
 This exercise will take approximately **60** minutes\*.
 
-> \* **Note**: This timing is an estimate based on the average experience. Fine-tuning is dependent on cloud infrastructure resources, which can take a variable amount of time to provision depending on data center capacity and concurrent demand. Some activities in this exercise may take a <u>long</u> time to complete, and require patience. If things are taking a while, consider reviewing the [Azure AI Foundry fine-tuning documentation](https://learn.microsoft.com/azure/ai-studio/concepts/fine-tuning-overview) or taking a break. Some of the technologies used in this exercise are in preview or in active development. You may experience some unexpected behavior, warnings, or errors.
+> \* **Note**: This timing is an estimate based on the average experience. Fine-tuning is dependent on cloud infrastructure resources, which can take a variable amount of time to provision depending on data center capacity and concurrent demand. Some activities in this exercise may take a <u>long</u> time to complete, and require patience. If things are taking a while, consider reviewing the [Azure AI Foundry fine-tuning documentation](https://learn.microsoft.com/azure/ai-studio/concepts/fine-tuning-overview) or taking a break. It is possible some processes may time-out or appear to run indefinitely. Some of the technologies used in this exercise are in preview or in active development. You may experience some unexpected behavior, warnings, or errors.
 
-## Create an AI hub and project in the Azure AI Foundry portal
+## Deploy a model in an Azure AI Foundry project
 
-Let's start by creating an Azure AI Foundry portal project within an Azure AI hub:
+Let's start by deploying a model in an Azure AI Foundry project.
 
-1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image:
-
-    ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
-
-1. In the home page, select **+ Create project**.
-1. In the **Create a project** wizard, enter a valid name for your project, and if an existing hub is suggested, choose the option to create a new one. Then review the Azure resources that will be automatically created to support your hub and project.
+1. In the home page, in the **Explore models and capabilities** section, search for the `gpt-4o` model; which we'll use in our project.
+1. In the search results, select the **gpt-4o** model to see its details, and then at the top of the page for the model, select **Use this model**.
+1. When prompted to create a project, enter a valid name for your project and expand **Advanced options**.
 1. Select **Customize** and specify the following settings for your hub:
-    - **Hub name**: *A valid name for your hub*
+    - **Azure AI Foundry resource**: *A valid name for your Azure AI Foundry resource*
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create or select a resource group*
-    - **Location**: Select **Help me choose** and then select **gpt-4o-finetune** in the Location helper window and use the recommended region\*
-    - **Connect Azure AI Services or Azure OpenAI**: *Create a new AI Services resource*
-    - **Connect Azure AI Search**: *Create a new Azure AI Search resource with a unique name*
+    - **Region**: *Select one of the following regions*:\*
+        - East US 2
+        - North Central US
+        - Sweden Central
 
-    > \* Azure OpenAI resources are constrained by regional model quotas. In the event of a quota limit being exceeded later in the exercise, there's a possibility you may need to create another resource in a different region. 
+    > \* At the time of writing, these regions support fine-tuning for gpt-4o models.
 
-1. Select **Next** and review your configuration. Then select **Create** and wait for the process to complete.
-1. When your project is created, close any tips that are displayed and review the project page in Azure AI Foundry portal, which should look similar to the following image:
+1. Select **Create** and wait for your project, including the gpt-4 model deployment you selected, to be created.
+1. When your project is created, the chat playground will be opened automatically.
+1. In the **Setup** pane, note the name of your model deployment; which should be **gpt-4o**. You can confirm this by viewing the deployment in the **Models and endpoints** page (just open that page in the navigation pane on the left).
+1. In the navigation pane on the left, select **Overview** to see the main page for your project; which looks like this:
 
-    ![Screenshot of a Azure AI project details in Azure AI Foundry portal.](./media/ai-foundry-project.png)
+    > **Note**: If an *Insufficient permissions** error is displayed, use the **Fix me** button to resolve it.
+
+    ![Screenshot of a Azure AI Foundry project overview page.](./media/ai-foundry-project.png)
 
 ## Fine-tune a model
 
-Because fine-tuning a model takes some time to complete, you'll start the fine-tuning job now and come back to it after exploring a base model that hasn't been fine-tuned for comparison purposes.
+Because fine-tuning a model takes some time to complete, you'll start the fine-tuning job now and come back to it after exploring the base gpt-4o model you already deployed.
 
 1. Download the [training dataset](https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel-finetune-hotel.jsonl) at `https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel-finetune-hotel.jsonl`and save it as a JSONL file locally.
 
@@ -52,28 +54,12 @@ Because fine-tuning a model takes some time to complete, you'll start the fine-t
 1. Navigate to the **Fine-tuning** page under the **Build and customize** section, using the menu on the left.
 1. Select the button to add a new fine-tune model, select the **gpt-4o** model and then select **Next**.
 1. **Fine-tune** the model using the following configuration:
-    - **Model version**: *Select the default version*
     - **Method of customization**: Supervised
+    - **Base model**: *Select the default version of **gpt-4o***
+    - **Training data**: *Select the option to **Add training data** and upload and apply the .jsonl file you downloaded previously*
     - **Model suffix**: `ft-travel`
-    - **Connected AI resource**: *Select the connection that was created when you created your hub. Should be selected by default.*
-    - **Training data**: Upload files
-
-    <details>  
-    <summary><b>Troubleshooting tip</b>: Permissions error</summary>
-    <p>If you receive a permissions error, try the following to troubleshoot:</p>
-    <ul>
-        <li>In the Azure portal, select the AI Services resource.</li>
-        <li>Under Resource Management, in the Identity tab, confirm that it's system assigned managed identity.</li>
-        <li>Navigate to the associated Storage Account. On the IAM page, add the role assignment <em>Storage Blob Data Owner</em>.</li>
-        <li>Under <strong>Assign access to</strong>, choose <strong>Managed Identity</strong>, <strong>+ Select members</strong>, select the <strong>All system-assigned managed identities</strong>, and select your Azure AI services resource.</li>
-        <li>Review and assign to save the new settings and retry the previous step.</li>
-    </ul>
-    </details>
-
-    - **Upload file**: Select the JSONL file you downloaded in a previous step.
-    - **Validation data**: None
-    - **Task parameters**: *Keep the default settings*
-1. Fine-tuning will start and may take some time to complete. You can continue with the next section of the exercise while you wait.
+    - **Seed**: *Random
+1. Submit the fine-tuning details, and the job will start. It may take some time to complete. You can continue with the next section of the exercise while you wait.
 
 > **Note**: Fine-tuning and deployment can take a significant amount of time (30 minutes or longer), so you may need to check back periodically. You can see more details of the progress so far by selecting the fine-tuning model job and viewing its **Logs** tab.
 
@@ -81,38 +67,23 @@ Because fine-tuning a model takes some time to complete, you'll start the fine-t
 
 While you wait for the fine-tuning job to complete, let's chat with a base GPT 4o model to assess how it performs.
 
-1. In the pane on the left for your project, in the **My assets** section, select the **Models + endpoints** page.
-1. In the **Models + endpoints** page, in the **Model deployments** tab, in the **+ Deploy model** menu, select **Deploy base model**.
-1. Search for the **gpt-4o** model in the list, and then select and confirm it.
-1. Deploy the model with the following settings by selecting **Customize** in the deployment details:
-    - **Deployment name**: *A valid name for your model deployment*
-    - **Deployment type**: Global Standard
-    - **Automatic version update**: Enabled
-    - **Model version**: *Select the most recent available version*
-    - **Connected AI resource**: *Select your Azure OpenAI resource connection (if your current AI resource location doesn't have quota available for the model you want to deploy, you'll be asked to choose a different location where a new AI resource will be created and connected to your project)*
-    - **Tokens per Minute Rate Limit (thousands)**: 50K *(or the maximum available in your subscription if less than 50K)*
-    - **Content filter**: DefaultV2
-
-    > **Note**: Reducing the TPM helps avoid over-using the quota available in the subscription you are using. 50,000 TPM should be sufficient for the data used in this exercise. If your available quota is lower than this, you will be able to complete the exercise but you may experience errors if the rate limit is exceeded.
-
-1. Wait for the deployment to complete.
-
-> **Note**: If your current AI resource location doesn't have quota available for the model you want to deploy, you will be asked to choose a different location where a new AI resource will be created and connected to your project.
-
-1. When deployment is completed, select the **Open in playground** button.
-1. Verify your deployed gpt-4o base model is selected in setup pane.
+1. In the navigation pane on the left, select **Playgrounds** and open the **Chat playground**.
+1. Verify your deployed **gpt-4o** base model is selected in setup pane.
 1. In the chat window, enter the query `What can you do?` and view the response.
 
     The answers may be fairly generic. Remember we want to create a chat application that inspires people to travel.
 
 1. Update the system message in the setup pane with the following prompt:
 
-    ```md
-    You are an AI assistant that helps people plan their holidays.
+    ```
+    You are an AI assistant that helps people plan their travel.
     ```
 
-1. Select **Apply changes**, then select **Clear chat**, and ask again `What can you do?`
+1. Select **Apply changes** to update the system message.
+1. In the chat window, enter the query `What can you do?` again, and view the response.
+1
     As a response, the assistant may tell you that it can help you book flights, hotels and rental cars for your trip. You want to avoid this behavior.
+
 1. Update the system message again with a new prompt:
 
     ```
@@ -120,8 +91,7 @@ While you wait for the fine-tuning job to complete, let's chat with a base GPT 4
     You should not provide any hotel, flight, rental car or restaurant recommendations.
     Ask engaging questions to help someone plan their trip and think about what they want to do on their holiday.
     ```
-
-1. Select **Apply changes**, and **Clear chat**.
+.
 1. Continue testing your chat application to verify it doesn't provide any information that isn't grounded in retrieved data. For example, ask the following questions and review the model's answers, paying particular attention to the tone and writing style that the model uses to respond:
    
     `Where in Rome should I stay?`
