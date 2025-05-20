@@ -12,34 +12,39 @@ This exercise will take approximately **30** minutes.
 
 > **Note**: Some of the technologies used in this exercise are in preview or in active development. You may experience some unexpected behavior, warnings, or errors.
 
-## Create an Azure AI Foundry project
+## Create an Azure AI Foundry hub and project
 
-Let's start by creating an Azure AI Foundry project.
+The features of Azure AI Foundry we're going to use in this exercise require a project that is based on an Azure AI Foundry *hub* resource.
 
-1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image (close the **Help** pane if it is open):
+1. In a browser, sign into the [Azure portal](https://portal.azure.com) at `https://portal.azure.com` with your Azure credentials.
 
-    ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
+    Close any welcome notifications to see the Azure portal home page.
 
-1. In the home page, select **+ Create project**.
-1. In the **Create a project** wizard, enter a valid name for your project and if an existing hub is suggested, choose the option to create a new one. Then review the Azure resources that will be automatically created to support your hub and project.
-1. Select **Customize** and specify the following settings for your hub:
-    - **Hub name**: *A valid name for your hub*
-    - **Subscription**: *Your Azure subscription*
-    - **Resource group**: *Create or select a resource group*
-    - **Location**: Select one of the following regions\*
-        - East US 2
-        - France Central
-        - UK South
-        - Sweden Central
-    - **Connect Azure AI Services or Azure OpenAI**: *Create a new AI Services resource*
-    - **Connect Azure AI Search**: Skip connecting
+1. In the address bar, navigate to `https://portal.azure.com/#view/Microsoft_Azure_MLTeamAccounts/CreateAIStudioResourceBlade` and create a new `Azure AI Hub` resource, with the following settings:
+    - **Basics**:
+        - **Subscription**: *Your Azure subscription*
+        - **Resource group**: *Create or select a resource group*
+        - **Location**: *Select one of the following locations*:\*
+            -  East US 2
+            - France Central
+            - UK South
+            - Sweden Central
+        - **Hub name**: *A valid name for your hub*
+        - **Friendly name**: *A friendly name for your hub*
+        - **Default project resource group**: Same as hub resource group
+        - **Connect Azure AI Services or Azure OpenAI**: *Create a new AI Services resource with the default name*
+    - **Storage**:
+        - **Storage account**: *Create a new storage account with the default name*
+        - **Credential store**:Azure Key vault
+            - **Key vault**: *Create a new key vault with the default name*
+        - **Application insights**: None
+        - **Container registry**: None
 
     > \* At the time of writing, these regions support the evaluation of AI safety metrics. Model availability is constrained by regional quotas. In the event of a quota limit being reached later in the exercise, there's a possibility you may need to create another project in a different region.
 
-1. Select **Next** and review your configuration. Then select **Create** and wait for the process to complete.
-1. When your project is created, close any tips that are displayed and review the project page in Azure AI Foundry portal, which should look similar to the following image:
-
-    ![Screenshot of a Azure AI project details in Azure AI Foundry portal.](./media/ai-foundry-project.png)
+1. Wait for the resource to be created, and then go to it in the portal.
+1. In the page for your new AI Hub resource, select **Launch Azure AI Foundry** to open the Azure AI Foundry portal. Sign in with your Azure credentials if prompted.
+1. In the Azure AI Foundry portal, in the page for your hub, select **New project**. Then enter a valid name for your project and create it.
 
 ## Deploy models
 
@@ -67,16 +72,16 @@ In this exercise, you'll evaluate the performance of a gpt-4o-mini model. You'll
 You can manually review model responses based on test data. Manually reviewing allows you to test different inputs to evaluate whether the model performs as expected.
 
 1. In a new browser tab, download the [travel_evaluation_data.jsonl](https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel_evaluation_data.jsonl) from `https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel_evaluation_data.jsonl` and save it in a local folder as **travel_evaluation_data.jsonl** (be sure to save it as a .jsonl file, not a .txt file).
-1. Back on the Azure AI Foundry portal tab, in the navigation pane, in the **Assess and improve** section, select **Evaluation**.
+1. Back on the Azure AI Foundry portal tab, in the navigation pane, in the **Protect and givern** section, select **Evaluation**.
 1. In the **Evaluation** page, view the **Manual evaluations** tab and select **+ New manual evaluation**.
-1. In the **Configurations** section, in the **Model** list, select your **gpt-4o-mini** model deployment.
+1. In the **Configurations** section, in the **Model** list, select your **gpt-4o** model deployment.
 1. Change the **System message** to the following instructions for an AI travel assistant:
 
    ```
    Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
    ```
 
-1. In the **Manual evaluation result** section, select **Import test data** and upload the **travel_evaluation_data.jsonl** file you downloaded previously; mapping the dataset fields as follows:
+1. In the **Manual evaluation result** section, select **Import test data** and upload the **travel_evaluation_data.jsonl** file you downloaded previously; scrolling down to map the dataset fields as follows:
     - **Input**: Question
     - **Expected response**: ExpectedResponse
 1. Review the questions and expected answers in the test file - you'll use these to evaluate the responses that the model generates.
@@ -95,39 +100,40 @@ Automated evaluation is an approach that attempts to address these shortcomings 
 
 1. Use the back arrow (**&larr;**) next to the **Manual evaluation** page title to return to the **Evaluation** page.
 1. View the **Automated evaluations** tab.
-1. Select **Create a new evaluation**, and when prompted, select the option to evaluate a **Model and prompt**
-1. In the **Create a new evaluation** page, in the **Basic information** section, review the default auto-generated evaluation name (you can change this if you like) and select your **gpt-40-mini** model deployment.
-1. Change the **System message** to the same instructions for an AI travel assistant you used previously:
+1. Select **Create a new evaluation**, and when prompted, select the option to evaluate a **Evaluate a model** and select **Next**.
+1. On the **Select data source** page, select **Use your dataset** and select the **travel_evaluation_data_jsonl_*xxxx...*** dataset based on the file you uploaded previously, and select **Next**.
+1. On the **Test your model** page, select the **gpt-4o-mini** model and change the **System message** to the same instructions for an AI travel assistant you used previously:
 
    ```
    Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
    ```
 
-1. In the **Configure test data** section, note that you can use a GPT model to generate test data for you (which you could then edit and supplement to match your own expectations), use an existing dataset, or upload a file. In this exercise, select **Use existing dataset** and then select the **travel_evaluation_data_jsonl_*xxxx...*** dataset (which was created when you uploaded the .jsonl file previously).
-1. Review the sample rows from the dataset, and then in the **Choose your data column** section, select the following column mappings:
-    - **Query**: Question
-    - **Context**: *Leave this blank. It's used to evaluate "groundedness" when  associating a contextual data source with your model.*
-    - **Ground truth**: ExpectedAnswer
-1. In the **Choose what you'd like to evaluate** section, select <u>all</u> of the following evaluation categories:
-    - AI Quality (AI assisted)
-    - Risk and safety (AI assisted)
-    - AI quality (NLP)
-1. In the **Choose a model deployment as judge** list, select your **gpt-4o** model. This model will be used to assess the responses from the **gpt-4o-mini** model for language-related quality and standard generative AI comparison metrics.
-1. Select **Create** to start the evaluation process, and wait for it to complete. It may take a few minutes.
+1. For the **query** field, select **{{item.question}}**.
+1. On the **Configure evaluators** page, use the **+Add** button to add the following evaluators, configuring each one as follows:
+    - **Model scorer**:
+        - **Criteria name**: Semantic_similarity
+        - **Grade with**: *Select your **gpt-4o** model*
+        - **User** settings (at the bottom):
 
-    > **Tip**: If an error indicating that project permissions are being set is dispayed, wait a minute and then select **Create** again. It can take some time for resource permissions for a newly created project to propagate.
+            ```
+            Output: {{sample.output_text}}
+            Ground Truth: {{item.ExpectedResponse}}
+            ```
 
-1. When the evaluation has completed, scroll down if necessary to see the **Metric dashboard** area and view the **AI quality (AI Assisted)** metrics:
+    - **Likert-scale evaluator**:
+        - **Criteria name**: Relevance
+        - **Grade with**: *Select your **gpt-4o** model*
+        - **Query**: {{item.question}}
 
-    ![Screenshot of AI quality metrics in Azure AI Foundry portal.](./media/ai-quality-metrics.png)
+    - **Text similarity**:
+        - **Criteria name**: F1_Score
+        - **Ground truth**: {{item.ExpectedResponse}}
 
-    Use the **<sup>(i) </sup>** icons to view the metric definitions.
+1. Select **Next** and review your evaluation settings. You should have configured the evaluation to use the travel evaluation dataset to evaluate the **gpt-40-mini** model for semantic similarity, relevance, and F1 score.
+1. Give the evaluation a suitable name, and **Submit** it to start the evaluation process, and wait for it to complete. It may take a few minutes. You can use the **Refresh** toolbar button to check the status.
 
-1. View the **Risk and safety** tab to see the metrics associated with potentially harmful content.
-1. View the **AI quality (NLP**) tab to see standard metrics for generative AI models.
-1. Scroll back to the top of the page if necessary, and select the **Data** tab to see the raw data from the evaluation. The data includes the metrics for each input as well as explanations of the reasoning the gpt-4o model applied when assessing the responses.
-
-    ![Screenshot of evaluation data in Azure AI Foundry portal.](./media/evaluation-data.png)
+1. When the evaluation has completed, scroll down if necessary to review the results.
+1. At the top of the page, select the **Data** tab to see the raw data from the evaluation. The data includes the metrics for each input as well as explanations of the reasoning the gpt-4o model applied when assessing the responses.
 
 ## Clean up
 
