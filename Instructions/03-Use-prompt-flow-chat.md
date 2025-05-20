@@ -4,10 +4,7 @@ lab:
     description: 'Learn how to use prompt flows to manage conversational dialogs and ensure that prompts are constructed and orchestrated for best results.'
 ---
 
-## **<font color="red">This exercise is no longer available.</font>**
-
-
-Use a prompt flow to manage conversation in a chat app
+## Use a prompt flow to manage conversation in a chat app
 
 In this exercise, you'll use Azure AI Foundry portal's prompt flow to create a custom chat app that uses a user prompt and chat history as inputs, and uses a GPT model from Azure OpenAI to generate an output.
 
@@ -15,43 +12,42 @@ This exercise will take approximately **30** minutes.
 
 > **Note**: Some of the technologies used in this exercise are in preview or in active development. You may experience some unexpected behavior, warnings, or errors.
 
-## Deploy a model in an Azure AI Foundry project
+## Create an Azure AI Foundry hub and project
 
-Let's start by deploying a model in an Azure AI Foundry project.
+The features of Azure AI Foundry we're going to use in this exercise require a project that is based on an Azure AI Foundry *hub* resource.
 
-1. In the home page, in the **Explore models and capabilities** section, search for the `gpt-4o` model; which we'll use in our project.
-1. In the search results, select the **gpt-4o** model to see its details, and then at the top of the page for the model, select **Use this model**.
-1. When prompted to create a project, enter a valid name for your project and expand **Advanced options**.
-1. Select **Customize** and specify the following settings for your hub:
-    - **Azure AI Foundry resource**: *A valid name for your Azure AI Foundry resource*
-    - **Subscription**: *Your Azure subscription*
-    - **Resource group**: *Create or select a resource group*
-    - **Region**: *Select any **AI Services supported location***\*
+1. In a browser, sign into the [Azure portal](https://portal.azure.com) at `https://portal.azure.com` with your Azure credentials.
+
+    Close any welcome notifications to see the Azure portal home page.
+
+1. In the address bar, navigate to `https://portal.azure.com/#view/Microsoft_Azure_MLTeamAccounts/CreateAIStudioResourceBlade` and create a new `Azure AI Hub` resource, with the following settings:
+    - **Basics**:
+        - **Subscription**: *Your Azure subscription*
+        - **Resource group**: *Create or select a resource group*
+        - **Location**: East US 2 or Sweden Central\*
+        - **Hub name**: *A valid name for your hub*
+        - **Friendly name**: *A friendly name for your hub*
+        - **Default project resource group**: Same as hub resource group
+        - **Connect Azure AI Services or Azure OpenAI**: *Create a new AI Services resource with the default name*
+    - **Storage**:
+        - **Storage account**: *Create a new storage account with the default name*
+        - **Credential store**:Azure Key vault
+            - **Key vault**: *Create a new key vault with the default name*
+        - **Application insights**: None
+        - **Container registry**: None
 
     > \* Some Azure AI resources are constrained by regional model quotas. In the event of a quota limit being exceeded later in the exercise, there's a possibility you may need to create another resource in a different region.
 
-1. Select **Create** and wait for your project, including the gpt-4 model deployment you selected, to be created.
-1. When your project is created, the chat playground will be opened automatically.
-1. In the **Setup** pane, note the name of your model deployment; which should be **gpt-4o**. You can confirm this by viewing the deployment in the **Models and endpoints** page (just open that page in the navigation pane on the left).
-1. In the navigation pane on the left, select **Overview** to see the main page for your project; which looks like this:
-
-    > **Note**: If an *Insufficient permissions** error is displayed, use the **Fix me** button to resolve it.
-
-    ![Screenshot of a Azure AI Foundry project overview page.](./media/ai-foundry-project.png)
+1. Wait for the resource to be created, and then go to it in the portal.
+1. In the page for your new AI Hub resource, select **Launch Azure AI Foundry** to open the Azure AI Foundry portal. Sign in with your Azure credentials if prompted.
+1. In the Azure AI Foundry portal, in the page for your hub, select **New project**. Then enter a valid name for your project and create it.
 
 ## Configure resource authorization
 
 The prompt flow tools in Azure AI Foundry create file-based assets that define the prompt flow in a folder in blob storage. Before exploring prompt flow, let's ensure that your Azure AI Foundry resource has the required access to the blob store so it can read them.
 
-1. In the Azure AI Foundry portal, in the navigation pane, select the **Management center** and view the details page for your project, which looks similar to this image:
-
-    ![Screenshot of the management center.](./media/ai-foundry-manage-project.png)
-
-1. Under **Resource Group**, select your resource group to open it in the Azure portal in a new browser tab; signing in with your Azure credentials if prompted and closing any welcome notifications to see the resource group page.
-
-    The resource group contains all of the Azure resources to support your hub and project.
-
-1. Select the **Azure AI Services** resource for your hub to open it. Then expand its **Under Resource Management** section and select the **Identity** page:
+1. Return to the browser tab containing the Azure portal, and view the resource group containing your Azure AI hub resources.
+1. Select the **Azure AI Foundry** resource for your hub to open it. Then expand its **Under Resource Management** section and select the **Identity** page:
 
     ![Screenshot of the Azure AI Services identity page in the Azure portal.](./media/ai-services-identity.png)
 
@@ -60,12 +56,11 @@ The prompt flow tools in Azure AI Foundry create file-based assets that define t
 
     ![Screenshot of the storage account access control page in the Azure portal.](./media/storage-access-control.png)
 
-1. Add a role assignment to the `Storage blob data reader` role for the managed identity used by your Azure AI Services resource:
+1. Add a role assignment to the `Storage blob data reader` role for the managed identity used by your Azure AI Foundry resource:
 
     ![Screenshot of the storage account access control page in the Azure portal.](./media/assign-role-access.png)
 
-1. When you've reviewed and assigned the role access to allow the Azure AI Services managed identity to read blobs in the storage account, close the Azure portal tab and return to the Azure AI Foundry portal.
-1. In the Azure AI Foundry portal, in the navigation pane, select **Go to project** to return to your project's home page.
+1. When you've reviewed and assigned the role access to allow the Azure AI Foundry managed identity to read blobs in the storage account, close the Azure portal tab and return to the Azure AI Foundry portal.
 
 ## Deploy a generative AI model
 
@@ -95,6 +90,8 @@ A prompt flow provides a way to orchestrate prompts and other activities to defi
 1. Create a new flow based on the **Chat flow** template, specifying `Travel-Chat` as the folder name.
 
     A simple chat flow is created for you.
+
+    > **Tip**: If a permissions error occurs. Wait a few minutes and try again, specifying a different flow name if necessary.
 
 1. To be able to test your flow, you need compute, and it can take a while to start; so select **Start compute session** to get it started while you explore and modify the default flow.
 
