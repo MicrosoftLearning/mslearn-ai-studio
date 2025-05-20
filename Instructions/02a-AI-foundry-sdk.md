@@ -176,7 +176,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
                 exclude_environment_credential=True,
                 exclude_managed_identity_credential=True
             ),
-            endpoint=os.environ["PROJECT_ENDPOINT"],
+            endpoint=project_connection,
         )
     ```
 
