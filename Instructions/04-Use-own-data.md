@@ -8,36 +8,41 @@ lab:
 
 Retrieval Augmented Generation (RAG) is a technique used to build applications that integrate data from custom data sources into a prompt for a generative AI model. RAG is a commonly used pattern for developing generative AI apps - chat-based applications that use a language model to interpret inputs and generate appropriate responses.
 
-In this exercise, you'll use Azure AI Foundry portal and the Azure AI Foundry and Azure OpenAI SDKs to integrate custom data into a generative AI app.
+In this exercise, you'll use Azure AI Foundry to integrate custom data into a generative AI solution.
 
 This exercise takes approximately **45** minutes.
 
-> **Note**: This exercise is based on pre-release SDKs, which may be subject to change. Where necessary, we've used specific versions of packages; which may not reflect the latest available versions. You may experience some unexpected behavior, warnings, or errors.
+> **Note**: This exercise is based on pre-release services, which may be subject to change.
 
-## Create an Azure AI Foundry project
+## Create an Azure AI Foundry hub and project
 
-Let's start by creating an Azure AI Foundry project and the service resources it needs to support using your own data - including an Azure AI Search resource.
+The features of Azure AI Foundry we're going to use in this exercise require a project that is based on an Azure AI Foundry *hub* resource.
 
-1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image:
+1. In a browser, sign into the [Azure portal](https://portal.azure.com) at `https://portal.azure.com` with your Azure credentials.
 
-    ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
+    Close any welcome notifications to see the Azure portal home page.
 
-1. In the home page, select **+ Create project**.
-1. In the **Create a project** wizard, enter a valid name for your project, and if an existing hub is suggested, choose the option to create a new one. Then review the Azure resources that will be automatically created to support your hub and project.
-1. Select **Customize** and specify the following settings for your hub:
-    - **Hub name**: *A valid name for your hub*
-    - **Subscription**: *Your Azure subscription*
-    - **Resource group**: *Create or select a resource group*
-    - **Location**: Select **Help me choose** and then select **gpt-4o** in the Location helper window and use the recommended region\*
-    - **Connect Azure AI Services or Azure OpenAI**: *Create a new AI Services resource*
-    - **Connect Azure AI Search**: *Create a new Azure AI Search resource with a unique name*
+1. In the address bar, navigate to `https://portal.azure.com/#view/Microsoft_Azure_MLTeamAccounts/CreateAIStudioResourceBlade` and create a new `Azure AI Hub` resource, with the following settings:
+    - **Basics**:
+        - **Subscription**: *Your Azure subscription*
+        - **Resource group**: *Create or select a resource group*
+        - **Location**: East US 2 or Sweden Central\*
+        - **Hub name**: *A valid name for your hub*
+        - **Friendly name**: *A friendly name for your hub*
+        - **Default project resource group**: Same as hub resource group
+        - **Connect Azure AI Services or Azure OpenAI**: *Create a new AI Services resource with the default name*
+    - **Storage**:
+        - **Storage account**: *Create a new storage account with the default name*
+        - **Credential store**:Azure Key vault
+            - **Key vault**: *Create a new key vault with the default name*
+        - **Application insights**: None
+        - **Container registry**: None
 
-    > \* Azure OpenAI resources are constrained by regional model quotas. In the event of a quota limit being exceeded later in the exercise, there's a possibility you may need to create another resource in a different region.
+    > \* Some Azure AI resources are constrained by regional model quotas. In the event of a quota limit being exceeded later in the exercise, there's a possibility you may need to create another resource in a different region.
 
-1. Select **Next** and review your configuration. Then select **Create** and wait for the process to complete.
-1. When your project is created, close any tips that are displayed and review the project page in Azure AI Foundry portal, which should look similar to the following image:
-
-    ![Screenshot of a Azure AI project details in Azure AI Foundry portal.](./media/ai-foundry-project.png)
+1. Wait for the resource to be created, and then go to it in the portal.
+1. In the page for your new AI Hub resource, select **Launch Azure AI Foundry** to open the Azure AI Foundry portal. Sign in with your Azure credentials if prompted.
+1. In the Azure AI Foundry portal, in the page for your hub, select **New project**. Then enter a valid name for your project and create it.
 
 ## Deploy models
 
@@ -84,7 +89,15 @@ Now that you've added a data source to your project, you can use it to create an
         - **Data source**: Data in Azure AI Foundry
             - *Select the **brochures** data source*
     - **Index configuration**:
-        - **Select Azure AI Search service**: *Select the **AzureAISearch** connection to your Azure AI Search resource*
+        - **Select Azure AI Search service**: *Create a new Azure AI Search resource with the following settings*:
+            - **Subscription**: *You Azure subscription*
+            - **Resource group**: *The same resource group as your AI hub*
+            - **Service name**: *A valid name for your AI Search Resource*
+            - **Location**: *The same location as your AI hub*
+            - **Pricing tier**: Basic
+            
+            Wait for the AI Search resource to be created. Then return to the Azure AI Foundry and finish configuring the index by selecting **Connect other Azure AI Search resource** and adding a connection to the AI Search resource you just created.
+ 
         - **Vector index**: `brochures-index`
         - **Virtual machine**: Auto select
     - **Search settings**:
@@ -117,6 +130,8 @@ Before using your index in a RAG-based prompt flow, let's verify that it can be 
 1. After the index has been added and the chat session has restarted, resubmit the prompt `Where can I stay in New York?`
 1. Review the response, which should be based on data in the index.
 
+<!-- DEPRECATED STEPS
+
 ## Create a RAG client app with the Azure AI Foundry and Azure OpenAI SDKs
 
 Now that you have a working index, you can use the Azure AI Foundry and Azure OpenAI SDKs to implement the RAG pattern in a client application. Let's explore the code to accomplish this in a simple example.
@@ -127,10 +142,7 @@ Now that you have a working index, you can use the Azure AI Foundry and Azure Op
 
 1. In the Azure AI Foundry portal, view the **Overview** page for your project.
 1. In the **Project details** area, note the **Project connection string**. You'll use this connection string to connect to your project in a client application.
-1. Open a new browser tab (keeping the Azure AI Foundry portal open in the existing tab). Then in the new tab, browse to the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`; signing in with your Azure credentials if prompted.
-
-    Close any welcome notifications to see the Azure portal home page.
-
+1. Return to the browser tab containing the Azure portal (keeping the Azure AI Foundry portal open in the existing tab).
 1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment with no storage in your subscription.
 
     The cloud shell provides a command-line interface in a pane at the bottom of the Azure portal. You can resize or maximize this pane to make it easier to work in.
@@ -262,6 +274,8 @@ Now that you have a working index, you can use the Azure AI Foundry and Azure Op
 1. Try a follow-up question, for example `Where can I stay there?`
 
 1. When you're finished, enter `quit` to exit the program. Then close the cloud shell pane.
+
+-->
 
 ## Clean up
 
