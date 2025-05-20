@@ -12,51 +12,29 @@ This exercise takes approximately **40** minutes.
 
 > **Note**: This exercise is based on pre-release SDKs, which may be subject to change. Where necessary, we've used specific versions of packages; which may not reflect the latest available versions. You may experience some unexpected behavior, warnings, or errors.
 
-## Create an Azure AI Foundry project
+## Deploy a model in an Azure AI Foundry project
 
-Let's start by creating an Azure AI Foundry project.
+Let's start by deploying a model in an Azure AI Foundry project.
 
-1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image (close the **Help** pane if it's open):
-
-    ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
-
-1. In the home page, select **+ Create project**.
-1. In the **Create a project** wizard, enter a valid name for your project and if an existing hub is suggested, choose the option to create a new one. Then review the Azure resources that will be automatically created to support your hub and project.
+1. In the home page, in the **Explore models and capabilities** section, search for the `gpt-4o` model; which we'll use in our project.
+1. In the search results, select the **gpt-4o** model to see its details, and then at the top of the page for the model, select **Use this model**.
+1. When prompted to create a project, enter a valid name for your project and expand **Advanced options**.
 1. Select **Customize** and specify the following settings for your hub:
-    - **Hub name**: *A valid name for your hub*
+    - **Azure AI Foundry resource**: *A valid name for your Azure AI Foundry resource*
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create or select a resource group*
-    - **Location**: Select **Help me choose** and then select **gpt-4o** in the Location helper window and use the recommended region\*
-    - **Connect Azure AI Services or Azure OpenAI**: *Create a new AI Services resource*
-    - **Connect Azure AI Search**: Skip connecting
+    - **Region**: *Select any **AI Services supported location***\*
 
-    > \* Azure OpenAI resources are constrained by regional model quotas. In the event of a quota limit being exceeded later in the exercise, there's a possibility you may need to create another resource in a different region.
+    > \* Some Azure AI resources are constrained by regional model quotas. In the event of a quota limit being exceeded later in the exercise, there's a possibility you may need to create another resource in a different region.
 
-1. Select **Next** and review your configuration. Then select **Create** and wait for the process to complete.
-1. When your project is created, close any tips that are displayed and review the project page in Azure AI Foundry portal, which should look similar to the following image:
+1. Select **Create** and wait for your project, including the gpt-4 model deployment you selected, to be created.
+1. When your project is created, the chat playground will be opened automatically.
+1. In the **Setup** pane, note the name of your model deployment; which should be **gpt-4o**. You can confirm this by viewing the deployment in the **Models and endpoints** page (just open that page in the navigation pane on the left).
+1. In the navigation pane on the left, select **Overview** to see the main page for your project; which looks like this:
 
-    ![Screenshot of a Azure AI project details in Azure AI Foundry portal.](./media/ai-foundry-project.png)
+    > **Note**: If an *Insufficient permissions** error is displayed, use the **Fix me** button to resolve it.
 
-## Deploy a generative AI model
-
-Now you're ready to deploy a generative AI language model to support your chat application. In this example, you'll use the OpenAI gpt-4o model; but the principles are the same for any model.
-
-1. In the toolbar at the top right of your Azure AI Foundry project page, use the **Preview features** (**&#9215;**) icon to ensure that the **Deploy models to Azure AI model inference service** feature is enabled. This feature ensures your model deployment is available to the Azure AI Inference service, which you'll use in your application code.
-1. In the pane on the left for your project, in the **My assets** section, select the **Models + endpoints** page.
-1. In the **Models + endpoints** page, in the **Model deployments** tab, in the **+ Deploy model** menu, select **Deploy base model**.
-1. Search for the **gpt-4o** model in the list, and then select and confirm it.
-1. Deploy the model with the following settings by selecting **Customize** in the deployment details:
-    - **Deployment name**: *A valid name for your model deployment*
-    - **Deployment type**: Global Standard
-    - **Automatic version update**: Enabled
-    - **Model version**: *Select the most recent available version*
-    - **Connected AI resource**: *Select your Azure OpenAI resource connection*
-    - **Tokens per Minute Rate Limit (thousands)**: 50K *(or the maximum available in your subscription if less than 50K)*
-    - **Content filter**: DefaultV2
-
-    > **Note**: Reducing the TPM helps avoid over-using the quota available in the subscription you are using. 50,000 TPM should be sufficient for the data used in this exercise. If your available quota is lower than this, you will be able to complete the exercise but you may experience errors if the rate limit is exceeded.
-
-1. Wait for the deployment to complete.
+    ![Screenshot of a Azure AI Foundry project overview page.](./media/ai-foundry-project.png)
 
 ## Create a client application to chat with the model
 
@@ -67,7 +45,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
 ### Prepare the application configuration
 
 1. In the Azure AI Foundry portal, view the **Overview** page for your project.
-1. In the **Project details** area, note the **Project connection string**. You'll use this connection string to connect to your project in a client application.
+1. In the **Project details** area, note the **Azure AI Foundry project endpoint**. You'll use this endpoint to connect to your project in a client application.
 1. Open a new browser tab (keeping the Azure AI Foundry portal open in the existing tab). Then in the new tab, browse to the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`; signing in with your Azure credentials if prompted.
 
     Close any welcome notifications to see the Azure portal home page.
@@ -121,8 +99,8 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
 
     ```
    dotnet add package Azure.Identity
-   dotnet add package Azure.AI.Projects --version 1.0.0-beta.3
-   dotnet add package Azure.AI.Inference --version 1.0.0-beta.3
+   dotnet add package Azure.AI.Projects --version 1.0.0-beta.9
+   dotnet add package Azure.AI.Inference --version 1.0.0-beta.5
     ```
     
 
@@ -142,7 +120,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
 
     The file is opened in a code editor.
 
-1. In the code file, replace the **your_project_connection_string** placeholder with the connection string for your project (copied from the project **Overview** page in the Azure AI Foundry portal), and the **your_model_deployment** placeholder with the name you assigned to your gpt-4 model deployment.
+1. In the code file, replace the **your_project_endpoint** placeholder with the enpoint for your project (copied from the project **Overview** page in the Azure AI Foundry portal), and the **your_model_deployment** placeholder with the name of your gpt-4 model deployment.
 1. After you've replaced the placeholders, within the code editor, use the **CTRL+S** command or **Right-click > Save** to save your changes and then use the **CTRL+Q** command or **Right-click > Quit** to close the code editor while keeping the cloud shell command line open.
 
 ### Write code to connect to your project and chat with your model
@@ -193,17 +171,25 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
 
     ```python
    # Initialize the project client
-   projectClient = AIProjectClient.from_connection_string(
-        conn_str=project_connection,
-        credential=DefaultAzureCredential())
+   projectClient = AIProjectClient(            
+            credential=DefaultAzureCredential(
+                exclude_environment_credential=True,
+                exclude_managed_identity_credential=True
+            ),
+            endpoint=os.environ["PROJECT_ENDPOINT"],
+        )
     ```
 
     **C#**
 
     ```csharp
    // Initialize the project client
-   var projectClient = new AIProjectClient(project_connection,
-                        new DefaultAzureCredential());
+   DefaultAzureCredentialOptions options = new()
+       { ExcludeEnvironmentCredential = true,
+        ExcludeManagedIdentityCredential = true };
+   var projectClient = new AIProjectClient(
+        new Uri(project_connection),
+        new DefaultAzureCredential(options)));
     ```
 
 1. Find the comment **Get a chat client**, and add the following code to create a client object for chatting with a model:
@@ -278,9 +264,20 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
 
 1. Use the **CTRL+S** command to save your changes to the code file.
 
-### Run the chat application
+### Sign into Azure and run the app
 
-1. In the cloud shell command-line pane, under the code editor, enter the following command to run the app:
+1. In the cloud shell command-line pane, enter the following command to sign into Azure.
+
+    ```
+    az login
+    ```
+
+    **<font color="red">You must sign into Azure - even though the cloud shell session is already authenticated.</font>**
+
+    > **Note**: In most scenarios, just using *az login* will be sufficient. However, if you have subscriptions in multiple tenants, you may need to specify the tenant by using the *--tenant* parameter. See [Sign into Azure interactively using the Azure CLI](https://learn.microsoft.com/cli/azure/authenticate-azure-cli-interactively) for details.
+    
+1. When prompted, follow the instructions to open the sign-in page in a new tab and enter the authentication code provided and your Azure credentials. Then complete the sign in process in the command line, selecting the subscription containing your Azure AI Foundry hub if prompted.
+1. After you have signed in, enter the following command to run the application:
 
     **Python**
 
@@ -300,150 +297,14 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
 
 > **Tip**: If the app fails because the rate limit is exceeded. Wait a few seconds and try again. If there is insufficient quota available in your subscription, the model may not be able to respond.
 
-## Use the OpenAI SDK
-
-Your client app is built using the Azure AI Model Inference SDK, which means it can be used with any model deployed to the Azure AI Model Inference service. The model you deployed is an OpenAI GPT model, which you can also consume using the OpenAI SDK.
-
-Let's make a few code modifications to see how to implement a chat application using the OpenAI SDK.
-
-1. In the cloud shell command line for your code folder (*python* or *c-sharp*), enter the following command to install the required package:
-
-    **Python**
-
-    ```
-   pip install openai
-    ```
-
-    **C#**
-
-    ```
-   dotnet add package Azure.AI.Projects --version 1.0.0-beta.6
-   dotnet add package Azure.AI.OpenAI --prerelease
-    ```
-
-> **Note**: A different pre-release version of the Azure.AI.Projects package is required as an interim workaround for some incompatibilities with the Azure AI Model Inference SDK.
-
-1. If your code file (*chat-app.py* or *Program.cs*) isn't already open, enter the following command to open it in the code editor:
-
-    **Python**
-
-    ```
-   code chat-app.py
-    ```
-
-    **C#**
-
-    ```
-   code Program.cs
-    ```
-
-1. At the top of the code file, add the following reference(s):
-
-    **Python**
-
-    ```python
-   import openai
-    ```
-
-    **C#**
-
-    ```csharp
-   using OpenAI.Chat;
-   using Azure.AI.OpenAI;
-    ```
-
-1. Find the comment **Get a chat client**, and modify the code used to create a client object as follows:
-
-    **Python**
-
-    ```python
-   # Get a chat client 
-   openai_client = projectClient.inference.get_azure_openai_client(api_version="2024-10-21")
-    ```
-
-    **C#**
-
-    ```csharp
-   // Get a chat client
-   ChatClient openaiClient = projectClient.GetAzureOpenAIChatClient(model_deployment);
-    ```
-
-    > **Note**: This code uses the Azure AI Foundry project client to create a secure connection to the default Azure OpenAI service endpoint associated with your project. You can also connect *directly* to the endpoint by using the Azure OpenAI SDK, specifying the endpoint URI displayed for the service connection in the Azure AI Foundry portal or in the corresponding Azure OpenAI or AI Services resource page in the Azure portal, and using an authentication key or Entra credential token. For more information about connecting to the Azure OpenAI service, see [Azure OpenAI supported programming languages](https://learn.microsoft.com/azure/ai-services/openai/supported-languages).
-
-1. Find the comment **Initialize prompt with system message**, and modify the code to initialize a collection of messages with a system prompt as follows:
-
-    **Python**
-
-    ```python
-   # Initialize prompt with system message
-   prompt=[
-        {"role": "system", "content": "You are a helpful AI assistant that answers questions."}
-    ]
-    ```
-
-    **C#**
-
-    ```csharp
-   // Initialize prompt with system message
-    var prompt = new List<ChatMessage>(){
-        new SystemChatMessage("You are a helpful AI assistant that answers questions.")
-    };
-    ```
-
-1. Find the comment **Get a chat completion** and modify the code to add the user input to the prompt, retrieve the completion from your model, and add the completion to the prompt as follows:
-
-    **Python**
-
-    ```python
-   # Get a chat completion
-   prompt.append({"role": "user", "content": input_text})
-   response = openai_client.chat.completions.create(
-        model=model_deployment,
-        messages=prompt)
-   completion = response.choices[0].message.content
-   print(completion)
-   prompt.append({"role": "assistant", "content": completion})
-    ```
-
-    **C#**
-
-    ```csharp
-   // Get a chat completion
-   prompt.Add(new UserChatMessage(input_text));
-   ChatCompletion completion = openaiClient.CompleteChat(prompt);
-   var completionText = completion.Content[0].Text;
-   Console.WriteLine(completionText);
-   prompt.Add(new AssistantChatMessage(completionText));
-    ```
-
-1. Use the **CTRL+S** command to save your changes to the code file.
-
-1. In the cloud shell command-line pane, under the code editor, enter the following command to run the app:
-
-    **Python**
-
-    ```
-   python chat-app.py
-    ```
-
-    **C#**
-
-    ```
-   dotnet run
-    ```
-
-1. Test the app by submitting questions as before. When you're finished, enter `quit` to exit the program.
-
-    > **Note**: The Azure AI Model Inference SDK and OpenAI SDKs use similar classes and code constructs, so the code required minimal changes. You can use the Azure AI Model Inference SDK with *any* model that is deployed to an Azure AI Model Inference service endpoint. The OpenAI SDK only works with OpenAI models, but you can use it for models deployed to either an Azure AI Model Inference service endpoint or to an Azure OpenAI endpoint.  
-
 ## Summary
 
-In this exercise, you used the Azure AI Foundry, Azure AI Model Inference, and Azure OpenAI SDKs to create a client application for a generative AI model that you deployed in an Azure AI Foundry project.
+In this exercise, you used the Azure AI Foundry SDK to create a client application for a generative AI model that you deployed in an Azure AI Foundry project.
 
 ## Clean up
 
 If you've finished exploring Azure AI Foundry portal, you should delete the resources you have created in this exercise to avoid incurring unnecessary Azure costs.
 
-1. Return to the browser tab containing the Azure portal (or re-open the [Azure portal](https://portal.azure.com) at `https://portal.azure.com` in a new browser tab) and view the contents of the resource group where you deployed the resources used in this exercise.
+1. Open the [Azure portal](https://portal.azure.com) and view the contents of the resource group where you deployed the resources used in this exercise.
 1. On the toolbar, select **Delete resource group**.
 1. Enter the resource group name and confirm that you want to delete it.
