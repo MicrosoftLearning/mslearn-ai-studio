@@ -24,7 +24,7 @@ Let's start by signing into Azure AI Foundry portal.
 
 ## Create a project
 
-An Azure AI *project* provides a collaborative workspace for AI development. Let's stary by choosing a model that we want to work with and creating a project to use it in.
+An Azure AI *project* provides a collaborative workspace for AI development. Let's start by choosing a model that we want to work with and creating a project to use it in.
 
 1. In the home page, in the **Explore models and capabilities** section, search for the `gpt-4o` model; which we'll use in our project.
 1. In the search results, select the **gpt-4o** model to see its details, and then at the top of the page for the model, select **Use this model**.
