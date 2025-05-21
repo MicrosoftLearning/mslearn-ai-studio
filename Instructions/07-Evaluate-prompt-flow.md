@@ -116,19 +116,20 @@ Automated evaluation is an approach that attempts to address these shortcomings 
         - **Grade with**: *Select your **gpt-4o** model*
         - **User** settings (at the bottom):
 
-            ```
-            Output: {{sample.output_text}}
-            Ground Truth: {{item.ExpectedResponse}}
-            ```
+
+        Output: \{\{sample.output_text\}\}
+
+        Ground Truth: \{\{item.ExpectedResponse\}\}
+
 
     - **Likert-scale evaluator**:
         - **Criteria name**: Relevance
         - **Grade with**: *Select your **gpt-4o** model*
-        - **Query**: `{{item.question}}`
+        - **Query**: \{\{item.question\}\}
 
     - **Text similarity**:
         - **Criteria name**: F1_Score
-        - **Ground truth**: `{{item.ExpectedResponse}}`
+        - **Ground truth**: \{\{item.ExpectedResponse\}\}
 
 1. Select **Next** and review your evaluation settings. You should have configured the evaluation to use the travel evaluation dataset to evaluate the **gpt-4o-mini** model for semantic similarity, relevance, and F1 score.
 1. Give the evaluation a suitable name, and **Submit** it to start the evaluation process, and wait for it to complete. It may take a few minutes. You can use the **Refresh** toolbar button to check the status.
