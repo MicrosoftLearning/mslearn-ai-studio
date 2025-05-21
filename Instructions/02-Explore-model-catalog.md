@@ -92,13 +92,13 @@ Now that you have a model deployment, you can use the playground to test it.
 1. In the chat window, enter the following query
 
     ```
-    I have a fox, a chicken, and a bag of grain that I need to take over a river in a boat. I can only take one thing at a time. If I leave the chicken and the grain unattended, the chicken will eat the grain. If I leave the fox and the chicken unattended, the fox will eat the chicken. How can I get all three things across the river without anything being eaten?
+   I have a fox, a chicken, and a bag of grain that I need to take over a river in a boat. I can only take one thing at a time. If I leave the chicken and the grain unattended, the chicken will eat the grain. If I leave the fox and the chicken unattended, the fox will eat the chicken. How can I get all three things across the river without anything being eaten?
     ```
 
 1. View the response. Then, enter the following follow-up query:
 
     ```
-    Explain your reasoning.
+   Explain your reasoning.
     ```
 
 ## Deploy another model
@@ -126,13 +126,13 @@ Now let's chat with the new model in the playground.
 1. In the chat window, enter the following query
 
     ```
-    I have a fox, a chicken, and a bag of grain that I need to take over a river in a boat. I can only take one thing at a time. If I leave the chicken and the grain unattended, the chicken will eat the grain. If I leave the fox and the chicken unattended, the fox will eat the chicken. How can I get all three things across the river without anything being eaten?
+   I have a fox, a chicken, and a bag of grain that I need to take over a river in a boat. I can only take one thing at a time. If I leave the chicken and the grain unattended, the chicken will eat the grain. If I leave the fox and the chicken unattended, the fox will eat the chicken. How can I get all three things across the river without anything being eaten?
     ```
 
 1. View the response. Then, enter the following follow-up query:
 
     ```
-    Explain your reasoning.
+   Explain your reasoning.
     ```
 
 ## Perform a further comparison
@@ -140,7 +140,7 @@ Now let's chat with the new model in the playground.
 1. Use the drop-down list in the **Setup** pane to switch between your models, testing both models with the following puzzle (the correct answer is 40!):
 
     ```
-    I have 53 socks in my drawer: 21 identical blue, 15 identical black and 17 identical red. The lights are out, and it is completely dark. How many socks must I take out to make 100 percent certain I have at least one pair of black socks?
+   I have 53 socks in my drawer: 21 identical blue, 15 identical black and 17 identical red. The lights are out, and it is completely dark. How many socks must I take out to make 100 percent certain I have at least one pair of black socks?
     ```
 
 ## Reflect on the models
