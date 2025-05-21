@@ -6,7 +6,7 @@ lab:
 
 # Prepare for an AI development project
 
-In this exercise, you use Azure AI Foundry portal to create a hub and project, ready for a team of developers to build an AI solution.
+In this exercise, you use Azure AI Foundry portal to create a project, ready to build an AI solution.
 
 This exercise takes approximately **30** minutes.
 
@@ -25,6 +25,8 @@ Let's start by signing into Azure AI Foundry portal.
 ## Create a project
 
 An Azure AI *project* provides a collaborative workspace for AI development. Let's start by choosing a model that we want to work with and creating a project to use it in.
+
+> **Note**: AI Foundry projects can be based on an *Azure AI Foundry* resource, which provides access to AI models (including Azure OpenAI), Azure AI services, and other resources for developing AI agents and chat solutions. Alternatively, projects can be based on *AI hub* resources; which include connections to Azure resources for secure storage, compute, and specialized tools. Azure AI Foundry based projects are great for developers who want to manage resources for AI agent or chat app development. AI hub based projects are more suitable for enterprise development teams working on complex AI solutions.
 
 1. In the home page, in the **Explore models and capabilities** section, search for the `gpt-4o` model; which we'll use in our project.
 1. In the search results, select the **gpt-4o** model to see its details, and then at the top of the page for the model, select **Use this model**.
