@@ -110,6 +110,7 @@ Automated evaluation is an approach that attempts to address these shortcomings 
    ```
 
 1. For the **query** field, select **\{\{item.question\}\}**.
+1. Select **Next** to move to the next page.
 1. On the **Configure evaluators** page, use the **+Add** button to add the following evaluators, configuring each one as follows:
     - **Model scorer**:
         - **Criteria name**: Semantic_similarity
