@@ -16,6 +16,10 @@ This exercise takes approximately **40** minutes.
 
 Let's start by deploying a model in an Azure AI Foundry project.
 
+1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image (close the **Help** pane if it's open):
+
+    ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
+
 1. In the home page, in the **Explore models and capabilities** section, search for the `gpt-4o` model; which we'll use in our project.
 1. In the search results, select the **gpt-4o** model to see its details, and then at the top of the page for the model, select **Use this model**.
 1. When prompted to create a project, enter a valid name for your project and expand **Advanced options**.
