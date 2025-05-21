@@ -20,7 +20,7 @@ The features of Azure AI Foundry we're going to use in this exercise require a p
 
     Close any welcome notifications to see the Azure portal home page.
 
-1. In the address bar, navigate to `https://portal.azure.com/#view/Microsoft_Azure_MLTeamAccounts/CreateAIStudioResourceBlade` and create a new `Azure AI Hub` resource, with the following settings:
+1. In the address bar, navigate to `https://portal.azure.com/#view/Microsoft_Azure_MLTeamAccounts/CreateAIStudioResourceBlade` and create a new **Azure AI Hub** resource, with the following settings:
     - **Basics**:
         - **Subscription**: *Your Azure subscription*
         - **Resource group**: *Create or select a resource group*

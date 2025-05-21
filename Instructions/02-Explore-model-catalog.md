@@ -33,19 +33,19 @@ Let's start by signing into Azure AI Foundry portal and exploring some of the av
 
     ![Screenshot of the gpt-4o model benchmarks page.](./media/gpt4-benchmarks.png)
 
-1. Use the back arrow (**&larr;**) next to the **gpt-4o** page title to return to the Azure AI Foundry home page.
+1. Use the back arrow (**&larr;**) next to the **gpt-4o** page title to return to the model catalog.
 1. Search for `Phi-3.5-mini-instruct` and view the details and benchmarks for the **Phi-3.5-mini-instruct** model.
 
 ## Compare models
 
 You've reviewed two different models, both of which could be used to implement a generative AI chat application. Now let's compare the metrics for these two models visually.
 
-1. Use the back arrow (**&larr;**) to return to the **Model catalog** home page (if the Azure AI Foundry home page opens, select **Go to full model catalog**).
+1. Use the back arrow (**&larr;**) to return to the model catalog.
 1. Select **Compare models**. A visual chart for model comparison is displayed with a selection of common models.
 
     ![Screenshot of the model comparison page.](./media/compare-models.png)
 
-1. In the **Models to compare** pane on the left, note that you can select popular tasks, such as *question answering* to automatically select commonly used models for specific tasks.
+1. In the **Models to compare** pane, note that you can select popular tasks, such as *question answering* to automatically select commonly used models for specific tasks.
 1. Use the **Clear all models** (&#128465;) icon to remove all of the pre-selected models.
 1. Use the **+ Model to compare** button to add the **gpt-4o** model to the list. Then use the same button to add the **Phi-3.5-mini-instruct** model to the list.
 1. Review the chart, which compares the models based on **Quality Index** (a standardized score indicating model quality) and **Cost**. You can see the specific values for a model by holding the mouse over the point that represents it in the chart.
@@ -69,7 +69,7 @@ To use a model, you need to create an Azure AI Foundry *project*.
 
 1. At the top of the **gpt-4o** model overview page, select **Use this model**.
 1. When prompted to create a project, enter a valid name for your project and expand **Advanced options**.
-1. Select **Customize** and specify the following settings for your hub:
+1. In the **Advanced options** section, specify the following settings for your hub:
     - **Azure AI Foundry resource**: *A valid name for your Azure AI Foundry resource*
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create or select a resource group*
