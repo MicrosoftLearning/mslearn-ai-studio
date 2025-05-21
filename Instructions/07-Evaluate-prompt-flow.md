@@ -118,9 +118,8 @@ Automated evaluation is an approach that attempts to address these shortcomings 
         - **User** settings (at the bottom):
 
 
-        Output: \{\{sample.output_text\}\}
-
-        Ground Truth: \{\{item.ExpectedResponse\}\}
+        Output: \{\{sample.output_text\}\}<br>
+        Ground Truth: \{\{item.ExpectedResponse\}\}<br>
 
 
     - **Likert-scale evaluator**:
