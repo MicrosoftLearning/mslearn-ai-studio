@@ -25,7 +25,7 @@ The features of Azure AI Foundry we're going to use in this exercise require a p
         - **Subscription**: *Your Azure subscription*
         - **Resource group**: *Create or select a resource group*
         - **Location**: *Select one of the following locations*:\*
-            -  East US 2
+            - East US 2
             - France Central
             - UK South
             - Sweden Central
