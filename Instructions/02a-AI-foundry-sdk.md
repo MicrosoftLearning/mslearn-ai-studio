@@ -63,8 +63,8 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
 1. In the cloud shell pane, enter the following commands to clone the GitHub repo containing the code files for this exercise (type the command, or copy it to the clipboard and then right-click in the command line and paste as plain text):
 
     ```
-    rm -r mslearn-ai-foundry -f
-    git clone https://github.com/microsoftlearning/mslearn-ai-studio mslearn-ai-foundry
+   rm -r mslearn-ai-foundry -f
+   git clone https://github.com/microsoftlearning/mslearn-ai-studio mslearn-ai-foundry
     ```
 
     > **Tip**: As you enter commands into the cloudshell, the output may take up a large amount of the screen buffer. You can clear the screen by entering the `cls` command to make it easier to focus on each task.
@@ -189,7 +189,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
         ExcludeManagedIdentityCredential = true };
    var projectClient = new AIProjectClient(
         new Uri(project_connection),
-        new DefaultAzureCredential(options)));
+        new DefaultAzureCredential(options));
     ```
 
 1. Find the comment **Get a chat client**, and add the following code to create a client object for chatting with a model:
@@ -269,7 +269,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
 1. In the cloud shell command-line pane, enter the following command to sign into Azure.
 
     ```
-    az login
+   az login
     ```
 
     **<font color="red">You must sign into Azure - even though the cloud shell session is already authenticated.</font>**
