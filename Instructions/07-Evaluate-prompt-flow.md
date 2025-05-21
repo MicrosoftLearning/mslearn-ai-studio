@@ -109,7 +109,7 @@ Automated evaluation is an approach that attempts to address these shortcomings 
    Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
    ```
 
-1. For the **query** field, select **{{item.question}}**.
+1. For the **query** field, select **\{\{item.question\}\}**.
 1. On the **Configure evaluators** page, use the **+Add** button to add the following evaluators, configuring each one as follows:
     - **Model scorer**:
         - **Criteria name**: Semantic_similarity
@@ -124,11 +124,11 @@ Automated evaluation is an approach that attempts to address these shortcomings 
     - **Likert-scale evaluator**:
         - **Criteria name**: Relevance
         - **Grade with**: *Select your **gpt-4o** model*
-        - **Query**: {{item.question}}
+        - **Query**: `{{item.question}}`
 
     - **Text similarity**:
         - **Criteria name**: F1_Score
-        - **Ground truth**: {{item.ExpectedResponse}}
+        - **Ground truth**: `{{item.ExpectedResponse}}`
 
 1. Select **Next** and review your evaluation settings. You should have configured the evaluation to use the travel evaluation dataset to evaluate the **gpt-4o-mini** model for semantic similarity, relevance, and F1 score.
 1. Give the evaluation a suitable name, and **Submit** it to start the evaluation process, and wait for it to complete. It may take a few minutes. You can use the **Refresh** toolbar button to check the status.
