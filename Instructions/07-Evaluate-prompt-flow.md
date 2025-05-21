@@ -139,6 +139,9 @@ Automated evaluation is an approach that attempts to address these shortcomings 
 1. Give the evaluation a suitable name, and **Submit** it to start the evaluation process, and wait for it to complete. It may take a few minutes. You can use the **Refresh** toolbar button to check the status.
 
 1. When the evaluation has completed, scroll down if necessary to review the results.
+
+    ![Screenshot of evalation metrics.](./media/ai-quality-metrics.png)
+
 1. At the top of the page, select the **Data** tab to see the raw data from the evaluation. The data includes the metrics for each input as well as explanations of the reasoning the gpt-4o model applied when assessing the responses.
 
 ## Clean up
