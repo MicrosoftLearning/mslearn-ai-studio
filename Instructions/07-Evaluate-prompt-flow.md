@@ -118,10 +118,10 @@ Automated evaluation is an approach that attempts to address these shortcomings 
         - **User** settings (at the bottom):
 
 
-        Output: \{\{sample.output_text\}\}<br>
-        Ground Truth: \{\{item.ExpectedResponse\}\}<br>
-
-
+            Output: \{\{sample.output_text\}\}<br>
+            Ground Truth: \{\{item.ExpectedResponse\}\}<br>
+            <br>
+        
     - **Likert-scale evaluator**:
         - **Criteria name**: Relevance
         - **Grade with**: *Select your **gpt-4o** model*
