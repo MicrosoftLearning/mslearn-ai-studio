@@ -73,6 +73,7 @@ You can manually review model responses based on test data. Manually reviewing a
 
 1. In a new browser tab, download the [travel_evaluation_data.jsonl](https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel_evaluation_data.jsonl) from `https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel_evaluation_data.jsonl` and save it in a local folder as **travel_evaluation_data.jsonl** (be sure to save it as a .jsonl file, not a .txt file).
 1. Back on the Azure AI Foundry portal tab, in the navigation pane, in the **Protect and govern** section, select **Evaluation**.
+1. If the **Create a new evaluation** pane opens automatically, select **Cancel** to close it.
 1. In the **Evaluation** page, view the **Manual evaluations** tab and select **+ New manual evaluation**.
 1. In the **Configurations** section, in the **Model** list, select your **gpt-4o** model deployment.
 1. Change the **System message** to the following instructions for an AI travel assistant:
