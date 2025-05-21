@@ -16,6 +16,10 @@ This exercise takes approximately **40** minutes.
 
 Let's start by deploying a model in an Azure AI Foundry project.
 
+1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image (close the **Help** pane if it's open):
+
+    ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
+
 1. In the home page, in the **Explore models and capabilities** section, search for the `gpt-4o` model; which we'll use in our project.
 1. In the search results, select the **gpt-4o** model to see its details, and then at the top of the page for the model, select **Use this model**.
 1. When prompted to create a project, enter a valid name for your project and expand **Advanced options**.
@@ -63,8 +67,8 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
 1. In the cloud shell pane, enter the following commands to clone the GitHub repo containing the code files for this exercise (type the command, or copy it to the clipboard and then right-click in the command line and paste as plain text):
 
     ```
-    rm -r mslearn-ai-foundry -f
-    git clone https://github.com/microsoftlearning/mslearn-ai-studio mslearn-ai-foundry
+   rm -r mslearn-ai-foundry -f
+   git clone https://github.com/microsoftlearning/mslearn-ai-studio mslearn-ai-foundry
     ```
 
     > **Tip**: As you enter commands into the cloudshell, the output may take up a large amount of the screen buffer. You can clear the screen by entering the `cls` command to make it easier to focus on each task.
@@ -189,7 +193,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
         ExcludeManagedIdentityCredential = true };
    var projectClient = new AIProjectClient(
         new Uri(project_connection),
-        new DefaultAzureCredential(options)));
+        new DefaultAzureCredential(options));
     ```
 
 1. Find the comment **Get a chat client**, and add the following code to create a client object for chatting with a model:
@@ -269,7 +273,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
 1. In the cloud shell command-line pane, enter the following command to sign into Azure.
 
     ```
-    az login
+   az login
     ```
 
     **<font color="red">You must sign into Azure - even though the cloud shell session is already authenticated.</font>**

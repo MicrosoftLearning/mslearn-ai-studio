@@ -18,6 +18,10 @@ This exercise will take approximately **25** minutes.
 
 Let's start by deploying a model in an Azure AI Foundry project.
 
+1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image (close the **Help** pane if it's open):
+
+    ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
+
 1. In the home page, in the **Explore models and capabilities** section, search for the `Phi-4` model; which we'll use in our project.
 1. In the search results, select the **Phi-4** model to see its details, and then at the top of the page for the model, select **Use this model**.
 1. When prompted to create a project, enter a valid name for your project and expand **Advanced options**.
@@ -120,17 +124,17 @@ When the default content filter doesn't meet your needs, you can create custom c
     - **Sexual**: Sexually explicit or abusive language.
     - **Self-harm**: Language that describes or encourages self-harm.
 
-    Filters are applied for each of these categories to prompts and completions, based on blocking thresholds of **Block few**, **Block some**, **Block all** that are used to determine what specific kinds of language are intercepted and prevented by the filter.
+    Filters are applied for each of these categories to prompts and completions, based on blocking thresholds of **Block low**, **Block medium**, **Block high** severity that are used to determine what specific kinds of language are intercepted and prevented by the filter.
 
     Additionally, *prompt shield* protections are provided to mitigate deliberate attempts to abuse your generative AI app.
 
-1. Change the threshold for each category of input filter to **Block all**.
+1. Change the threshold for each category of input filter to **Block Low, Medium and High**.
 
-1. On the **Output filter** page, review the settings that can be applied to output responses, and change the threshold for each category to **Block all**.
+1. On the **Output filter** page, review the settings that can be applied to output responses, and change the threshold for each category to **Block Low, Medium and High**.
 
-1. On the **Connection** page, select your **Phi-4** model deployment to apply the new content filter to it, confirming that you want to replace the existing content filter when prompted.
+1. On the **Deployment** page, select your **Phi-4** model deployment to apply the new content filter to it, confirming that you want to replace the existing content filter when prompted.
 
-1. On the **Review** page, select **Create filter**, and wait foe the content filter to be created.
+1. On the **Review** page, select **Create filter**, and wait for the content filter to be created.
 
 1. Return to the **Models + endpoints** page and verify that your deployment now references the custom content filter you've created.
 

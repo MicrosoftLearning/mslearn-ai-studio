@@ -47,7 +47,7 @@ The features of Azure AI Foundry we're going to use in this exercise require a p
 The prompt flow tools in Azure AI Foundry create file-based assets that define the prompt flow in a folder in blob storage. Before exploring prompt flow, let's ensure that your Azure AI Foundry resource has the required access to the blob store so it can read them.
 
 1. Return to the browser tab containing the Azure portal, and view the resource group containing your Azure AI hub resources.
-1. Select the **Azure AI Foundry** resource for your hub to open it. Then expand its **Under Resource Management** section and select the **Identity** page:
+1. Select the **Azure AI Foundry** resource for your hub to open it. Then expand its **Resource Management** section and select the **Identity** page:
 
     ![Screenshot of the Azure AI Services identity page in the Azure portal.](./media/ai-services-identity.png)
 

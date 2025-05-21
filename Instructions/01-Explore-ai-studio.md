@@ -78,14 +78,14 @@ Your Azure AI Foundry project and the Azure AI Foundry resource to which it belo
 
 ## Test a generative AI model
 
-YNow that you know something about the configuration of your Azure AI Foundry project, you can return to the chat playground to explore the model you deployed.
+Now that you know something about the configuration of your Azure AI Foundry project, you can return to the chat playground to explore the model you deployed.
 
 1. In the navigation pane on the left for your project, select **Playgrounds** 
 1. Open the **Chat playground**, and ensure that your **gpt-4o** model deployment is selected in the **Deployment** section.
 1. In the **Setup** pane, in the **Give the model instructions and context** box, enter the following instructions:
 
     ```
-    You are a history teacher who can answer questions about past events all around the world.
+   You are a history teacher who can answer questions about past events all around the world.
     ```
 
 1. Apply the changes to update the system message.
