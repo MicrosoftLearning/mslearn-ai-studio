@@ -16,37 +16,26 @@ This exercise will take approximately **30** minutes.
 
 The features of Azure AI Foundry we're going to use in this exercise require a project that is based on an Azure AI Foundry *hub* resource.
 
-1. In a browser, sign into the [Azure portal](https://portal.azure.com) at `https://portal.azure.com` with your Azure credentials.
+1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image (close the **Help** pane if it's open):
 
-    Close any welcome notifications to see the Azure portal home page.
+    ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
 
-1. In the address bar, navigate to `https://portal.azure.com/#view/Microsoft_Azure_MLTeamAccounts/CreateAIStudioResourceBlade` and create a new **Azure AI Hub** resource, with the following settings:
-    - **Basics**:
-        - **Subscription**: *Your Azure subscription*
-        - **Resource group**: *Create or select a resource group*
-        - **Location**: East US 2 or Sweden Central\*
-        - **Hub name**: *A valid name for your hub*
-        - **Friendly name**: *A friendly name for your hub*
-        - **Default project resource group**: Same as hub resource group
-        - **Connect Azure AI Services or Azure OpenAI**: *Create a new AI Services resource with the default name*
-    - **Storage**:
-        - **Storage account**: *Create a new storage account with the default name*
-        - **Credential store**:Azure Key vault
-            - **Key vault**: *Create a new key vault with the default name*
-        - **Application insights**: None
-        - **Container registry**: None
+1. In the browser, navigate to `https://ai.azure.com/managementCenter/allResources` and select **Create**. Then choose the option to create a new **AI hub resource**.
+1. In the **Create a project** wizard, enter a valid name for your project, and if an existing hub is suggested, select the option to create a new one and expand **Advanced options** to specify the following settings for your project:
+    - **Subscription**: *Your Azure subscription*
+    - **Resource group**: *Create or select a resource group*
+    - **Hub name**: A valid name for your hub
+    - **Location**:  East US 2 or Sweden Central\*
 
     > \* Some Azure AI resources are constrained by regional model quotas. In the event of a quota limit being exceeded later in the exercise, there's a possibility you may need to create another resource in a different region.
 
-1. Wait for the resource to be created, and then go to it in the portal.
-1. In the page for your new AI Hub resource, select **Launch Azure AI Foundry** to open the Azure AI Foundry portal. Sign in with your Azure credentials if prompted.
-1. In the Azure AI Foundry portal, in the page for your hub, select **New project**. Then enter a valid name for your project and create it.
+1. Wait for your project to be created.
 
 ## Configure resource authorization
 
 The prompt flow tools in Azure AI Foundry create file-based assets that define the prompt flow in a folder in blob storage. Before exploring prompt flow, let's ensure that your Azure AI Foundry resource has the required access to the blob store so it can read them.
 
-1. Return to the browser tab containing the Azure portal, and view the resource group containing your Azure AI hub resources.
+1. In a new browser tab, open the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`, signing in with your Azure credentials if prompted; and view the resource group containing your Azure AI hub resources.
 1. Select the **Azure AI Foundry** resource for your hub to open it. Then expand its **Resource Management** section and select the **Identity** page:
 
     ![Screenshot of the Azure AI Services identity page in the Azure portal.](./media/ai-services-identity.png)
