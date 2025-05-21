@@ -135,7 +135,7 @@ Automated evaluation is an approach that attempts to address these shortcomings 
         - **Criteria name**: Hate_and_unfairness
         - **Query**: \{\{item.question\}\}
 
-1. Select **Next** and review your evaluation settings. You should have configured the evaluation to use the travel evaluation dataset to evaluate the **gpt-4o-mini** model for semantic similarity, relevance, and F1 score.
+1. Select **Next** and review your evaluation settings. You should have configured the evaluation to use the travel evaluation dataset to evaluate the **gpt-4o-mini** model for semantic similarity, relevance, F1 score, and hateful and unfair language.
 1. Give the evaluation a suitable name, and **Submit** it to start the evaluation process, and wait for it to complete. It may take a few minutes. You can use the **Refresh** toolbar button to check the status.
 
 1. When the evaluation has completed, scroll down if necessary to review the results.
