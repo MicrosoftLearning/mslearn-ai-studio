@@ -40,8 +40,9 @@ Let's start by deploying a model in an Azure AI Foundry project.
 
     > \* At the time of writing, the Microsoft *Phi-4* model we're going to use in this exercise is available in these regions. You can check the latest regional availability for specific models in the [Azure AI Foundry documentation](https://learn.microsoft.com/azure/ai-foundry/how-to/deploy-models-serverless-availability#region-availability). In the event of a regional quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region.
 
-1. Select **Create** and wait for your project, including the Phi-4 model deployment you selected, to be created.
-1. When your project is created, the chat playground will be opened automatically.
+1. Select **Create** and wait for your project to be created.
+1. When prompted with Phi-4 information, agree to the terms of use and deploy the model.
+1. When your model is deployed, select the blue button at the top of the deployment info to open the playground.
 1. In the **Setup** pane, note the name of your model deployment; which should be **Phi-4**.
 
 ## Chat using the content filter
@@ -152,7 +153,7 @@ Let's have one final chat with the model to see the effect of the custom content
 
     This time, the content filter should block the prompt on the basis that it could be interpreted as including a reference to self-harm.
 
-    > **Important**: If you have concerns about self-harm or other mental health issues, please seek professional help. Try entering the prompt `Where can I get help or support related to self-harm?`.
+    > **Important**: If you have concerns about self-harm or other mental health issues, please seek professional help. Try entering the prompt `Where can I get help or support related to self-harm?`
 
 1. Now try this prompt:
 
