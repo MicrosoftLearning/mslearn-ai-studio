@@ -4,8 +4,6 @@ using System.IO;
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
-using Azure.Identity;
-using Azure.AI.Projects;
 using Azure.AI.OpenAI;
 using System.ClientModel;
 using Azure.AI.OpenAI.Chat;
@@ -25,23 +23,20 @@ namespace rag_app
                 // Get config settings
                 IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
                 IConfigurationRoot configuration = builder.Build();
-                string project_connection = configuration["PROJECT_CONNECTION"];
-                string model_deployment = configuration["MODEL_DEPLOYMENT"];
+                string open_ai_endpoint = configuration["OPEN_AI_ENDPOINT"];
+                string open_ai_key = configuration["OPEN_AI_KEY"];
+                string chat_model = configuration["CHAT_MODEL"];
                 string embedding_model = configuration["EMBEDDING_MODEL"];
+                string search_url = configuration["SEARCH_ENDPOINT"];
+                string search_key = configuration["SEARCH_KEY"];
                 string index_name = configuration["INDEX_NAME"];
 
-                // Initialize the project client
-                var projectClient = new AIProjectClient(project_connection, new DefaultAzureCredential());
-
                 // Get an Azure OpenAI chat client
-                ChatClient chatClient = projectClient.GetAzureOpenAIChatClient(model_deployment);
+                AzureOpenAIClient azureClient = new(
+                    new Uri(open_ai_endpoint),
+                    new AzureKeyCredential(open_ai_key));
+                ChatClient chatClient = azureClient.GetChatClient(chat_model);
 
-                // Use the AI search service connection to get service details
-                var connectionsClient = projectClient.GetConnectionsClient();
-                ConnectionResponse searchConnection = connectionsClient.GetDefaultConnection(ConnectionType.AzureAISearch, true);
-                var searchProperties = searchConnection.Properties as ConnectionPropertiesApiKeyAuth;
-                string search_url = searchProperties.Target;
-                string search_key = searchProperties.Credentials.Key;
 
                 // Initialize prompt with system message
                 var prompt = new List<ChatMessage>()

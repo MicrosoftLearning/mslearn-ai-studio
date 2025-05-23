@@ -1,9 +1,6 @@
 import os
 from dotenv import load_dotenv
-from azure.identity import DefaultAzureCredential
-from azure.ai.projects import AIProjectClient
-from azure.ai.projects.models import ConnectionType
-import openai
+from openai import AzureOpenAI
 
 def main():
     # Clear the console
@@ -12,27 +9,22 @@ def main():
     try:
         # Get configuration settings
         load_dotenv()
-        project_connection = os.getenv("PROJECT_CONNECTION")
-        model_deployment = os.getenv("MODEL_DEPLOYMENT")
+        open_ai_endpoint = os.getenv("OPEN_AI_ENDPOINT")
+        open_ai_key = os.getenv("OPEN_AI_KEY")
+        chat_model = os.getenv("CHAT_MODEL")
         embedding_model = os.getenv("EMBEDDING_MODEL")
+        search_url = os.getenv("SEARCH_ENDPOINT")
+        search_key = os.getenv("SEARCH_KEY")
         index_name = os.getenv("INDEX_NAME")
 
-        # Initialize the project client
-        projectClient = AIProjectClient.from_connection_string(
-            conn_str=project_connection,
-            credential=DefaultAzureCredential()
-        )
 
         # Get an Azure OpenAI chat client
-        aoai_client = projectClient.inference.get_azure_openai_client(api_version="2024-10-21")
-
-        # Use the AI search service connection to get service details
-        searchConnection = projectClient.connections.get_default(
-            connection_type=ConnectionType.AZURE_AI_SEARCH,
-            include_credentials=True,
+        chat_client = AzureOpenAI(
+            api_version = "2024-12-01-preview",
+            azure_endpoint = open_ai_endpoint,
+            api_key = open_ai_key
         )
-        search_url = searchConnection.endpoint_url
-        search_key = searchConnection.key
+
 
         # Initialize prompt with system message
         prompt = [
@@ -77,8 +69,8 @@ def main():
             }
 
             # Submit the prompt with the data source options and display the response
-            response = aoai_client.chat.completions.create(
-                model=model_deployment,
+            response = chat_client.chat.completions.create(
+                model=chat_model,
                 messages=prompt,
                 extra_body=rag_params
             )
