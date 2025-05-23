@@ -119,7 +119,7 @@ Before using your index in a RAG-based prompt flow, let's verify that it can be 
 1. After the index has been added and the chat session has restarted, resubmit the prompt `Where can I stay in New York?`
 1. Review the response, which should be based on data in the index.
 
-## (If time permits) Create a RAG client app
+## Create a RAG client app
 
 Now that you have a working index, you can use the Azure OpenAI SDK to implement the RAG pattern in a client application. Let's explore the code to accomplish this in a simple example.
 
