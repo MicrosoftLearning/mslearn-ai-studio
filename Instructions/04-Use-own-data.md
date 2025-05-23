@@ -259,8 +259,6 @@ Now that you have a working index, you can use the Azure OpenAI SDK to implement
 
 1. When you're finished, enter `quit` to exit the program. Then close the cloud shell pane.
 
--->
-
 ## Clean up
 
 To avoid unnecessary Azure costs and resource utilization, you should remove the resources you deployed in this exercise.
