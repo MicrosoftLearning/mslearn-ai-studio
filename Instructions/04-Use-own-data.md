@@ -31,7 +31,7 @@ The features of Azure AI Foundry we're going to use in this exercise require a p
 
     > \* Some Azure AI resources are constrained by regional model quotas. In the event of a quota limit being exceeded later in the exercise, there's a possibility you may need to create another resource in a different region.
 
-1. Wait for your project to be created.
+1. Wait for your project to be created, and then navigate to your project.
 
 ## Deploy models
 
