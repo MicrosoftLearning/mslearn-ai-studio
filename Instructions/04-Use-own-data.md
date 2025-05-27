@@ -27,9 +27,9 @@ The features of Azure AI Foundry we're going to use in this exercise require a p
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create or select a resource group*
     - **Hub name**: A valid name for your hub
-    - **Location**:  East US 2 or Sweden Central\*
+    - **Location**:  East US 2 or Sweden Central (*In the event of a quota limit being exceeded later in the exercise, may need to create another resource in a different region.*)
 
-    > \* Some Azure AI resources are constrained by regional model quotas. In the event of a quota limit being exceeded later in the exercise, there's a possibility you may need to create another resource in a different region.
+    > **Note**: If you're working in an Azure subscription in which policies are used to restrict allowable resource names, you may need to use the link at the bottom of the **Create a new project** dialog box to create the hub using the Azure portal.
 
 1. Wait for your project to be created, and then navigate to your project.
 
