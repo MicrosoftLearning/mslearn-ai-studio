@@ -25,7 +25,7 @@ The features of Azure AI Foundry we're going to use in this exercise require a p
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create or select a resource group*
     - **Hub name**: A valid name for your hub
-    - **Location**:  Select one of the following locations (*In the event of a quota limit being exceeded later in the exercise, may need to create another resource in a different region.*):
+    - **Location**:  Select one of the following locations (*In the event of a quota limit being exceeded later in the exercise, you may need to create another resource in a different region.*):
         - East US 2
         - France Central
         - UK South
