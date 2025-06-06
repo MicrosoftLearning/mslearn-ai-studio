@@ -48,7 +48,7 @@ def main():
             rag_params = {
                 "data_sources": [
                     {
-                        # he following params are used to search the index
+                        # The following params are used to search the index
                         "type": "azure_search",
                         "parameters": {
                             "endpoint": search_url,
@@ -58,11 +58,8 @@ def main():
                                 "key": search_key,
                             },
                             # The following params are used to vectorize the query
-                            "query_type": "vector",
-                            "embedding_dependency": {
-                                "type": "deployment_name",
-                                "deployment_name": embedding_model,
-                            },
+                            "semantic_configuration": "default",
+                            "query_type": "semantic",
                         }
                     }
                 ],
