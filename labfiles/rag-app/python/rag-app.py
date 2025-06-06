@@ -12,6 +12,7 @@ def main():
         open_ai_endpoint = os.getenv("OPEN_AI_ENDPOINT")
         open_ai_key = os.getenv("OPEN_AI_KEY")
         chat_model = os.getenv("CHAT_MODEL")
+        embedding_model = os.getenv("EMBEDDING_MODEL")
         search_url = os.getenv("SEARCH_ENDPOINT")
         search_key = os.getenv("SEARCH_KEY")
         index_name = os.getenv("INDEX_NAME")
@@ -47,7 +48,7 @@ def main():
             rag_params = {
                 "data_sources": [
                     {
-                        # The following params are used to search the index
+                        # he following params are used to search the index
                         "type": "azure_search",
                         "parameters": {
                             "endpoint": search_url,
@@ -56,8 +57,12 @@ def main():
                                 "type": "api_key",
                                 "key": search_key,
                             },
-                            "semantic_configuration": "default",
-                            "query_type": "semantic",
+                            # The following params are used to vectorize the query
+                            "query_type": "vector",
+                            "embedding_dependency": {
+                                "type": "deployment_name",
+                                "deployment_name": embedding_model,
+                            },
                         }
                     }
                 ],
