@@ -125,13 +125,13 @@ When the default content filter doesn't meet your needs, you can create custom c
     - **Sexual**: Sexually explicit or abusive language.
     - **Self-harm**: Language that describes or encourages self-harm.
 
-    Filters are applied for each of these categories to prompts and completions, based on blocking thresholds of **Block low**, **Block medium**, **Block high** severity that are used to determine what specific kinds of language are intercepted and prevented by the filter.
+    Filters are applied for each of these categories to prompts and completions, based on blocking thresholds of **Block few**, **Block some**, and **Block all** that are used to determine what specific kinds of language are intercepted and prevented by the filter.
 
     Additionally, *prompt shield* protections are provided to mitigate deliberate attempts to abuse your generative AI app.
 
-1. Change the threshold for each category of input filter to **Block Low, Medium and High**.
+1. Change the threshold for each category of input filter to **Block all**.
 
-1. On the **Output filter** page, review the settings that can be applied to output responses, and change the threshold for each category to **Block Low, Medium and High**.
+1. On the **Output filter** page, review the settings that can be applied to output responses, and change the threshold for each category to **Block all**.
 
 1. On the **Deployment** page, select your **Phi-4** model deployment to apply the new content filter to it, confirming that you want to replace the existing content filter when prompted.
 
