@@ -31,6 +31,8 @@ The features of Azure AI Foundry we're going to use in this exercise require a p
 
     > **Note**: If you're working in an Azure subscription in which policies are used to restrict allowable resource names, you may need to use the link at the bottom of the **Create a new project** dialog box to create the hub using the Azure portal.
 
+    > **Tip**: If the **Create** button is still disabled, be sure to rename your hub to a unique alphanumeric value.
+
 1. Wait for your project to be created, and then navigate to your project.
 
 ## Deploy models
@@ -51,8 +53,6 @@ You need two models to implement your solution:
     - **Content filter**: DefaultV2
 
     > **Note**: If your current AI resource location doesn't have quota available for the model you want to deploy, you will be asked to choose a different location where a new AI resource will be created and connected to your project.
-
-    > **Tip**: If the **Create** button is still disabled, be sure to rename your hub to a unique alphanumeric value.
 
 1. Return to the **Models + endpoints** page and repeat the previous steps to deploy a **gpt-4o** model using a **Global Standard** deployment of the most recent version with a TPM rate limit of **50K** (or the maximum available in your subscription if less than 50K).
 
