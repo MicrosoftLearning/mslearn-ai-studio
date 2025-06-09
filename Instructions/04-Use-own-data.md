@@ -14,22 +14,24 @@ This exercise takes approximately **45** minutes.
 
 > **Note**: This exercise is based on pre-release services, which may be subject to change.
 
-## Create an Azure AI Foundry resource
+## Create an Azure AI Foundry hub and project
 
-Let's start by creating an Azure AI Foundry resource.
+The features of Azure AI Foundry we're going to use in this exercise require a project that is based on an Azure AI Foundry *hub* resource.
 
-1. In a web browser, open the [Azure portal](https://portal.azure.com) at `https://portal.azure` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in.
-1. Create a new `Azure AI Foundry` resource with the following settings:
+1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image (close the **Help** pane if it's open):
+
+    ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
+
+1. In the browser, navigate to `https://ai.azure.com/managementCenter/allResources` and select **Create**. Then choose the option to create a new **AI hub resource**.
+1. In the **Create a project** wizard, enter a valid name for your project, and if an existing hub is suggested, select the option to create a new one and expand **Advanced options** to specify the following settings for your project:
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create or select a resource group*
-    - **Name**: *A valid name for your Azure AI Foundry resource*
-    - **Region**: Choose one of the following regions:
-        - East US 2
-        - Sweden Central
-    - **Default project name**: *A valid name for your project*
+    - **Hub name**: A valid name for your hub
+    - **Location**:  East US 2 or Sweden Central (*In the event of a quota limit being exceeded later in the exercise, you may need to create another resource in a different region.*)
 
-1. Wait for the resource to be created, then go to its page in the Azure portal.
-1. In the page for your Azure AI Foundry resource, select **Go to Azure AI Foundry portal**.
+    > **Note**: If you're working in an Azure subscription in which policies are used to restrict allowable resource names, you may need to use the link at the bottom of the **Create a new project** dialog box to create the hub using the Azure portal.
+
+1. Wait for your project to be created, and then navigate to your project.
 
 ## Deploy models
 
@@ -59,40 +61,47 @@ You need two models to implement your solution:
 The data for your app consists of a set of travel brochures in PDF format from the fictitious travel agency *Margie's Travel*. Let's add them to the project.
 
 1. In a new browser tab, download the [zipped archive of brochures](https://github.com/MicrosoftLearning/mslearn-ai-studio/raw/main/data/brochures.zip) from `https://github.com/MicrosoftLearning/mslearn-ai-studio/raw/main/data/brochures.zip` and extract it to a folder named **brochures** on your local file system.
-1. In Azure AI Foundry portal, in your project, in the navigation pane on the left, select **Playgrounds**, then select **Try the Chat playground**.
-1. In the **Setup** pane of the playground, expand the **Add your data** section and select **Add a data source**.
-1. In the **Add data** wizard, expand the drop-down menu to select **Upload files**.
-1. Create a new Azure Blob storage resource with the following settings:
-    - **Subscription**: *Your Azure subscription*
-    - **Resource group**: *Same resource group as your Azure AI Foundry resource*
-    - **Storage account name**: *A valid name for your storage account resource*
-    - **Region**: *Same region as your Azure AI Foundry resource*
-    - **Performance**: Standard
-    - **Redundancy**: LRS
-1. Create your resource and wait until the deployment is complete.
-1. Return to your Azure AI Foundry tab, refresh the list of Azure Blob storage resources and select the newly create account.
+1. In Azure AI Foundry portal, in your project, in the navigation pane on the left, under **My assets**, select the **Data + indexes** page.
+1. Select **+ New data**.
+1. In the **Add your data** wizard, expand the drop-down menu to select **Upload files/folders**.
+1. Select **Upload folder** and upload the **brochures** folder. Wait until all the files in the folder are listed.
+1. Select **Next** and set the data name to `brochures`.
+1. Wait for the folder to be uploaded and note that it contains several .pdf files.
 
-    > **Note**: If you receive a warning that Azure OpenAI needs your permission to access your resource, select **Turn on CORS**.
+## Create an index for your data
 
-1. Create a new Azure AI Search resource with the following settings:
-    - **Subscription**: *Your Azure subscription*
-    - **Resource group**: *Same resource group as your Azure AI Foundry resource*
-    - **Service name**: *A valid name for your Azure AI Search resource*
-    - **Region**: *Same region as your Azure AI Foundry resource*
-    - **Pricing tier**: Basic
+Now that you've added a data source to your project, you can use it to create an index in your Azure AI Search resource.
 
-1. Create your resource and wait until the deployment is complete.
-1. Return to your Azure AI Foundry tab, refresh the list of Azure AI Search resources and select the newly create account.
-1. Name your index `brochures-index`.
-1. Enable the option **Add vector search to this search resource** and select the embedding model you deployed earlier. Select **Next**.
+1. In Azure AI Foundry portal, in your project, in the navigation pane on the left, under **My assets**, select the **Data + indexes** page.
+1. In the **Indexes** tab, add a new index with the following settings:
+    - **Source location**:
+        - **Data source**: Data in Azure AI Foundry
+            - *Select the **brochures** data source*
+    - **Index configuration**:
+        - **Select Azure AI Search service**: *Create a new Azure AI Search resource with the following settings*:
+            - **Subscription**: *You Azure subscription*
+            - **Resource group**: *The same resource group as your AI hub*
+            - **Service name**: *A valid name for your AI Search Resource*
+            - **Location**: *The same location as your AI hub*
+            - **Pricing tier**: Basic
+            
+            Wait for the AI Search resource to be created. Then return to the Azure AI Foundry and finish configuring the index by selecting **Connect other Azure AI Search resource** and adding a connection to the AI Search resource you just created.
+ 
+        - **Vector index**: `brochures-index`
+        - **Virtual machine**: Auto select
+    - **Search settings**:
+        - **Vector settings**: Add vector search to this search resource
+        - **Azure OpenAI connection**: *Select the default Azure OpenAI resource for your hub.*
+        - **Embedding model**: text-embedding-ada-002
+        - **Embedding model deployment**: *Your deployment of the* text-embedding-ada-002 *model*
 
-   >**Note**: It might take a while until the **Add data** wizard recognizes your embedding model deployed, so if you can't enable the vector search option, cancel the wizard, wait a few minutes and try it again.
+1. Create the vector index and wait for the indexing process to be completed, which can take a while depending on available compute resources in your subscription.
 
-1. Upload all the .pdf files from the **brochures** folder that you extracted earlier and then select **Next**.
-1. In the **Data management** step, select the search type **Hybrid (vector + keyword)** and chunk size of **1024**. Select **Next**.
-1. In the **Data connection** step, select **API key** as the authentication type. Select **Next**.
-1. Review all configuration steps and then select **Save and close**.
-1. Wait for the indexing process to be completed, which can take a while depending on available compute resources in your subscription.
+    The index creation operation consists of the following jobs:
+
+    - Crack, chunk, and embed the text tokens in your brochures data.
+    - Create the Azure AI Search index.
+    - Register the index asset.
 
     > **Tip**: While you're waiting for the index to be created, why not take a look at the brochures you downloaded to get familiar with their contents?
 
@@ -100,7 +109,14 @@ The data for your app consists of a set of travel brochures in PDF format from t
 
 Before using your index in a RAG-based prompt flow, let's verify that it can be used to affect generative AI responses.
 
-1. In the Chat playground page, in the Setup pane, ensure that your **gpt-4o** model deployment is selected. Then, in the main chat session panel, submit the prompt `Where can I stay in New York?`
+1. In the navigation pane on the left, select the **Playgrounds** page and open the **Chat** playground.
+1. On the Chat playground page, in the Setup pane, ensure that your **gpt-4o** model deployment is selected. Then, in the main chat session panel, submit the prompt `Where can I stay in New York?`
+1. Review the response, which should be a generic answer from the model without any data from the index.
+1. In the Setup pane, expand the **Add your data** field, and then add the **brochures-index** project index and select the **hybrid (vector + keyword)** search type.
+
+   > **Tip**: In some cases, newly created indexes may not be available right away. Refreshing the browser usually helps, but if you're still experiencing the issue where it can't find the index you may need to wait until the index is recognized.
+
+1. After the index has been added and the chat session has restarted, resubmit the prompt `Where can I stay in New York?`
 1. Review the response, which should be based on data in the index.
 
 ## Create a RAG client app
