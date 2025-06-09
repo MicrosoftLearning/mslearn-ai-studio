@@ -33,6 +33,8 @@ The features of Azure AI Foundry we're going to use in this exercise require a p
 
     > **Note**: If you're working in an Azure subscription in which policies are used to restrict allowable resource names, you may need to use the link at the bottom of the **Create a new project** dialog box to create the hub using the Azure portal.
 
+    > **Tip**: If the **Create** button is still disabled, be sure to rename your hub to a unique alphanumeric value.
+
 1. Wait for your project to be created.
 
 ## Deploy models
