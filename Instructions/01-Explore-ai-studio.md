@@ -72,7 +72,7 @@ An Azure AI *project* provides a collaborative workspace for AI development. Let
 
 Your Azure AI Foundry project and the Azure AI Foundry resource to which it belongs include connections to resources that you can use in AI applications.
 
-1. In the Management center page, in the navigation pane, under your project, select **Go to project**.
+1. In the Management center page, in the navigation pane, under your project, select **Go to resource**.
 1. In the project **Overview** page, view the **Endpoints and keys** section; which contains endpoints and authorization keys that you can use in your application code to access:
     - The Azure AI Foundry project and any models deployed in it.
     - Azure OpenAI in Azure AI Foundry models.
