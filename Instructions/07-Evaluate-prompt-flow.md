@@ -21,11 +21,10 @@ The features of Azure AI Foundry we're going to use in this exercise require a p
     ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
 
 1. In the browser, navigate to `https://ai.azure.com/managementCenter/allResources` and select **Create**. Then choose the option to create a new **AI hub resource**.
-1. In the **Create a project** wizard, enter a valid name for your project, and if an existing hub is suggested, select the option to create a new one and expand **Advanced options** to specify the following settings for your project:
+1. In the **Create a project** wizard, enter a valid name for your project, and use the **Rename hub** link to specify a valid name for your new hub. Then expand **Advanced options** and specify the following settings for your project:
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create or select a resource group*
-    - **Hub name**: A valid name for your hub
-    - **Location**:  Select one of the following locations (*In the event of a quota limit being exceeded later in the exercise, you may need to create another resource in a different region.*):
+    - **Region**:  Select one of the following locations (*In the event of a quota limit being exceeded later in the exercise, you may need to create another resource in a different region.*):
         - East US 2
         - France Central
         - UK South
