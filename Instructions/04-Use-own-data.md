@@ -252,6 +252,8 @@ Now that you have a working index, you can use the Azure OpenAI SDK to implement
    dotnet run
     ```
 
+   > **Tip**: If a compilation error occurs because the code targets .NET version 8.0 but .NET 9.0 is installed in the cloud shell, edit the **rag_app.csproj** file in the code folder and update the **TargetFramework** setting to **9.0**.
+
 1. When prompted, enter a question, such as `Where should I go on vacation to see architecture?` and review the response from your generative AI model.
 
     Note that the response includes source references to indicate the indexed data in which the answer was found.
