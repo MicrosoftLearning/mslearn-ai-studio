@@ -34,7 +34,7 @@ Let's start by signing into Azure AI Foundry portal and exploring some of the av
     ![Screenshot of the gpt-4o model benchmarks page.](./media/gpt4-benchmarks.png)
 
 1. Use the back arrow (**&larr;**) next to the **gpt-4o** page title to return to the model catalog.
-1. Search for `Phi-3.5-mini-instruct` and view the details and benchmarks for the **Phi-3.5-mini-instruct** model.
+1. Search for `Phi-4-mini-instruct` and view the details and benchmarks for the **Phi-4-mini-instruct** model.
 
 ## Compare models
 
@@ -47,16 +47,14 @@ You've reviewed two different models, both of which could be used to implement a
 
 1. In the **Models to compare** pane, note that you can select popular tasks, such as *question answering* to automatically select commonly used models for specific tasks.
 1. Use the **Clear all models** (&#128465;) icon to remove all of the pre-selected models.
-1. Use the **+ Model to compare** button to add the **gpt-4o** model to the list. Then use the same button to add the **Phi-3.5-mini-instruct** model to the list.
+1. Use the **+ Model to compare** button to add the **gpt-4o** model to the list. Then use the same button to add the **Phi-4-mini-instruct** model to the list.
 1. Review the chart, which compares the models based on **Quality Index** (a standardized score indicating model quality) and **Cost**. You can see the specific values for a model by holding the mouse over the point that represents it in the chart.
 
-    ![Screenshot of the model comparison chart for gpt-4o and Phi-3.5-mini-instruct.](./media/comparison-chart.png)
+    ![Screenshot of the model comparison chart for gpt-4o and Phi-4-mini-instruct.](./media/comparison-chart.png)
 
 1. In the **X-axis** dropdown menu, under **Quality**, select the following metrics and observe each resulting chart before switching to the next:
     - Accuracy
-    - Coherence
-    - Fluency
-    - Relevance
+    - Quality index
 
     Based on the benchmarks, the gpt-4o model looks like offering the best overall performance, but at a higher cost.
 
@@ -103,24 +101,24 @@ Now that you have a model deployment, you can use the playground to test it.
 
 ## Deploy another model
 
-When you created your project, the **gpt-4o** model you selected was automatically deployed. Let's deploy the ***Phi-3.5-mini-instruct** model you also considered.
+When you created your project, the **gpt-4o** model you selected was automatically deployed. Let's deploy the ***Phi-4-mini-instruct** model you also considered.
 
 1. In the navigation bar on the left, in the **My assets** section, select **Models + endpoints**.
-1. In the **Model deployments** tab, in the **+ Deploy model** drop-down list, select **Deploy base model**. Then search for `Phi-3.5-mini-instruct` and confirm you selection.
+1. In the **Model deployments** tab, in the **+ Deploy model** drop-down list, select **Deploy base model**. Then search for `Phi-4-mini-instruct` and confirm you selection.
 1. Agree to the model license.
-1. Deploy a **Phi-3.5-mini-instruct** model with the following settings:
+1. Deploy a **Phi-4-mini-instruct** model with the following settings:
     - **Deployment name**: *A valid name for your model deployment*
     - **Deployment type**: Global Standard
     - **Deployment details**: *Use the default settings*
 
 1. Wait for the deployment to complete.
 
-## Chat with the *Phi-3.5* model
+## Chat with the *Phi-4* model
 
 Now let's chat with the new model in the playground.
 
 1. In the navigation bar, select **Playgrounds**. Then select the **Chat playground**.
-1. In the chat playground, in the **Setup** pane, ensure that your **Phi-3.5-mini-instruct** model is selected and in the **Give the model instructions and context** field, set the system prompt to `You are an AI assistant that helps solve problems.` (the same system prompt you used to test the gpt-4o model.)
+1. In the chat playground, in the **Setup** pane, ensure that your **Phi-4-mini-instruct** model is selected and in the **Give the model instructions and context** field, set the system prompt to `You are an AI assistant that helps solve problems.` (the same system prompt you used to test the gpt-4o model.)
 1. Select **Apply changes** to update the system prompt.
 1. Ensure that a new chat session is started before repeating the same prompts you previously used to test the gpt-4 model.
 1. In the chat window, enter the following query
