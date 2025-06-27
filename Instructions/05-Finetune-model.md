@@ -43,8 +43,6 @@ Let's start by deploying a model in an Azure AI Foundry project.
 1. In the **Setup** pane, note the name of your model deployment; which should be **gpt-4o**. You can confirm this by viewing the deployment in the **Models and endpoints** page (just open that page in the navigation pane on the left).
 1. In the navigation pane on the left, select **Overview** to see the main page for your project; which looks like this:
 
-    > **Note**: If an *Insufficient permissions** error is displayed, use the **Fix me** button to resolve it.
-
     ![Screenshot of a Azure AI Foundry project overview page.](./media/ai-foundry-project.png)
 
 ## Fine-tune a model

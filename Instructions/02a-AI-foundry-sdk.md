@@ -36,8 +36,6 @@ Let's start by deploying a model in an Azure AI Foundry project.
 1. In the **Setup** pane, note the name of your model deployment; which should be **gpt-4o**. You can confirm this by viewing the deployment in the **Models and endpoints** page (just open that page in the navigation pane on the left).
 1. In the navigation pane on the left, select **Overview** to see the main page for your project; which looks like this:
 
-    > **Note**: If an *Insufficient permissions** error is displayed, use the **Fix me** button to resolve it.
-
     ![Screenshot of a Azure AI Foundry project overview page.](./media/ai-foundry-project.png)
 
 ## Create a client application to chat with the model
@@ -295,7 +293,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
    dotnet run
     ```
 
-    > **Tip**: If a compilation error occurs because the code targets .NET version 8.0 but .NET 9.0 is installed in the cloud shell, edit the **chat_app.csproj** file in the code folder and update the **TargetFramework** setting to **net9.0**.
+    > **Tip**: If a compilation error occurs because .NET version 9.0 is not installed, use the `dotnet --version` command to determine the version of .NET installed in your environment and then edit the **chat_app.csproj** file in the code folder to update the **TargetFramework** setting accordingly.
 
 1. When prompted, enter a question, such as `What is the fastest animal on Earth?` and review the response from your generative AI model.
 1. Try some follow-up questions, like `Where can I see one?` or `Are they endangered?`. The conversation should continue, using the chat history as context for each iteration.

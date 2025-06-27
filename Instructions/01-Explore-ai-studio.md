@@ -46,8 +46,6 @@ An Azure AI *project* provides a collaborative workspace for AI development. Let
 
 1. In the navigation pane on the left, select **Overview** to see the main page for your project; which looks like this:
 
-    > **Note**: If an *Insufficient permissions* error is displayed, use the **Fix me** button to resolve it.
-
     ![Screenshot of a Azure AI Foundry project overview page.](./media/ai-foundry-project.png)
 
 1. At the bottom of the navigation pane on the left, select **Management center**. The management center is where you can configure settings at both the *resource* and *project* levels; which are both shown in the navigation pane.
