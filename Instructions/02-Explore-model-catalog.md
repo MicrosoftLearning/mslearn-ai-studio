@@ -118,10 +118,8 @@ When you created your project, the **gpt-4o** model you selected was automatical
 Now let's chat with the new model in the playground.
 
 1. In the navigation bar, select **Playgrounds**. Then select the **Chat playground**.
-1. In the chat playground, in the **Setup** pane, ensure that your **Phi-4-mini-instruct** model is selected and in the **Give the model instructions and context** field, set the system prompt to `You are an AI assistant that helps solve problems.` (the same system prompt you used to test the gpt-4o model.)
-1. Select **Apply changes** to update the system prompt.
-1. Ensure that a new chat session is started before repeating the same prompts you previously used to test the gpt-4 model.
-1. In the chat window, enter the following query
+1. In the chat playground, in the **Setup** pane, ensure that your **Phi-4-mini-instruct** model is selected and in the chat box, provide the first line as `System message: You are an AI assistant that helps solve problems.` (the same system prompt you used to test the gpt-4o model, but since there is no system message setup, we're providing it in the first chat for context.)
+1. On a new line in the chat window (below your system message), enter the following query
 
     ```
    I have a fox, a chicken, and a bag of grain that I need to take over a river in a boat. I can only take one thing at a time. If I leave the chicken and the grain unattended, the chicken will eat the grain. If I leave the fox and the chicken unattended, the fox will eat the chicken. How can I get all three things across the river without anything being eaten?
