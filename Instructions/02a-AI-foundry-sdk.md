@@ -174,7 +174,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
 
     ```python
    # Get a chat client
-   inference_endpoint = f"https://{urlparse(project_endoint).netloc}/models"
+   inference_endpoint = f"https://{urlparse(project_endpoint).netloc}/models"
 
    credential = DefaultAzureCredential(exclude_environment_credential=True,
                                         exclude_managed_identity_credential=True,
