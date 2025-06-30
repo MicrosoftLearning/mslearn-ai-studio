@@ -190,6 +190,12 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
 
     ```csharp
    // Get a chat client
+   DefaultAzureCredentialOptions options = new()More actions
+           { ExcludeEnvironmentCredential = true,
+            ExcludeManagedIdentityCredential = true };
+   var projectClient = new AIProjectClient(
+            new Uri(project_connection),
+            new DefaultAzureCredential(options));
    ChatCompletionsClient chat = projectClient.GetChatCompletionsClient();
     ```
 
