@@ -25,8 +25,6 @@ namespace chat_app
                 string project_connection = configuration["PROJECT_ENDPOINT"];
                 string model_deployment = configuration["MODEL_DEPLOYMENT"];
 
-                // Initialize the project client
-
 
                 // Get a chat client
 
