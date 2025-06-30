@@ -150,8 +150,9 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
     ```python
    # Add references
    from dotenv import load_dotenv
+   from urllib.parse import urlparse
    from azure.identity import DefaultAzureCredential
-   from azure.ai.projects import AIProjectClient
+   from azure.ai.inference import ChatCompletionsClient
    from azure.ai.inference.models import SystemMessage, UserMessage, AssistantMessage
     ```
 
@@ -165,42 +166,24 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
     ```
 
 1. In the **main** function, under the comment **Get configuration settings**, note that the code loads the project connection string and model deployment name values you defined in the configuration file.
-1. Find the comment **Initialize the project client**, and add the following code to connect to your Azure AI Foundry project using the Azure credentials you're currently signed in with:
+1. Find the comment **Get a chat client**, and add the following code to create a client object for chatting with a model:
 
     > **Tip**: Be careful to maintain the correct indentation level for your code.
 
     **Python**
 
     ```python
-   # Initialize the project client
-   projectClient = AIProjectClient(            
-            credential=DefaultAzureCredential(
-                exclude_environment_credential=True,
-                exclude_managed_identity_credential=True
-            ),
-            endpoint=project_connection,
-        )
-    ```
-
-    **C#**
-
-    ```csharp
-   // Initialize the project client
-   DefaultAzureCredentialOptions options = new()
-       { ExcludeEnvironmentCredential = true,
-        ExcludeManagedIdentityCredential = true };
-   var projectClient = new AIProjectClient(
-        new Uri(project_connection),
-        new DefaultAzureCredential(options));
-    ```
-
-1. Find the comment **Get a chat client**, and add the following code to create a client object for chatting with a model:
-
-    **Python**
-
-    ```python
    # Get a chat client
-   chat = projectClient.inference.get_chat_completions_client()
+   inference_endpoint = f"https://{urlparse(project_endoint).netloc}/models"
+
+   credential = DefaultAzureCredential(exclude_environment_credential=True,
+                                        exclude_managed_identity_credential=True,
+                                        exclude_interactive_browser_credential=False)
+
+   chat = ChatCompletionsClient(
+            endpoint=inference_endpoint,
+            credential=credential,
+            credential_scopes=["https://ai.azure.com/.default"])
     ```
 
     **C#**
