@@ -103,7 +103,7 @@ Automated evaluation is an approach that attempts to address these shortcomings 
 1. Select **Next** to move to the next page.
 1. On the **Configure evaluators** page, use the **+Add** button to add the following evaluators, configuring each one as follows:
     - **Model scorer**:
-        - **Criteria name**: Semantic_similarity
+        - **Criteria name**: *Select the **Semantic_similarity** preset*
         - **Grade with**: *Select your **gpt-4o** model*
         - **User** settings (at the bottom):
 
@@ -113,12 +113,12 @@ Automated evaluation is an approach that attempts to address these shortcomings 
             <br>
         
     - **Likert-scale evaluator**:
-        - **Criteria name**: Relevance
+        - **Criteria name**: *Select the **Relevance** preset*
         - **Grade with**: *Select your **gpt-4o** model*
         - **Query**: \{\{item.question\}\}
 
     - **Text similarity**:
-        - **Criteria name**: F1_Score
+        - **Criteria name**: *Select the **F1_Score** preset*
         - **Ground truth**: \{\{item.ExpectedResponse\}\}
 
     - **Hateful and unfair content**:
