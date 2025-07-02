@@ -198,8 +198,8 @@ Now that you have a working index, you can use the Azure OpenAI SDK to implement
     The file is opened in a code editor.
 
 1. In the code file, replace the following placeholders: 
-    - **your_openai_endpoint**: The Open AI endpoint from your project's **Overview** page in the Azure AI Foundry portal (be suer the select the **Azure OpenAI** capability tab, not the Azure AI Inference or Azure AI Services capability).
-    - **your_openai_api_key** The Open AI API key from your project's **Overview** page in the Azure AI Foundry portal (be suer the select the **Azure OpenAI** capability tab, not the Azure AI Inference or Azure AI Services capability).
+    - **your_openai_endpoint**: The Open AI endpoint from your project's **Overview** page in the Azure AI Foundry portal (be sure to select the **Azure OpenAI** capability tab, not the Azure AI Inference or Azure AI Services capability).
+    - **your_openai_api_key** The Open AI API key from your project's **Overview** page in the Azure AI Foundry portal (be sure to select the **Azure OpenAI** capability tab, not the Azure AI Inference or Azure AI Services capability).
     - **your_chat_model**: The name you assigned to your **gpt-4o** model deployment, from the **Models + endpoints** page in the Azure AI Foundry portal (the default name is `gpt-4o`).
     - **your_embedding_model**: The name you assigned to your **text-embedding-ada-002** model deployment, from the **Models + endpoints** page in the Azure AI Foundry portal (the default name is `text-embedding-ada-002`).
     - **your_search_endpoint**: The URL for your Azure AI Search resource. You'll find this in the **Management center** in the Azure AI Foundry portal.
