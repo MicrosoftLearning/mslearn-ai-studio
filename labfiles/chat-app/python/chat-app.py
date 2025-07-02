@@ -1,4 +1,5 @@
 import os
+from dotenv import load_dotenv
 
 # Add references
 
@@ -15,7 +16,10 @@ def main():
         project_endpoint = os.getenv("PROJECT_ENDPOINT")
         model_deployment =  os.getenv("MODEL_DEPLOYMENT")
 
-        ## Get a chat client
+        # Initialize the project client
+        
+
+        # Get a chat client
 
 
         # Initialize prompt with system message

@@ -40,14 +40,17 @@ Let's start by deploying a model in an Azure AI Foundry project.
 
 ## Create a client application to chat with the model
 
-Now that you have deployed a model, you can use the Azure AI Foundry and Azure AI Model Inference SDKs to develop an application that chats with it.
+Now that you have deployed a model, you can use the Azure AI Foundry and Azure OpenAI SDKs to develop an application that chats with it.
 
 > **Tip**: You can choose to develop your solution using Python or Microsoft C#. Follow the instructions in the appropriate section for your chosen language.
 
 ### Prepare the application configuration
 
 1. In the Azure AI Foundry portal, view the **Overview** page for your project.
-1. In the **Project details** area, note the **Azure AI Foundry project endpoint**. You'll use this endpoint to connect to your project in a client application.
+1. In the **Project details** area, ensure that the **Azure AI Foundry** library is selected and view the **Azure AI Foundry project endpoint**. You'll use this endpoint to connect to your project and model in a client application.
+
+    > **Note**: You can also use the Azure OpenAI endpoint!
+
 1. Open a new browser tab (keeping the Azure AI Foundry portal open in the existing tab). Then in the new tab, browse to the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`; signing in with your Azure credentials if prompted.
 
     Close any welcome notifications to see the Azure portal home page.
@@ -71,21 +74,25 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
 
     > **Tip**: As you enter commands into the cloudshell, the output may take up a large amount of the screen buffer. You can clear the screen by entering the `cls` command to make it easier to focus on each task.
 
-1. After the repo has been cloned, navigate to the folder containing the chat application code files:
+1. After the repo has been cloned, navigate to the folder containing the chat application code files and view them:
 
-    Use the command below depending on your choice of programming language.
+    Use the commands below depending on your choice of programming language.
 
     **Python**
 
     ```
    cd mslearn-ai-foundry/labfiles/chat-app/python
+   ls -a -l
     ```
 
     **C#**
 
     ```
    cd mslearn-ai-foundry/labfiles/chat-app/c-sharp
+   ls -a -l
     ```
+
+    The folder contains a code file as well as a configuration file for application settings and a file defining the project runtime and package requrirements.
 
 1. In the cloud shell command-line pane, enter the following command to install the libraries you'll use:
 
@@ -94,15 +101,15 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
     ```
    python -m venv labenv
    ./labenv/bin/Activate.ps1
-   pip install python-dotenv azure-identity azure-ai-projects azure-ai-inference
+   pip install -r requirements.txt azure-identity azure-ai-projects openai
     ```
 
     **C#**
 
     ```
-   dotnet add package Azure.Identity
-   dotnet add package Azure.AI.Projects --version 1.0.0-beta.9
-   dotnet add package Azure.AI.Inference --version 1.0.0-beta.5
+   dotnet add package Azure.Identity --prerelease
+   dotnet add package Azure.AI.Projects --prerelease
+   dotnet add package Azure.AI.OpenAI --prerelease
     ```
     
 
@@ -122,7 +129,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
 
     The file is opened in a code editor.
 
-1. In the code file, replace the **your_project_endpoint** placeholder with the enpoint for your project (copied from the project **Overview** page in the Azure AI Foundry portal), and the **your_model_deployment** placeholder with the name of your gpt-4 model deployment.
+1. In the code file, replace the **your_project_endpoint** placeholder with the **Azure AI Foundry project endpoint** for your project (copied from the **Overview** page in the Azure AI Foundry portal); and the **your_model_deployment** placeholder with the name of your gpt-4 model deployment.
 1. After you've replaced the placeholders, within the code editor, use the **CTRL+S** command or **Right-click > Save** to save your changes and then use the **CTRL+Q** command or **Right-click > Quit** to close the code editor while keeping the cloud shell command line open.
 
 ### Write code to connect to your project and chat with your model
@@ -149,11 +156,9 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
 
     ```python
    # Add references
-   from dotenv import load_dotenv
-   from urllib.parse import urlparse
    from azure.identity import DefaultAzureCredential
-   from azure.ai.inference import ChatCompletionsClient
-   from azure.ai.inference.models import SystemMessage, UserMessage, AssistantMessage
+   from azure.ai.projects import AIProjectClient
+   from openai import AzureOpenAI
     ```
 
     **C#**
@@ -162,44 +167,55 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
    // Add references
    using Azure.Identity;
    using Azure.AI.Projects;
-   using Azure.AI.Inference;
+   using Azure.AI.OpenAI;
+   using OpenAI.Chat;
     ```
 
 1. In the **main** function, under the comment **Get configuration settings**, note that the code loads the project connection string and model deployment name values you defined in the configuration file.
-1. Find the comment **Get a chat client**, and add the following code to create a client object for chatting with a model:
+1. Find the comment **Initialize the project client**, and add the following code to connect to your Azure AI Foundry project:
 
     > **Tip**: Be careful to maintain the correct indentation level for your code.
 
     **Python**
 
     ```python
-   # Get a chat client
-   inference_endpoint = f"https://{urlparse(project_endpoint).netloc}/models"
-
-   credential = DefaultAzureCredential(exclude_environment_credential=True,
-                                        exclude_managed_identity_credential=True,
-                                        exclude_interactive_browser_credential=False)
-
-   chat = ChatCompletionsClient(
-            endpoint=inference_endpoint,
-            credential=credential,
-            credential_scopes=["https://ai.azure.com/.default"])
+   # Initialize the project client
+   project_client = AIProjectClient(            
+            credential=DefaultAzureCredential(
+                exclude_environment_credential=True,
+                exclude_managed_identity_credential=True
+            ),
+            endpoint=project_endpoint,
+        )
     ```
 
     **C#**
 
     ```csharp
-   // Get a chat client
+   // Initialize the project client
    DefaultAzureCredentialOptions options = new()
            { ExcludeEnvironmentCredential = true,
             ExcludeManagedIdentityCredential = true };
    var projectClient = new AIProjectClient(
             new Uri(project_connection),
             new DefaultAzureCredential(options));
-   ChatCompletionsClient chat = projectClient.GetChatCompletionsClient();
     ```
 
-    > **Note**: This code uses the Azure AI Foundry project client to create a secure connection to the default Azure AI Model Inference service endpoint associated with your project. You can also connect *directly* to the endpoint by using the Azure AI Model Inference SDK, specifying the endpoint URI displayed for the service connection in the Azure AI Foundry portal or in the corresponding Azure AI Services resource page in the Azure portal, and using an authentication key or Entra credential token. For more information about connecting to the Azure AI Model Inferencing service, see [Azure AI Model Inference API](https://learn.microsoft.com/azure/machine-learning/reference-model-inference-api).
+1. Find the comment **Get a chat client**, and add the following code to create a client object for chatting with a model:
+
+    **Python**
+
+    ```python
+   # Get a chat client
+   openai_client = project_client.inference.get_azure_openai_client(api_version="2024-10-21")
+    ```
+
+    **C#**
+
+    ```csharp
+   // Get a chat client
+   ChatClient openaiClient = projectClient.GetAzureOpenAIChatClient(deploymentName: model_deployment, connectionName: null, apiVersion: "2024-10-21");
+    ```
 
 1. Find the comment **Initialize prompt with system message**, and add the following code to initialize a collection of messages with a system prompt.
 
@@ -207,8 +223,8 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
 
     ```python
    # Initialize prompt with system message
-   prompt=[
-            SystemMessage("You are a helpful AI assistant that answers questions.")
+   prompt = [
+            {"role": "system", "content": "You are a helpful AI assistant that answers questions."}
         ]
     ```
 
@@ -216,8 +232,8 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
 
     ```csharp
    // Initialize prompt with system message
-   var prompt = new List<ChatRequestMessage>(){
-                    new ChatRequestSystemMessage("You are a helpful AI assistant that answers questions.")
+   var prompt = new List<ChatMessage>(){
+                    new SystemChatMessage("You are a helpful AI assistant that answers questions.")
                 };
     ```
 
@@ -227,30 +243,24 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure A
 
     ```python
    # Get a chat completion
-   prompt.append(UserMessage(input_text))
-   response = chat.complete(
-        model=model_deployment,
-        messages=prompt)
+   prompt.append({"role": "user", "content": input_text})
+   response = openai_client.chat.completions.create(
+            model=model_deployment,
+            messages=prompt)
    completion = response.choices[0].message.content
    print(completion)
-   prompt.append(AssistantMessage(completion))
+   prompt.append({"role": "assistant", "content": completion})
     ```
 
     **C#**
 
     ```csharp
    // Get a chat completion
-   prompt.Add(new ChatRequestUserMessage(input_text));
-   var requestOptions = new ChatCompletionsOptions()
-   {
-       Model = model_deployment,
-       Messages = prompt
-   };
-
-   Response<ChatCompletions> response = chat.Complete(requestOptions);
-   var completion = response.Value.Content;
-   Console.WriteLine(completion);
-   prompt.Add(new ChatRequestAssistantMessage(completion));
+   prompt.Add(new UserChatMessage(input_text));
+   ChatCompletion completion = openaiClient.CompleteChat(prompt);
+   var completionText = completion.Content[0].Text;
+   Console.WriteLine(completionText);
+   prompt.Add(new AssistantChatMessage(completionText));
     ```
 
 1. Use the **CTRL+S** command to save your changes to the code file.

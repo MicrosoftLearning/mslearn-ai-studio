@@ -26,6 +26,9 @@ namespace chat_app
                 string model_deployment = configuration["MODEL_DEPLOYMENT"];
 
 
+                // Initialize the project client
+
+
                 // Get a chat client
 
 
