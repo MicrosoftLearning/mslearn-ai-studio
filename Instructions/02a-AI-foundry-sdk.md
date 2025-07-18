@@ -6,11 +6,17 @@ lab:
 
 # Create a generative AI chat app
 
-In this exercise, you use the Azure AI Foundry SDK to create a simple chat app that connects to a project and chats with a language model.
+In this exercise, you use the Azure AI Foundry Python SDK to create a simple chat app that connects to a project and chats with a language model.
+
+> **Note**: This exercise is based on pre-release SDK software, which may be subject to change. Where necessary, we've used specific versions of packages; which may not reflect the latest available versions. You may experience some unexpected behavior, warnings, or errors.
+
+While this exercise is based on the Azure AI Foundry Python SDK, you can develop AI chat applications using multiple language-specific SDKs; including:
+
+- [Azure AI Projects for Python](https://pypi.org/project/azure-ai-projects)
+- [Azure AI Projects for Microsoft .NET](https://www.nuget.org/packages/Azure.AI.Projects)
+- [Azure AI Projects for JavaScript](https://www.npmjs.com/package/@azure/ai-projects)
 
 This exercise takes approximately **40** minutes.
-
-> **Note**: This exercise is based on pre-release SDKs, which may be subject to change. Where necessary, we've used specific versions of packages; which may not reflect the latest available versions. You may experience some unexpected behavior, warnings, or errors.
 
 ## Deploy a model in an Azure AI Foundry project
 
@@ -41,8 +47,6 @@ Let's start by deploying a model in an Azure AI Foundry project.
 ## Create a client application to chat with the model
 
 Now that you have deployed a model, you can use the Azure AI Foundry and Azure OpenAI SDKs to develop an application that chats with it.
-
-> **Tip**: You can choose to develop your solution using Python or Microsoft C#. Follow the instructions in the appropriate section for your chosen language.
 
 ### Prepare the application configuration
 
@@ -76,19 +80,8 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure O
 
 1. After the repo has been cloned, navigate to the folder containing the chat application code files and view them:
 
-    Use the commands below depending on your choice of programming language.
-
-    **Python**
-
     ```
    cd mslearn-ai-foundry/labfiles/chat-app/python
-   ls -a -l
-    ```
-
-    **C#**
-
-    ```
-   cd mslearn-ai-foundry/labfiles/chat-app/c-sharp
    ls -a -l
     ```
 
@@ -96,35 +89,15 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure O
 
 1. In the cloud shell command-line pane, enter the following command to install the libraries you'll use:
 
-    **Python**
-
     ```
    python -m venv labenv
    ./labenv/bin/Activate.ps1
    pip install -r requirements.txt azure-identity azure-ai-projects openai
     ```
-
-    **C#**
-
-    ```
-   dotnet add package Azure.Identity --prerelease
-   dotnet add package Azure.AI.Projects --prerelease
-   dotnet add package Azure.AI.OpenAI --prerelease
-    ```
-    
-
 1. Enter the following command to edit the configuration file that has been provided:
-
-    **Python**
 
     ```
    code .env
-    ```
-
-    **C#**
-
-    ```
-   code appsettings.json
     ```
 
     The file is opened in a code editor.
@@ -138,21 +111,11 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure O
 
 1. Enter the following command to edit the code file that has been provided:
 
-    **Python**
-
     ```
    code chat-app.py
     ```
 
-    **C#**
-
-    ```
-   code Program.cs
-    ```
-
 1. In the code file, note the existing statements that have been added at the top of the file to import the necessary SDK namespaces. Then, find the comment **Add references**, and add the following code to reference the namespaces in the libraries you installed previously:
-
-    **Python**
 
     ```python
    # Add references
@@ -161,22 +124,10 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure O
    from openai import AzureOpenAI
     ```
 
-    **C#**
-
-    ```csharp
-   // Add references
-   using Azure.Identity;
-   using Azure.AI.Projects;
-   using Azure.AI.OpenAI;
-   using OpenAI.Chat;
-    ```
-
 1. In the **main** function, under the comment **Get configuration settings**, note that the code loads the project connection string and model deployment name values you defined in the configuration file.
 1. Find the comment **Initialize the project client**, and add the following code to connect to your Azure AI Foundry project:
 
     > **Tip**: Be careful to maintain the correct indentation level for your code.
-
-    **Python**
 
     ```python
    # Initialize the project client
@@ -189,37 +140,14 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure O
         )
     ```
 
-    **C#**
-
-    ```csharp
-   // Initialize the project client
-   DefaultAzureCredentialOptions options = new()
-           { ExcludeEnvironmentCredential = true,
-            ExcludeManagedIdentityCredential = true };
-   var projectClient = new AIProjectClient(
-            new Uri(project_connection),
-            new DefaultAzureCredential(options));
-    ```
-
 1. Find the comment **Get a chat client**, and add the following code to create a client object for chatting with a model:
-
-    **Python**
 
     ```python
    # Get a chat client
    openai_client = project_client.inference.get_azure_openai_client(api_version="2024-10-21")
     ```
 
-    **C#**
-
-    ```csharp
-   // Get a chat client
-   ChatClient openaiClient = projectClient.GetAzureOpenAIChatClient(deploymentName: model_deployment, connectionName: null, apiVersion: "2024-10-21");
-    ```
-
 1. Find the comment **Initialize prompt with system message**, and add the following code to initialize a collection of messages with a system prompt.
-
-    **Python**
 
     ```python
    # Initialize prompt with system message
@@ -228,18 +156,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure O
         ]
     ```
 
-    **C#**
-
-    ```csharp
-   // Initialize prompt with system message
-   var prompt = new List<ChatMessage>(){
-                    new SystemChatMessage("You are a helpful AI assistant that answers questions.")
-                };
-    ```
-
 1. Note that the code includes a loop to allow a user to input a prompt until they enter "quit". Then in the loop section, find the comment **Get a chat completion** and add the following code to add the user input to the prompt, retrieve the completion from your model, and add the completion to the prompt (so that you retain chat history for future iterations):
-
-    **Python**
 
     ```python
    # Get a chat completion
@@ -250,17 +167,6 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure O
    completion = response.choices[0].message.content
    print(completion)
    prompt.append({"role": "assistant", "content": completion})
-    ```
-
-    **C#**
-
-    ```csharp
-   // Get a chat completion
-   prompt.Add(new UserChatMessage(input_text));
-   ChatCompletion completion = openaiClient.CompleteChat(prompt);
-   var completionText = completion.Content[0].Text;
-   Console.WriteLine(completionText);
-   prompt.Add(new AssistantChatMessage(completionText));
     ```
 
 1. Use the **CTRL+S** command to save your changes to the code file.
@@ -280,19 +186,9 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure O
 1. When prompted, follow the instructions to open the sign-in page in a new tab and enter the authentication code provided and your Azure credentials. Then complete the sign in process in the command line, selecting the subscription containing your Azure AI Foundry hub if prompted.
 1. After you have signed in, enter the following command to run the application:
 
-    **Python**
-
     ```
    python chat-app.py
     ```
-
-    **C#**
-
-    ```
-   dotnet run
-    ```
-
-    > **Tip**: If a compilation error occurs because .NET version 9.0 is not installed, use the `dotnet --version` command to determine the version of .NET installed in your environment and then edit the **chat_app.csproj** file in the code folder to update the **TargetFramework** setting accordingly.
 
 1. When prompted, enter a question, such as `What is the fastest animal on Earth?` and review the response from your generative AI model.
 1. Try some follow-up questions, like `Where can I see one?` or `Are they endangered?`. The conversation should continue, using the chat history as context for each iteration.

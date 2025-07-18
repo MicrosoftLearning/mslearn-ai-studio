@@ -10,9 +10,15 @@ Retrieval Augmented Generation (RAG) is a technique used to build applications t
 
 In this exercise, you'll use Azure AI Foundry to integrate custom data into a generative AI solution.
 
-This exercise takes approximately **45** minutes.
+> **Note**: The code in this exercise is based on pre-release SDK software, which may be subject to change. Where necessary, we've used specific versions of packages; which may not reflect the latest available versions. You may experience some unexpected behavior, warnings, or errors.
 
-> **Note**: This exercise is based on pre-release services, which may be subject to change.
+While this exercise is based on the Azure OpenAI Python SDK, you can develop AI chat applications using multiple language-specific SDKs; including:
+
+- [OpenAI for Python](https://pypi.org/project/openai/)
+- [Azure Open AI for Microsoft .NET](https://www.nuget.org/packages/Azure.AI.OpenAI)
+- [Azure OpenAI for TypeScript](https://www.npmjs.com/package/@azure/openai)
+
+This exercise takes approximately **45** minutes.
 
 ## Create an Azure AI Foundry hub and project
 
@@ -124,8 +130,6 @@ Before using your index in a RAG-based prompt flow, let's verify that it can be 
 
 Now that you have a working index, you can use the Azure OpenAI SDK to implement the RAG pattern in a client application. Let's explore the code to accomplish this in a simple example.
 
-> **Tip**: You can choose to develop your RAG solution using Python or Microsoft C#. Follow the instructions in the appropriate section for your chosen language.
-
 ### Prepare the application configuration
 
 1. Return to the browser tab containing the Azure portal (keeping the Azure AI Foundry portal open in the existing tab).
@@ -150,23 +154,11 @@ Now that you have a working index, you can use the Azure OpenAI SDK to implement
 
 1. After the repo has been cloned, navigate to the folder containing the chat application code files:
 
-    > **Note**: Follow the steps for your chosen programming language.
-
-    **Python**
-
     ```
    cd mslearn-ai-foundry/labfiles/rag-app/python
     ```
 
-    **C#**
-
-    ```
-   cd mslearn-ai-foundry/labfiles/rag-app/c-sharp
-    ```
-
 1. In the cloud shell command-line pane, enter the following command to install the OpenAI SDK library:
-
-    **Python**
 
     ```
    python -m venv labenv
@@ -174,30 +166,15 @@ Now that you have a working index, you can use the Azure OpenAI SDK to implement
    pip install -r requirements.txt openai
     ```
 
-    **C#**
-
-    ```
-   dotnet add package Azure.AI.OpenAI
-    ```
-    
-
 1. Enter the following command to edit the configuration file that has been provided:
-
-    **Python**
 
     ```
    code .env
     ```
 
-    **C#**
-
-    ```
-   code appsettings.json
-    ```
-
     The file is opened in a code editor.
 
-1. In the code file, replace the following placeholders: 
+1. In the configuration file, replace the following placeholders: 
     - **your_openai_endpoint**: The Open AI endpoint from your project's **Overview** page in the Azure AI Foundry portal (be sure to select the **Azure OpenAI** capability tab, not the Azure AI Inference or Azure AI Services capability).
     - **your_openai_api_key** The Open AI API key from your project's **Overview** page in the Azure AI Foundry portal (be sure to select the **Azure OpenAI** capability tab, not the Azure AI Inference or Azure AI Services capability).
     - **your_chat_model**: The name you assigned to your **gpt-4o** model deployment, from the **Models + endpoints** page in the Azure AI Foundry portal (the default name is `gpt-4o`).
@@ -211,16 +188,8 @@ Now that you have a working index, you can use the Azure OpenAI SDK to implement
 
 1. Enter the following command to edit the code file that has been provided:
 
-    **Python**
-
     ```
    code rag-app.py
-    ```
-
-    **C#**
-
-    ```
-   code Program.cs
     ```
 
 1. Review the code in the file, noting that it:
@@ -240,19 +209,9 @@ Now that you have a working index, you can use the Azure OpenAI SDK to implement
 
 1. In the cloud shell command-line pane, enter the following command to run the app:
 
-    **Python**
-
     ```
    python rag-app.py
     ```
-
-    **C#**
-
-    ```
-   dotnet run
-    ```
-
-    > **Tip**: If a compilation error occurs because .NET version 9.0 is not installed, use the `dotnet --version` command to determine the version of .NET installed in your environment and then edit the **rag_app.csproj** file in the code folder to update the **TargetFramework** setting accordingly.
 
 1. When prompted, enter a question, such as `Where should I go on vacation to see architecture?` and review the response from your generative AI model.
 
