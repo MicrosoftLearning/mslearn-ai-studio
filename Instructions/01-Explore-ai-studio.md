@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Prepare for an AI development project'
-    description: 'Learn how to organize cloud resources in hubs and projects so that developers are set up for success when building AI solutions.'
+    description: 'Learn how to organize cloud resources in Azure AI Foundry projects so that developers are set up for success when building AI solutions.'
 ---
 
 # Prepare for an AI development project
