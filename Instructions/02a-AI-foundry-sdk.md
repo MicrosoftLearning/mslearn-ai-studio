@@ -37,8 +37,11 @@ Let's start by deploying a model in an Azure AI Foundry project.
 
     > \* Some Azure AI resources are constrained by regional model quotas. In the event of a quota limit being exceeded later in the exercise, there's a possibility you may need to create another resource in a different region.
 
-1. Select **Create** and wait for your project, including the gpt-4 model deployment you selected, to be created.
-1. When your project is created, the chat playground will be opened automatically.
+1. Select **Create** and wait for your project to be created. If prompted, deploy the gpt-4o model using the **Global standard** deployment type and customize the deployment details to set a **Tokens per minute rate limit** of 50K (or the maximum available if less than 50K).
+
+    > **Note**: Reducing the TPM helps avoid over-using the quota available in the subscription you are using. 50,000 TPM should be sufficient for the data used in this exercise. If your available quota is lower than this, you will be able to complete the exercise but you may experience errors if the rate limit is exceeded.
+
+1. When your project is created, the chat playground will be opened automatically so you can test your model:
 1. In the **Setup** pane, note the name of your model deployment; which should be **gpt-4o**. You can confirm this by viewing the deployment in the **Models and endpoints** page (just open that page in the navigation pane on the left).
 1. In the navigation pane on the left, select **Overview** to see the main page for your project; which looks like this:
 
