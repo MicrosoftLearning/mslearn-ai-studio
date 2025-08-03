@@ -147,7 +147,7 @@ Now that you have deployed a model, you can use the Azure AI Foundry and Azure O
 
     ```python
    # Get a chat client
-   openai_client = project_client.inference.get_azure_openai_client(api_version="2024-10-21")
+   openai_client = project_client.get_openai_client(api_version="2024-10-21")
     ```
 
 1. Find the comment **Initialize prompt with system message**, and add the following code to initialize a collection of messages with a system prompt.
