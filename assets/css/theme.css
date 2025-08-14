@@ -1,0 +1,9 @@
+:root{
+  --bg:#ffffff; --text:#0b0f13; --link:#0067b8; --muted:#f5f7fb; --border:#e2e8f0;
+}
+[data-theme="dark"]{
+  --bg:#0b0f13; --text:#e6eaf2; --link:#61a6ff; --muted:#111827; --border:#334155;
+}
+html,body{background:var(--bg);color:var(--text);}
+a{color:var(--link);}
+pre,code{background:var(--muted);border:1px solid var(--border);}
