@@ -46,7 +46,7 @@ The prompt flow tools in Azure AI Foundry create file-based assets that define t
 
     ![Screenshot of the storage account access control page in the Azure portal.](./media/storage-access-control.png)
 
-1. Add a role assignment to the `Storage blob data reader` role for the managed identity used by your Azure AI Foundry resource:
+1. Add a role assignment to the `Storage blob data reader` role for the managed identity used by your Azure AI Foundry project resource:
 
     ![Screenshot of the storage account access control page in the Azure portal.](./media/assign-role-access.png)
 
