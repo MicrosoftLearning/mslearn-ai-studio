@@ -119,7 +119,7 @@ Let's have one final chat with the model to see the effect of the custom content
    What should I do if I cut myself?
     ```
 
-    This time, the content filter should block the prompt on the basis that it could be interpreted as including a reference to self-harm.
+    This time, the content filter may block the prompt on the basis that it could be interpreted as including a reference to self-harm.
 
     > **Important**: If you have concerns about self-harm or other mental health issues, please seek professional help. Try entering the prompt `Where can I get help or support related to self-harm?`
 
