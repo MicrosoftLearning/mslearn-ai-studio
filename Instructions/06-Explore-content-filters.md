@@ -8,7 +8,7 @@ lab:
 
 Azure AI Foundry includes default content filters to help ensure that potentially harmful prompts and completions are identified and removed from interactions with the service. Additionally, you can define custom content filters for your specific needs to ensure your model deployments enforce the appropriate responsible AI principles for your generative AI scenario. Content filtering is one element of an effective approach to responsible AI when working with generative AI models.
 
-In this exercise, you'll explore the effect of the default content filters in Azure AI Foundry.
+In this exercise, you'll explore the effects of content filters in Azure AI Foundry.
 
 This exercise will take approximately **25** minutes.
 
@@ -22,34 +22,26 @@ Let's start by deploying a model in an Azure AI Foundry project.
 
     ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
 
-1. In the home page, in the **Explore models and capabilities** section, search for the `Phi-4` model; which we'll use in our project.
-1. In the search results, select the **Phi-4** model to see its details, and then at the top of the page for the model, select **Use this model**.
+1. In the home page, in the **Explore models and capabilities** section, search for the `gpt-4o` model; which we'll use in our project.
+1. In the search results, select the **gpt-4o** model to see its details, and then at the top of the page for the model, select **Use this model**.
 1. When prompted to create a project, enter a valid name for your project and expand **Advanced options**.
 1. Select **Customize** and specify the following settings for your project:
     - **Azure AI Foundry resource**: *A valid name for your Azure AI Foundry resource*
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create or select a resource group*
-    - **Region**: Select any of the following regions\*:
-        - East US
-        - East US 2
-        - North Central US
-        - South Central US
-        - Sweden Central
-        - West US
-        - West US 3
+    - **Region**: *Select any **AI Foundry recommended***\*
 
-    > \* At the time of writing, the Microsoft *Phi-4* model we're going to use in this exercise is available in these regions. You can check the latest regional availability for specific models in the [Azure AI Foundry documentation](https://learn.microsoft.com/azure/ai-foundry/how-to/deploy-models-serverless-availability#region-availability). In the event of a regional quota limit being reached later in the exercise, there's a possibility you may need to create another resource in a different region.
+    > \* Some Azure AI resources are constrained by regional model quotas. In the event of a quota limit being exceeded later in the exercise, there's a possibility you may need to create another resource in a different region.
 
-1. Select **Create** and wait for your project to be created.
-1. When prompted with Phi-4 information, agree to the terms of use and deploy the model.
-1. When your model is deployed, select the blue button at the top of the deployment info to open the playground.
-1. In the **Setup** pane, note the name of your model deployment; which should be **Phi-4**.
+1. Select **Create** and wait for your project to be created. If prompted, deploy the gpt-4o model using the **Global standard** deployment type.
+1. When your model is deployed, it is shown in the playground.
+1. In the **Setup** pane, note the name of your model deployment; which should be **gpt-4o**.
 
 ## Chat using the content filter
 
-The Phi-4 model you deployed has a default content filter applied, which has a balanced set of filters that will disallow most harmful content while allowing input and output language considered reasonable safe.
+The model you deployed has a default content filter applied, which has a balanced set of filters that will disallow most harmful content while allowing input and output language considered reasonable safe.
 
-1. In the chat playground, ensure your Phi-4 model is selected.
+1. In the chat playground, ensure your gpt-4o model is selected.
 1. Submit the following prompt and view the response:
 
     ```
@@ -93,15 +85,15 @@ When the default content filter doesn't meet your needs, you can create custom c
     - **Sexual**: Sexually explicit or abusive language.
     - **Self-harm**: Language that describes or encourages self-harm.
 
-    Filters are applied for each of these categories to prompts and completions, based on blocking thresholds of **Block few**, **Block some**, and **Block all** that are used to determine what specific kinds of language are intercepted and prevented by the filter.
+    Filters are applied for each of these categories to prompts and completions, based on blocking thresholds that are used to determine what specific kinds of language are intercepted and prevented by the filter.
 
     Additionally, *prompt shield* protections are provided to mitigate deliberate attempts to abuse your generative AI app.
 
-1. Change the threshold for each category of input filter to **Block all**.
+1. Change the threshold for each category of input filter to the ***highest*** blocking threshold.
 
-1. On the **Output filter** page, review the settings that can be applied to output responses, and change the threshold for each category to **Block all**.
+1. On the **Output filter** page, review the settings that can be applied to output responses, and change the threshold for each category to the ***highest*** blocking threshold.
 
-1. On the **Deployment** page, select your **Phi-4** model deployment to apply the new content filter to it, confirming that you want to replace the existing content filter when prompted.
+1. On the **Deployment** page, select your **gpt-4o** model deployment to apply the new content filter to it, confirming that you want to replace the existing content filter when prompted.
 
 1. On the **Review** page, select **Create filter**, and wait for the content filter to be created.
 
