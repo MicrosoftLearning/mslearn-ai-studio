@@ -104,7 +104,7 @@ When the default content filter doesn't meet your needs, you can create custom c
 Let's have one final chat with the model to see the effect of the custom content filter.
 
 1. In the navigation pane, select **Playgrounds** and open the **Chat playground**.
-1. Ensure a new session has been started with your Phi-4 model.
+1. Ensure a new session has been started with your GPT-4o model.
 1. Submit the following prompt and view the response:
 
     ```
