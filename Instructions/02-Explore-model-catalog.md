@@ -61,9 +61,9 @@ You've reviewed two different models, both of which could be used to implement a
 1. In the list of models to compare, select the **gpt-4o** model to re-open its benchmarks page.
 1. In the page for the **gpt-4o** model page, select the **Overview** tab to view the model details.
 
-## Create an Foundry project
+## Create a Foundry project
 
-To use a model, you need to create an Foundry *project*.
+To use a model, you need to create a Foundry *project*.
 
 1. At the top of the **gpt-4o** model overview page, select **Use this model**.
 1. When prompted to create a project, enter a valid name for your project and expand **Advanced options**.

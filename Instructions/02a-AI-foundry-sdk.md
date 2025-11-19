@@ -18,9 +18,9 @@ While this exercise is based on the Foundry Python SDK, you can develop AI chat 
 
 This exercise takes approximately **40** minutes.
 
-## Deploy a model in an Foundry project
+## Deploy a model in a Foundry project
 
-Let's start by deploying a model in an Foundry project.
+Let's start by deploying a model in a Foundry project.
 
 1. In a web browser, open the [Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Foundry** logo at the top left to navigate to the home page, which looks similar to the following image (close the **Help** pane if it's open):
 
@@ -200,7 +200,7 @@ Now that you have deployed a model, you can use the Foundry and Azure OpenAI SDK
 
 ## Summary
 
-In this exercise, you used the Foundry SDK to create a client application for a generative AI model that you deployed in an Foundry project.
+In this exercise, you used the Foundry SDK to create a client application for a generative AI model that you deployed in a Foundry project.
 
 ## Clean up
 

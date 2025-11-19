@@ -14,7 +14,7 @@ You first need to create a project in the Foundry portal to create the necessary
 
 ## Create a project in the Foundry portal
 
-You start by creating an Foundry portal project and an Azure AI Hub to support it.
+You start by creating a Foundry portal project and an Azure AI Hub to support it.
 
 1. In a web browser, open [https://ai.azure.com](https://ai.azure.com) and sign in using your Azure credentials.
 1. In the home page, select **+ Create project**.
