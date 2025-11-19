@@ -6,9 +6,9 @@ lab:
 
 # Choose and deploy a language model
 
-The Azure AI Foundry model catalog serves as a central repository where you can explore and use a variety of models, facilitating the creation of your generative AI scenario.
+The Microsoft Foundry model catalog serves as a central repository where you can explore and use a variety of models, facilitating the creation of your generative AI scenario.
 
-In this exercise, you'll explore the model catalog in Azure AI Foundry portal, and compare potential models for a generative AI application that assists in solving problems.
+In this exercise, you'll explore the model catalog in Foundry portal, and compare potential models for a generative AI application that assists in solving problems.
 
 This exercise will take approximately **25** minutes.
 
@@ -16,11 +16,11 @@ This exercise will take approximately **25** minutes.
 
 ## Explore models
 
-Let's start by signing into Azure AI Foundry portal and exploring some of the available models.
+Let's start by signing into Foundry portal and exploring some of the available models.
 
-1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image (close the **Help** pane if it's open):
+1. In a web browser, open the [Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Foundry** logo at the top left to navigate to the home page, which looks similar to the following image (close the **Help** pane if it's open):
 
-    ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
+    ![Screenshot of Foundry portal.](./media/ai-foundry-home.png)
 
 1. Review the information on the home page.
 1. In the home page, in the **Explore models and capabilities** section, search for the `gpt-4o` model; which we'll use in our project.
@@ -61,14 +61,14 @@ You've reviewed two different models, both of which could be used to implement a
 1. In the list of models to compare, select the **gpt-4o** model to re-open its benchmarks page.
 1. In the page for the **gpt-4o** model page, select the **Overview** tab to view the model details.
 
-## Create an Azure AI Foundry project
+## Create an Foundry project
 
-To use a model, you need to create an Azure AI Foundry *project*.
+To use a model, you need to create an Foundry *project*.
 
 1. At the top of the **gpt-4o** model overview page, select **Use this model**.
 1. When prompted to create a project, enter a valid name for your project and expand **Advanced options**.
 1. In the **Advanced options** section, specify the following settings for your project:
-    - **Azure AI Foundry resource**: *A valid name for your Azure AI Foundry resource*
+    - **Foundry resource**: *A valid name for your Foundry resource*
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create or select a resource group*
     - **Region**: *Select any **AI Foundry recommended***\*
@@ -81,7 +81,7 @@ To use a model, you need to create an Azure AI Foundry *project*.
 
 1. When your project is created, the chat playground will be opened automatically so you can test your model:
 
-    ![Screenshot of a Azure AI Foundry project chat playground.](./media/ai-foundry-chat-playground.png)
+    ![Screenshot of a Foundry project chat playground.](./media/ai-foundry-chat-playground.png)
 
 ## Chat with the *gpt-4o* model
 
@@ -150,7 +150,7 @@ The details and benchmarks provided in the model catalog, along with the ability
 
 ## Clean up
 
-If you've finished exploring Azure AI Foundry portal, you should delete the resources you have created in this exercise to avoid incurring unnecessary Azure costs.
+If you've finished exploring Foundry portal, you should delete the resources you have created in this exercise to avoid incurring unnecessary Azure costs.
 
 1. Open the [Azure portal](https://portal.azure.com) and view the contents of the resource group where you deployed the resources used in this exercise.
 1. On the toolbar, select **Delete resource group**.

@@ -8,27 +8,27 @@ lab:
 
 When you want a language model to behave a certain way, you can use prompt engineering to define the desired behavior. When you want to improve the consistency of the desired behavior, you can opt to fine-tune a model, comparing it to your prompt engineering approach to evaluate which method best fits your needs.
 
-In this exercise, you'll fine-tune a language model with the Azure AI Foundry that you want to use for a custom chat application scenario. You'll compare the fine-tuned model with a base model to assess whether the fine-tuned model fits your needs better.
+In this exercise, you'll fine-tune a language model with the Microsoft Foundry that you want to use for a custom chat application scenario. You'll compare the fine-tuned model with a base model to assess whether the fine-tuned model fits your needs better.
 
 Imagine you work for a travel agency and you're developing a chat application to help people plan their vacations. The goal is to create a simple and inspiring chat that suggests destinations and activities with a consistent, friendly conversational tone.
 
 This exercise will take approximately **60** minutes\*.
 
-> \* **Note**: This timing is an estimate based on the average experience. Fine-tuning is dependent on cloud infrastructure resources, which can take a variable amount of time to provision depending on data center capacity and concurrent demand. Some activities in this exercise may take a <u>long</u> time to complete, and require patience. If things are taking a while, consider reviewing the [Azure AI Foundry fine-tuning documentation](https://learn.microsoft.com/azure/ai-studio/concepts/fine-tuning-overview) or taking a break. It is possible some processes may time-out or appear to run indefinitely. Some of the technologies used in this exercise are in preview or in active development. You may experience some unexpected behavior, warnings, or errors.
+> \* **Note**: This timing is an estimate based on the average experience. Fine-tuning is dependent on cloud infrastructure resources, which can take a variable amount of time to provision depending on data center capacity and concurrent demand. Some activities in this exercise may take a <u>long</u> time to complete, and require patience. If things are taking a while, consider reviewing the [Microsoft Foundry fine-tuning documentation](https://learn.microsoft.com/azure/ai-studio/concepts/fine-tuning-overview) or taking a break. It is possible some processes may time-out or appear to run indefinitely. Some of the technologies used in this exercise are in preview or in active development. You may experience some unexpected behavior, warnings, or errors.
 
-## Deploy a model in an Azure AI Foundry project
+## Deploy a model in an Microsoft Foundry project
 
-Let's start by deploying a model in an Azure AI Foundry project.
+Let's start by deploying a model in an Foundry project.
 
-1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image (close the **Help** pane if it's open):
+1. In a web browser, open the [Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Foundry** logo at the top left to navigate to the home page, which looks similar to the following image (close the **Help** pane if it's open):
 
-    ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
+    ![Screenshot of Foundry portal.](./media/ai-foundry-home.png)
 
 1. In the home page, in the **Explore models and capabilities** section, search for the `gpt-4o` model; which we'll use in our project.
 1. In the search results, select the **gpt-4o** model to see its details, and then at the top of the page for the model, select **Use this model**.
 1. When prompted to create a project, enter a valid name for your project and expand **Advanced options**.
 1. Select **Customize** and specify the following settings for your project:
-    - **Azure AI Foundry resource**: *A valid name for your Azure AI Foundry resource*
+    - **Foundry resource**: *A valid name for your Foundry resource*
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create or select a resource group*
     - **Region**: *Select one of the following regions*:\*
@@ -46,7 +46,7 @@ Let's start by deploying a model in an Azure AI Foundry project.
 1. In the **Setup** pane, note the name of your model deployment; which should be **gpt-4o**. You can confirm this by viewing the deployment in the **Models and endpoints** page (just open that page in the navigation pane on the left).
 1. In the navigation pane on the left, select **Overview** to see the main page for your project; which looks like this:
 
-    ![Screenshot of a Azure AI Foundry project overview page.](./media/ai-foundry-project.png)
+    ![Screenshot of a Foundry project overview page.](./media/ai-foundry-project.png)
 
 ## Fine-tune a model
 
@@ -171,7 +171,7 @@ Now that you deployed your fine-tuned model, you can test it like you tested you
 
 ## Clean up
 
-If you've finished exploring Azure AI Foundry, you should delete the resources you've created to avoid unnecessary Azure costs.
+If you've finished exploring Foundry, you should delete the resources you've created to avoid unnecessary Azure costs.
 
 - Navigate to the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`.
 - In the Azure portal, on the **Home** page, select **Resource groups**.

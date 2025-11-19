@@ -8,7 +8,7 @@ lab:
 
 Retrieval Augmented Generation (RAG) is a technique used to build applications that integrate data from custom data sources into a prompt for a generative AI model. RAG is a commonly used pattern for developing generative AI apps - chat-based applications that use a language model to interpret inputs and generate appropriate responses.
 
-In this exercise, you'll use Azure AI Foundry to integrate custom data into a generative AI solution.
+In this exercise, you'll use Microsoft Foundry to integrate custom data into a generative AI solution.
 
 > **Note**: The code in this exercise is based on pre-release SDK software, which may be subject to change. Where necessary, we've used specific versions of packages; which may not reflect the latest available versions. You may experience some unexpected behavior, warnings, or errors.
 
@@ -20,13 +20,13 @@ While this exercise is based on the Azure OpenAI Python SDK, you can develop AI 
 
 This exercise takes approximately **45** minutes.
 
-## Create an Azure AI Foundry hub and project
+## Create an Microsoft Foundry hub and project
 
-The features of Azure AI Foundry we're going to use in this exercise require a project that is based on an Azure AI Foundry *hub* resource.
+The features of Foundry we're going to use in this exercise require a project that is based on an Foundry *hub* resource.
 
-1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image (close the **Help** pane if it's open):
+1. In a web browser, open the [Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Foundry** logo at the top left to navigate to the home page, which looks similar to the following image (close the **Help** pane if it's open):
 
-    ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
+    ![Screenshot of Foundry portal.](./media/ai-foundry-home.png)
 
 1. In the browser, navigate to `https://ai.azure.com/managementCenter/allResources` and select **Create new**. Then choose the option to create a new **AI hub resource**.
 1. In the **Create a project** wizard, enter a valid name for your project, and select the option to create a new hub. Then use the **Rename hub** link to specify a valid name for your new hub, expand **Advanced options**, and specify the following settings for your project:
@@ -47,7 +47,7 @@ You need two models to implement your solution:
 - An *embedding* model to vectorize text data for efficient indexing and processing.
 - A model that can generate natural language responses to questions based on your data.
 
-1. In the Azure AI Foundry portal, in your project, in the navigation pane on the left, under **My assets**, select the **Models + endpoints** page.
+1. In the Foundry portal, in your project, in the navigation pane on the left, under **My assets**, select the **Models + endpoints** page.
 1. Create a new deployment of the **text-embedding-ada-002** model with the following settings by selecting **Customize** in the Deploy model wizard:
 
     - **Deployment name**: *A valid name for your model deployment*
@@ -68,7 +68,7 @@ You need two models to implement your solution:
 The data for your app consists of a set of travel brochures in PDF format from the fictitious travel agency *Margie's Travel*. Let's add them to the project.
 
 1. In a new browser tab, download the [zipped archive of brochures](https://github.com/MicrosoftLearning/mslearn-ai-studio/raw/main/data/brochures.zip) from `https://github.com/MicrosoftLearning/mslearn-ai-studio/raw/main/data/brochures.zip` and extract it to a folder named **brochures** on your local file system.
-1. In Azure AI Foundry portal, in your project, in the navigation pane on the left, under **My assets**, select the **Data + indexes** page.
+1. In Foundry portal, in your project, in the navigation pane on the left, under **My assets**, select the **Data + indexes** page.
 1. Select **+ New data**.
 1. In the **Add your data** wizard, expand the drop-down menu to select **Upload files/folders**.
 1. Select **Upload folder** and upload the **brochures** folder. Wait until all the files in the folder are listed.
@@ -79,10 +79,10 @@ The data for your app consists of a set of travel brochures in PDF format from t
 
 Now that you've added a data source to your project, you can use it to create an index in your Azure AI Search resource.
 
-1. In Azure AI Foundry portal, in your project, in the navigation pane on the left, under **My assets**, select the **Data + indexes** page.
+1. In Foundry portal, in your project, in the navigation pane on the left, under **My assets**, select the **Data + indexes** page.
 1. In the **Indexes** tab, add a new index with the following settings:
     - **Source location**:
-        - **Data source**: Data in Azure AI Foundry
+        - **Data source**: Data in Foundry
             - *Select the **brochures** data source*
     - **Index configuration**:
         - **Select Azure AI Search service**: *Create a new Azure AI Search resource with the following settings*:
@@ -92,7 +92,7 @@ Now that you've added a data source to your project, you can use it to create an
             - **Location**: *The same location as your AI hub*
             - **Pricing tier**: Basic
             
-            Wait for the AI Search resource to be created. Then return to the Azure AI Foundry and finish configuring the index by selecting **Connect other Azure AI Search resource** and adding a connection to the AI Search resource you just created.
+            Wait for the AI Search resource to be created. Then return to the Foundry and finish configuring the index by selecting **Connect other Azure AI Search resource** and adding a connection to the AI Search resource you just created.
  
         - **Vector index**: `brochures-index`
         - **Virtual machine**: Auto select
@@ -132,7 +132,7 @@ Now that you have a working index, you can use the Azure OpenAI SDK to implement
 
 ### Prepare the application configuration
 
-1. Return to the browser tab containing the Azure portal (keeping the Azure AI Foundry portal open in the existing tab).
+1. Return to the browser tab containing the Azure portal (keeping the Foundry portal open in the existing tab).
 1. Use the **[\>_]** button to the right of the search bar at the top of the page to create a new Cloud Shell in the Azure portal, selecting a ***PowerShell*** environment with no storage in your subscription.
 
     The cloud shell provides a command-line interface in a pane at the bottom of the Azure portal. You can resize or maximize this pane to make it easier to work in.
@@ -175,13 +175,13 @@ Now that you have a working index, you can use the Azure OpenAI SDK to implement
     The file is opened in a code editor.
 
 1. In the configuration file, replace the following placeholders: 
-    - **your_openai_endpoint**: The Open AI endpoint from your project's **Overview** page in the Azure AI Foundry portal (be sure to select the **Azure OpenAI** capability tab).
-    - **your_openai_api_key** The Open AI API key from your project's **Overview** page in the Azure AI Foundry portal (be sure to select the **Azure OpenAI** capability tab).
-    - **your_chat_model**: The name you assigned to your **gpt-4o** model deployment, from the **Models + endpoints** page in the Azure AI Foundry portal (the default name is `gpt-4o`).
-    - **your_embedding_model**: The name you assigned to your **text-embedding-ada-002** model deployment, from the **Models + endpoints** page in the Azure AI Foundry portal (the default name is `text-embedding-ada-002`).
-    - **your_search_endpoint**: The URL for your Azure AI Search resource. You'll find this in the **Management center** in the Azure AI Foundry portal.
-    - **your_search_api_key**: The API key for your Azure AI Search resource. You'll find this in the **Management center** in the Azure AI Foundry portal.
-    - **your_index**: Replace with your index name from the **Data + indexes** page for your project in the Azure AI Foundry portal (it should be `brochures-index`).
+    - **your_openai_endpoint**: The Open AI endpoint from your project's **Overview** page in the Foundry portal (be sure to select the **Azure OpenAI** capability tab).
+    - **your_openai_api_key** The Open AI API key from your project's **Overview** page in the Foundry portal (be sure to select the **Azure OpenAI** capability tab).
+    - **your_chat_model**: The name you assigned to your **gpt-4o** model deployment, from the **Models + endpoints** page in the Foundry portal (the default name is `gpt-4o`).
+    - **your_embedding_model**: The name you assigned to your **text-embedding-ada-002** model deployment, from the **Models + endpoints** page in the Foundry portal (the default name is `text-embedding-ada-002`).
+    - **your_search_endpoint**: The URL for your Azure AI Search resource. You'll find this in the **Management center** in the Foundry portal.
+    - **your_search_api_key**: The API key for your Azure AI Search resource. You'll find this in the **Management center** in the Foundry portal.
+    - **your_index**: Replace with your index name from the **Data + indexes** page for your project in the Foundry portal (it should be `brochures-index`).
 1. After you've replaced the placeholders, in the code editor, use the **CTRL+S** command or **Right-click > Save** to save your changes and then use the **CTRL+Q** command or **Right-click > Quit** to close the code editor while keeping the cloud shell command line open.
 
 ### Explore code to implement the RAG pattern
@@ -225,4 +225,4 @@ Now that you have a working index, you can use the Azure OpenAI SDK to implement
 
 To avoid unnecessary Azure costs and resource utilization, you should remove the resources you deployed in this exercise.
 
-1. If you've finished exploring Azure AI Foundry, return to the [Azure portal](https://portal.azure.com) at `https://portal.azure.com` and sign in using your Azure credentials if necessary. Then delete the resources in the resource group where you provisioned your Azure AI Search and Azure AI resources.
+1. If you've finished exploring Foundry, return to the [Azure portal](https://portal.azure.com) at `https://portal.azure.com` and sign in using your Azure credentials if necessary. Then delete the resources in the resource group where you provisioned your Azure AI Search and Azure AI resources.

@@ -6,19 +6,19 @@ lab:
 
 # Evaluate generative AI model performance
 
-In this exercise, you'll use manual and automated evaluations to assess the performance of a model in the Azure AI Foundry portal.
+In this exercise, you'll use manual and automated evaluations to assess the performance of a model in the Microsoft Foundry portal.
 
 This exercise will take approximately **30** minutes.
 
 > **Note**: Some of the technologies used in this exercise are in preview or in active development. You may experience some unexpected behavior, warnings, or errors.
 
-## Create an Azure AI Foundry hub and project
+## Create an Foundry hub and project
 
-The features of Azure AI Foundry we're going to use in this exercise require a project that is based on an Azure AI Foundry *hub* resource.
+The features of Foundry we're going to use in this exercise require a project that is based on an Foundry *hub* resource.
 
-1. In a web browser, open the [Azure AI Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Azure AI Foundry** logo at the top left to navigate to the home page, which looks similar to the following image (close the **Help** pane if it's open):
+1. In a web browser, open the [Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Foundry** logo at the top left to navigate to the home page, which looks similar to the following image (close the **Help** pane if it's open):
 
-    ![Screenshot of Azure AI Foundry portal.](./media/ai-foundry-home.png)
+    ![Screenshot of Foundry portal.](./media/ai-foundry-home.png)
 
 1. In the browser, navigate to `https://ai.azure.com/managementCenter/allResources` and select **Create new**. Then choose the option to create a new **AI hub resource**.
 1. In the **Create a project** wizard, enter a valid name for your project, and select the option to create a new hub. Then use the **Rename hub** link to specify a valid name for your new hub, expand **Advanced options**, and specify the following settings for your project:
@@ -62,7 +62,7 @@ In this exercise, you'll evaluate the performance of a gpt-4o-mini model. You'll
 You can manually review model responses based on test data. Manually reviewing allows you to test different inputs to evaluate whether the model performs as expected.
 
 1. In a new browser tab, download the [travel_evaluation_data.jsonl](https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel_evaluation_data.jsonl) from `https://raw.githubusercontent.com/MicrosoftLearning/mslearn-ai-studio/refs/heads/main/data/travel_evaluation_data.jsonl` and save it in a local folder as **travel_evaluation_data.jsonl** (be sure to save it as a .jsonl file, not a .txt file).
-1. Back on the Azure AI Foundry portal tab, in the navigation pane, in the **Protect and govern** section, select **Evaluation**.
+1. Back on the Foundry portal tab, in the navigation pane, in the **Protect and govern** section, select **Evaluation**.
 1. If the **Create a new evaluation** pane opens automatically, select **Cancel** to close it.
 1. In the **Evaluation** page, view the **Manual evaluations** tab and select **+ New manual evaluation**.
 1. In the **Configurations** section, in the **Model** list, select your **gpt-4o** model deployment.
@@ -78,7 +78,7 @@ You can manually review model responses based on test data. Manually reviewing a
 1. Review the questions and expected answers in the test file - you'll use these to evaluate the responses that the model generates.
 1. Select **Run** from the top bar to generate outputs for all questions you added as inputs. After a few minutes, the responses from the model should be shown in a new **Output** column, like this:
 
-    ![Screenshot of a manual evaluation page in Azure AI Foundry portal.](./media/manual-evaluation.png)
+    ![Screenshot of a manual evaluation page in Foundry portal.](./media/manual-evaluation.png)
 
 1. Review the outputs for each question, comparing the output from the model to the expected answer and "scoring" the results by selecting the thumbs up or down icon at the bottom right of each response.
 1. After you've scored the responses, review the summary tiles above the list. Then in the toolbar, select **Save results** and assign a suitable name. Saving results enables you to retrieve them later for further evaluation or comparison with a different model.
@@ -136,7 +136,7 @@ Automated evaluation is an approach that attempts to address these shortcomings 
 
 ## Clean up
 
-When you finish exploring the Azure AI Foundry, you should delete the resources you’ve created to avoid unnecessary Azure costs.
+When you finish exploring the Foundry, you should delete the resources you’ve created to avoid unnecessary Azure costs.
 
 - Navigate to the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`.
 - In the Azure portal, on the **Home** page, select **Resource groups**.

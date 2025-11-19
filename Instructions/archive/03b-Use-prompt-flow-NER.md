@@ -6,15 +6,15 @@ Extracting valuable information from text is known as Named Entity Recognition (
 
 Large Language Models (LLMs) can be used to perform NER. To create an application that takes a text as input and outputs entities, you can create a flow that uses a LLM node with prompt flow.
 
-In this exercise, you'll use Azure AI Foundry portal's prompt flow to create an LLM application that expects an entity type and text as input. It calls a GPT model from Azure OpenAI through a LLM node to extract the required entity from the given text, cleans the result and outputs the extracted entities.
+In this exercise, you'll use Microsoft Foundry portal's prompt flow to create an LLM application that expects an entity type and text as input. It calls a GPT model from Azure OpenAI through a LLM node to extract the required entity from the given text, cleans the result and outputs the extracted entities.
 
 ![Exercise overview](./media/get-started-lab.png)
 
-You first need to create a project in the Azure AI Foundry portal to create the necessary Azure resources. Then, you can deploy a GPT model with the Azure OpenAI service. Once you have the necessary resources, you can create the flow. Finally you'll run the flow to test it and view the sample output.
+You first need to create a project in the Foundry portal to create the necessary Azure resources. Then, you can deploy a GPT model with the Azure OpenAI service. Once you have the necessary resources, you can create the flow. Finally you'll run the flow to test it and view the sample output.
 
-## Create a project in the Azure AI Foundry portal
+## Create a project in the Foundry portal
 
-You start by creating an Azure AI Foundry portal project and an Azure AI Hub to support it.
+You start by creating an Foundry portal project and an Azure AI Hub to support it.
 
 1. In a web browser, open [https://ai.azure.com](https://ai.azure.com) and sign in using your Azure credentials.
 1. In the home page, select **+ Create project**.
@@ -36,7 +36,7 @@ You start by creating an Azure AI Foundry portal project and an Azure AI Hub to 
 
 ## Deploy a GPT model
 
-To use a LLM model in prompt flow, you need to deploy a model first. The Azure AI Foundry portal allows you to deploy OpenAI models that you can use in your flows.
+To use a LLM model in prompt flow, you need to deploy a model first. The Foundry portal allows you to deploy OpenAI models that you can use in your flows.
 
 1. In the navigation pane on the left, under **My assets**, select the **Models + endpoints** page.
 1. Select **+ Deploy model** and **Deploy base model**.
@@ -50,9 +50,9 @@ To use a LLM model in prompt flow, you need to deploy a model first. The Azure A
     - **Content filter**: DefaultV2
     - **Enable dynamic quota**: Disabled
    
-Now that you have your language model deployed, you can create a flow in Azure AI Foundry portal that calls the deployed model.
+Now that you have your language model deployed, you can create a flow in Foundry portal that calls the deployed model.
 
-## Create and run a flow in the Azure AI Foundry portal
+## Create and run a flow in the Foundry portal
 
 Now that you have all necessary resources provisioned, you can create a flow.
 
@@ -177,7 +177,7 @@ Now that you've developed the flow, you can run it to test it. Since you've adde
 
 ## Delete Azure resources
 
-When you finish exploring the Azure AI Foundry portal, you should delete the resources you’ve created to avoid unnecessary Azure costs.
+When you finish exploring the Foundry portal, you should delete the resources you’ve created to avoid unnecessary Azure costs.
 
 - Navigate to the [Azure portal](https://portal.azure.com) at `https://portal.azure.com`.
 - In the Azure portal, on the **Home** page, select **Resource groups**.
