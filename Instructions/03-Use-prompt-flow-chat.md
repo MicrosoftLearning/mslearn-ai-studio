@@ -96,7 +96,7 @@ A prompt flow provides a way to orchestrate prompts and other activities to defi
     - **Api**: chat
     - **deployment_name**: *The gpt-4o model you deployed*
     - **response_format**: {"type":"text"}
-1. Modify the **Prompt** field as follows:
+1. Modify the **Prompt** field as follows, removing the `\` escape in the YAML loop:
 
    ```yml
    # system:
@@ -124,7 +124,7 @@ A prompt flow provides a way to orchestrate prompts and other activities to defi
    \{\% endfor \%\}
 
    # user:
-   {{question}}
+   \{\{question\}\}
    ```
 
     Read the prompt you added so you are familiar with it. It consists of a system message (which includes an objective, a definition of its capabilities, and some instructions), and the chat history (ordered to show each user question input and each previous assistant answer output)
