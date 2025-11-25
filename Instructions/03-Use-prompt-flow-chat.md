@@ -98,7 +98,7 @@ A prompt flow provides a way to orchestrate prompts and other activities to defi
     - **response_format**: {"type":"text"}
 1. Modify the **Prompt** field as follows:
 
-   ```yml
+   ```code
    # system:
    **Objective**: Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
 
