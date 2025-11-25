@@ -120,8 +120,8 @@ A prompt flow provides a way to orchestrate prompts and other activities to defi
    # user:
    \{\{item.inputs.question\}\}
    # assistant:
-   \{{item.outputs.answer\}}
-   \{% endfor %\}
+   \{\{item.outputs.answer\}\}
+   \{\% endfor \%\}
 
    # user:
    {{question}}
