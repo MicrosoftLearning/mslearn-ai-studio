@@ -98,8 +98,8 @@ A prompt flow provides a way to orchestrate prompts and other activities to defi
     - **response_format**: {"type":"text"}
 1. Modify the **Prompt** field as follows:
 
-   ```code
-   # system:
+   ```yml
+   "# system:
    **Objective**: Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
 
    **Capabilities**:
@@ -124,7 +124,7 @@ A prompt flow provides a way to orchestrate prompts and other activities to defi
    {% endfor %}
 
    # user:
-   {{question}}
+   {{question}}"
    ```
 
     Read the prompt you added so you are familiar with it. It consists of a system message (which includes an objective, a definition of its capabilities, and some instructions), and the chat history (ordered to show each user question input and each previous assistant answer output)
