@@ -99,7 +99,7 @@ A prompt flow provides a way to orchestrate prompts and other activities to defi
 1. Modify the **Prompt** field as follows:
 
    ```yml
-   "# system:
+   # system:
    **Objective**: Assist users with travel-related inquiries, offering tips, advice, and recommendations as a knowledgeable travel agent.
 
    **Capabilities**:
@@ -116,15 +116,15 @@ A prompt flow provides a way to orchestrate prompts and other activities to defi
    4. Ensure recommendations are practical and consider the user's safety and comfort.
    5. Encourage the user to ask follow-up questions for further assistance.
 
-   {% for item in chat_history %}
+   \{\% for item in chat_history \%\}
    # user:
-   {{item.inputs.question}}
+   \{\{item.inputs.question\}\}
    # assistant:
-   {{item.outputs.answer}}
-   {% endfor %}
+   \{{item.outputs.answer\}}
+   \{% endfor %\}
 
    # user:
-   {{question}}"
+   {{question}}
    ```
 
     Read the prompt you added so you are familiar with it. It consists of a system message (which includes an objective, a definition of its capabilities, and some instructions), and the chat history (ordered to show each user question input and each previous assistant answer output)
