@@ -104,12 +104,12 @@ Now that you have a model deployment, you can use the playground to test it.
 
 ## Deploy another model
 
-When you created your project, the **gpt-4o** model you selected was automatically deployed. Let's deploy the ***Phi-4-mini-instruct** model you also considered.
+When you created your project, the **gpt-4o** model you selected was automatically deployed. Let's deploy the ***Phi-4-reasoning** model you also considered.
 
 1. In the navigation bar on the left, in the **My assets** section, select **Models + endpoints**.
-1. In the **Model deployments** tab, in the **+ Deploy model** drop-down list, select **Deploy base model**. Then search for `Phi-4-mini-instruct` and confirm you selection.
+1. In the **Model deployments** tab, in the **+ Deploy model** drop-down list, select **Deploy base model**. Then search for `Phi-4-reasoning` and confirm you selection.
 1. Agree to the model license.
-1. Deploy a **Phi-4-mini-instruct** model with the following settings:
+1. Deploy a **Phi-4-reasoning** model with the following settings:
     - **Deployment name**: *A valid name for your model deployment*
     - **Deployment type**: Global Standard
     - **Deployment details**: *Use the default settings*
