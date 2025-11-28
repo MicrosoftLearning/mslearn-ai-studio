@@ -34,7 +34,7 @@ Let's start by signing into Foundry portal and exploring some of the available m
     ![Screenshot of the gpt-4o model benchmarks page.](./media/gpt4-benchmarks.png)
 
 1. Use the back arrow (**&larr;**) next to the **gpt-4o** page title to return to the model catalog.
-1. Search for `Phi-4-mini-instruct` and view the details and benchmarks for the **Phi-4-mini-instruct** model.
+1. Search for `Phi-4-reasoning` and view the details and benchmarks for the **Phi-4-reasoning** model.
 
 ## Compare models
 
@@ -47,10 +47,10 @@ You've reviewed two different models, both of which could be used to implement a
 
 1. In the **Models to compare** pane, note that you can select popular tasks, such as *question answering* to automatically select commonly used models for specific tasks.
 1. Use the **Clear all models** (&#128465;) icon to remove all of the pre-selected models.
-1. Use the **+ Model to compare** button to add the **gpt-4o** model to the list. Then use the same button to add the **Phi-4-mini-instruct** model to the list.
+1. Use the **+ Model to compare** button to add the **gpt-4o** model to the list. Then use the same button to add the **Phi-4-reasoning** model to the list.
 1. Review the chart, which compares the models based on **Quality Index** (a standardized score indicating model quality) and **Cost**. You can see the specific values for a model by holding the mouse over the point that represents it in the chart.
 
-    ![Screenshot of the model comparison chart for gpt-4o and Phi-4-mini-instruct.](./media/comparison-chart.png)
+    ![Screenshot of the model comparison chart for gpt-4o and Phi-4-reasoning.](./media/comparison-chart.png)
 
 1. In the **X-axis** dropdown menu, under **Quality**, select the following metrics and observe each resulting chart before switching to the next:
     - Accuracy
@@ -121,7 +121,7 @@ When you created your project, the **gpt-4o** model you selected was automatical
 Now let's chat with the new model in the playground.
 
 1. In the navigation bar, select **Playgrounds**. Then select the **Chat playground**.
-1. In the chat playground, in the **Setup** pane, ensure that your **Phi-4-mini-instruct** model is selected and in the chat box, provide the first line as `System message: You are an AI assistant that helps solve problems.` (the same system prompt you used to test the gpt-4o model, but since there is no system message setup, we're providing it in the first chat for context.)
+1. In the chat playground, in the **Setup** pane, ensure that your **Phi-4-reasoning** model is selected and in the chat box, provide the first line as `System message: You are an AI assistant that helps solve problems.` (the same system prompt you used to test the gpt-4o model, but since there is no system message setup, we're providing it in the first chat for context.)
 1. On a new line in the chat window (below your system message), enter the following query
 
     ```
