@@ -56,7 +56,7 @@ You've reviewed two different models, both of which could be used to implement a
     - Accuracy
     - Quality index
 
-    Based on the benchmarks, the gpt-4o model looks like offering the best overall performance, but at a higher cost.
+    Based on the benchmarks, the Phi-4-reasoning model looks like offering the best overall performance, at a lower cost.
 
 1. In the list of models to compare, select the **gpt-4o** model to re-open its benchmarks page.
 1. In the page for the **gpt-4o** model page, select the **Overview** tab to view the model details.
@@ -120,7 +120,7 @@ When you created your project, the **gpt-4o** model you selected was automatical
 
 Now let's chat with the new model in the playground.
 
-1. In the navigation bar, select **Playgrounds**. Then select the **Chat playground**.
+1. In the navigation bar, select **Playgrounds**. Then select the **Open in playground**.
 1. In the chat playground, in the **Setup** pane, ensure that your **Phi-4-reasoning** model is selected and in the chat box, provide the first line as `System message: You are an AI assistant that helps solve problems.` (the same system prompt you used to test the gpt-4o model, but since there is no system message setup, we're providing it in the first chat for context.)
 1. On a new line in the chat window (below your system message), enter the following query
 
