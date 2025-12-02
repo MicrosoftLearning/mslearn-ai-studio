@@ -47,8 +47,11 @@ You need two models to implement your solution:
 - An *embedding* model to vectorize text data for efficient indexing and processing.
 - A model that can generate natural language responses to questions based on your data.
 
-1. In the Foundry portal, in your project, in the navigation pane on the left, under **My assets**, select the **Models + endpoints** page.
-1. Create a new deployment of the **text-embedding-ada-002** model with the following settings by selecting **Customize** in the Deploy model wizard:
+1. In the Foundry portal, in your project, in the navigation pane on the left, under **Model catalog** page.
+1. On the filter panel, select the **Collections** and insert `OpenAI` to filter by **OpenAI** collections only.
+1. Now on the **Search** bar insert `text-embedding-ada-002` and select it.
+1. On the model's details page, select **Use this model**, a pop-up with purchase options might appear, that being the case, select **Direct from Azure models** option. 
+1. Then set the following settings by selecting **Customize** in the Deploy model wizard:
 
     - **Deployment name**: *A valid name for your model deployment*
     - **Deployment type**: Global Standard
