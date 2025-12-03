@@ -47,11 +47,10 @@ You need two models to implement your solution:
 - An *embedding* model to vectorize text data for efficient indexing and processing.
 - A model that can generate natural language responses to questions based on your data.
 
-1. In the Foundry portal, in your project, in the navigation pane on the left, under **Model catalog** page.
+1. In your project inside the Foundry portal, select **Model catalog** from the navigation pane on the left.
 1. On the filter panel, select the **Collections** and insert `OpenAI` to filter by **OpenAI** collections only.
-1. Now on the **Search** bar insert `text-embedding-ada-002` and select it.
-1. On the model's details page, select **Use this model**, a pop-up with purchase options might appear, that being the case, select **Direct from Azure models** option. 
-1. Then set the following settings by selecting **Customize** in the Deploy model wizard:
+1. Search for `text-embedding-ada-002`, select it, and then on the detail page select **Use this model**. If a pop-up with purchase options appears, select the **Direct from Azure models** option. 
+1. Use the following settings by selecting **Customize** in the Deploy model wizard:
 
     - **Deployment name**: *A valid name for your model deployment*
     - **Deployment type**: Global Standard
@@ -62,7 +61,7 @@ You need two models to implement your solution:
 
     > **Note**: If your current AI resource location doesn't have quota available for the model you want to deploy, you will be asked to choose a different location where a new AI resource will be created and connected to your project.
 
-1. Return to the **Models + endpoints** page and repeat the previous steps to deploy a **gpt-4o** model using a **Global Standard** deployment of the most recent version with a TPM rate limit of **50K** (or the maximum available in your subscription if less than 50K).
+1. Return to the **Models catalog** page and repeat the previous steps to deploy a **gpt-4o** model using a **Global Standard** deployment of the most recent version with a TPM rate limit of **50K** (or the maximum available in your subscription if less than 50K).
 
     > **Note**: Reducing the Tokens Per Minute (TPM) helps avoid over-using the quota available in the subscription you are using. 50,000 TPM is sufficient for the data used in this exercise.
 
