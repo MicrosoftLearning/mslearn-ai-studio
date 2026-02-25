@@ -14,7 +14,7 @@ Imagine you work for a travel agency and you're developing a chat application to
 
 This exercise will take approximately **60** minutes\*.
 
-> \* **Note**: This timing is an estimate based on the average experience. Fine-tuning is dependent on cloud infrastructure resources, which can take a variable amount of time to provision depending on data center capacity and concurrent demand. Some activities in this exercise may take a <u>long</u> time to complete, and require patience. If things are taking a while, consider reviewing the [Microsoft Foundry fine-tuning documentation](https://learn.microsoft.com/azure/ai-studio/concepts/fine-tuning-overview) or taking a break. It is possible some processes may time-out or appear to run indefinitely. Some of the technologies used in this exercise are in preview or in active development. You may experience some unexpected behavior, warnings, or errors.
+> \* **Note**: This timing is an estimate based on the average experience. Fine-tuning is dependent on cloud infrastructure resources, which can take a variable amount of time to provision depending on data center capacity and concurrent demand. Some activities in this exercise may take a <u>long</u> time to complete, and require patience. If things are taking a while, consider reviewing the [Microsoft Foundry fine-tuning documentation](https://learn.microsoft.com/azure/ai-foundry/openai/how-to/fine-tuning?view=foundry) or taking a break. It is possible some processes may time-out or appear to run indefinitely. Some of the technologies used in this exercise are in preview or in active development. You may experience some unexpected behavior, warnings, or errors.
 
 ## Create a Microsoft Foundry project
 
@@ -56,16 +56,19 @@ Because fine-tuning a model takes some time to complete, you'll start the fine-t
     > **Note**: Your device might default to saving the file as a .txt file. Select all files and remove the .txt suffix to ensure you're saving the file as JSONL.
 
 1. In the left pane, select **Fine-tuning**.
-1. Select the button to add a new fine-tune model, select the **gpt-4.1** model, and then select **Next**.
-1. **Fine-tune** the model using the following configuration:
-    - **Method of customization**: Supervised
-    - **Base model**: *Select the default version of **gpt-4.1***
-    - **Training data**: *Select the option to **Add training data** and upload and apply the .jsonl file you downloaded previously*
-    - **Model suffix**: `ft-travel`
-    - **Seed**: *Random*
-1. Submit the fine-tuning details, and the job will start. It may take some time to complete. You can continue with the next section of the exercise while you wait.
+1. Select the **Fine-tune** button at the upper right.
+1. Configure the fine-tuning job with the following settings:
+    - **Base model**: Select `gpt-4.1`
+    - **Customization method**: Supervised fine-tuning
+    - **Training type**: Global *(or Standard if you need data residency)*
+    - **Training data**: For **Data source**, select **Upload new dataset** and upload the .jsonl file you downloaded previously
+    - **Suffix**: `ft-travel`
+    - **Automatically deploy model after job completion**: Selected
+    - **Deployment type**: Developer
+    - *Leave the remaining hyperparameters at their defaults*
+1. Select **Submit** to start the fine-tuning job. It may take some time to complete. You can continue with the next section of the exercise while you wait.
 
-> **Note**: Fine-tuning and deployment can take a significant amount of time (30 minutes or longer), so you may need to check back periodically. You can see more details of the progress so far by selecting the fine-tuning model job and viewing its **Logs** tab.
+> **Note**: Fine-tuning and deployment can take a significant amount of time (30 minutes or longer), so you may need to check back periodically. You can see more details of the progress so far by selecting the fine-tuning job and viewing its **Monitor** tab.
 
 ## Chat with a base model
 
@@ -134,13 +137,10 @@ When fine-tuning has successfully completed, you can deploy the fine-tuned model
 
     > **Tip**: Use the **Refresh** button in the fine-tuning page to refresh the view. If the fine-tuning job disappears entirely, refresh the page in the browser.
 
-1. Select the fine-tuning job link to open its details page. Then, select the **Metrics** tab and explore the fine-tune metrics.
-1. Deploy the fine-tuned model with the following configurations:
-    - **Deployment name**: *A valid name for your model deployment*
-    - **Deployment type**: Standard
-    - **Tokens per Minute Rate Limit (thousands)**: 50K *(or the maximum available in your subscription if less than 50K)*
-    - **Content filter**: Default
-1. Wait for the deployment to be complete before you can test it, this might take a while. Check the **Provisioning state** until it has succeeded (you may need to refresh the browser to see the updated status).
+1. Select the fine-tuning job to open its details page. Then, select the **Monitor** tab and explore the fine-tune metrics.
+1. Select **Deploy** to deploy the fine-tuned model, and configure your deployment settings.
+
+1. Wait for the deployment to be complete before you can test it, this might take a while. You may need to refresh the browser to see the updated status.
 
 ## Test the fine-tuned model
 
