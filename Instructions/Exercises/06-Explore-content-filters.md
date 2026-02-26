@@ -32,9 +32,9 @@ Let's start by deploying a model in a Foundry project.
     - **Foundry resource**: *A valid name for your Foundry resource*
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Select your resource group, or create a new one*
-    - **Region**: *Select any **AI Foundry recommended***\**
+    - **Region**: *Select any **Foundry recommended***\**
 
-    > \* Some Azure AI resources are constrained by regional model quotas. In the event of a quota limit being exceeded later in the exercise, there's a possibility you may need to create another resource in a different region.
+    > \* Some Foundry resources are constrained by regional model quotas. In the event of a quota limit being exceeded later in the exercise, there's a possibility you may need to create another resource in a different region.
 
 1. Select **Create** and wait for your project to be created.
 

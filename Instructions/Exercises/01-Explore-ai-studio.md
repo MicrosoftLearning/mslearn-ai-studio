@@ -28,7 +28,7 @@ Let's start by signing into Foundry portal.
 
 A Microsoft Foundry *project* provides a collaborative workspace for AI development. 
 
-> **Note**: Microsoft Foundry projects can be based on a *Foundry* resource, which provides access to AI models (including Azure OpenAI), Azure AI services, and other resources for developing AI agents and chat solutions. Alternatively, projects can be based on *AI hub* resources; which include connections to Azure resources for secure storage, compute, and specialized tools. Foundry based projects are great for developers who want to manage resources for AI agent or chat app development. AI hub based projects are more suitable for enterprise development teams working on complex AI solutions.
+> **Note**: Microsoft Foundry projects can be based on a *Foundry* resource, which provides access to AI models (including Azure OpenAI), Foundry services, and other resources for developing AI agents and chat solutions. Alternatively, projects can be based on *AI hub* resources; which include connections to Azure resources for secure storage, compute, and specialized tools. Foundry based projects are great for developers who want to manage resources for AI agent or chat app development. AI hub based projects are more suitable for enterprise development teams working on complex AI solutions.
 
 1. When prompted, create a **new** project, and enter a valid name for your project.
 
@@ -38,9 +38,9 @@ A Microsoft Foundry *project* provides a collaborative workspace for AI developm
     - **Foundry resource**: *A valid name for your Foundry resource*
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Select your resource group, or create a new one*
-    - **Region**: *Select any **AI Foundry recommended***\**
+    - **Region**: *Select any **Foundry recommended***\**
 
-    > \* Some Azure AI resources are constrained by regional model quotas. In the event of a quota limit being exceeded later in the exercise, there's a possibility you may need to create another resource in a different region.
+    > \* Some Foundry resources are constrained by regional model quotas. In the event of a quota limit being exceeded later in the exercise, there's a possibility you may need to create another resource in a different region.
 
 1. Select **Create** and wait for your project to be created.
 
@@ -66,7 +66,7 @@ A Microsoft Foundry *project* provides a collaborative workspace for AI developm
 
 1. In the left navigation pane, select the **Admin** page to view details.
     
-    The *resource* level relates to the **Foundry** resource that was created to support your project. This resource includes connections to Azure AI Services and Foundry models; and provides a centralplace to manage user access to AI development projects.
+    The *resource* level relates to the **Foundry** resource that was created to support your project. This resource includes connections to Foundry Services and models; and provides a centralplace to manage user access to AI development projects.
 
     The *project* level relates to your individual project, where you can add and manage project-specific resources.
 
