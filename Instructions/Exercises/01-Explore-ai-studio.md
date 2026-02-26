@@ -70,13 +70,17 @@ A Microsoft Foundry *project* provides a collaborative workspace for AI developm
 
     The *project* level relates to your individual project, where you can add and manage project-specific resources.
 
-1. Select the link to the **Parent resource** associated with the project to open a new browser tab and navigate to the Azure portal. Sign in with your Azure credentials if prompted.
+1. Select the link to the **Parent resource** associated with the project.
+
+    The resource configuration details should be displayed.
+
+1. Under **View resource**, click **Manage this resource in the Azure portal**.
+
+    A new browser tab will open to the Azure portal. Sign in with your Azure credentials if prompted.
 
 1. View the resource group in the Azure portal to see the Azure resources that have been created to support your Foundry resource and your project.
 
     ![Screenshot of a Foundry resource and project resources in the Azure portal.](../media/azure-portal-resources.png)
-
-    Note that the resources have been created in the region you selected when creating the project.
 
 1. Close the Azure portal tab and return to the Foundry portal.
 
