@@ -26,9 +26,9 @@ Let's start by signing into Foundry portal.
 
 ## Create a project
 
-An Azure AI *project* provides a collaborative workspace for AI development. 
+A Microsoft Foundry *project* provides a collaborative workspace for AI development. 
 
-> **Note**: AI Foundry projects can be based on an *Foundry* resource, which provides access to AI models (including Azure OpenAI), Azure AI services, and other resources for developing AI agents and chat solutions. Alternatively, projects can be based on *AI hub* resources; which include connections to Azure resources for secure storage, compute, and specialized tools. Foundry based projects are great for developers who want to manage resources for AI agent or chat app development. AI hub based projects are more suitable for enterprise development teams working on complex AI solutions.
+> **Note**: Microsoft Foundry projects can be based on a *Foundry* resource, which provides access to AI models (including Azure OpenAI), Azure AI services, and other resources for developing AI agents and chat solutions. Alternatively, projects can be based on *AI hub* resources; which include connections to Azure resources for secure storage, compute, and specialized tools. Foundry based projects are great for developers who want to manage resources for AI agent or chat app development. AI hub based projects are more suitable for enterprise development teams working on complex AI solutions.
 
 1. When prompted, create a **new** project, and enter a valid name for your project.
 
@@ -88,7 +88,7 @@ The Foundry project includes a number of *endpoints* that client applications ca
 1. In the project home page, observe the project details; which contains endpoint and project API key that you can use in your application code to access:
     - The Foundry project and any models deployed in it.
     - Azure OpenAI in Foundry models.
-    - Azure AI services
+    - Foundry services
 
 ## Test a generative AI model
 
@@ -99,7 +99,7 @@ Now that you know something about the configuration of your Foundry project, you
 1. Select the **gpt-4.1** model deployment that you created earlier to open the model playground.
 1. In the **Instructions** box, enter the following instructions:
 
-    ```
+    ```output
    You are a history teacher who can answer questions about past events all around the world.
     ```
 
