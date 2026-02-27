@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Choose and deploy a language model'
+    title: 'Choose and deploy a language model (deprecated)'
     description: 'Generative AI applications are built on one or more language models. Learn how to find and select appropriate models for your generative AI project.'
 ---
 
-# Choose and deploy a language model
+# Choose and deploy a language model (deprecated)
 
 The Microsoft Foundry model catalog serves as a central repository where you can explore and use a variety of models, facilitating the creation of your generative AI scenario.
 

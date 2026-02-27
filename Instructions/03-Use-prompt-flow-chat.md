@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Use a prompt flow to manage conversation in a chat app'
+    title: 'Use a prompt flow to manage conversation in a chat app (deprecated)'
     description: 'Learn how to use prompt flows to manage conversational dialogs and ensure that prompts are constructed and orchestrated for best results.'
 ---
 
-## Use a prompt flow to manage conversation in a chat app
+## Use a prompt flow to manage conversation in a chat app (deprecated)
 
 In this exercise, you'll use Microsoft Foundry portal's prompt flow to create a custom chat app that uses a user prompt and chat history as inputs, and uses a GPT model from Azure OpenAI to generate an output.
 

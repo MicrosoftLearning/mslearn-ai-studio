@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Evaluate generative AI model performance'
+    title: 'Evaluate generative AI model performance (deprecated)'
     description: 'Learn how to evaluate models and prompts to optimize the performance of your chat app and its ability to respond appropriately.'
 ---
 
-# Evaluate generative AI model performance
+# Evaluate generative AI model performance (deprecated)
 
 In this exercise, you'll use manual and automated evaluations to assess the performance of a model in the Microsoft Foundry portal.
 

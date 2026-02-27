@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Create a generative AI chat app'
+    title: 'Create a generative AI chat app (deprecated)'
     description: 'Learn how to use the Microsoft Foundry SDK to build an app that connects to your project and chats with a language model.'
 ---
 
-# Create a generative AI chat app
+# Create a generative AI chat app (deprecated)
 
 In this exercise, you use the Microsoft Foundry Python SDK to create a simple chat app that connects to a project and chats with a language model.
 

@@ -3,14 +3,14 @@ lab:
     title: 'Explore models and evaluate performance'
     description: 'Explore the model catalog to find and compare models, then evaluate model performance using manual and automated evaluations in the Microsoft Foundry portal.'
     level: 300
-    duration: 55
+    duration: 45
 ---
 
 # Explore models and evaluate performance
 
 The Microsoft Foundry model catalog serves as a central repository where you can explore and use a variety of models, facilitating the creation of your generative AI scenario. In this exercise, you'll explore the model catalog, compare models using benchmarks, test models in the chat playground, and then evaluate model performance using both manual and automated evaluation workflows.
 
-This exercise will take approximately **55** minutes.
+This exercise will take approximately **45** minutes.
 
 > **Note**: Some of the technologies used in this exercise are in preview or in active development. You may experience some unexpected behavior, warnings, or errors.
 
@@ -32,16 +32,16 @@ Let's start by signing into the Foundry portal and exploring some of the availab
 Now let's use the model leaderboard and side-by-side comparison features to compare models visually.
 
 1. Use the back arrow (**&larr;**) to return to the model catalog.
-1. In the **Model leaderboards** section, review the top models ranked by quality, safety, cost, and performance. Select **Browse leaderboards** to explore the full suite of leaderboards.
+1. In the **Model leaderboards** section, review the top models ranked by quality, safety, cost, and performance. Select **Go to leaderboard** to explore the full suite of leaderboards.
 1. On the leaderboard page, review the **Quality** leaderboard to see which models score highest for AI quality metrics.
-1. Use the trade-off charts to compare models on multiple dimensions. Select the **Quality vs. Cost** tab to see how model quality relates to estimated cost. Note where gpt-4.1, gpt-4o-mini, and Phi-4-reasoning fall on the chart.
-1. Select the **Quality vs. Safety** tab to see how quality relates to safety scores.
-1. Return to the model catalog and select two or three models by checking the boxes next to their names (select **gpt-4.1**, **gpt-4o-mini**, and **Phi-4-reasoning**).
-1. Select **Compare** to open the side-by-side comparison view.
-1. Review the comparison across the following tabs:
+1. Scroll down to use the trade-off charts to compare models on multiple dimensions. Select the **Estimated cost** from the dropdown to see how model quality relates to estimated cost. Note where gpt-4.1, gpt-4o-mini, and Phi-4-reasoning fall on the chart.
+1. Select the **Safety** from the dropdown to see how quality relates to safety scores.
+1. In the table just above the trade-off charts, you can compare benchmarks. Select a few models (such as **gpt-4.1**, **gpt-4o-mini**, and **Phi-4-reasoning**).
+1. Select **Compare models** to open the side-by-side comparison view.
+1. Review the comparison across the following data:
     - **Performance benchmarks**: Quality, safety, and throughput scores
-    - **Model details**: Context window, training data, and supported languages
-    - **Feature support**: Capabilities like function calling, structured output, and vision
+    - **Model details**: Context window, training date, and supported languages
+    - **Supported features**: Capabilities like function calling, structured output, and vision
 
     Based on the benchmarks and comparison, consider the trade-offs between quality, cost, and capabilities across these models.
 

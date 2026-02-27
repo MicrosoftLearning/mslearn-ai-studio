@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Create a generative AI app that uses your own data'
+    title: 'Create a generative AI app that uses your own data (deprecated)'
     description: 'Learn how to use the Retrieval Augmented Generation (RAG) model to build a chat app that grounds prompts using your own data.'
 ---
 
-# Create a generative AI app that uses your own data
+# Create a generative AI app that uses your own data (deprecated)
 
 Retrieval Augmented Generation (RAG) is a technique used to build applications that integrate data from custom data sources into a prompt for a generative AI model. RAG is a commonly used pattern for developing generative AI apps - chat-based applications that use a language model to interpret inputs and generate appropriate responses.
 

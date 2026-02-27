@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Prepare for an AI development project'
+    title: 'Prepare for an AI development project (deprecated)'
     description: 'Learn how to organize cloud resources in Microsoft Foundry projects so that developers are set up for success when building AI solutions.'
 ---
 
-# Prepare for an AI development project
+# Prepare for an AI development project (deprecated)
 
 In this exercise, you use Microsoft Foundry portal to create a project, ready to build an AI solution.
 

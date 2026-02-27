@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'Fine-tune a language model'
+    title: 'Fine-tune a language model (deprecated)'
     description: 'Learn how to use your own training data to fine-tune a model and customize its behavior.'
 ---
 
-# Fine-tune a language model
+# Fine-tune a language model (deprecated)
 
 When you want a language model to behave a certain way, you can use prompt engineering to define the desired behavior. When you want to improve the consistency of the desired behavior, you can opt to fine-tune a model, comparing it to your prompt engineering approach to evaluate which method best fits your needs.
 

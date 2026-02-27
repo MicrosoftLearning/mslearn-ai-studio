@@ -1,4 +1,4 @@
-# Use prompt flow for Named Entity Recognition (NER)
+# Use prompt flow for Named Entity Recognition (NER) (deprecated)
 
 Extracting valuable information from text is known as Named Entity Recognition (NER). Entities are key words that are of interest to you in a given text.
 
