@@ -12,7 +12,7 @@ The following exercises are designed to provide you with a hands-on learning exp
 
 <hr>
 
-{% assign labs = site.pages | where_exp:"page", "page.url contains '/Instructions'" %}
+{% assign labs = site.pages | where_exp:"page", "page.url contains '/Instructions/Exercises'" %}
 {% for activity in labs  %}
 {% if activity.lab.title %}
 ### [{{ activity.lab.title }}]({{ site.github.url }}{{ activity.url }})

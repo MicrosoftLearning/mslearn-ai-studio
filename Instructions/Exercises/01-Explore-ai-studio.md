@@ -2,6 +2,8 @@
 lab:
     title: 'Prepare for an AI development project'
     description: 'Learn how to organize cloud resources in Microsoft Foundry projects so that developers are set up for success when building AI solutions.'
+    level: 200
+    duration: 30
 ---
 
 # Prepare for an AI development project

@@ -2,6 +2,8 @@
 lab:
     title: 'Apply content filters to prevent the output of harmful content'
     description: 'Learn how to apply content filters that mitigate potentially offensive or harmful output in your generative AI app.'
+    level: 300
+    duration: 25
 ---
 
 # Apply content filters to prevent the output of harmful content

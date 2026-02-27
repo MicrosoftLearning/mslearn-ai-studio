@@ -2,6 +2,8 @@
 lab:
     title: 'Explore models and evaluate performance'
     description: 'Explore the model catalog to find and compare models, then evaluate model performance using manual and automated evaluations in the Microsoft Foundry portal.'
+    level: 300
+    duration: 55
 ---
 
 # Explore models and evaluate performance

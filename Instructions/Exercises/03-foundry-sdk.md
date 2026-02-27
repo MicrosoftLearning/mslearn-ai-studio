@@ -2,6 +2,8 @@
 lab:
     title: 'Create a generative AI chat app with the Microsoft Foundry SDK'
     description: 'Learn how to use the Responses API and Microsoft Foundry to build a chat app that connects to your project and chats with a language model.'
+    level: 300
+    duration: 45
 ---
 
 # Create a generative AI chat app with the Microsoft Foundry SDK
