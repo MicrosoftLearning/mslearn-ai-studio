@@ -14,6 +14,12 @@ This exercise will take approximately **45** minutes.
 
 > **Note**: Some of the technologies used in this exercise are in preview or in active development. You may experience some unexpected behavior, warnings, or errors.
 
+## Prerequisites
+
+To complete this exercise, you need:
+
+- An [Azure subscription](https://azure.microsoft.com/free/) with permissions to create AI resources.
+
 ## Explore models in the catalog
 
 Let's start by signing into the Foundry portal and exploring some of the available models.

@@ -18,6 +18,12 @@ This exercise will take approximately **60** minutes\*.
 
 > \* **Note**: This timing is an estimate based on the average experience. Fine-tuning is dependent on cloud infrastructure resources, which can take a variable amount of time to provision depending on data center capacity and concurrent demand. Some activities in this exercise may take a <u>long</u> time to complete, and require patience. If things are taking a while, consider reviewing the [Microsoft Foundry fine-tuning documentation](https://learn.microsoft.com/azure/ai-foundry/openai/how-to/fine-tuning?view=foundry) or taking a break. It is possible some processes may time-out or appear to run indefinitely. Some of the technologies used in this exercise are in preview or in active development. You may experience some unexpected behavior, warnings, or errors.
 
+## Prerequisites
+
+To complete this exercise, you need:
+
+- An [Azure subscription](https://azure.microsoft.com/free/) with permissions to create AI resources.
+
 ## Create a Microsoft Foundry project
 
 Let's start by creating a project and deploying a model.

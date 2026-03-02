@@ -16,6 +16,16 @@ This exercise takes approximately **45** minutes.
 
 > **Note**: Some of the technologies used in this exercise are in preview or in active development. You may experience some unexpected behavior, warnings, or errors.
 
+## Prerequisites
+
+To complete this exercise, you need:
+
+- An [Azure subscription](https://azure.microsoft.com/free/) with permissions to create AI resources.
+- [Visual Studio Code](https://code.visualstudio.com/) installed on your local machine.
+- [Python 3.13](https://www.python.org/downloads/) or later installed on your local machine.
+- [Git](https://git-scm.com/downloads) installed on your local machine.
+- [Azure CLI](https://learn.microsoft.com/cli/azure/install-azure-cli) installed on your local machine.
+
 ## Create a Microsoft Foundry project
 
 Let's start by creating a project and deploying a model.
