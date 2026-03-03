@@ -2,27 +2,13 @@ import os
 from dotenv import load_dotenv
 
 # Add references
-# Add references
-import time
-from dotenv import load_dotenv
-from openai import OpenAI
-from azure.identity import DefaultAzureCredential, get_bearer_token_provider
 
 # Get configuration settings
 load_dotenv()
 endpoint = os.getenv("OPENAI_BASE_URL")
 model_deployment = os.getenv("MODEL_DEPLOYMENT")
 
-# Initialize the OpenAI client with Azure credentials
-# Initialize the OpenAI client with Azure credentials
-token_provider = get_bearer_token_provider(
-    DefaultAzureCredential(), "https://cognitiveservices.azure.com/.default"
-)
-
-client = OpenAI(
-    base_url=endpoint,
-    api_key=token_provider(),
-)
+# Get the token provider for Azure OpenAI authentication
 
 def main(): 
 
@@ -52,7 +38,7 @@ def main():
 
         print("\nStep 3: Generating a video from a reference image...")
         # Generate a video from a reference image
-        
+
         print("\n=== Video generation complete ===")
 
     except Exception as ex:
