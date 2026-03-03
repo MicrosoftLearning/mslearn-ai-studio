@@ -10,12 +10,11 @@ def main():
     try:
         # Get configuration settings 
         load_dotenv()
-        foundry_endpoint = os.getenv("FOUNDRY_ENDPOINT")
+        azure_openai_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
+        api_key = os.getenv("API_KEY")
         model_deployment = os.getenv("MODEL_DEPLOYMENT")
 
-        # Initialize the project client
-
-        # Get an OpenAI client from the project
+        # Initialize the OpenAI client
 
         # Track conversation state
         previous_response_id = None

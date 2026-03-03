@@ -1,4 +1,2 @@
 python-dotenv
 openai
-azure-identity
-azure-ai-projects
