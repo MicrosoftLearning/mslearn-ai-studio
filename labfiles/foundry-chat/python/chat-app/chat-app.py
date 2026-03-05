@@ -1,7 +1,9 @@
 import os
 from dotenv import load_dotenv
 
-# Add references
+# import namespaces
+
+
 
 def main(): 
     # Clear the console
@@ -15,19 +17,20 @@ def main():
         model_deployment = os.getenv("MODEL_DEPLOYMENT")
 
         # Initialize the OpenAI client
+        
 
-        # Track conversation state
-        previous_response_id = None
 
+        ## Loop until the user wants to quit
         while True:
-            input_text = input('\nEnter a question (or type "quit" to exit): ')
+            input_text = input('\nEnter a prompt (or type "quit" to exit): ')
             if input_text.lower() == "quit":
                 break
             if len(input_text) == 0:
-                print("Please enter a question.")
+                print("Please enter a prompt.")
                 continue
 
             # Get a response
+            
 
     except Exception as ex:
         print(ex)

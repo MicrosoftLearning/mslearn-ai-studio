@@ -8,7 +8,7 @@ lab:
 
 # Create a generative AI chat app
 
-In this exercise, you use the OpenAI SDK and the Responses API to create a simple chat app that connects to a model deployed in a Microsoft Foundry project.
+In this exercise, you use the OpenAI SDK and the Responses API to create a chat app that connects to a model deployed in a Microsoft Foundry project.
 
 This exercise takes approximately **45** minutes.
 
@@ -23,203 +23,276 @@ To complete this exercise, you need:
 
 ## Create a Microsoft Foundry project
 
-Let's start by creating a project and deploying a model.
+Microsoft Foundry uses projects to organize models, resources, data, and other assets used to develop an AI solution.
 
-1. In a web browser, open the [Microsoft Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials.
-1. Select the project name in the upper-left corner, and then select **Create new project**.
-1. Enter a valid name for your project and select **Advanced options** to configure:
-    - **Resource group**: *Create a new resource group or select an existing one*
-    - **Location**: *Select a region close to you*\*
+1. In a web browser, open the [Microsoft Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the Foundry logo at the top left to navigate to the home page.
 
-    > \* Some resources are constrained by regional model quotas. In the event of a quota limit being exceeded later in the exercise, there's a possibility you may need to create another resource in a different region.
+1. If it is not already enabled, in the tool bar the top of the page, enable the **New Foundry** option. Then, if prompted, create a new project with a unique name; expanding the **Advanced options** area to specify the following settings for your project:
+    - **Foundry resource**: *Use the default name for your resource (usually {project_name}-resource)*
+    - **Subscription**: *Your Azure subscription*
+    - **Resource group**: *Create or select a resource group*
+    - **Region**: Select any of the **AI Foundry recommended** regions
 
-1. Select **Create project** and wait for it to be created. When the project overview page appears, your project is ready.
+1. Select **Create**. Wait for your project to be created.
 
 ## Deploy a model
 
 Now deploy a model that you'll use in your chat application.
 
-1. In your project, select **Discover** in the upper-right navigation.
-1. Select **Models**.
-1. Search for **gpt-4.1**.
-1. Select the **gpt-4.1** model, and then select **Deploy** > **Default settings** to add it to your project.
+1. On the project home page, in the **Start building** menu, select **Browse models**.
+1. In the model catalog, search for `gpt-4.1`.
+1. Review the model card, and then deploy it using the default settings.
+1. When the model has been deployed, it will open in the model playground - you can test it there if you like.
 
-    > <font color="red"><b>IMPORTANT</b>:</font> Depending on your available quota for gpt-4.1 models you might receive an additional prompt to deploy the model to a resource in a different region. If this happens, do so using the default settings.
+## Get the endpoint and key
 
-1. Note the deployment name (for example, `gpt-4.1`). You'll need this name later.
+You'll need an endpoint and key to connect to the model from a client application. In this exercise, we're going to use the OpenAI SDK to chat with the model; and we'll use the Azure OpenAI endpoint to connect to it.
+
+1. On the menu bar, select the **Home** page.
+1. Note the **Project API key** and **Azure OpenAI Endpoint** displayed there.
 
 ## Create a client application to chat with the model
 
 Now that you have deployed a model, you can use the OpenAI SDK and the Responses API to develop an application that chats with it.
 
+### Get the application files from GitHub
+
+The initial application files you'll need to develop your chat application are provided in a GitHub repo.
+
+1. Open Visual Studio Code.
+1. Open the command palette (*Ctrl+Shift+P*) and use the `Git:clone` command to clone the `https://github.com/microsoftlearning/mslearn-ai-studio` repo to a local folder (it doesn't matter which one). Then open it.
+
+    You may be prompted to confirm you trust the authors.
+
 ### Prepare the application configuration
 
-1. In the Microsoft Foundry portal, go to the **Overview** page for your project (the project welcome screen).
-1. Find the **Project API key** and the **Azure OpenAI endpoint** displayed on the welcome screen (for example, `https://<your-resource>.openai.azure.com/`). You'll use this connect your app to your model
-1. Open **Visual Studio Code** on your local computer. If you don't have it installed, download it from [https://code.visualstudio.com](https://code.visualstudio.com).
-1. Open a terminal in VS Code (**Terminal > New Terminal**) and clone the GitHub repo containing the code files for this exercise:
+1. In Visual Studio Code, view the **Extensions** pane; and if it is not already installed, install the **Python** extension.
+1. In the **Command Palette**, use the command `python:select interpreter`. Then select an existing environment if you have one, or create a new **Venv** environment based on your Python 3.1x installation.
+
+    > **Tip**: If you are prompted to install dependencies, you can install the ones in the *requirements.txt* file in the */labfiles/foundry-chat/python/chat-app* folder; but it's OK if you don't - we'll install them later!
+
+1. In the Explorer pane, navigate to the folder containing the application code files at **/labfiles/foundry-chat/python/chat-app**. The application files include:
+    - **.env** (the application configuration file)
+    - **requirements.txt** (the Python package dependencies that need to be installed)
+    - **chat-app.py** (the code file for the application)
+
+1. In the **Explorer** pane, right-click the **chat-app** folder containing the application files, and select **Open in integrated terminal** (or open a terminal in the **Terminal** menu and navigate to the */labfiles/foundry-chat/python/chat-app* folder.)
+
+    > **Note**: Opening the terminal in Visual Studio Code will automatically activate the Python environment. You may need to enable running scripts on your system.
+
+1. Ensure that the terminal is open in the **labfiles/foundry-chat/python/chat-app** folder with the prefix **(.venv)** to indicate that the Python environment you created is active.
+1. Install the OpenAI SDK package and other required packages by running the following command:
 
     ```
-    git clone https://github.com/microsoftlearning/mslearn-ai-studio mslearn-ai-foundry
+    pip install -r requirements.txt openai
     ```
 
-1. After the repo has been cloned, open the folder in VS Code (**File > Open Folder**), and navigate to the `mslearn-ai-foundry/labfiles/foundry-chat/python` folder.
-1. In the VS Code Explorer pane, review the files in the folder:
+1. In the **Explorer** pane, in the **labfiles/foundry-chat/python/chat-app** folder, select the **.env** file to open it. Then update the configuration values to include the **Project API key** and **Azure OpenAI Endpoint** for your **gpt-4.1** model.
 
-    - `.env` - A configuration file for application settings.
-    - `chat-app.py` - The Python code file for the chat application.
-    - `requirements.txt` - A file listing the package dependencies.
+    > **Tip**: Copy the key and endpoint from the project home page in the Foundry portal, and rename the model deployment if your deployment isn't named *gpt-4.1*
 
-1. Open a terminal in VS Code and navigate to the project folder, then install the required libraries:
+    Save the modified configuration file.
 
-    ```
-    cd mslearn-ai-foundry/labfiles/foundry-chat/python
-    python -m venv labenv
-    ```
+### Use the *ChatCompletions* API to chat with the model
 
-1. Activate the virtual environment:
+The *ChatCompletions* API is a well-established way to build client applications for large language models, and has been widely adopted.
 
-    ```
-    labenv\Scripts\activate
-    ```
+1. In the **Explorer** pane, in the **labfiles/foundry-chat/python/chat-app** folder, select the **chat-app.py** file to open it.
+1. Review the existing code. You will add code to use the OpenAI SDK to access your model.
 
-1. Install the required packages:
+    > **Tip**: As you add code to the code file, be sure to maintain the correct indentation.
 
-    ```
-    pip install -r requirements.txt
-    ```
-
-1. In VS Code, open the `.env` file and replace the placeholders:
-    - Replace **your_azure_openai_endpoint** with the Azure OpenAI endpoint you copied (for example, `https://<your-resource>.openai.azure.com/`).
-    - Replace **your_api_key** with the project API key you copied.
-    - Replace **your_model_deployment** with the name of your gpt-4.1 model deployment (for example, `gpt-4.1`).
-
-    > <font color="red"><b>IMPORTANT</b>:</font> If you deployed your gpt-4.1 model to a different region due to insufficient quota, on the <b>Models + Endpoints</b> page, select your model and use its <b>Target URI</b> as your endpoint and its API key instead.
-
-1. Save the `.env` file.
-
-### Write code to connect to your model and chat
-
-> **Tip**: As you add code, be sure to maintain the correct indentation.
-
-1. In VS Code, open the `chat-app.py` file.
-1. In the code file, note the existing statements that have been added at the top of the file to import the necessary packages. Then, find the comment **Add references**, and add the following code to reference the OpenAI library:
+1. At the top of the code file, under the existing namespace references, find the comment **Import namespaces** and add the following code to import the namespace you will need to use the OpenAI SDK:
 
     ```python
-    # Add references
-    from openai import OpenAI
+   # import namespaces
+   from openai import OpenAI
     ```
 
-1. In the **main** function, under the comment **Get configuration settings**, note that the code loads the Azure OpenAI endpoint, API key, and model deployment name values you defined in the configuration file.
-1. Find the comment **Initialize the OpenAI client**, and add the following code to create an OpenAI client using your endpoint and API key:
-
-    > **Tip**: Be careful to maintain the correct indentation level for your code.
+1. In the **main** function, note that code to load the endpoint and key from the configuration file has already been provided. Then find the comment **Initialize the OpenAI client**, and add the following code to create a client for the OpenAI API:
 
     ```python
-    # Initialize the OpenAI client
-    openai_client = OpenAI(
+   # Initialize the OpenAI client
+   openai_client = OpenAI(
         base_url=azure_openai_endpoint,
         api_key=api_key
-    )
+   )
     ```
 
-1. Note that the code includes a loop to allow a user to input a prompt until they enter "quit", and it tracks conversation state using `previous_response_id`. Find the comment **Get a response** and add the following code to send the user input to your model using the Responses API and display the response:
+1. In the **main** function, note that code to request a user prompt until the user quits the app has been provided. Within this loop, find the **Get a response** comment, and add the following code:
 
     ```python
-    # Get a response
-    response = openai_client.responses.create(
+   # Get a response
+   completion = openai_client.chat.completions.create(
         model=model_deployment,
-        instructions="You are a helpful AI assistant that answers questions.",
-        input=input_text,
-        previous_response_id=previous_response_id
-    )
-    print(response.output_text)
-    previous_response_id = response.id
+        messages=[
+            {
+                "role": "system",
+                "content": "You are a helpful AI assistant that answers questions and provides information."
+            },
+            {
+                "role": "user",
+                "content": input_text
+            }
+        ]
+   )
+   print(completion.choices[0].message.content)
     ```
 
-    > **Note**: The Responses API uses `previous_response_id` to maintain conversation history automatically, so you don't need to manually track a messages array. The `instructions` parameter serves as the system message. Note that when using `previous_response_id`, instructions are not carried over from previous responses — they must be included in each call.
+    Note that the *ChatCompletions* API uses a JSON collection of *messages* to encapsulate the conversation. Often, these consist of a *system prompt* that provides instructions to the model, and a *user prompt* that includes the user's input.
 
-1. Save the file (**Ctrl+S**).
+1. Save the changes to the code file. Then, in the terminal pane, use the following command to run the program:
 
-### Run the app
-
-1. In the VS Code terminal, run the application:
-
-    ```
-    python chat-app.py
+    ```powershell
+   python chat-client.py
     ```
 
-1. When prompted, enter a question, such as `What is the fastest animal on Earth?` and review the response from your generative AI model.
-1. Try some follow-up questions, like `Where can I see one?` or `Are they endangered?`. The conversation should continue, using the Responses API to maintain conversation context automatically.
-1. When you're finished, enter `quit` to exit the program.
+    The program should run in the terminal (if not, resolve any errors and try again).
 
-> **Tip**: If the app fails because the rate limit is exceeded. Wait a few seconds and try again. If there is insufficient quota available in your subscription, the model may not be able to respond.
+1. When prompted, enter the following prompt:
 
-## Customize the system instructions
+    ```input
+    Tell me about the ELIZA chatbot.
+    ```
 
-The `instructions` parameter controls the persona and behavior of the model. Let's experiment with changing it.
+    After a few moments, the app should respond with some information about the ELIZA chatbot created in the 1960s.
 
-1. In VS Code, open the `chat-app.py` file.
-1. Find the `instructions` parameter in the `openai_client.responses.create(...)` call and change it from the default to a more specific persona:
+1. Enter the prompt `quit` to end the application.
+
+### Use the *Responses* API to chat with the model
+
+While the *ChatCompletions* API is widely used, it is increasingly being superseded by the newer *Responses* API. Let's update the code to use it.
+
+1. In the **chat-client.py** code, in the **main** function, replace the code under the comment **Get a response** with the following code that uses the *Responses* API.
 
     ```python
-    instructions="You are a friendly travel guide who loves sharing fun facts about destinations around the world. Keep your answers engaging and suggest related places to visit.",
+   # Get a response
+   response = openai_client.responses.create(
+                model=model_deployment,
+                instructions="You are a helpful AI assistant that answers questions and provides information.",
+                input=input_text
+   )
+   print(response.output_text)
     ```
 
-1. Save the file and run the application again:
+    Note the simpler syntax in which the system message is assigned to the *instructions* parameter, and the user prompt is assigned to the *input* parameter.
 
+1. Save the changes to the code, and in the terminal pane, re-run the application (`python chat-app.py`).
+1. When prompted, enter the same prompt as before:
+
+    ```input
+    Tell me about the ELIZA chatbot.
     ```
-    python chat-app.py
+
+    After a few moments, the app should once again respond with some information about the ELIZA chatbot.
+
+1. Enter the following prompt to try to continue the conversation:
+
+    ```input
+    How does it compare to modern LLMs?
     ```
 
-1. Try asking questions like `Tell me about Paris` or `Where should I go on vacation in South America?` and notice how the model's tone and content reflect the travel guide persona.
-1. Feel free to experiment with other instructions — for example, a cooking tutor, a fitness coach, or a historical storyteller. Notice how the same model produces very different responses based on the instructions you provide.
-1. When you're done experimenting, enter `quit` to exit the program.
+    The app should respond in a way that indicates it doesn't understand what "it" refers to. The conversation context has been lost. We'll fix that.
 
-    > **Note**: Remember that the `instructions` parameter is sent with every call when using `previous_response_id` — it's not carried over from prior responses. This means you can even change the persona mid-conversation if you want.
+1. Enter the prompt `quit` to end the application.
 
-## Add streaming responses
+### Add conversation tracking
 
-So far, the app waits for the entire response to be generated before displaying it. In production applications, streaming delivers a much better user experience by displaying text as it's generated — just like you see in ChatGPT and other AI chat interfaces.
+To maintain the conversational context, we need to include references to previous responses in each new request.
 
-1. In VS Code, open the `chat-app.py` file.
-1. Find the current **Get a response** code block and replace it with the following streaming version:
+1. In the **chat-client.py** code, in the **main** function, find the comment **Loop until the user wants to quit**, and add the following code <u>above</u> it (*before* the loop):
 
     ```python
-    # Get a response
-    stream = openai_client.responses.create(
-        model=model_deployment,
-        instructions="You are a helpful AI assistant that answers questions.",
-        input=input_text,
-        previous_response_id=previous_response_id,
-        stream=True
-    )
-    for event in stream:
+   # Track responses
+   last_response_id = None
+    ```
+
+1. Modify the code under the comment **Get a response** with the following code to pass the previous response ID on the request, and then obtain the new response ID so it can be added next time.
+
+    ```python
+   # Get a response
+   response = openai_client.responses.create(
+                model=model_deployment,
+                instructions="You are a helpful AI assistant that answers questions and provides information.",
+                input=input_text,
+                previous_response_id=last_response_id,
+   )
+   print(response.output_text)
+   last_response_id = response.response.id
+    ```
+
+    Using this technique, you can pass the ID of the previous reponse to maintain context. You could also implement more complex logic to pass an ID from any orevious response to redirect a conversation or resume a previous conversational thread.
+
+1. Save the changes to the code, and in the terminal pane, re-run the application (`python chat-app.py`).
+1. When prompted, enter the same prompt as before:
+
+    ```input
+    Tell me about the ELIZA chatbot.
+    ```
+
+    After a few moments, the app should once again respond with some information about the ELIZA chatbot.
+
+1. Enter the following prompt to try to continue the conversation:
+
+    ```input
+    How does it compare to modern LLMs?
+    ```
+
+    This time, the app should respond with a comparison of the ELIZA chatbot and modern LLMs. The response may be quite lengthy, and the app waits until it has all been revceived from the mdeol before displaying it; which may make the app seem unresponsive. We'll fix that next!
+
+1. Enter the prompt `quit` to end the application.
+
+### Implement *streaming* responses
+
+To handle long responses, you can use *streaming* to start processing partial responses before the full text has been returned.
+
+1. In the **chat-client.py** code, in the **main** function, replace the code under the comment **Get a response** with the following code that uses *streaming*.
+
+    ```python
+   # Get a response
+   stream = openai_client.responses.create(
+                model=model_deployment,
+                instructions="You are a helpful AI assistant that answers questions and provides information.",
+                input=input_text,
+                previous_response_id=last_response_id,
+                stream=True
+   )
+   for event in stream:
         if event.type == "response.output_text.delta":
             print(event.delta, end="")
         elif event.type == "response.completed":
-            previous_response_id = event.response.id
-    print()
+            last_response_id = event.response.id
+   print()
     ```
 
-    > **Note**: The key changes are: adding `stream=True` to the API call, iterating over events to print text deltas as they arrive, and extracting `previous_response_id` from the `response.completed` event at the end of the stream.
+    Note that the *stream=True* parameter creates a streamed response in which *events* occure as each new chunk (or *delta*) is ready for processing.
 
-1. Save the file and run the application again:
+1. Save the changes to the code, and in the terminal pane, re-run the application (`python chat-app.py`).
+1. When prompted, enter the same prompt as before:
 
+    ```input
+    Tell me about the ELIZA chatbot.
     ```
-    python chat-app.py
+
+    After a few moments, the app should starte responding with some information about the ELIZA chatbot. The response should appear incrementally as each chunk is returned.
+
+1. Enter the following prompt to try to continue the conversation:
+
+    ```input
+    How does it compare to modern LLMs?
     ```
 
-1. Ask a question and observe how the response now appears word-by-word instead of all at once. This streaming pattern is essential for production chat applications where responsiveness matters.
-1. When you're finished, enter `quit` to exit the program.
+    Again, the repsonse should be diaplayed incrementally.
+
+1. Enter the prompt `quit` to end the application.
 
 ## Summary
 
-In this exercise, you used the OpenAI SDK and the Responses API to create a client application for a generative AI model that you deployed in a Microsoft Foundry project. You customized the model's behavior using system instructions, and implemented streaming to deliver a responsive chat experience. The Responses API simplifies multi-turn conversations by automatically tracking conversation history through `previous_response_id`, eliminating the need to manually manage a messages array.
+In this exercise, you used the OpenAI SDK and the *ChatCompletions* and *Responses* APIs to create a client application for a generative AI model that you deployed in a Microsoft Foundry project. You customized the model's behavior by tracking conversational context and implemented streaming to deliver a responsive chat experience.
 
 ## Clean up
 
-If you've finished exploring the Microsoft Foundry portal, you should delete the resources you have created in this exercise to avoid incurring unnecessary Azure costs.
+If you've finished exploring Microsoft Foundry, you should delete the resources you have created in this exercise to avoid incurring unnecessary Azure costs.
 
 1. Open the [Azure portal](https://portal.azure.com) and view the contents of the resource group where you deployed the resources used in this exercise.
 1. On the toolbar, select **Delete resource group**.
