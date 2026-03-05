@@ -144,7 +144,7 @@ The *ChatCompletions* API is a well-established way to build client applications
 1. Save the changes to the code file. Then, in the terminal pane, use the following command to run the program:
 
     ```powershell
-   python chat-client.py
+   python chat-app.py
     ```
 
     The program should run in the terminal (if not, resolve any errors and try again).
