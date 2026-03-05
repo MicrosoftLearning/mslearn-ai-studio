@@ -1,7 +1,7 @@
 ---
 lab:
     title: 'Prepare for an AI development project'
-    description: 'Learn how to organize cloud resources in Microsoft Foundry projects so that developers are set up for success when building AI solutions.'
+    description: 'Learn how to organize AI resources in a Microsoft Foundry project and get started with the Visual Studio Code extension for Foundry.'
     level: 200
     duration: 30
 ---
@@ -19,110 +19,123 @@ This exercise takes approximately **30** minutes.
 To complete this exercise, you need:
 
 - An [Azure subscription](https://azure.microsoft.com/free/) with permissions to create AI resources.
+- [Visual Studio Code](https://code.visualstudio.com/) installed on your local machine.
+- [Python 3.13](https://www.python.org/downloads/) or later installed on your local machine.
+- [Git](https://git-scm.com/downloads) installed on your local machine.
 
-## Open Microsoft Foundry portal
+## Create a Microsoft Foundry project
 
-Let's start by signing into Foundry portal.
+Microsoft Foundry uses projects to organize models, resources, data, and other assets used to develop an AI solution.
 
-1. In a web browser, open the [Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Foundry** logo at the top left to navigate to the home page, which looks similar to the following image (close the **Help** pane if it's open):
+1. In a web browser, open the [Microsoft Foundry portal](https://ai.azure.com) at `https://ai.azure.com` and sign in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the Foundry logo at the top left to navigate to the home page.
 
-    ![Screenshot of Foundry portal.](../media/ai-foundry-home-new.png)
-
-1. Review the information on the home page.
-
-1. In the top banner, select **Start building** to try the new Microsoft Foundry Experience.
-
-## Create a project
-
-A Microsoft Foundry *project* provides a collaborative workspace for AI development. 
-
-> **Note**: Microsoft Foundry projects can be based on a *Foundry* resource, which provides access to AI models (including Azure OpenAI), Foundry services, and other resources for developing AI agents and chat solutions. Alternatively, projects can be based on *AI hub* resources; which include connections to Azure resources for secure storage, compute, and specialized tools. Foundry based projects are great for developers who want to manage resources for AI agent or chat app development. AI hub based projects are more suitable for enterprise development teams working on complex AI solutions.
-
-1. When prompted, create a **new** project, and enter a valid name for your project.
-
-    ![Screenshot of the Create a project page in Foundry portal.](../media/create-new-project.png)
-
-1. Expand **Advanced options** and specify the following settings:
-    - **Foundry resource**: *A valid name for your Foundry resource*
+1. If it is not already enabled, in the tool bar the top of the page, enable the **New Foundry** option. Then, create a new project with a unique name; expanding the **Advanced options** area to specify the following settings for your project:
+    - **Foundry resource**: *Use the default name for your resource (usually {project_name}-resource)*
     - **Subscription**: *Your Azure subscription*
-    - **Resource group**: *Select your resource group, or create a new one*
-    - **Region**: *Select any **Foundry recommended***\**
+    - **Resource group**: *Create or select a resource group*
+    - **Region**: Select any of the **AI Foundry recommended** regions
 
-    > \* Some Foundry resources are constrained by regional model quotas. In the event of a quota limit being exceeded later in the exercise, there's a possibility you may need to create another resource in a different region.
+    > **Tip**: Make a note of the region you selected. You'll need it later!
 
-1. Select **Create** and wait for your project to be created.
+1. Select **Create**. Wait for your project to be created.
 
-1. After your project is created, select **Build** from the navigation bar.
+    When it is ready, the project home page will open.
 
-1. Select **Models** from the left-hand menu, and then select **Deploy a base model**.
+    ![Screenshot of the Foundry project home page.](../media/ai-foundry-project-home.png)
 
-1. Enter **gpt-4.1** in the search box, and then select the **gpt-4.1** model from the search results.
+## Deploy and test a model
+
+At the core of any generative AI project, there's at least one generative AI model.
+
+1. In the **Start building** menu, select **Browse models**.
+
+    This opens the Foundry Models catalog, which includes a wide selection of models from multiple providers.
+
+1. Search for the `gpt-4.1` model, and then select it in the search results to view its model card.
+
+    Model cards provide information about models to help you understand their capabilities and limitations, and determine if they are suitable for your requirements.
+
+    ![Screenshot of the gpt-4.1 model card.](../media/gpt4.1-details.png)
 
 1. Select **Deploy** with the default settings to create a deployment of the model.
 
-1. When your project is created, the model playground will be opened automatically so you can test your model:
+    Model deployments enable you to work with a model in your project.
 
-    ![Screenshot of a Foundry project model playground.](../media/ai-foundry-model-playground.png)
+    When the model has been deployed, the model playground will open automatically so you can test your model:
 
-1. In the top navigation bar, select **Home** to see the main page for your project; which looks like this:
+    ![Screenshot of the Foundry project model playground.](../media/ai-foundry-model-playground.png)
 
-    ![Screenshot of a Foundry project home page.](../media/ai-foundry-project-home.png)
+1. In the **Instructions** box, enter the following instructions:
 
-1. In the top navigation bar, select **Operate**. The operation center is where you can monitor your projects, view alerts, monitor agent performance and quotas, and manage resources.
+    ```text
+    You are an AI assistant that can provide information and advice about AI software development.
+    ```
+
+1. In the chat window, enter a query such as `Decrribe three key considerations for working with Large Language Models for AI application development.` and view the response:
+
+    Hopefully the model provided some key considerations for you to think about!
+
+## View Foundry Azure resource and project endpoints
+
+1. In the Foundry portal, in the top menu bar, select **Operate**.
+
+    The operation center is where you can monitor your projects, view alerts, monitor agent performance and quotas, and manage resources.
 
     ![Screenshot of the Operate center page in Foundry portal.](../media/ai-foundry-operate.png)
 
 1. In the left navigation pane, select the **Admin** page to view details.
-    
-    The *resource* level relates to the **Foundry** resource that was created to support your project. This resource includes connections to Foundry Services and models; and provides a centralplace to manage user access to AI development projects.
 
-    The *project* level relates to your individual project, where you can add and manage project-specific resources.
+    - The *resource* level relates to the **Foundry** resource that was created in Azure to support your project. This resource includes connections to Foundry Services and models; and provides a central place to manage user access to AI development projects.
+    - The *project* level relates to your individual project, where you can add and manage project-specific resources. A resource can support multiple projects (the first one created is the resource's *default* project).
+
+    ![Screenshot of the Admin page in Foundry portal.](../media/ai-foundry-admin.png)
 
 1. Select the link to the **Parent resource** associated with the project.
 
     The resource configuration details should be displayed.
 
-1. Under **View resource**, click **Manage this resource in the Azure portal**.
+    ![Screenshot of a Foundry resource details page.](../media/ai-foundry-resource.png)
 
-    A new browser tab will open to the Azure portal. Sign in with your Azure credentials if prompted.
+    Note that the Foundry resource has an *endpoint*, through which client applications can access resource-level funtionality (such as Foundry Tools that are shared across all projects in the resource).
 
-1. View the resource group in the Azure portal to see the Azure resources that have been created to support your Foundry resource and your project.
+1. In the top menu bar, select **Home** to return to the project home page.
+1. Note the project endpoint, key, and OpenAI endpoint.
 
-    ![Screenshot of a Foundry resource and project resources in the Azure portal.](../media/azure-portal-resources.png)
+    This information is used to connect to your project-level resouces from client applications.
 
-1. Close the Azure portal tab and return to the Foundry portal.
+    - The *key* is used for key-based authentication to models and tools (though in most production scenarios you should consider using Microsoft Entra ID authentication based on authenticated user and application identities).
+    - The *project endpoint* is used to access models provided directly in Foundry (including OpenAI models) using the OpenAI **Resources** API, and to access Foundry-specific APIs (such as the Foundry Agent service).
+    - The *OpenAI endpoint* is used to access models that are compatible with the OpenAI APIs, including the **Chat Completions** API and other specialized functions.
 
-## Review project endpoints
+## Install the Visual Studio Code extension for Microsoft Foundry
 
-The Foundry project includes a number of *endpoints* that client applications can use to connect to the project and the models and AI services it includes.
+As a developer, you may spend some time working in the Foundry portal; but you're also likely to spend a lot of time in Visual Studio Code. The Extension for Microsoft Foundry provides a convenient way to work with Foundry project resources without leaving the development environment.
 
-1. In the top navigation bar, select **Home**.
-1. In the project home page, observe the project details; which contains endpoint and project API key that you can use in your application code to access:
-    - The Foundry project and any models deployed in it.
-    - Azure OpenAI in Foundry models.
-    - Foundry services
+1. Open Visual Studio Code, and in the navigation bar on the left, view the **Extensions** page.
 
-## Test a generative AI model
+    ![Screenshot of the Visual Studio Code extensions page.](../media/vscode-extensions.png)
 
-Now that you know something about the configuration of your Foundry project, you can return to the chat playground to explore the model you deployed.
+1. Search the extensions marketplace for `Microsoft Foundry`, and install the **Microsoft Foundry** extension.
+1. After installing the extension, select its page in the left navigation bar.
 
-1. In the top navigation bar, select **Build**.
-1. In the navigation pane on the left for your project, select **Models** 
-1. Select the **gpt-4.1** model deployment that you created earlier to open the model playground.
-1. In the **Instructions** box, enter the following instructions:
+    ![Screenshot of the Microsoft Foundry Visual Studio Code extension.](../media/foundry-vs-extension.png)
 
-    ```output
-   You are a history teacher who can answer questions about past events all around the world.
-    ```
+1. In the Foundry extension pane, use the **Set default project** button to connect to Azure (aigning in with your credentials) and select the Foundry project you created previously.
+1. After setting the default project, in the Foundry extension pane, expand **Models** and select the **gpt-4.1** model you deployed previously.
 
-1. Apply the changes to update the system message.
-1. In the chat window, enter a query such as `What are the key events in the history of Scotland?` and view the response:
+    You can view the details required to connect to and use the model here.
 
-    ![Screenshot of the playground in Foundry portal.](../media/ai-foundry-model-playground-chat.png)
+    ![Screenshot of a model in the Microsoft Foundry Visual Studio Code extension.](../media/vscode-extension-model.png)
+
+1. In the Foundry extension pane, in the **Tools** section, select **Model playground** and when prompted, select the **gpt-4.1** model.
+
+    An interactuve playground in which you can test the model is opened in Visual Studio Code.
+
+    ![Screenshot of the model playground in Visual Studio Code.](../media/vscode-model-playground.png)
 
 ## Summary
 
-In this exercise, you've explored Foundry, and seen how to create and manage projects and their related resources.
+In this exercise, you've created a Microsoft Foundry and explored it in the Foundry portal. You've also explored the Microsoft Foundry extension in Visual Studio Code, which provides a convenient way for developers to work with Foundry projects and their assets.
 
 ## Clean up
 
