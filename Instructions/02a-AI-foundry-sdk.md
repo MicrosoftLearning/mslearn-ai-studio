@@ -90,8 +90,21 @@ Now that you have deployed a model, you can use the Foundry and Azure OpenAI SDK
 1. In the cloud shell command-line pane, enter the following command to install the libraries you'll use:
 
     ```
+   # Create a Python virtual environment
    python -m venv labenv
-   ./labenv/bin/Activate.ps1
+   
+   # Activate the virtual environment
+
+   # On Bash (Linux, macOS, or Cloud Shell)
+   source labenv/bin/activate
+
+   # On Windows PowerShell
+   .\labenv\Scripts\Activate.ps1
+
+   # On Windows Command Prompt
+   Scripts\activate.bat
+
+   # Install required packages
    pip install -r requirements.txt azure-identity azure-ai-projects openai
     ```
 1. Enter the following command to edit the configuration file that has been provided:
