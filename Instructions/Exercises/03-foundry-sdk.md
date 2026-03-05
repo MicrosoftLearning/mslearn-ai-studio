@@ -265,7 +265,7 @@ To handle long responses, you can use *streaming* to start processing partial re
    print()
     ```
 
-    Note that the *stream=True* parameter creates a streamed response in which *events* occure as each new chunk (or *delta*) is ready for processing.
+    Note that the *stream=True* parameter creates a streamed response in which *events* occur as each new chunk (or *delta*) is ready for processing.
 
 1. Save the changes to the code, and in the terminal pane, re-run the application (`python chat-app.py`).
 1. When prompted, enter the same prompt as before:
