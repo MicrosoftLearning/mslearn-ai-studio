@@ -274,7 +274,7 @@ To handle long responses, you can use *streaming* to start processing partial re
     Tell me about the ELIZA chatbot.
     ```
 
-    After a few moments, the app should starte responding with some information about the ELIZA chatbot. The response should appear incrementally as each chunk is returned.
+    After a few moments, the app should start responding with some information about the ELIZA chatbot. The response should appear incrementally as each chunk is returned.
 
 1. Enter the following prompt to try to continue the conversation:
 
