@@ -3,7 +3,7 @@ lab:
     title: 'Fine-tune a language model'
     description: 'Learn how to use your own training data to fine-tune a model and customize its behavior.'
     level: 300
-    duration: 60
+    duration: 90
 ---
 
 # Fine-tune a language model
@@ -14,7 +14,7 @@ In this exercise, you'll fine-tune a language model with Microsoft Foundry that 
 
 Imagine you work for a travel agency and you're developing a chat application to help people plan their vacations. The goal is to create a simple and inspiring chat that suggests destinations and activities with a consistent, friendly conversational tone.
 
-This exercise will take approximately **60** minutes\*.
+This exercise will take approximately **90** minutes\*.
 
 > \* **Note**: This timing is an estimate based on the average experience. Fine-tuning is dependent on cloud infrastructure resources, which can take a variable amount of time to provision depending on data center capacity and concurrent demand. Some activities in this exercise may take a <u>long</u> time to complete, and require patience. If things are taking a while, consider reviewing the [Microsoft Foundry fine-tuning documentation](https://learn.microsoft.com/azure/ai-foundry/openai/how-to/fine-tuning?view=foundry) or taking a break. It is possible some processes may time-out or appear to run indefinitely. Some of the technologies used in this exercise are in preview or in active development. You may experience some unexpected behavior, warnings, or errors.
 
@@ -71,7 +71,7 @@ Because fine-tuning a model takes some time to complete, you'll start the fine-t
     - *Leave the remaining hyperparameters at their defaults*
 1. Select **Submit** to start the fine-tuning job. It may take some time to complete. You can continue with the next section of the exercise while you wait.
 
-> **Note**: Fine-tuning and deployment can take a significant amount of time (30 minutes or longer), so you may need to check back periodically. You can see more details of the progress so far by selecting the fine-tuning job and viewing its **Monitor** tab.
+> **Note**: Fine-tuning and deployment can take a significant amount of time (60 minutes or longer), so you may need to check back periodically. You can see more details of the progress so far by selecting the fine-tuning job and viewing its **Monitor** tab.
 
 ## Chat with a base model
 
@@ -136,6 +136,8 @@ When your fine-tuned model is ready, you can test it like you tested your deploy
 1. In the pane on the left, select **Fine-tune** and review the status of the fine-tuning job you started earlier.
 1. Select the job to view its details. You can use the **Logs** tab to review the fine-tuning tasks that have been performed so far.
 1. When fine-tuning is complete, and the model has been automatically deployed, view the **Models** page to verify that it is listed.
+
+    > **Tip**: If automatic deployment fails, select the completed fine-tuning job and deploy the model from there.
 1. Select the fine-tuned model to open it in the model playground.
 1. Update the **Instructions** to be the same as you tested with the base model:
 
