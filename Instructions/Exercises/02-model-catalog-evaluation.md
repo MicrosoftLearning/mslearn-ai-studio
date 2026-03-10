@@ -1,16 +1,16 @@
 ---
 lab:
     title: 'Explore and compare models'
-    description: 'Explore the model catalog to find and compare models.'
+    description: 'Explore the model catalog to find and compare models, and evaluate model performance.'
     level: 300
-    duration: 30
+    duration: 45
 ---
 
 # Explore and compare models
 
-The Microsoft Foundry model catalog serves as a central repository where you can explore and use a variety of models, facilitating the creation of your generative AI scenario. In this exercise, you'll explore the model catalog, compare models using benchmarks, test models in the model playground.
+The Microsoft Foundry model catalog serves as a central repository where you can explore and use a variety of models, facilitating the creation of your generative AI scenario. In this exercise, you'll explore the model catalog, compare models using benchmarks, test models in the model playground, and run an evaluation using a synthetic dataset.
 
-This exercise will take approximately **30** minutes.
+This exercise will take approximately **45** minutes.
 
 > **Note**: Some of the technologies used in this exercise are in preview or in active development. You may experience some unexpected behavior, warnings, or errors.
 
@@ -110,6 +110,64 @@ Now that you have two model deployments, let's compare them in the playground.
     ```
 
 1. Compare the responses from each model. Note any differences in accuracy, reasoning quality, and response style.
+
+## Evaluate a model with a synthetic dataset
+
+The model playground is useful for quick manual testing, but to systematically assess a model's performance across many inputs, you can run an evaluation. Let's evaluate the **gpt-4.1** model using a synthetically generated dataset of travel-related questions.
+
+### Step 1: Target
+
+1. In the playground, select the **Evaluation** tab.
+1. Select **Create** to open the **Create new evaluation** wizard.
+1. For the evaluation target, select **Model**.
+1. Select just your **gpt-4.1** deployment in the table of models, and then select **Next**.
+
+### Step 2: Data
+
+Instead of uploading a test dataset, you'll use Foundry's synthetic data generation feature to create one automatically.
+
+1. In the **Data** step, under **Dataset source**, select **Synthetic generation**.
+
+    With synthetic generation, a deployment is used to automatically generate questions for each target when you submit the evaluation.
+
+1. Select **Generate**, and set the following:
+    - **Name of the new dataset**: *Leave as default*
+    - **Model**: gpt-4.1
+    - **Number of rows**: 45
+    - **Prompt**: Create various travel related questions, and include some content safety and security tests
+    - **Seed data**: *Leave blank*
+1. Select **Next** to proceed.
+
+### Step 3: Configure models
+
+1. In the **Configure models** step, set the **Instructions** for the model being evaluated:
+
+    ```
+    You are a helpful travel assistant that provides accurate, detailed, and practical travel advice to help users plan their trips.
+    ```
+
+1. Leave the rest of the values at their default, then select **Next**.
+
+### Step 4: Criteria
+
+1. In the **Criteria** step, all of the suggested evaluators. These use an AI model as a judge to assess the quality of responses.
+1. Remove all of the criteria under *Agents*, and remove **RegexMatchEvaluator** from the *Quality* group, leaving the rest of the evaluators enabled.
+1. Select **Next**.
+
+### Step 5: Review and submit
+
+1. In the **Review** step, verify the evaluation configuration, including the target model, dataset, and selected criteria.
+1. Provide a name for the evaluation, such as `travel-assistant-eval`.
+1. Select **Submit** to start the evaluation run.
+1. Wait for the evaluation to complete. This may take several minutes, depending on data center load.
+
+### Review the results
+
+1. When the evaluation completes, select the evaluation run to view the results page displays an overview of the evaluation metrics.
+1. Review the scores and results from each evaluation in the table detailed on the run page. Scroll to the right and view additional pages, where you'll see mostly passing values. Depending on the model's response, you may see some failures. If you do, examine those closely.
+1. Select the **Analyze results** button, selecting **gpt-4.1** from dropdown, then select **Start analysis**.
+1. On this page you'll see any failures clustered by why they failed, where you can see details on why it failed. Most of those failures will be due to the model saying it's unable to help due to the nature of the question, however you should explore each failure and consider if the response is what you want to see.
+1. Review any failures and the AI suggestions for how to improve. This guidance will help you tweak your configuration to perform better.
 
 ## Clean up
 
