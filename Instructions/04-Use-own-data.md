@@ -1,7 +1,10 @@
 ---
 lab:
-    title: 'Create a generative AI app that uses your own data (deprecated)'
-    description: 'Learn how to use the Retrieval Augmented Generation (RAG) model to build a chat app that grounds prompts using your own data.'
+  title: Create a generative AI app that uses your own data (deprecated)
+  description: Learn how to use the Retrieval Augmented Generation (RAG) model to build a chat app that grounds prompts using your own data.
+  duration: 45 minutes
+  level: 300
+  islab: true
 ---
 
 # Create a generative AI app that uses your own data (deprecated)

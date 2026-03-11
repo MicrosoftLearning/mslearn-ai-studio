@@ -1,9 +1,10 @@
 ---
 lab:
-    title: 'Fine-tune a language model'
-    description: 'Learn how to use your own training data to fine-tune a model and customize its behavior.'
-    level: 300
-    duration: 90
+  title: Fine-tune a language model
+  description: Learn how to use your own training data to fine-tune a model and customize its behavior.
+  level: 300
+  duration: 90
+  islab: true
 ---
 
 # Fine-tune a language model

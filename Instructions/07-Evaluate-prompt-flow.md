@@ -1,7 +1,10 @@
 ---
 lab:
-    title: 'Evaluate generative AI model performance (deprecated)'
-    description: 'Learn how to evaluate models and prompts to optimize the performance of your chat app and its ability to respond appropriately.'
+  title: Evaluate generative AI model performance (deprecated)
+  description: Learn how to evaluate models and prompts to optimize the performance of your chat app and its ability to respond appropriately.
+  duration: 86 minutes
+  level: 200
+  islab: true
 ---
 
 # Evaluate generative AI model performance (deprecated)
