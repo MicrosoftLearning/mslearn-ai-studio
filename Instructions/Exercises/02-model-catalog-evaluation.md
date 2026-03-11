@@ -1,9 +1,11 @@
 ---
 lab:
-    title: 'Explore and compare models'
-    description: 'Explore the model catalog to find and compare models, and evaluate model performance.'
-    level: 300
-    duration: 45
+  title: Explore and compare models
+  description: Explore the model catalog to find and compare models, and evaluate
+    model performance.
+  level: 300
+  duration: 45
+  islab: true
 ---
 
 # Explore and compare models
