@@ -1,9 +1,11 @@
 ---
 lab:
-    title: 'Apply guardrails to prevent the output of harmful content'
-    description: 'Learn how to apply content filters that mitigate potentially offensive or harmful output in your generative AI app.'
-    level: 300
-    duration: 25
+  title: Apply guardrails to prevent the output of harmful content
+  description: Learn how to apply content filters that mitigate potentially offensive
+    or harmful output in your generative AI app.
+  level: 300
+  duration: 25
+  islab: true
 ---
 
 # Apply guardrails to prevent the output of harmful content
