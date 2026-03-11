@@ -1,7 +1,10 @@
 ---
 lab:
-    title: 'Apply content filters to prevent the output of harmful content (deprecated)'
-    description: 'Learn how to apply content filters that mitigate potentially offensive or harmful output in your generative AI app.'
+  title: Apply content filters to prevent the output of harmful content (deprecated)
+  description: Learn how to apply content filters that mitigate potentially offensive or harmful output in your generative AI app.
+  duration: 72 minutes
+  level: 100
+  islab: true
 ---
 
 # Apply content filters to prevent the output of harmful content (deprecated)
