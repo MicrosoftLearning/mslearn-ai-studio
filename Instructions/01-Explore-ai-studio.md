@@ -1,7 +1,13 @@
 ---
 lab:
-    title: 'Prepare for an AI development project (deprecated)'
-    description: 'Learn how to organize cloud resources in Microsoft Foundry projects so that developers are set up for success when building AI solutions.'
+  title: Prepare for an AI development project (deprecated)
+  description: Learn how to organize cloud resources in Microsoft Foundry projects
+    so that developers are set up for success when building AI solutions.
+  duration: 30 minutes
+  level: 200
+  islab: true
+  primarytopics:
+  - Microsoft Foundry
 ---
 
 # Prepare for an AI development project (deprecated)
