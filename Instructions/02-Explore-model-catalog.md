@@ -1,7 +1,11 @@
 ---
 lab:
-    title: 'Choose and deploy a language model (deprecated)'
-    description: 'Generative AI applications are built on one or more language models. Learn how to find and select appropriate models for your generative AI project.'
+  title: Choose and deploy a language model (deprecated)
+  description: Generative AI applications are built on one or more language models.
+    Learn how to find and select appropriate models for your generative AI project.
+  duration: 106 minutes
+  level: 100
+  islab: true
 ---
 
 # Choose and deploy a language model (deprecated)
