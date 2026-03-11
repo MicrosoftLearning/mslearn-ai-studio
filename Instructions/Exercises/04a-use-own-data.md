@@ -1,9 +1,12 @@
 ---
 lab:
-    title: 'Create a generative AI app that uses your own data'
-    description: 'Learn how to use the Retrieval Augmented Generation (RAG) pattern with the Responses API and file search to build a chat app that grounds prompts using your own data.'
-    level: 300
-    duration: 45
+  title: Create a generative AI app that uses your own data
+  description: Learn how to use the Retrieval Augmented Generation (RAG) pattern with
+    the Responses API and file search to build a chat app that grounds prompts using
+    your own data.
+  level: 300
+  duration: 45
+  islab: true
 ---
 
 # Create a generative AI app that uses your own data
