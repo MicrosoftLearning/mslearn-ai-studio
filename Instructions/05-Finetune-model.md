@@ -1,7 +1,11 @@
 ---
 lab:
-    title: 'Fine-tune a language model (deprecated)'
-    description: 'Learn how to use your own training data to fine-tune a model and customize its behavior.'
+  title: Fine-tune a language model (deprecated)
+  description: Learn how to use your own training data to fine-tune a model and customize
+    its behavior.
+  duration: 30 minutes
+  level: 200
+  islab: true
 ---
 
 # Fine-tune a language model (deprecated)
