@@ -1,7 +1,11 @@
 ---
 lab:
-    title: 'Use a prompt flow to manage conversation in a chat app (deprecated)'
-    description: 'Learn how to use prompt flows to manage conversational dialogs and ensure that prompts are constructed and orchestrated for best results.'
+  title: Use a prompt flow to manage conversation in a chat app (deprecated)
+  description: Learn how to use prompt flows to manage conversational dialogs and
+    ensure that prompts are constructed and orchestrated for best results.
+  duration: 108 minutes
+  level: 300
+  islab: true
 ---
 
 ## Use a prompt flow to manage conversation in a chat app (deprecated)
