@@ -1,12 +1,9 @@
 ---
 lab:
-  title: Create a generative AI chat app
-  description: Learn how to use the OpenAI SDK and the Responses API to build a chat app that connects to a model deployed in Microsoft Foundry.
-  level: 300
-  duration: 45
-  islab: true
-  primarytopics:
-    - Microsoft Foundry
+    title: 'Create a generative AI chat app'
+    description: 'Learn how to use the OpenAI SDK and the Responses API to build a chat app that connects to a model deployed in Microsoft Foundry.'
+    level: 300
+    duration: 45
 ---
 
 # Create a generative AI chat app
@@ -21,7 +18,7 @@ To complete this exercise, you need:
 
 - An [Azure subscription](https://azure.microsoft.com/free/) with permissions to create AI resources.
 - [Visual Studio Code](https://code.visualstudio.com/) installed on your local machine.
-- [Python 3.13](https://www.python.org/downloads/) or later installed on your local machine.
+- [Python 3.13](https://www.python.org/downloads/release/python-31312/) installed on your local machine.
 - [Git](https://git-scm.com/downloads) installed on your local machine.
 
 ## Create a Microsoft Foundry project
@@ -77,7 +74,8 @@ The initial application files you'll need to develop your chat application are p
 1. In the Explorer pane, navigate to the folder containing the application code files at **/labfiles/foundry-chat/python/chat-app**. The application files include:
     - **.env** (the application configuration file)
     - **requirements.txt** (the Python package dependencies that need to be installed)
-    - **chat-app.py** (the code file for the application)
+    - **chat-app.py** (the code file for the chat application)
+    - **chat-async.py** (the code file for an asynchronous version of the application)
 
 1. In the **Explorer** pane, right-click the **chat-app** folder containing the application files, and select **Open in integrated terminal** (or open a terminal in the **Terminal** menu and navigate to the */labfiles/foundry-chat/python/chat-app* folder.)
 
@@ -92,7 +90,7 @@ The initial application files you'll need to develop your chat application are p
 
 1. In the **Explorer** pane, in the **labfiles/foundry-chat/python/chat-app** folder, select the **.env** file to open it. Then update the configuration values to include the **Project API key** and **Azure OpenAI Endpoint** for your **gpt-4.1** model.
 
-    > **Tip**: Copy the key and endpoint from the project home page in the Foundry portal, and rename the model deployment if your deployment isn't named *gpt-4.1*
+    > **Tip**: Copy the **Project API key** and **Azure OpenAI Endpoint** (not the project endpoint!) from the project home page in the Foundry portal, and rename the model deployment if your deployment isn't named *gpt-4.1*.
 
     Save the modified configuration file.
 
@@ -100,7 +98,7 @@ The initial application files you'll need to develop your chat application are p
 
 The *ChatCompletions* API is a well-established way to build client applications for large language models, and has been widely adopted.
 
-1. In the **Explorer** pane, in the **labfiles/foundry-chat/python/chat-app** folder, select the **chat-app.py** file to open it.
+1. In the **Explorer** pane, in the **labfiles/foundry-chat/python/chat-app** folder, select the **chat-app.py** file (<u>not</u> *chat-async.py*) to open it.
 1. Review the existing code. You will add code to use the OpenAI SDK to access your model.
 
     > **Tip**: As you add code to the code file, be sure to maintain the correct indentation.
@@ -285,7 +283,69 @@ To handle long responses, you can use *streaming* to start processing partial re
     How does it compare to modern LLMs?
     ```
 
-    Again, the repsonse should be diaplayed incrementally.
+    Again, the response should be diaplayed incrementally.
+
+1. Enter the prompt `quit` to end the application.
+
+### Use the asynchronous API
+
+The OpenAI SDK offers an asynchronous option that can increase the responsiveness of applications when using long-running model or agent operations.
+
+1. In the **Explorer** pane, in the **labfiles/foundry-chat/python/chat-app** folder, select the **chat-async.py** file (<u>not</u> *chat-app.py*) to open it.
+1. Review the existing code. You will add code to use the OpenAI SDK async API to access your model.
+
+    > **Tip**: As you add code to the code file, be sure to maintain the correct indentation.
+
+1. At the top of the code file, under the existing namespace references, find the comment **Import namespaces** and add the following code to import the namespace you will need to use the OpenAI SDK:
+
+    ```python
+   # import namespaces for async
+   import asyncio
+   from openai import AsyncOpenAI
+    ```
+
+1. In the **main** function, note that code to load the endpoint and key from the configuration file has already been provided. Then find the comment **Initialize an async OpenAI client**, and add the following code to create a client for the OpenAI API:
+
+    ```python
+   # Initialize an async OpenAI client
+   async_client = AsyncOpenAI(
+        base_url=azure_openai_endpoint,
+        api_key=api_key
+   )
+    ```
+
+1. In the **main** function, note that code to request a user prompt until the user quits the app has been provided. Within this loop, find the **Await an asynchronous response** comment, and add the following code:
+
+    ```python
+   # Await an asynchronous response
+   response = await async_client.responses.create(
+                model=model_deployment,
+                instructions="You are a helpful AI assistant that answers questions and provides information.",
+                input=input_text,
+                previous_response_id=last_response_id
+   )
+   assistant_text = response.output_text
+   print("Assistant:", assistant_text)
+   last_response_id = response.id
+    ```
+
+    Note that the *ChatCompletions* API uses a JSON collection of *messages* to encapsulate the conversation. Often, these consist of a *system prompt* that provides instructions to the model, and a *user prompt* that includes the user's input.
+
+1. Save the changes to the code file. Then, in the terminal pane, use the following command to run the program:
+
+    ```powershell
+   python chat-async.py
+    ```
+
+    The program should run in the terminal (if not, resolve any errors and try again).
+
+1. When prompted, enter the following prompt:
+
+    ```input
+    Tell me about the Turing test.
+    ```
+
+    After a few moments, the app should respond with some information about the Turing test.
 
 1. Enter the prompt `quit` to end the application.
 
