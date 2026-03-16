@@ -22,7 +22,7 @@ To complete this exercise, you need:
 
 - An [Azure subscription](https://azure.microsoft.com/free/) with permissions to create AI resources.
 - [Visual Studio Code](https://code.visualstudio.com/) installed on your local machine.
-- [Python 3.13](https://www.python.org/downloads/) or later installed on your local machine.
+- [Python 3.13](https://www.python.org/downloads/release/python-31312/) installed on your local machine.
 - [Git](https://git-scm.com/downloads) installed on your local machine.
 
 # Create a Microsoft Foundry project
