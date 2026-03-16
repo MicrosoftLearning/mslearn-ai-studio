@@ -9,6 +9,20 @@ View the exercises in the [GitHub Pages site for this repo](https://go.microsoft
 
 > **Note**: While you can complete these exercises on their own, they're designed to complement modules on [Microsoft Learn](https://aka.ms/mslearn-generative-ai); in which you'll find a deeper dive into some of the underlying concepts on which these exercises are based.
 
+## Lab Catalog
+
+A comprehensive catalog of all lab exercises is available in [lab_catalog.csv](lab_catalog.csv). This catalog provides:
+- **File name**: The markdown file for each lab exercise
+- **Description**: What the lab covers including tasks and objectives
+- **Technologies**: Key technologies and products used in the lab
+- **Last merge date**: When the lab was last updated via merge
+- **Last merge author**: Who authored the last merge
+
+To regenerate the catalog after adding or modifying lab files, run:
+```bash
+python3 generate_lab_catalog.py
+```
+
 ## Reporting issues
 
 If you encounter any problems in the exercises, please report them as **issues** in this repo.

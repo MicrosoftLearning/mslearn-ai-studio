@@ -1,10 +1,16 @@
 ---
 lab:
-    title: 'Create a generative AI chat app'
-    description: 'Learn how to use the Microsoft Foundry SDK to build an app that connects to your project and chats with a language model.'
+  title: Create a generative AI chat app (deprecated)
+  description: Learn how to use the Microsoft Foundry SDK to build an app that connects to your project and chats with a language model.
+  duration: 40 minutes
+  level: 400
+  islab: true
+  primarytopics:
+    - Microsoft Foundry
+    - Microsoft Foundry SDK
 ---
 
-# Create a generative AI chat app
+# Create a generative AI chat app (deprecated)
 
 In this exercise, you use the Microsoft Foundry Python SDK to create a simple chat app that connects to a project and chats with a language model.
 
@@ -90,8 +96,21 @@ Now that you have deployed a model, you can use the Foundry and Azure OpenAI SDK
 1. In the cloud shell command-line pane, enter the following command to install the libraries you'll use:
 
     ```
+   # Create a Python virtual environment
    python -m venv labenv
-   ./labenv/bin/Activate.ps1
+   
+   # Activate the virtual environment
+
+   # On Bash (Linux, macOS, or Cloud Shell)
+   source labenv/bin/activate
+
+   # On Windows PowerShell
+   .\labenv\Scripts\Activate.ps1
+
+   # On Windows Command Prompt
+   Scripts\activate.bat
+
+   # Install required packages
    pip install -r requirements.txt azure-identity azure-ai-projects openai
     ```
 1. Enter the following command to edit the configuration file that has been provided:
