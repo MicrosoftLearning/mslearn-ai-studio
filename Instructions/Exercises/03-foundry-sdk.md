@@ -166,7 +166,7 @@ The *ChatCompletions* API is a well-established way to build client applications
 
 While the *ChatCompletions* API is widely used, it is increasingly being superseded by the newer *Responses* API. Let's update the code to use it.
 
-1. In the **chat-client.py** code, in the **main** function, replace the code under the comment **Get a response** with the following code that uses the *Responses* API.
+1. In the **chat-app.py** code, in the **main** function, replace the code under the comment **Get a response** with the following code that uses the *Responses* API.
 
     ```python
    # Get a response
@@ -203,7 +203,7 @@ While the *ChatCompletions* API is widely used, it is increasingly being superse
 
 To maintain the conversational context, we need to include references to previous responses in each new request.
 
-1. In the **chat-client.py** code, in the **main** function, find the comment **Loop until the user wants to quit**, and add the following code <u>above</u> it (*before* the loop):
+1. In the **chat-app.py** code, in the **main** function, find the comment **Loop until the user wants to quit**, and add the following code <u>above</u> it (*before* the loop):
 
     ```python
    # Track responses
@@ -221,7 +221,7 @@ To maintain the conversational context, we need to include references to previou
                 previous_response_id=last_response_id,
    )
    print(response.output_text)
-   last_response_id = response.response.id
+   last_response_id = response.id
     ```
 
     Using this technique, you can pass the ID of the previous reponse to maintain context. You could also implement more complex logic to pass an ID from any orevious response to redirect a conversation or resume a previous conversational thread.
@@ -249,7 +249,7 @@ To maintain the conversational context, we need to include references to previou
 
 To handle long responses, you can use *streaming* to start processing partial responses before the full text has been returned.
 
-1. In the **chat-client.py** code, in the **main** function, replace the code under the comment **Get a response** with the following code that uses *streaming*.
+1. In the **chat-app.py** code, in the **main** function, replace the code under the comment **Get a response** with the following code that uses *streaming*.
 
     ```python
    # Get a response
