@@ -101,7 +101,7 @@ At the core of any generative AI project, there's at least one generative AI mod
 
     ![Screenshot of a Foundry resource details page.](../media/ai-foundry-resource.png)
 
-    Note that the Foundry resource has an *endpoint*, through which client applications can access resource-level funtionality (such as Foundry Tools that are shared across all projects in the resource).
+    Note that the Foundry resource has an *endpoint*, through which client applications can access resource-level functionality (such as Foundry Tools that are shared across all projects in the resource).
 
 1. In the top menu bar, select **Home** to return to the project home page.
 1. Note the project endpoint, key, and OpenAI endpoint.
