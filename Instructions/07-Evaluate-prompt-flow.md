@@ -4,10 +4,12 @@ lab:
   description: Learn how to evaluate models and prompts to optimize the performance of your chat app and its ability to respond appropriately.
   duration: 86 minutes
   level: 200
-  islab: true
+  islab: false
 ---
 
 # Evaluate generative AI model performance (deprecated)
+
+> **Note**: This exercise is deprecated. Consider completing the replacement exercise at <https://go.microsoft.com/fwlink/?linkid=2354118>.
 
 In this exercise, you'll use manual and automated evaluations to assess the performance of a model in the Microsoft Foundry portal.
 
@@ -110,11 +112,10 @@ Automated evaluation is an approach that attempts to address these shortcomings 
         - **Grade with**: *Select your **gpt-4o** model*
         - **User** settings (at the bottom):
 
-
             Output: \{\{sample.output_text\}\}<br>
             Ground Truth: \{\{item.ExpectedResponse\}\}<br>
             <br>
-        
+
     - **Likert-scale evaluator**:
         - **Criteria name**: *Select the **Relevance** preset*
         - **Grade with**: *Select your **gpt-4o** model*

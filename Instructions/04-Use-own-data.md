@@ -4,10 +4,12 @@ lab:
   description: Learn how to use the Retrieval Augmented Generation (RAG) model to build a chat app that grounds prompts using your own data.
   duration: 45 minutes
   level: 300
-  islab: true
+  islab: false
 ---
 
 # Create a generative AI app that uses your own data (deprecated)
+
+> **Note**: This exercise is deprecated. Consider completing the replacement exercise at <https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/Exercises/04a-use-own-data.html>.
 
 Retrieval Augmented Generation (RAG) is a technique used to build applications that integrate data from custom data sources into a prompt for a generative AI model. RAG is a commonly used pattern for developing generative AI apps - chat-based applications that use a language model to interpret inputs and generate appropriate responses.
 
@@ -52,7 +54,7 @@ You need two models to implement your solution:
 
 1. In your project inside the Foundry portal, select **Model catalog** from the navigation pane on the left.
 1. On the filter panel, select the **Collections** and insert `OpenAI` to filter by **OpenAI** collections only.
-1. Search for `text-embedding-ada-002`, select it, and then on the detail page select **Use this model**. If a pop-up with purchase options appears, select the **Direct from Azure models** option. 
+1. Search for `text-embedding-ada-002`, select it, and then on the detail page select **Use this model**. If a pop-up with purchase options appears, select the **Direct from Azure models** option.
 1. Use the following settings by selecting **Customize** in the Deploy model wizard:
 
     - **Deployment name**: *A valid name for your model deployment*
@@ -96,9 +98,9 @@ Now that you've added a data source to your project, you can use it to create an
             - **Service name**: *A valid name for your AI Search Resource*
             - **Location**: *The same location as your AI hub*
             - **Pricing tier**: Basic
-            
+
             Wait for the AI Search resource to be created. Then return to the Foundry and finish configuring the index by selecting **Connect other Azure AI Search resource** and adding a connection to the AI Search resource you just created.
- 
+
         - **Vector index**: `brochures-index`
         - **Virtual machine**: Auto select
     - **Search settings**:
@@ -179,7 +181,7 @@ Now that you have a working index, you can use the Azure OpenAI SDK to implement
 
     The file is opened in a code editor.
 
-1. In the configuration file, replace the following placeholders: 
+1. In the configuration file, replace the following placeholders:
     - **your_openai_endpoint**: The Open AI endpoint from your project's **Overview** page in the Foundry portal (be sure to select the **Azure OpenAI** capability tab).
     - **your_openai_api_key** The Open AI API key from your project's **Overview** page in the Foundry portal (be sure to select the **Azure OpenAI** capability tab).
     - **your_chat_model**: The name you assigned to your **gpt-4o** model deployment, from the **Models + endpoints** page in the Foundry portal (the default name is `gpt-4o`).

@@ -4,12 +4,14 @@ lab:
   description: Learn how to organize cloud resources in Microsoft Foundry projects so that developers are set up for success when building AI solutions.
   duration: 30 minutes
   level: 200
-  islab: true
+  islab: false
   primarytopics:
     - Microsoft Foundry
 ---
 
 # Prepare for an AI development project (deprecated)
+
+> **Note**: This exercise is deprecated. Consider completing the replacement exercise at <https://go.microsoft.com/fwlink/?linkid=2353647>.
 
 In this exercise, you use Microsoft Foundry portal to create a project, ready to build an AI solution.
 
@@ -88,7 +90,7 @@ The Foundry project includes a number of *endpoints* that client applications ca
 
 Now that you know something about the configuration of your Foundry project, you can return to the chat playground to explore the model you deployed.
 
-1. In the navigation pane on the left for your project, select **Playgrounds** 
+1. In the navigation pane on the left for your project, select **Playgrounds**
 1. Open the **Chat playground**, and ensure that your **gpt-4o** model deployment is selected in the **Deployment** section.
 1. In the **Setup** pane, in the **Give the model instructions and context** box, enter the following instructions:
 

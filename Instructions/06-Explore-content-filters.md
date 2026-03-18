@@ -4,10 +4,12 @@ lab:
   description: Learn how to apply content filters that mitigate potentially offensive or harmful output in your generative AI app.
   duration: 72 minutes
   level: 100
-  islab: true
+  islab: false
 ---
 
 # Apply content filters to prevent the output of harmful content (deprecated)
+
+> **Note**: This exercise is deprecated. Consider completing the replacement exercise at <https://go.microsoft.com/fwlink/?linkid=2353440>.
 
 Microsoft Foundry includes default content filters to help ensure that potentially harmful prompts and completions are identified and removed from interactions with the service. Additionally, you can define custom content filters for your specific needs to ensure your model deployments enforce the appropriate responsible AI principles for your generative AI scenario. Content filtering is one element of an effective approach to responsible AI when working with generative AI models.
 

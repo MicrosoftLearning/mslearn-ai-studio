@@ -4,13 +4,15 @@ lab:
   description: Learn how to use the Microsoft Foundry SDK to build an app that connects to your project and chats with a language model.
   duration: 40 minutes
   level: 400
-  islab: true
+  islab: false
   primarytopics:
     - Microsoft Foundry
     - Microsoft Foundry SDK
 ---
 
 # Create a generative AI chat app (deprecated)
+
+> **Note**: This exercise is deprecated. Consider completing the replacement exercise at <https://go.microsoft.com/fwlink/?linkid=2354411>.
 
 In this exercise, you use the Microsoft Foundry Python SDK to create a simple chat app that connects to a project and chats with a language model.
 
@@ -113,6 +115,7 @@ Now that you have deployed a model, you can use the Foundry and Azure OpenAI SDK
    # Install required packages
    pip install -r requirements.txt azure-identity azure-ai-projects openai
     ```
+
 1. Enter the following command to edit the configuration file that has been provided:
 
     ```
@@ -203,7 +206,7 @@ Now that you have deployed a model, you can use the Foundry and Azure OpenAI SDK
     **<font color="red">You must sign into Azure - even though the cloud shell session is already authenticated.</font>**
 
     > **Note**: In most scenarios, just using *az login* will be sufficient. However, if you have subscriptions in multiple tenants, you may need to specify the tenant by using the *--tenant* parameter. See [Sign into Azure interactively using the Azure CLI](https://learn.microsoft.com/cli/azure/authenticate-azure-cli-interactively) for details.
-    
+
 1. When prompted, follow the instructions to open the sign-in page in a new tab and enter the authentication code provided and your Azure credentials. Then complete the sign in process in the command line, selecting the subscription containing your Foundry hub if prompted.
 1. After you have signed in, enter the following command to run the application:
 

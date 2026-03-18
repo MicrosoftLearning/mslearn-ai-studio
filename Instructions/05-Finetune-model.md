@@ -4,10 +4,12 @@ lab:
   description: Learn how to use your own training data to fine-tune a model and customize its behavior.
   duration: 30 minutes
   level: 200
-  islab: true
+  islab: false
 ---
 
 # Fine-tune a language model (deprecated)
+
+> **Note**: This exercise is deprecated. Consider completing the replacement exercise at <https://go.microsoft.com/fwlink/?linkid=2354220>.
 
 When you want a language model to behave a certain way, you can use prompt engineering to define the desired behavior. When you want to improve the consistency of the desired behavior, you can opt to fine-tune a model, comparing it to your prompt engineering approach to evaluate which method best fits your needs.
 
@@ -99,11 +101,13 @@ While you wait for the fine-tuning job to complete, let's chat with a base GPT 4
     You should not provide any hotel, flight, rental car or restaurant recommendations.
     Ask engaging questions to help someone plan their trip and think about what they want to do on their holiday.
     ```
+
 .
+
 1. Continue testing your chat application to verify it doesn't provide any information that isn't grounded in retrieved data. For example, ask the following questions and review the model's answers, paying particular attention to the tone and writing style that the model uses to respond:
-   
+
     `Where in Rome should I stay?`
-    
+
     `I'm mostly there for the food. Where should I stay to be within walking distance of affordable restaurants?`
 
     `What are some local delicacies I should try?`
