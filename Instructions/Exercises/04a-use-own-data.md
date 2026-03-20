@@ -1,17 +1,17 @@
 ---
 lab:
   title: Create a generative AI app that uses tools
-  description: Learn how to use the Retrieval Augmented Generation (RAG) pattern with the Responses API and file search to build a chat app that grounds prompts using your own data.
+  description: Learn how to use tools to extend the capabilities of a model.
   level: 300
-  duration: 45
+  duration: 30
   islab: true
 ---
 
 # Create a generative AI app that uses tools
 
-In this exercise, you'll use the Microsoft Foundry portal and the file_search tool in the Responses API to integrate custom data into a generative AI solution. You'll start by experimenting with prompt engineering in the playground, then add grounding data, and finally build a client app that uses the file search tool to ground responses in your own documents.
+In this exercise, you'll use the Microsoft Foundry portal and the Responses API to build an AI chat application. Then you'll integrate knowledge into your application by using the *web_search* and *file_search* tools.
 
-This exercise takes approximately **45** minutes.
+This exercise takes approximately **30** minutes.
 
 > **Note**: Some of the technologies used in this exercise are in preview or in active development. You may experience some unexpected behavior, warnings, or errors.
 
@@ -47,55 +47,41 @@ Now deploy a model that you'll use in your chat application.
 1. Review the model card, and then deploy it using the default settings.
 1. When the model has been deployed, it will open in the model playground.
 
-## Use prompt engineering in the playground
+## Experiment with tools in the playground
 
-Before adding grounding data, let's explore how the model responds using prompt engineering alone. This will help you understand why grounding data matters.
+Before developing a chat application, let's explore how the model responds in the playground. This will help you understand why grounding data matters.
 
 1. After deploying your model, you should be in the playground with that model selected. If not, select **Build** in the top menu bar, then select **Models** on the left, and then select the model you deployed.
-1. In the model playground, ensure that your **gpt-4.1** model is selected.
-1. In the chat pane, enter the query `Where can I stay in New York?` and review the response.
+1. In the model playground, in the pane on the left, ensure that your **gpt-4.1** model is selected.
 
-    The response should be fairly generic — the model provides general knowledge but doesn't have specific information about your travel services.
-
-1. In the **System message** field, enter the following prompt:
+1. In the **Instructions** field, enter the following prompt:
 
     ```
    You are a travel assistant that provides information on travel services available from Margie's Travel.
     ```
 
-1. In the chat pane, enter the same query `Where can I stay in New York?` and review the response.
+1. In the chat pane, enter the query `What are some recommended tourist activities in New York next month?` and review the response.
 
-    The response may be slightly more focused, but the model still doesn't have real data about Margie's Travel offerings. It may even fabricate information. This demonstrates the limitation of prompt engineering alone — while it can guide the model's tone and behavior, it can't provide factual grounding without real data.
+    The response should be fairly generic — the model provides general knowledge based on its training data, but doesn't have access to current information about what's happening in New York next month.
 
-1. Try another query: `What destinations does Margie's Travel offer?` and observe how the model responds without grounding data.
+1. In the pane on the left, under the instructions, in the **Tools** section, select **Add** and add the **web_search** tool.
 
-## Add grounding data in the playground
+1. In the chat pane, enter the same query `What are some recommended tourist activities in New York tnext month?` and review the response.
 
-Now that you've seen the limitations of prompt engineering alone, let's add real data to ground the model's responses using the RAG pattern.
+    This time, the model uses the *web_search* tool to find current information about activities in New York.
 
-The data for your app consists of a set of travel brochures in PDF format from the fictitious travel agency *Margie's Travel*.
+## Create an app that uses tools
 
-1. In a new browser tab, download the [zipped archive of brochures](https://microsoftlearning.github.io/mslearn-ai-studio/data/brochures.zip) from `https://microsoftlearning.github.io/mslearn-ai-studio/data/brochures.zip` and extract it to a folder named **brochures** on your local file system.
-1. Return to the model playground in the Foundry portal.
-1. In the **Tools** section, under the model list, select **Upload files**.
-1. Upload the brochure PDF files you extracted earlier. The file search tool allows the model to reference the uploaded documents when answering questions.
-
-    > **Tip**: If you don't see the **Tools** section, ensure you're in the single-model playground view (not comparison mode).
-
-1. After the files have been uploaded, resubmit the prompt `Where can I stay in New York?`
-1. Review the response, which should now be based on information from the uploaded brochures — a significant improvement over the prompt engineering-only approach.
-1. Try the follow-up question: `What destinations does Margie's Travel offer?` and compare the response to what you got earlier without grounding data.
-
-## Create a RAG client app
-
-Now that you've seen how grounding data works in the playground, let's build a client application that uses the Responses API with the file search tool to implement the RAG pattern programmatically.
+Now that you've seen how tools can extend a model's capabilities in the playground, let's build a client application that uses tools to provide travel advice for Margie's Travel customers.
 
 ### Get the endpoint and key
 
 You'll need an endpoint and key to connect to the model from a client application. In this exercise, we're going to use the OpenAI SDK to chat with the model; and we'll use the Azure OpenAI endpoint to connect to it.
 
 1. On the menu bar, select the **Home** page.
-1. Note the **Project API key** and **Azure OpenAI Endpoint** displayed there.
+1. Note the **Project API key** and **Azure OpenAI endpoint** displayed there.
+
+    > **Tip**: You'll use the **Azure OpenAI endpoint**, <u>not</u> the project endpoint!
 
 ### Get the application files from GitHub
 
@@ -111,34 +97,34 @@ The initial application files you'll need to develop your chat application are p
 1. In Visual Studio Code, view the **Extensions** pane; and if it is not already installed, install the **Python** extension.
 1. In the **Command Palette**, use the command `python:select interpreter`. Then select an existing environment if you have one, or create a new **Venv** environment based on your Python 3.1x installation.
 
-    > **Tip**: If you are prompted to install dependencies, you can install the ones in the *requirements.txt* file in the */labfiles/foundry-rag/python/rag-app* folder; but it's OK if you don't - we'll install them later!
+    > **Tip**: If you are prompted to install dependencies, you can install the ones in the *requirements.txt* file in the */labfiles/tools/python/tools-app* folder; but it's OK if you don't - we'll install them later!
 
-1. In the Explorer pane, navigate to the folder containing the application code files at **/labfiles/foundry-rag/python/rag-app**. The application files include:
-    - **brochures** (the same folder of brochures you downloaded and extracted previously)
+1. In the Explorer pane, navigate to the folder containing the application code files at **/labfiles/tools/python/tools-app**. The application files include:
+    - **brochures** (a folder containing Margie's Travel brochures)
     - **.env** (the application configuration file)
     - **requirements.txt** (the Python package dependencies that need to be installed)
-    - **rag-app.py** (the code file for the application)
+    - **tools-app.py** (the code file for the application)
 
-1. In the **Explorer** pane, right-click the **rag-app** folder containing the application files, and select **Open in integrated terminal** (or open a terminal in the **Terminal** menu and navigate to the */labfiles/foundry-rag/python/rag-app* folder.)
+1. In the **Explorer** pane, right-click the **tools-app** folder containing the application files, and select **Open in integrated terminal** (or open a terminal in the **Terminal** menu and navigate to the */labfiles/tools/python/tools-app* folder.)
 
     > **Note**: Opening the terminal in Visual Studio Code will automatically activate the Python environment. You may need to enable running scripts on your system.
 
-1. Ensure that the terminal is open in the **/labfiles/foundry-rag/python/rag-app** folder with the prefix **(.venv)** to indicate that the Python environment you created is active.
+1. Ensure that the terminal is open in the **//labfiles/tools/python/tools-app** folder with the prefix **(.venv)** to indicate that the Python environment you created is active.
 1. Install the OpenAI SDK package and other required packages by running the following command:
 
     ```
     pip install -r requirements.txt openai
     ```
 
-1. In the **Explorer** pane, in the **/labfiles/foundry-rag/python/rag-app** folder, select the **.env** file to open it. Then update the configuration values to include the **Project API key** and **Azure OpenAI Endpoint** for your **gpt-4.1** model.
+1. In the **Explorer** pane, in the **/labfiles/tools/python/tools-app** folder, select the **.env** file to open it. Then update the configuration values to include the **Project API key** and **Azure OpenAI endpoint** for your **gpt-4.1** model.
 
-    > **Tip**: Copy the key and endpoint from the project home page in the Foundry portal, and rename the model deployment if your deployment isn't named *gpt-4.1*
+    > **Tip**: Copy the API key and Azure OpenAI endpoint (not the project endpoint) from the project home page in the Foundry portal, and rename the model deployment if your deployment isn't named *gpt-4.1*
 
     Save the modified configuration file.
 
-### Write code to implement the RAG pattern
+### Write code to implement chat with tools
 
-1. In the **Explorer** pane, in the **/labfiles/foundry-rag/python/rag-app** folder, select the **rag-app.py** file to open it.
+1. In the **Explorer** pane, in the **/labfiles/tools/python/tools-app** folder, select the **tools-app.py** file to open it.
 1. Review the existing code. You will add code to use the OpenAI SDK to access your model.
 
     > **Tip**: As you add code to the code file, be sure to maintain the correct indentation.
@@ -181,41 +167,52 @@ The initial application files you'll need to develop your chat application are p
    print(f"Vector store created with {file_batch.file_counts.completed} files.")
     ```
 
-    This code creates a vector store for your model, and uploads the brochures to it.
+    This code creates a vector store for your model, and uploads the brochures to it. We'll use this vector store with the *file_search* tool.
 
-1. In the **main** function, note that code to request a user prompt until the user quits the app has been provided. Within this loop, find the **Get a response** comment, and add the following code:
+1. In the **main** function, note that code to request a user prompt until the user quits the app has been provided. Within this loop, find the **Get a response using tools** comment, and add the following code:
 
     ```python
-   # Get a response
+   # Get a response using tools
    response = openai_client.responses.create(
         model=model_deployment,
-        instructions="You are a travel assistant that provides information on travel services available from Margie's Travel. Only answer questions based on the provided travel brochure data.",
+        instructions="""
+        You are a travel assistant that provides information on travel services available from Margie's Travel.
+        Answer questions about services offered by Margie's Travel using the provided travel brochures.
+        Search the web for general information about destinations or current travel advice.
+        """,
         input=input_text,
         previous_response_id=last_response_id,
-        tools=[{
-            "type": "file_search",
-            "vector_store_ids": [vector_store.id]
-        }]
+        tools=[
+            {
+                "type": "file_search",
+                "vector_store_ids": [vector_store.id]
+            },
+            {
+                "type": "web_search_preview"
+            }
+        ]
    )
    print(response.output_text)
    last_response_id = response.id
     ```
 
-    This code submits a prompt and specifies that the *file_search* tool can be used to search the vector store.
+    This code submits a prompt and specifies that the *file_search* tool can be used to search the vector store and the *web_search* tool can be used or general web searches.
 
 1. Save the changes to the code file. Then, in the terminal pane, use the following command to run the program:
 
     ```powershell
-   python rag-app.py
+   python tools-app.py
     ```
 
     The program should run in the terminal (if not, resolve any errors and try again).
 
-1. When prompted, enter a question, such as `Where should I go on vacation to see architecture?` and review the response from your generative AI model.
+1. When prompted, enter `What's happening in San Francisco next month?` and review the response from your generative AI model.
 
-    Note that the response should include information grounded in the travel brochure data, with references to the source documents.
+    The response should include information retrieved using the *web_search* tool.
 
-1. Try a follow-up question, for example `Where can I stay there?`
+1. Try this follow-up question: `What hotels does Margie's Travel offer there?`
+
+    The response should include information retrieved using the *file_search* tool.
 
 1. When you're finished, enter `quit` to exit the program.
 
