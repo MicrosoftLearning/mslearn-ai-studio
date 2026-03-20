@@ -1,17 +1,15 @@
 ---
 lab:
-  title: Create a generative AI app that uses your own data
+  title: Create a generative AI app that uses tools
   description: Learn how to use the Retrieval Augmented Generation (RAG) pattern with the Responses API and file search to build a chat app that grounds prompts using your own data.
   level: 300
   duration: 45
   islab: true
 ---
 
-# Create a generative AI app that uses your own data
+# Create a generative AI app that uses tools
 
-Retrieval Augmented Generation (RAG) is a technique used to build applications that integrate data from custom data sources into a prompt for a generative AI model. RAG is a commonly used pattern for developing generative AI apps - chat-based applications that use a language model to interpret inputs and generate appropriate responses.
-
-In this exercise, you'll use the Microsoft Foundry portal and the Responses API to integrate custom data into a generative AI solution. You'll start by experimenting with prompt engineering in the playground, then add grounding data, and finally build a client app that uses the file search tool to ground responses in your own documents.
+In this exercise, you'll use the Microsoft Foundry portal and the file_search tool in the Responses API to integrate custom data into a generative AI solution. You'll start by experimenting with prompt engineering in the playground, then add grounding data, and finally build a client app that uses the file search tool to ground responses in your own documents.
 
 This exercise takes approximately **45** minutes.
 
