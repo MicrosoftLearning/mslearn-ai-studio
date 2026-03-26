@@ -17,12 +17,15 @@ This exercise takes approximately **30** minutes.
 
 ## Prerequisites
 
-To complete this exercise, you need:
+Before starting this exercise, ensure you have:
 
-- An [Azure subscription](https://azure.microsoft.com/free/) with permissions to create AI resources.
-- [Visual Studio Code](https://code.visualstudio.com/) installed on your local machine.
-- [Python 3.13](https://www.python.org/downloads/) or later installed on your local machine.
-- [Git](https://git-scm.com/downloads) installed on your local machine.
+- An active [Azure subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account)
+- [Visual Studio Code](https://code.visualstudio.com/) installed
+- [Python version **3.13.xx**](https://www.python.org/downloads/release/python-31312/) installed\*
+- [Git](https://git-scm.com/install/) installed and configured
+- [Azure CLI](https://learn.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) installed
+
+> \* Python 3.14 is available, but some dependencies are not yet compiled for that release. The lab has been successfully tested with Python 3.13.12.
 
 # Create a Microsoft Foundry project
 
@@ -74,14 +77,16 @@ Before developing a chat application, let's explore how the model responds in th
 
 Now that you've seen how tools can extend a model's capabilities in the playground, let's build a client application that uses tools to provide travel advice for Margie's Travel customers.
 
-### Get the endpoint and key
+# Get the endpoint
 
-You'll need an endpoint and key to connect to the model from a client application. In this exercise, we're going to use the OpenAI SDK to chat with the model; and we'll use the Azure OpenAI endpoint to connect to it.
+You'll need an endpoint to connect to the model from a client application. In this exercise, we're going to use the OpenAI SDK to chat with the model; and we'll use the Azure OpenAI endpoint with Entra ID authentication to connect to it.
+
+> **Note**: As an alternative to Entra ID authentication, you could use the API Key for the project. using Entra ID authentication is preferred whenever possible.
 
 1. On the menu bar, select the **Home** page.
-1. Note the **Project API key** and **Azure OpenAI endpoint** displayed there.
+1. Note the **Azure OpenAI Endpoint** displayed there.
 
-    > **Tip**: You'll use the **Azure OpenAI endpoint**, <u>not</u> the project endpoint!
+    > **Tip**: You'll use the **Azure OpenAI Endpoint** in this exercise, <u>not</u> the project endpoint!
 
 ### Get the application files from GitHub
 
@@ -110,15 +115,15 @@ The initial application files you'll need to develop your chat application are p
     > **Note**: Opening the terminal in Visual Studio Code will automatically activate the Python environment. You may need to enable running scripts on your system.
 
 1. Ensure that the terminal is open in the **//labfiles/tools/python/tools-app** folder with the prefix **(.venv)** to indicate that the Python environment you created is active.
-1. Install the OpenAI SDK package and other required packages by running the following command:
+1. Install the OpenAI SDK, Azure identity, and other required packages by running the following command:
 
     ```
-    pip install -r requirements.txt openai
+    pip install -r requirements.txt
     ```
 
-1. In the **Explorer** pane, in the **/labfiles/tools/python/tools-app** folder, select the **.env** file to open it. Then update the configuration values to include the **Project API key** and **Azure OpenAI endpoint** for your **gpt-4.1** model.
+1. In the **Explorer** pane, in the **/labfiles/tools/python/tools-app** folder, select the **.env** file to open it. Then update the configuration values to include the **Azure OpenAI Endpoint** and your **gpt-4.1** model deployment.
 
-    > **Tip**: Copy the API key and Azure OpenAI endpoint (not the project endpoint) from the project home page in the Foundry portal, and rename the model deployment if your deployment isn't named *gpt-4.1*
+    > **Tip**: Copy the **Azure OpenAI Endpoint** (not the project endpoint!) from the project home page in the Foundry portal, and rename the model deployment if your deployment isn't named *gpt-4.1*.
 
     Save the modified configuration file.
 
@@ -134,15 +139,20 @@ The initial application files you'll need to develop your chat application are p
     ```python
    # import namespaces
    from openai import OpenAI
+   from azure.identity import DefaultAzureCredential, get_bearer_token_provider
     ```
 
 1. In the **main** function, note that code to load the endpoint and key from the configuration file has already been provided. Then find the comment **Initialize the OpenAI client**, and add the following code to create a client for the OpenAI API:
 
     ```python
    # Initialize the OpenAI client
+   token_provider = get_bearer_token_provider(
+        DefaultAzureCredential(), "https://ai.azure.com/.default"
+   )
+    
    openai_client = OpenAI(
         base_url=azure_openai_endpoint,
-        api_key=api_key
+        api_key=token_provider
    )
     ```
 
@@ -198,7 +208,16 @@ The initial application files you'll need to develop your chat application are p
 
     This code submits a prompt and specifies that the *file_search* tool can be used to search the vector store and the *web_search* tool can be used or general web searches.
 
-1. Save the changes to the code file. Then, in the terminal pane, use the following command to run the program:
+1. Save the changes to the code file. Then, in the terminal pane, use the following command to sign into Azure.
+
+    ```powershell
+    az login
+    ```
+
+    > **Note**: In most scenarios, just using *az login* will be sufficient. However, if you have subscriptions in multiple tenants, you may need to specify the tenant by using the *--tenant* parameter. See [Sign into Azure interactively using the Azure CLI](https://learn.microsoft.com/cli/azure/authenticate-azure-cli-interactively) for details.
+
+1. When prompted, follow the instructions to sign into Azure. Then complete the sign in process in the command line, viewing (and confirming if necessary) the details of the subscription containing your Foundry hub.
+1. After you have signed in, enter the following command to run the application:
 
     ```powershell
    python tools-app.py

@@ -14,7 +14,6 @@ async def main():
         # Get configuration settings 
         load_dotenv()
         azure_openai_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
-        api_key = os.getenv("API_KEY")
         model_deployment = os.getenv("MODEL_DEPLOYMENT")
 
         # Initialize an async OpenAI client
@@ -39,6 +38,11 @@ async def main():
 
     except Exception as ex:
         print(ex)
+
+    finally:
+        # Close the async client session
+
+
 
 if __name__ == '__main__': 
     asyncio.run(main())

@@ -14,7 +14,6 @@ def main():
         # Get configuration settings 
         load_dotenv()
         azure_openai_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
-        api_key = os.getenv("API_KEY")
         model_deployment = os.getenv("MODEL_DEPLOYMENT")
 
         # Initialize the OpenAI client

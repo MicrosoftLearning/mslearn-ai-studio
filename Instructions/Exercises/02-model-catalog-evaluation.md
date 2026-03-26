@@ -39,7 +39,7 @@ Microsoft Foundry uses projects to organize models, resources, data, and other a
 
 Microsoft Foundry Models provides a catalog of models that you can use in your project. You can browse the catalog and compare models to find the right one for your needs.
 
-1. In the home page for your project, in the **Start building** list, select **Browse models** to open the model catalog.
+1. In the home page for your project, in the **Start building** list, select **Find models** to open the model catalog.
 
     The model catalog lists all models available in Foundry. Some are provided directly from Azure (and billed through your Azure subscription) while others are provided by partners and the community.
 
@@ -118,7 +118,7 @@ The model playground is useful for quick manual testing, but to systematically a
 
 ### Step 1: Target
 
-1. In the playground, select the **Evaluation** tab.
+1. In the playground, select the **Evaluations** tab.
 1. Select **Create** to open the **Create new evaluation** wizard.
 1. For the evaluation target, select **Model**.
 1. Select just your **gpt-4.1** deployment in the table of models, and then select **Next**.
@@ -131,17 +131,17 @@ Instead of uploading a test dataset, you'll use Foundry's synthetic data generat
 
     With synthetic generation, a deployment is used to automatically generate questions for each target when you submit the evaluation.
 
-1. Select **Generate**, and set the following:
+1. Select **Generate**, and then set and confirm the following:
     - **Name of the new dataset**: *Leave as default*
     - **Model**: gpt-4.1
     - **Number of rows**: 45
-    - **Prompt**: Create various travel related questions, and include some content safety and security tests
+    - **Prompt**: `Create various travel related questions, and include some content safety and security tests`
     - **Seed data**: *Leave blank*
 1. Select **Next** to proceed.
 
 ### Step 3: Configure models
 
-1. In the **Configure models** step, set the **Instructions** for the model being evaluated:
+1. In the **Configure models** step, set the **Developer** prompt for the model being evaluated:
 
     ```
     You are a helpful travel assistant that provides accurate, detailed, and practical travel advice to help users plan their trips.
@@ -152,7 +152,7 @@ Instead of uploading a test dataset, you'll use Foundry's synthetic data generat
 ### Step 4: Criteria
 
 1. In the **Criteria** step, all of the suggested evaluators. These use an AI model as a judge to assess the quality of responses.
-1. Remove all of the criteria under *Agents*, and remove **RegexMatchEvaluator** from the *Quality* group, leaving the rest of the evaluators enabled.
+1. Remove all of the criteria under *Agents*, leaving the rest of the evaluators enabled.
 1. Select **Next**.
 
 ### Step 5: Review and submit
