@@ -48,15 +48,13 @@ Microsoft Foundry uses projects to organize models, resources, data, and other a
 
     When it is ready, the project home page will open.
 
-    ![Screenshot of the Foundry project home page.](../media/ai-foundry-project-home.png)
+    ![Screenshot of the Foundry project home page.](../media/foundry-portal-home.png)
 
 ## Deploy and test a model
 
 At the core of any generative AI project, there's at least one generative AI model.
 
-1. In the **Start building** menu, select **Find models**.
-
-    This opens the Foundry Models catalog, which includes a wide selection of models from multiple providers.
+1. 1. On the home page, select **Find models** (or on the **Discover** page, select the **Models** tab) to view the Microsoft Foundry model catalog.
 
 1. Search for the `gpt-4.1` model, and then select it in the search results to view its model card.
 

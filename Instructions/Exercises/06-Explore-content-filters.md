@@ -35,13 +35,13 @@ Microsoft Foundry uses projects to organize models, resources, data, and other a
     - **Resource group**: *Create or select a resource group*
     - **Region**: Select any of the **AI Foundry recommended** regions
 
-1. Select **Create**. Wait for your project to be created.
+1. Wait for your project to be created.
 
 ## Deploy a model
 
 Now deploy a model that you'll use in your chat application.
 
-1. On the project home page, in the **Start building** menu, select **Browse models**.
+1. On the home page, select **Find models** (or on the **Discover** page, select the **Models** tab) to view the Microsoft Foundry model catalog.
 1. In the model catalog, search for `gpt-4.1`.
 1. Review the model card, and then deploy it using the default settings.
 1. When the model has been deployed, it will open in the model playground - you can test it there if you like.

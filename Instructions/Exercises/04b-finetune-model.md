@@ -41,13 +41,13 @@ Microsoft Foundry uses projects to organize models, resources, data, and other a
 
     > \* At the time of writing, these regions support fine-tuning for gpt-4.1 models. Check the [models page](https://learn.microsoft.com/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure?&pivots=azure-openai#fine-tuning-models) for the latest region availability.
 
-1. Select **Create**. Wait for your project to be created.
+1. Wait for your project to be created.
 
 ## Deploy a model
 
 Now deploy a model that you'll use to get a performance baseline.
 
-1. On the project home page, in the **Start building** menu, select **Browse models**.
+1. On the home page, select **Find models** (or on the **Discover** page, select the **Models** tab) to view the Microsoft Foundry model catalog.
 1. In the model catalog, search for `gpt-4.1`.
 1. Review the model card, and then deploy it using the default settings.
 1. When the model has been deployed, it will open in the model playground.
