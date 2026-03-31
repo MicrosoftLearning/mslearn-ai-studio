@@ -54,7 +54,7 @@ Microsoft Foundry uses projects to organize models, resources, data, and other a
 
 At the core of any generative AI project, there's at least one generative AI model.
 
-1. In the **Start building** menu, select **Find models** (or on the **Discover** page, select the **Models** tab) to view the Microsoft Foundry model catalog.
+1. Now you're ready to **Start building**. Select **Find models** (or on the **Discover** page, select the **Models** tab) to view the Microsoft Foundry model catalog.
 
 1. Search for the `gpt-4.1` model, and then select it in the search results to view its model card.
 
