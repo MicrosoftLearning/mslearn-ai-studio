@@ -69,7 +69,7 @@ Before developing a chat application, let's explore how the model responds in th
 
 1. In the pane on the left, under the instructions, in the **Tools** section, select **Add** and add the **web_search** tool.
 
-1. In the chat pane, enter the same query `What are some recommended tourist activities in New York tnext month?` and review the response.
+1. In the chat pane, enter the same query `What are some recommended tourist activities in New York next month?` and review the response.
 
     This time, the model uses the *web_search* tool to find current information about activities in New York.
 
