@@ -245,7 +245,7 @@ To maintain the conversational context, we need to include references to previou
    last_response_id = response.id
     ```
 
-    Using this technique, you can pass the ID of the previous reponse to maintain context. You could also implement more complex logic to pass an ID from any orevious response to redirect a conversation or resume a previous conversational thread.
+    Using this technique, you can pass the ID of the previous reponse to maintain context. You could also implement more complex logic to pass an ID from any previous response to redirect a conversation or resume a previous conversational thread.
 
 1. Save the changes to the code, and in the terminal pane, re-run the application (`python chat-app.py`).
 1. When prompted, enter the same prompt as before:
