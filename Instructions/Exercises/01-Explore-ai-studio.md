@@ -114,7 +114,7 @@ At the core of any generative AI project, there's at least one generative AI mod
 
 ## Install the AI Toolkit extension for Visual Studio Code
 
-As a developer, you may spend some time working in the Foundry portal; but you're also likely to spend a lot of time in Visual Studio Code. The Extension for Microsoft Foundry provides a convenient way to work with Foundry project resources without leaving the development environment.
+As a developer, you may spend some time working in the Foundry portal; but you're also likely to spend a lot of time in Visual Studio Code. The AI Toolkit extension provides a convenient way to work with Foundry project resources without leaving the development environment.
 
 1. Open Visual Studio Code, and in the navigation bar on the left, view the **Extensions** page.
 
