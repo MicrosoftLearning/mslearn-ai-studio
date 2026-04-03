@@ -156,7 +156,7 @@ The initial application files you'll need to develop your chat application are p
    )
     ```
 
-1. In the **main**function, find the comment **Create vector store and upload files**, and add the following code:
+1. In the **main** function, find the comment **Create vector store and upload files**, and add the following code:
 
     ```python
    # Create vector store and upload files

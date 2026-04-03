@@ -110,7 +110,7 @@ When the default guardrail doesn't meet your needs, you can create custom guardr
 1. In the pane on the left, select **Models**. Then select the **gpt-4.1** model to open it in the playground.
 1. Select the model's **Details** page, and confirm that the new guardrail has been applied to the model.
 
-> **Note**: The default guardrail is generally pretty effective against the kinds of offensive content we can include in a lab such as thins; so the more restrictive guardrail we created may not change the response from the prompts tried earlier in this lab. However, it will be more effective against prompts that reference extreme violence, sexual content, hate speech, or self-harm.
+> **Note**: The default guardrail is generally pretty effective against the kinds of offensive content we can include in a lab such as this; so the more restrictive guardrail we created may not change the response from the prompts tried earlier in this lab. However, it will be more effective against prompts that reference extreme violence, sexual content, hate speech, or self-harm.
 
 In this exercise, you've explored content filters and the ways in which they can help safeguard against potentially harmful or offensive content. Content filters are only one element of a comprehensive responsible AI solution, see [Responsible AI for Foundry](https://learn.microsoft.com/azure/ai-foundry/responsible-use-of-ai-overview) for more information.
 

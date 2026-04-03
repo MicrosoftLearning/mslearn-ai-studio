@@ -245,7 +245,7 @@ To maintain the conversational context, we need to include references to previou
    last_response_id = response.id
     ```
 
-    Using this technique, you can pass the ID of the previous reponse to maintain context. You could also implement more complex logic to pass an ID from any orevious response to redirect a conversation or resume a previous conversational thread.
+    Using this technique, you can pass the ID of the previous reponse to maintain context. You could also implement more complex logic to pass an ID from any previous response to redirect a conversation or resume a previous conversational thread.
 
 1. Save the changes to the code, and in the terminal pane, re-run the application (`python chat-app.py`).
 1. When prompted, enter the same prompt as before:
@@ -262,7 +262,7 @@ To maintain the conversational context, we need to include references to previou
     How does it compare to modern LLMs?
     ```
 
-    This time, the app should respond with a comparison of the ELIZA chatbot and modern LLMs. The response may be quite lengthy, and the app waits until it has all been revceived from the mdeol before displaying it; which may make the app seem unresponsive. We'll fix that next!
+    This time, the app should respond with a comparison of the ELIZA chatbot and modern LLMs. The response may be quite lengthy, and the app waits until it has all been revceived from the model before displaying it; which may make the app seem unresponsive. We'll fix that next!
 
 1. Enter the prompt `quit` to end the application.
 
