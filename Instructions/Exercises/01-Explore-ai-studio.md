@@ -109,8 +109,8 @@ At the core of any generative AI project, there's at least one generative AI mod
     This information is used to connect to your project-level resouces from client applications.
 
     - The *key* is used for key-based authentication to models and tools (though in most production scenarios you should consider using Microsoft Entra ID authentication based on authenticated user and application identities).
-    - The *project endpoint* is used to access models provided directly in Foundry (including OpenAI models) using the OpenAI **Resources** API, and to access Foundry-specific APIs (such as the Foundry Agent service).
-    - The *OpenAI endpoint* is used to access models using OpenAI APIs, including the **Chat Completions** API and the **Resources** API.
+    - The *project endpoint* is used to access models provided directly in Foundry (including OpenAI models) using the OpenAI **Responses** API, and to access Foundry-specific APIs (such as the Foundry Agent service).
+    - The *OpenAI endpoint* is used to access models using OpenAI APIs, including the **Chat Completions** API and the **Responses** API.
 
 ## Install the AI Toolkit extension for Visual Studio Code
 
