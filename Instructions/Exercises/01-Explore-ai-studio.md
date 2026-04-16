@@ -112,27 +112,25 @@ At the core of any generative AI project, there's at least one generative AI mod
     - The *project endpoint* is used to access models provided directly in Foundry (including OpenAI models) using the OpenAI **Responses** API, and to access Foundry-specific APIs (such as the Foundry Agent service).
     - The *OpenAI endpoint* is used to access models using OpenAI APIs, including the **Chat Completions** API and the **Responses** API.
 
-## Install the AI Toolkit extension for Visual Studio Code
+## Install the Foundry Toolkit extension for Visual Studio Code
 
-As a developer, you may spend some time working in the Foundry portal; but you're also likely to spend a lot of time in Visual Studio Code. The AI Toolkit extension provides a convenient way to work with Foundry project resources without leaving the development environment.
+As a developer, you may spend some time working in the Foundry portal; but you're also likely to spend a lot of time in Visual Studio Code. The Foundry Toolkit extension provides a convenient way to work with Foundry project resources without leaving the development environment.
 
 1. Open Visual Studio Code, and in the navigation bar on the left, view the **Extensions** page.
 
-    ![Screenshot of the Visual Studio Code extensions page.](../media/vscode-extensions.png)
+1. Search the extensions marketplace for `Foundry Toolkit`, and install the **Foundry Toolkit for VS Code** extension.
+1. After installing the extension, select the **Microsoft Foundry** page in the left navigation bar.
 
-1. Search the extensions marketplace for `AI Toolkit`, and install the **AI Toolkit** extension.
-1. After installing the extension, select its page in the left navigation bar.
+    ![Screenshot of the Foundry Toolkit Visual Studio Code extension.](../media/foundry-vs-extension.png)
 
-    ![Screenshot of the AI Toolkit Visual Studio Code extension.](../media/foundry-vs-extension.png)
-
-1. In the AI Toolkit pane, use the **Set default project** button to connect to Azure (signing in with your credentials) and select the Foundry project you created previously.
-1. After setting the default project, in the AI Toolkit pane, expand the project, expand **Models**, and select the **gpt-4.1** model you deployed previously.
+1. In the Foundry Toolkit pane, set the default project by connecting to Azure (signing in with your credentials) and selecting the Foundry project you created previously.
+1. After setting the default project, expand the project, expand **Models**, and select the **gpt-4.1** model you deployed previously.
 
     You can view the model deployment details here.
 
-    ![Screenshot of a model in the  AI Toolkit Visual Studio Code extension.](../media/vscode-extension-model.png)
+    ![Screenshot of a model in the  Foundry Toolkit Visual Studio Code extension.](../media/vscode-extension-model.png)
 
-1. In the AI Toolkit pane, in the **Developer Tools** section, select **Model playground** and select the **gpt-4.1** model.
+1. In the Foundry Toolkit pane, in the **Tools** section, select **Model playground** and select the **gpt-4.1** model.
 
     An interactive playground in which you can test the model is opened in Visual Studio Code.
 
