@@ -138,7 +138,7 @@ As a developer, you may spend some time working in the Foundry portal; but you'r
 
 ## Summary
 
-In this exercise, you've created a Microsoft Foundry and explored it in the Foundry portal. You've also explored the  AI Toolkit extension in Visual Studio Code, which provides a convenient way for developers to work with Foundry projects and their assets.
+In this exercise, you've created a Microsoft Foundry and explored it in the Foundry portal. You've also explored the  Foundry Toolkit extension in Visual Studio Code, which provides a convenient way for developers to work with Foundry projects and their assets.
 
 ## Clean up
 
