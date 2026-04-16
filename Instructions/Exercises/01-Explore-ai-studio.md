@@ -76,7 +76,7 @@ At the core of any generative AI project, there's at least one generative AI mod
     You are an AI assistant that can provide information and advice about AI software development.
     ```
 
-1. In the chat window, enter a query such as `Decribe three key considerations for working with Large Language Models for AI application development.` and view the response:
+1. In the chat window, enter a query such as `Describe three key considerations for working with Large Language Models for AI application development.` and view the response:
 
     Hopefully the model provided some key considerations for you to think about!
 
