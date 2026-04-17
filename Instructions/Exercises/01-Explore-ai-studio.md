@@ -119,7 +119,7 @@ As a developer, you may spend some time working in the Foundry portal; but you'r
 1. Open Visual Studio Code, and in the navigation bar on the left, view the **Extensions** page.
 
 1. Search the extensions marketplace for `Foundry Toolkit`, and install the **Foundry Toolkit for VS Code** extension.
-1. After installing the extension, select the **Microsoft Foundry** page in the left navigation bar.
+1. After installing the extension, select the **AI Toolkit** page in the left navigation bar.
 
     ![Screenshot of the Foundry Toolkit Visual Studio Code extension.](../media/foundry-vs-extension.png)
 
@@ -130,7 +130,7 @@ As a developer, you may spend some time working in the Foundry portal; but you'r
 
     ![Screenshot of a model in the  Foundry Toolkit Visual Studio Code extension.](../media/vscode-extension-model.png)
 
-1. In the Foundry Toolkit pane, in the **Tools** section, select **Model playground** and select the **gpt-4.1** model.
+1. In the Foundry Toolkit pane, in the **Developer Tools** section, expand **Build** and select **Model playground**. Then select the **gpt-4.1** model (if it is not already selected).
 
     An interactive playground in which you can test the model is opened in Visual Studio Code.
 
