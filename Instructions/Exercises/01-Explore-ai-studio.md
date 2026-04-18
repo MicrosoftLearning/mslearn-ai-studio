@@ -123,7 +123,7 @@ As a developer, you may spend some time working in the Foundry portal; but you'r
 
     ![Screenshot of the Foundry Toolkit Visual Studio Code extension.](../media/foundry-vs-extension.png)
 
-1. In the Foundry Toolkit pane, set the default project by connecting to Azure (signing in with your credentials) and selecting the Foundry project you created previously.
+1. In the Foundry Toolkit pane, expand **Microsoft Foundry Resources** and set the default project by connecting to Azure (signing in with your credentials) and selecting the Foundry project you created previously.
 1. After setting the default project, expand the project, expand **Models**, and select the **gpt-4.1** model you deployed previously.
 
     You can view the model deployment details here.
