@@ -198,7 +198,7 @@ The initial application files you'll need to develop your chat application are p
                 "vector_store_ids": [vector_store.id]
             },
             {
-                "type": "web_search_preview"
+                "type": "web_search"
             }
         ]
    )
