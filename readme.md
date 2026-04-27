@@ -1,3 +1,5 @@
+**This course will be retired on 2026-4-30. Once course is retired, all GitHub repos will be removed. Thank you!**
+
 # Develop Generative AI Solutions in Azure
 
 The exercises in this repo are designed to provide you with a hands-on learning experience in which you'll explore common tasks that developers perform when building generative AI solutions on Microsoft Azure.
