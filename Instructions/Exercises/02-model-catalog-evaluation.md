@@ -72,7 +72,7 @@ Now let's use the model leaderboard and side-by-side comparison features to comp
 
 ## Deploy models
 
-Now let's deploy the models we'll use for testing and evaluation. You need to deploy **gpt-4.1** and **gpt-4o-mini**.
+Now let's deploy the models we'll use for testing and evaluation. You need to deploy **gpt-4.1** and **gpt-4.1-mini**.
 
 ### Deploy the gpt-4.1 model
 
@@ -81,22 +81,22 @@ Now let's deploy the models we'll use for testing and evaluation. You need to de
 
     The deployed model will open in the model playground, where it will be selected in the **Model** drop-down list.
 
-1. Note the deployment name (for example, **gpt-4.1**).
+1. Note the deployment name that is assigned to the **gpt-4.1** model. You'll need to identify this deployment later.
 
-### Deploy the gpt-4o-mini model
+### Deploy the gpt-4.1-mini model
 
 1. In the model playground, in the **Model** list, select **Browse more models**.
-1. Search for `gpt-4o-mini`, and then select it and deploy it.
+1. Search for `gpt-4.1-mini`, and then select it and deploy it.
 
     The model is deployed and selected in the model playground.
 
-1. Note the deployment name (for example, **gpt-4o-mini**).
+1. Note the deployment name that is assigned to the **gpt-4.1-mini** model.
 
 ## Compare models in the model playground
 
 Now that you have two model deployments, let's compare them in the playground.
 
-1. In the playground, ensure the **gpt-4.1-mini** model is selected in the **Models** list, and then on the right side of the page, in the **Compare models** list, select the **gpt-4.1** model.
+1. In the playground, ensure the deployment for the **gpt-4.1-mini** model is selected in the **Models** list, and then on the right side of the page, in the **Compare models** list, select the deployment for the **gpt-4.1** model.
 1. Select the **Setup** tabs for both models, and set the **Instructions** to `You are an AI assistant that helps solve problems.`
 1. Select the **Chat** tabs for both models, and enter the following prompt:
 
@@ -121,7 +121,7 @@ The model playground is useful for quick manual testing, but to systematically a
 1. In the playground, select the **Evaluations** tab.
 1. Select **Create** to open the **Create new evaluation** wizard.
 1. For the evaluation target, select **Model**.
-1. Select just your **gpt-4.1** deployment in the table of models, and then select **Next**.
+1. Select the deployment for **gpt-4.1** in the table of models, and then select **Next**.
 
 ### Step 2: Data
 
