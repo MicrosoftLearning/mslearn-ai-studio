@@ -57,10 +57,10 @@ Now let's use the model leaderboard and side-by-side comparison features to comp
 1. In the model catalog page, select **View leaderboard**.
 1. In the **Model leaderboard** page, review the top models ranked by quality, safety, cost, and performance. Note which models score highest for AI quality metrics.
 1. Scroll down to use the **Trade-off chart** section to compare models on multiple dimensions.
-1. Select the **Estimated cost** from the dropdown to see how model quality relates to estimated cost, and then use the model list to select only the **gpt-4.1**, **gpt-4.1-mini**, and **gpt-4.1-nano** models to compare them.
+1. Select the **Benchmark Cost** from the dropdown to see how model quality relates to cost, and then use the model list to compare **gpt-4.1** and **gpt-4.1-mini**. If you want to explore further, you can add other models to the comparison.
 1. Select the **Throughput** metric from the dropdown to see how the quality of these models relates to throughput scores.
 1. Select the **Safety** metric from the dropdown to see how the quality of these models relates to safety scores.
-1. In the table just above the trade-off charts, you can compare benchmarks. Select the **gpt-4.1**, **gpt-4.1-mini**, and **gpt-4.1-nano** models, and then use the **Compare models** button to view their benchmarks side-by-side.
+1. In the table just above the trade-off charts, you can compare benchmarks. Select **gpt-4.1** and **gpt-4.1-mini**, and optionally any other models you want to explore, and then use the **Compare models** button to view their benchmarks side-by-side.
 1. Select **Compare models** to open the side-by-side comparison view.
 1. Review the comparison across the following data:
     - **Performance benchmarks**: Quality, safety, and throughput scores.
