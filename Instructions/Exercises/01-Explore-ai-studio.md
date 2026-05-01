@@ -1,7 +1,7 @@
 ---
 lab:
   title: Prepare for an AI development project
-  description: Learn how to organize AI resources in a Microsoft Foundry project and get started with the AI Toolkit extension for Visual Studio Code.
+  description: Learn how to organize AI resources in a Microsoft Foundry project and get started with the Foundry Toolkit extension for Visual Studio Code.
   level: 200
   duration: 30
   islab: true
