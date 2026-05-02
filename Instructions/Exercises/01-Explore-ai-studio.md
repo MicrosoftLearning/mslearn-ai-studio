@@ -116,14 +116,18 @@ At the core of any generative AI project, there's at least one generative AI mod
 
 As a developer, you may spend some time working in the Foundry portal; but you're also likely to spend a lot of time in Visual Studio Code. The Foundry Toolkit extension provides a convenient way to work with Foundry project resources without leaving the development environment.
 
-1. Open Visual Studio Code, and in the navigation bar on the left, view the **Extensions** page.
-
+1. Start Visual Studio Code
+1. In the navigation bar on the left, view the **Extensions** page.
 1. Search the extensions marketplace for `Foundry Toolkit`, and install the **Foundry Toolkit for VS Code** extension.
-1. After installing the extension, select the **AI Toolkit** page in the left navigation bar.
+
+    The extension may take a minute or so to install.
+
+1. After installing the extension, select the **AI Toolkit** page in the left navigation bar; and wait for it to load.
 
     ![Screenshot of the Foundry Toolkit Visual Studio Code extension.](../media/foundry-vs-extension.png)
 
 1. In the Foundry Toolkit pane, expand **Microsoft Foundry Resources** and set the default project by connecting to Azure (signing in with your credentials) and selecting the Foundry project you created previously.
+
 1. After setting the default project, expand the project, expand **Models**, and select the **gpt-4.1** model you deployed previously.
 
     You can view the model deployment details here.
