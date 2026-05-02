@@ -61,7 +61,6 @@ Now let's use the model leaderboard and side-by-side comparison features to comp
 1. Select the **Throughput** metric from the dropdown to see how the quality of these models relates to throughput scores.
 1. Select the **Safety** metric from the dropdown to see how the quality of these models relates to safety scores.
 1. In the table just above the trade-off charts, you can compare benchmarks. Select **gpt-4.1** and **gpt-4.1-mini**, and optionally any other models you want to explore, and then use the **Compare models** button to view their benchmarks side-by-side.
-1. Select **Compare models** to open the side-by-side comparison view.
 1. Review the comparison across the following data:
     - **Performance benchmarks**: Quality, safety, and throughput scores.
     - **Input** and **output**: The formats supported for prompts and responses.

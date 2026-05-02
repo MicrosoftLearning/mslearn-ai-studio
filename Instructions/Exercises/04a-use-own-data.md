@@ -114,7 +114,7 @@ The initial application files you'll need to develop your chat application are p
 
     > **Note**: Opening the terminal in Visual Studio Code will automatically activate the Python environment. You may need to enable running scripts on your system.
 
-1. Ensure that the terminal is open in the **//labfiles/tools/python/tools-app** folder with the prefix **(.venv)** to indicate that the Python environment you created is active.
+1. Ensure that the terminal is open in the **/labfiles/tools/python/tools-app** folder with the prefix **(.venv)** to indicate that the Python environment you created is active.
 1. Install the OpenAI SDK, Azure identity, and other required packages by running the following command:
 
     ```
