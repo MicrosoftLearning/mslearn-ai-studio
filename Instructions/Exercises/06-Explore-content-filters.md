@@ -95,7 +95,7 @@ When the default guardrail doesn't meet your needs, you can create custom guardr
 
 1. Select **Add control** to apply the new content filter settings to your model deployment.
 
-    Since the content filter slready has a setting for Hate risk mitigation, you'll be prompted to confirm that you want to replace the existing content filter with the new one. Select **OK** to confirm that you want to replace the existing content filter.
+    Since the content filter already has a setting for Hate risk mitigation, you'll be prompted to confirm that you want to replace the existing content filter with the new one. Select **OK** to confirm that you want to replace the existing content filter.
 
 1. Repeat the content filter configuration steps to create and apply new content filters for the **Violence**, **Sexual**, and **Self-harm** categories, setting the blocking threshold to the *Highest blocking* level for each category.
 
