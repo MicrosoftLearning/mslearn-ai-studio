@@ -31,7 +31,7 @@ Microsoft Foundry uses projects to organize models, resources, data, and other a
     - **Foundry resource**: *Use the default name for your resource (usually {project_name}-resource)*
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create or select a resource group*
-    - **Region**: Select any of the **AI Foundry recommended** regions
+    - **Region**: Select any of the **AI Foundry recommended** regions in **[this list](https://learn.microsoft.com/azure/foundry/openai/how-to/responses#region-availability)**{:target="_blank"}
 
 1. Wait for your project to be created. Then view its home page.
 
@@ -60,7 +60,7 @@ Now let's use the model leaderboard and side-by-side comparison features to comp
 1. Select the **Benchmark Cost** from the dropdown to see how model quality relates to cost, and then use the model list to compare **gpt-4.1** and **gpt-4.1-mini**. If you want to explore further, you can add other models to the comparison.
 1. Select the **Throughput** metric from the dropdown to see how the quality of these models relates to throughput scores.
 1. Select the **Safety** metric from the dropdown to see how the quality of these models relates to safety scores.
-1. In the table just above the trade-off charts, you can compare benchmarks. Select **gpt-4.1** and **gpt-4.1-mini**, and optionally any other models you want to explore. Then select **Compare models** to open the dropdown menu, and choose the option to view their benchmarks side-by-side.
+1. In the table just above the trade-off charts, you can compare benchmarks. Select **gpt-4.1** and **gpt-4.1-mini**, and optionally any other models you want to explore, and then use the **Compare models** button to view their benchmarks side-by-side.
 1. Review the comparison across the following data:
     - **Performance benchmarks**: Quality, safety, and throughput scores.
     - **Input** and **output**: The formats supported for prompts and responses.

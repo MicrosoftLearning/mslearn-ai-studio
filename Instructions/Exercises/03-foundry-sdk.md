@@ -36,7 +36,7 @@ Microsoft Foundry uses projects to organize models, resources, data, and other a
     - **Foundry resource**: *Use the default name for your resource (usually {project_name}-resource)*
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create or select a resource group*
-    - **Region**: Select any of the **AI Foundry recommended** regions
+    - **Region**: Select any of the **AI Foundry recommended** regions in **[this list](https://learn.microsoft.com/azure/foundry/openai/how-to/responses#region-availability)**{:target="_blank"}
 
 1. Wait for your project to be created. Then view its home page.
 
@@ -262,7 +262,7 @@ To maintain the conversational context, we need to include references to previou
     How does it compare to modern LLMs?
     ```
 
-    This time, the app should respond with a comparison of the ELIZA chatbot and modern LLMs. The response may be quite lengthy, and the app waits until it has all been revceived from the model before displaying it; which may make the app seem unresponsive. We'll fix that next!
+    This time, the app should respond with a comparison of the ELIZA chatbot and modern LLMs. The response may be quite lengthy, and the app waits until it has all been received from the model before displaying it; which may make the app seem unresponsive. We'll fix that next!
 
 1. Enter the prompt `quit` to end the application.
 
@@ -306,7 +306,7 @@ To handle long responses, you can use *streaming* to start processing partial re
     How does it compare to modern LLMs?
     ```
 
-    Again, the response should be diaplayed incrementally.
+    Again, the response should be displayed incrementally.
 
 1. Enter the prompt `quit` to end the application.
 
