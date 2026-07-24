@@ -34,7 +34,7 @@ Microsoft Foundry uses projects to organize models, resources, data, and other a
 
 1. In a web browser, open the [Microsoft Foundry portal](https://ai.azure.com) at `https://ai.azure.com` to start building; signing in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in.
 
-1. If it is not already enabled, in the tool bar the top of the page, enable the **New Foundry** option. Then, if prompted, create a new project with a unique name; expanding the **Advanced options** area to specify the following settings for your project:
+1. If it is not already enabled, in the tool bar at the top of the page, enable the **New Foundry** option. Then, if prompted, create a new project with a unique name; expanding the **Advanced options** area to specify the following settings for your project:
     - **Foundry resource**: *Use the default name for your resource (usually {project_name}-resource)*
     - **Subscription**: *Your Azure subscription*
     - **Resource group**: *Create or select a resource group*
@@ -247,7 +247,7 @@ To maintain the conversational context, we need to include references to previou
    last_response_id = response.id
     ```
 
-    Using this technique, you can pass the ID of the previous reponse to maintain context. You could also implement more complex logic to pass an ID from any previous response to redirect a conversation or resume a previous conversational thread.
+    Using this technique, you can pass the ID of the previous response to maintain context. You could also implement more complex logic to pass an ID from any previous response to redirect a conversation or resume a previous conversational thread.
 
 1. Save the changes to the code, and in the terminal pane, re-run the application (`python chat-app.py`).
 1. When prompted, enter the same prompt as before:
@@ -264,7 +264,7 @@ To maintain the conversational context, we need to include references to previou
     How does it compare to modern LLMs?
     ```
 
-    This time, the app should respond with a comparison of the ELIZA chatbot and modern LLMs. The response may be quite lengthy, and the app waits until it has all been received from the model before displaying it; which may make the app seem unresponsive. We'll fix that next!
+    This time, the app should respond with a comparison of the ELIZA chatbot and modern LLMs. The response may be quite lengthy, and the app waits until it has all been received from the model before displaying it, which may make the app seem unresponsive. We'll fix that next!
 
 1. Enter the prompt `quit` to end the application.
 

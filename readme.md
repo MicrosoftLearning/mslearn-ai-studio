@@ -6,7 +6,7 @@ The exercises in this repo are designed to provide you with a hands-on learning 
 
 View the exercises in the [GitHub Pages site for this repo](https://go.microsoft.com/fwlink/?linkid=2310724).
 
-> **Note**: While you can complete these exercises on their own, they're designed to complement modules on [Microsoft Learn](https://aka.ms/mslearn-generative-ai); in which you'll find a deeper dive into some of the underlying concepts on which these exercises are based.
+> **Note**: While you can complete these exercises on their own, they're designed to complement modules on [Microsoft Learn](https://aka.ms/mslearn-generative-ai), in which you'll find a deeper dive into some of the underlying concepts on which these exercises are based.
 
 ## Reporting issues
 
