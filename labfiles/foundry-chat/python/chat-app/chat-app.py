@@ -1,22 +1,23 @@
 import os
+import subprocess
 from dotenv import load_dotenv
 
 # import namespaces
 
 
 
-def main(): 
+def main():
+
     # Clear the console
-    os.system('cls' if os.name == 'nt' else 'clear')
+    subprocess.call('cls' if os.name == 'nt' else 'clear', shell=True)
 
     try:
-        # Get configuration settings 
+        # Get configuration settings
         load_dotenv()
         azure_openai_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
         model_deployment = os.getenv("MODEL_DEPLOYMENT")
 
         # Initialize the OpenAI client
-        
 
 
         # Loop until the user wants to quit
@@ -29,10 +30,11 @@ def main():
                 continue
 
             # Get a response
-            
+
 
     except Exception as ex:
         print(ex)
 
-if __name__ == '__main__': 
+
+if __name__ == '__main__':
     main()

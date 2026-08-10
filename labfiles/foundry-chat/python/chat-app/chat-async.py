@@ -1,24 +1,24 @@
 import os
+import subprocess
 from dotenv import load_dotenv
 
 # import namespaces for async
 
 
 
-async def main(): 
+async def main():
 
     # Clear the console
-    os.system('cls' if os.name == 'nt' else 'clear')
+    subprocess.call('cls' if os.name == 'nt' else 'clear', shell=True)
 
     try:
-        # Get configuration settings 
+        # Get configuration settings
         load_dotenv()
         azure_openai_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
         model_deployment = os.getenv("MODEL_DEPLOYMENT")
 
         # Initialize an async OpenAI client
 
-        
 
         # Track responses
         last_response_id = None
@@ -34,7 +34,6 @@ async def main():
 
             # Await an asynchronous response
 
-            
 
     except Exception as ex:
         print(ex)
@@ -44,5 +43,5 @@ async def main():
 
 
 
-if __name__ == '__main__': 
+if __name__ == '__main__':
     asyncio.run(main())
