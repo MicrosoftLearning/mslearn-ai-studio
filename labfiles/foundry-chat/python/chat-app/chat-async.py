@@ -58,7 +58,5 @@ async def main():
         # Close the async client session
         await async_client.aclose()
 
-
-
 if __name__ == '__main__': 
     asyncio.run(main())
