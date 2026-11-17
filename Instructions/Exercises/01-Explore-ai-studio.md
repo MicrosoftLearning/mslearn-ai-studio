@@ -83,24 +83,18 @@ At the core of any generative AI project, there's at least one generative AI mod
 
 ## View Foundry Azure resource and project endpoints
 
-1. In the Foundry portal, in the top menu bar, select **Operate**.
+1. In the Foundry portal, in the top menu bar, select **Manage**.
 
-    The operation center is where you can monitor your projects, view alerts, monitor agent performance and quotas, and manage resources.
+    The management center is where you can view and administer your projects and their parent resources.
 
-    ![Screenshot of the Operate center page in Foundry portal.](../media/ai-foundry-operate.png)
-
-1. In the left navigation pane, select the **Admin** page to view details.
+    ![Screenshot of the Manage tab in Foundry portal.](../media/ai-foundry-manage.png)
 
     - The *resource* level relates to the **Foundry** resource that was created in Azure to support your project. This resource includes connections to Foundry Services and models; and provides a central place to manage user access to AI development projects.
     - The *project* level relates to your individual project, where you can add and manage project-specific resources. A resource can support multiple projects (the first one created is the resource's *default* project).
 
-    ![Screenshot of the Admin page in Foundry portal.](../media/ai-foundry-admin.png)
-
 1. Select the link to the **Parent resource** associated with the project.
 
     The resource configuration details should be displayed.
-
-    ![Screenshot of a Foundry resource details page.](../media/ai-foundry-resource.png)
 
     Note that the Foundry resource has an *endpoint*, through which client applications can access resource-level functionality (such as Foundry Tools that are shared across all projects in the resource).
 
