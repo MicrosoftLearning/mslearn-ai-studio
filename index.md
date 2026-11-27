@@ -12,9 +12,16 @@ The following exercises are designed to provide you with a hands-on learning exp
 
 <hr>
 
+{% comment %}
+  Only published labs are listed. A page is hidden when its frontmatter sets
+  lab.status to 'draft' (matched case-insensitively, so 'Draft' and 'DRAFT'
+  are hidden too). A page with NO lab.status is treated as publishable and
+  still lists, so existing content is unaffected.
+{% endcomment %}
 {% assign labs = site.pages | where_exp:"page", "page.url contains '/Instructions/Exercises'" %}
 {% for activity in labs  %}
-{% if activity.lab.title %}
+{% assign lab_status = activity.lab.status | default: '' | downcase %}
+{% if activity.lab.title and lab_status != 'draft' %}
 ### [{{ activity.lab.title }}]({{ site.github.url }}{{ activity.url }})
 
 
